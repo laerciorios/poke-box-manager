@@ -1,5 +1,7 @@
 import type { Locale } from './locale'
 
+export type GameId = string
+
 export interface GameEntry {
   id: string
   name: string

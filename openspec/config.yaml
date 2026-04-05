@@ -1,0 +1,33 @@
+schema: spec-driven
+
+# Project context
+context: |
+  Project: Poke Box Manager
+  Tech stack: Next.js 14+ (App Router), TypeScript (strict), Tailwind CSS, shadcn/ui, Zustand, PokéAPI
+  i18n: next-intl (PT-BR + EN)
+  Drag & drop: @dnd-kit/core
+  Tests: Vitest + Testing Library + Playwright
+
+  Domain: Pokemon Home box management platform to help players complete the Pokedex.
+  Key features: Box grid visualization (6x5), organization presets, variation toggles,
+  game availability, progress stats, missing pokemon tracker, export/import.
+
+  Data strategy: PokéAPI consumed at build-time, stored as static JSON. Zero runtime API calls.
+  User data: Zustand + IndexedDB (offline-first), no backend.
+
+  Full spec available at: openspec/specs/spec.md
+
+# Per-artifact rules
+rules:
+  proposal:
+    - Reference the main spec (openspec/specs/spec.md) for detailed requirements
+    - Keep proposals focused on a single feature or phase
+    - Include which section of the spec the change relates to
+  tasks:
+    - Break tasks into chunks of max 2 hours
+    - Each task should be independently testable
+    - Include setup/config tasks before feature tasks
+  design:
+    - Include TypeScript types for any new data structures
+    - Reference existing types from the spec when applicable
+    - Consider i18n implications for any user-facing changes

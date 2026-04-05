@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# pokeapi cache
+.cache/
+
+# generated data
+src/data/*.json

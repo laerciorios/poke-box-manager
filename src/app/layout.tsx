@@ -3,8 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { Providers } from '@/components/layout/Providers'
-import { Sidebar } from '@/components/layout/Sidebar'
-import { Header } from '@/components/layout/Header'
+import { AppShell } from '@/components/layout/AppShell'
 
 const inter = Inter({
   variable: '--font-sans',
@@ -36,11 +35,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-background text-foreground">
         <Providers>
-          <Sidebar />
-          <div className="lg:pl-56">
-            <Header />
-            <main className="p-4 pb-20 lg:p-6 lg:pb-6">{children}</main>
-          </div>
+          <AppShell>{children}</AppShell>
         </Providers>
       </body>
     </html>

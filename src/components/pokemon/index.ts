@@ -1,0 +1,1 @@
+export { SpritePlaceholder } from "./SpritePlaceholder"

@@ -36,7 +36,7 @@ The platform delivers a simple experience by default (for casual players) with a
 | i18n | **next-intl** | Internationalization with PT-BR and EN support from the start |
 | Drag & Drop | **@dnd-kit/core** | Lightweight and accessible library for box reorganization |
 | Icons | **Lucide React** | Consistent and lightweight icons |
-| Tests | **Vitest** + **Testing Library** | Fast unit and integration tests |
+| Tests | — | No automated test framework |
 
 ### 2.2 Directory Structure
 
@@ -868,13 +868,7 @@ Log of recent actions (registrations, reorganizations) with timestamps. Allows u
 
 ## 10. Testing Structure
 
-| Type | Tool | Scope |
-|---|---|---|
-| Unit | Vitest | Preset logic, filters, progress calculations, organizer |
-| Component | Testing Library | Box rendering, toggle interactions, drag & drop |
-| E2E | Playwright | Complete flows: create preset → organize → mark → export |
-| Visual | Storybook (optional) | Component catalog with different states |
-| Performance | Lighthouse CI | Automated audits on each PR |
+No automated test framework is used in this project. Quality is verified through TypeScript compilation (`tsc --noEmit`) and manual testing.
 
 ---
 

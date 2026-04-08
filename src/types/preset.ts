@@ -7,6 +7,7 @@ export type SortCriteria =
   | 'type-primary'
   | 'generation'
   | 'evolution-chain'
+  | 'regional-dex'
 
 export interface PokemonFilter {
   categories?: PokemonCategory[]

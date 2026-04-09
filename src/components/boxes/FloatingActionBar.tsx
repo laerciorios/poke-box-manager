@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { CheckCircle, XCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -14,18 +15,19 @@ export function FloatingActionBar({
   onMarkRegistered,
   onUnmark,
 }: FloatingActionBarProps) {
+  const t = useTranslations('FloatingBar')
   if (selectedCount === 0) return null
 
   return (
     <div className="flex items-center gap-2 rounded-lg border bg-card px-3 py-1.5 shadow-md">
-      <span className="text-sm text-muted-foreground">{selectedCount} selected</span>
+      <span className="text-sm text-muted-foreground">{t('selected', { count: selectedCount })}</span>
       <Button size="sm" onClick={onMarkRegistered}>
         <CheckCircle className="size-3.5" />
-        Mark as registered
+        {t('markAsRegistered')}
       </Button>
       <Button size="sm" variant="outline" onClick={onUnmark}>
         <XCircle className="size-3.5" />
-        Unmark
+        {t('unmark')}
       </Button>
     </div>
   )

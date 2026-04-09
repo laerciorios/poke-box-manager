@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Wand2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -33,6 +34,8 @@ const allPokemon = pokemonData as unknown as PokemonEntry[]
 const allForms = formsData as unknown as Record<string, PokemonForm>
 
 export function AutoFillButton() {
+  const t = useTranslations('Boxes')
+  const tCommon = useTranslations('Common')
   const userPresets = usePresetsStore((s) => s.presets)
   const boxes = useBoxStore((s) => s.boxes)
   const setBoxes = useBoxStore((s) => s.setBoxes)
@@ -41,9 +44,7 @@ export function AutoFillButton() {
 
   const allPresets = [...BUILTIN_PRESETS, ...userPresets]
 
-  const [selectedPresetId, setSelectedPresetId] = useState<string | null>(
-    allPresets[0]?.id ?? null,
-  )
+  const [selectedPresetId, setSelectedPresetId] = useState<string | null>(allPresets[0]?.id ?? null)
   const [confirmOpen, setConfirmOpen] = useState(false)
 
   const hasExistingData = boxes.some((box) => box.slots.some((slot) => slot !== null))
@@ -93,25 +94,22 @@ export function AutoFillButton() {
 
       <Button size="sm" onClick={handleAutoFill} disabled={!selectedPresetId}>
         <Wand2 className="size-3.5" />
-        Auto-fill
+        {t('autoFill')}
       </Button>
 
       {/* Task 6.2: confirmation dialog when boxes already contain data */}
       <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
         <DialogContent showCloseButton={false}>
           <DialogHeader>
-            <DialogTitle>Replace existing boxes?</DialogTitle>
-            <DialogDescription>
-              Auto-fill will replace your current box layout with the selected preset. Your
-              registration data will be preserved.
-            </DialogDescription>
+            <DialogTitle>{t('confirmReplaceTitle')}</DialogTitle>
+            <DialogDescription>{t('confirmReplaceDescription')}</DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={() => setConfirmOpen(false)}>
-              Cancel
+              {tCommon('cancel')}
             </Button>
             <Button variant="destructive" onClick={runAutoFill}>
-              Replace
+              {t('confirmReplace')}
             </Button>
           </DialogFooter>
         </DialogContent>

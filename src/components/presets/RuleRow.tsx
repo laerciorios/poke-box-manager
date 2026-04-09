@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { ChevronUp, ChevronDown, X, Info } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -36,16 +37,14 @@ const TYPES: string[] = [
   'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy',
 ]
 
-const SORT_OPTIONS = [
-  { value: 'dex-number', label: 'Dex Number' },
-  { value: 'name', label: 'Name' },
-  { value: 'type-primary', label: 'Primary Type' },
-  { value: 'generation', label: 'Generation' },
-  { value: 'evolution-chain', label: 'Evolution Chain' },
-  { value: 'regional-dex', label: 'Regional Dex' },
-]
-
-const TEMPLATE_HINT = 'Available variables: {n}, {total}, {start}, {end}, {gen}, {type}, {region}'
+const SORT_OPTION_KEYS = [
+  'dex-number',
+  'name',
+  'type-primary',
+  'generation',
+  'evolution-chain',
+  'regional-dex',
+] as const
 
 interface RuleRowProps {
   rule: PresetRule
@@ -70,6 +69,8 @@ export function RuleRow({
   onMoveDown,
   onDelete,
 }: RuleRowProps) {
+  const t = useTranslations('Presets')
+
   const isMatchRemaining =
     !rule.filter.categories?.length &&
     !rule.filter.generations?.length &&
@@ -116,7 +117,7 @@ export function RuleRow({
     <div className="rounded-lg border bg-card p-4 space-y-4">
       {/* Header row */}
       <div className="flex items-center justify-between">
-        <span className="text-sm font-medium text-muted-foreground">Rule {index + 1}</span>
+        <span className="text-sm font-medium text-muted-foreground">{t('rule')} {index + 1}</span>
         <div className="flex items-center gap-1">
           <Button
             size="icon-sm"
@@ -157,14 +158,14 @@ export function RuleRow({
           onChange={(e) => toggleMatchRemaining(e.target.checked)}
           className="size-4 rounded"
         />
-        <span className="text-sm">Match remaining (catches all Pokémon not claimed by prior rules)</span>
+        <span className="text-sm">{t('matchRemaining')}</span>
       </label>
 
       <Separator />
 
       {/* Category filters */}
       <div>
-        <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">Category</p>
+        <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">{t('filterCategory')}</p>
         <div className="flex flex-wrap gap-3">
           {CATEGORIES.map(({ value, label }) => (
             <label key={value} className={`flex items-center gap-1.5 cursor-pointer ${filterDisabled ? 'opacity-40 pointer-events-none' : ''}`}>
@@ -183,7 +184,7 @@ export function RuleRow({
 
       {/* Generation filters */}
       <div>
-        <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">Generation</p>
+        <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">{t('filterGeneration')}</p>
         <div className="flex flex-wrap gap-3">
           {GENERATIONS.map((gen) => (
             <label key={gen} className={`flex items-center gap-1.5 cursor-pointer ${filterDisabled ? 'opacity-40 pointer-events-none' : ''}`}>
@@ -202,7 +203,7 @@ export function RuleRow({
 
       {/* Type filters */}
       <div>
-        <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">Type</p>
+        <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">{t('filterType')}</p>
         <div className="flex flex-wrap gap-3">
           {TYPES.map((type) => (
             <label key={type} className={`flex items-center gap-1.5 cursor-pointer ${filterDisabled ? 'opacity-40 pointer-events-none' : ''}`}>
@@ -223,7 +224,7 @@ export function RuleRow({
 
       {/* Sort criteria */}
       <div className="flex items-center gap-3">
-        <label className="text-sm font-medium shrink-0">Sort by</label>
+        <label className="text-sm font-medium shrink-0">{t('sortBy')}</label>
         <Select
           value={rule.sort}
           onValueChange={(val) => onChange({ ...rule, sort: val as PresetRule['sort'] })}
@@ -232,9 +233,9 @@ export function RuleRow({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            {SORT_OPTIONS.map((opt) => (
-              <SelectItem key={opt.value} value={opt.value}>
-                {opt.label}
+            {SORT_OPTION_KEYS.map((key) => (
+              <SelectItem key={key} value={key}>
+                {t(`sortOptions.${key}`)}
               </SelectItem>
             ))}
           </SelectContent>
@@ -243,7 +244,7 @@ export function RuleRow({
 
       {/* Box name template */}
       <div className="flex items-center gap-3">
-        <label className="text-sm font-medium shrink-0">Box name</label>
+        <label className="text-sm font-medium shrink-0">{t('boxName')}</label>
         <Input
           value={rule.boxNameTemplate ?? ''}
           onChange={(e) => onChange({ ...rule, boxNameTemplate: e.target.value })}
@@ -260,7 +261,7 @@ export function RuleRow({
             <span className="sr-only">Template variables</span>
           </TooltipTrigger>
           <TooltipContent className="max-w-xs text-xs">
-            {TEMPLATE_HINT}
+            {t('templateHint')}
           </TooltipContent>
         </Tooltip>
       </div>

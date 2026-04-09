@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { AlertTriangle } from 'lucide-react'
 import { Switch } from '@/components/ui/switch'
 import { Badge } from '@/components/ui/badge'
@@ -26,6 +27,7 @@ export function VariationToggleItem({
   hasWarning,
   onToggle,
 }: VariationToggleItemProps) {
+  const t = useTranslations('VariationToggles')
   return (
     <div className="flex items-center justify-between gap-4 py-3">
       <div className="min-w-0 flex-1">
@@ -48,7 +50,7 @@ export function VariationToggleItem({
                 <AlertTriangle className="size-3.5" />
               </TooltipTrigger>
               <TooltipContent className="max-w-xs text-xs">
-                You have registered Pokémon of this variation type. Disabling this toggle will hide them from tracking, but won&apos;t delete your data.
+                {t('warningTooltip')}
               </TooltipContent>
             </Tooltip>
           )}

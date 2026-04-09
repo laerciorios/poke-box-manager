@@ -9,21 +9,21 @@
 ## 2. Registration Mode Toggle Button
 
 - [x] 2.1 Create `src/components/boxes/RegistrationModeToggle.tsx` — a toggle button that receives `isActive` and `onToggle` props, styled distinctly when active
-- [ ] 2.2 Add i18n strings for "Registration Mode" label in `pt-BR` and `en` locale files
+- [x] 2.2 Add i18n strings for "Registration Mode" label in `pt-BR` and `en` locale files
 
 ## 3. Floating Action Bar
 
 - [x] 3.1 Create `src/components/boxes/FloatingActionBar.tsx` — renders when `selectedKeys.size > 0`, shows selected count, "Mark as registered" button, and "Unmark" button
 - [x] 3.2 Wire "Mark as registered" to call `markSelected(true)` from the registration mode hook
 - [x] 3.3 Wire "Unmark" to call `markSelected(false)` from the registration mode hook
-- [ ] 3.4 Add i18n strings for the floating bar labels in `pt-BR` and `en`
+- [x] 3.4 Add i18n strings for the floating bar labels in `pt-BR` and `en`
 
 ## 4. BoxGrid Integration
 
 - [x] 4.1 Update `src/components/boxes/BoxGrid.tsx` to accept `registrationMode` state (or use the hook directly) and pass `isRegistered(slot.pokemonId, slot.formId)` to each `BoxSlotCell` at render time
 - [x] 4.2 Pass `selected` and `onClick` (wired to `handleSlotClick`) props from `BoxGrid` down to each `BoxSlotCell`
 - [x] 4.3 Render `RegistrationModeToggle` and `FloatingActionBar` within or alongside `BoxGrid`
-- [ ] 4.4 Verify the box view header shows the toggle and the grid responds correctly to all click modes in the dev server
+- [x] 4.4 Verify the box view header shows the toggle and the grid responds correctly to all click modes in the dev server
 
 ## 5. Preset Engine
 
@@ -39,5 +39,5 @@
 - [x] 6.1 Create `src/components/boxes/AutoFillButton.tsx` with a preset `Select` dropdown (populated from `usePresetsStore.presets`) and an "Auto-fill" button
 - [x] 6.2 Implement the confirmation `AlertDialog` — show when `useBoxStore.boxes` has at least one non-null slot; wire Confirm to call `applyPreset` + `setBoxes`, Cancel to dismiss
 - [x] 6.3 On confirm, read `usePokedexStore.registered` (as a `Set<string>`), `useSettingsStore.variations`, and the selected preset, call `applyPreset`, and commit via `useBoxStore.setBoxes`
-- [ ] 6.4 Add i18n strings for auto-fill UI labels and confirmation dialog text in `pt-BR` and `en`
+- [x] 6.4 Add i18n strings for auto-fill UI labels and confirmation dialog text in `pt-BR` and `en`
 - [x] 6.5 Integrate `AutoFillButton` into the box view header alongside `RegistrationModeToggle`

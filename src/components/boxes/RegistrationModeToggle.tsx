@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -9,6 +10,7 @@ interface RegistrationModeToggleProps {
 }
 
 export function RegistrationModeToggle({ isActive, onToggle }: RegistrationModeToggleProps) {
+  const t = useTranslations('Boxes')
   return (
     <Button
       variant={isActive ? 'default' : 'outline'}
@@ -17,7 +19,7 @@ export function RegistrationModeToggle({ isActive, onToggle }: RegistrationModeT
       aria-pressed={isActive}
     >
       <BookOpen className="size-3.5" />
-      Registration Mode
+      {t('registrationMode')}
     </Button>
   )
 }

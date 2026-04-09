@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -30,6 +31,7 @@ function PresetCard({
   onDuplicate,
   onDelete,
 }: PresetCardProps) {
+  const t = useTranslations('Presets')
   return (
     <Card className="flex flex-col gap-3 p-4">
       <div className="flex items-start justify-between gap-2">
@@ -38,13 +40,11 @@ function PresetCard({
             <span className="truncate font-medium">{preset.name}</span>
             {isBuiltIn && (
               <Badge variant="secondary" className="shrink-0 text-xs">
-                Built-in
+                {t('builtInBadge')}
               </Badge>
             )}
           </div>
-          <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
-            {preset.description}
-          </p>
+          <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{preset.description}</p>
           <p className="mt-1 text-xs text-muted-foreground">
             {preset.rules.length} rule{preset.rules.length !== 1 ? 's' : ''}
           </p>
@@ -54,22 +54,27 @@ function PresetCard({
         {isBuiltIn ? (
           <>
             <Button size="sm" variant="outline" onClick={onCustomize}>
-              Customize
+              {t('customize')}
             </Button>
             <Button size="sm" variant="ghost" onClick={onDuplicate}>
-              Duplicate
+              {t('duplicate')}
             </Button>
           </>
         ) : (
           <>
             <Button size="sm" variant="outline" onClick={onEdit}>
-              Edit
+              {t('edit')}
             </Button>
             <Button size="sm" variant="ghost" onClick={onDuplicate}>
-              Duplicate
+              {t('duplicate')}
             </Button>
-            <Button size="sm" variant="ghost" className="text-destructive hover:text-destructive" onClick={onDelete}>
-              Delete
+            <Button
+              size="sm"
+              variant="ghost"
+              className="text-destructive hover:text-destructive"
+              onClick={onDelete}
+            >
+              {t('delete')}
             </Button>
           </>
         )}
@@ -79,6 +84,7 @@ function PresetCard({
 }
 
 export function PresetList({ onEdit, onNew }: PresetListProps) {
+  const t = useTranslations('Presets')
   const { presets, duplicatePreset, deletePreset, createPreset } = usePresetsStore()
 
   function handleDuplicateBuiltin(preset: OrganizationPreset) {
@@ -108,7 +114,7 @@ export function PresetList({ onEdit, onNew }: PresetListProps) {
     <div className="space-y-8">
       {/* Built-in presets */}
       <section>
-        <h2 className="mb-4 text-lg font-semibold">Built-in Presets</h2>
+        <h2 className="mb-4 text-lg font-semibold">{t('builtInPresets')}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {BUILTIN_PRESETS.map((preset) => (
             <PresetCard
@@ -126,12 +132,12 @@ export function PresetList({ onEdit, onNew }: PresetListProps) {
 
       {/* Custom presets */}
       <section>
-        <h2 className="mb-4 text-lg font-semibold">My Presets</h2>
+        <h2 className="mb-4 text-lg font-semibold">{t('myPresets')}</h2>
         {presets.length === 0 ? (
           <div className="rounded-lg border border-dashed p-8 text-center">
-            <p className="text-muted-foreground">You haven&apos;t created any custom presets yet.</p>
+            <p className="text-muted-foreground">{t('noPresets')}</p>
             <Button className="mt-4" onClick={onNew}>
-              Create your first preset
+              {t('createFirstPreset')}
             </Button>
           </div>
         ) : (

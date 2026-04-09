@@ -1,0 +1,167 @@
+{
+  "Common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "duplicate": "Duplicate",
+    "close": "Close",
+    "discard": "Discard"
+  },
+  "Layout": {
+    "appName": "PokeBox",
+    "switchLanguage": "Switch language",
+    "nav": {
+      "home": "Home",
+      "boxes": "Boxes",
+      "pokedex": "Pokédex",
+      "stats": "Stats",
+      "missing": "Missing",
+      "settings": "Settings",
+      "presets": "Presets",
+      "more": "More"
+    }
+  },
+  "Boxes": {
+    "pageTitle": "Boxes",
+    "pageSubtitle": "Manage your Pokémon Home boxes.",
+    "newBox": "New Box",
+    "autoFill": "Auto-fill",
+    "selectPreset": "Select preset",
+    "emptyState": "No boxes yet. Create your first box or use Auto-fill to get started.",
+    "createFirstBox": "Create first box",
+    "registrationMode": "Registration Mode",
+    "boxCounter": "{current} / {total}",
+    "confirmReplaceTitle": "Replace existing boxes?",
+    "confirmReplaceDescription": "Auto-fill will replace your current box layout with the selected preset. Your registration data will be preserved.",
+    "confirmReplace": "Replace"
+  },
+  "FloatingBar": {
+    "selected": "{count} selected",
+    "markAsRegistered": "Mark as registered",
+    "unmark": "Unmark"
+  },
+  "Settings": {
+    "pageTitle": "Settings",
+    "pageSubtitle": "Configure your preferences.",
+    "variationsSection": "Variations",
+    "variationsSectionDescription": "Choose which Pokémon variation types to include in your tracking.",
+    "totalWithVariations": "Total with selected variations: <strong>{total}</strong>",
+    "baseTotal": "Base total (no variations): <strong>{base}</strong>"
+  },
+  "VariationToggles": {
+    "warningTooltip": "You have registered Pokémon of this variation type. Disabling this toggle will hide them from tracking, but won't delete your data.",
+    "regionalForms": {
+      "label": "Regional Forms",
+      "subtitle": "Alolan, Galarian, Hisuian, and Paldean variants"
+    },
+    "genderForms": {
+      "label": "Gender Differences",
+      "subtitle": "Pokémon with visually distinct male/female sprites"
+    },
+    "unownLetters": {
+      "label": "Unown Letters",
+      "subtitle": "All 28 Unown letter and symbol forms"
+    },
+    "vivillonPatterns": {
+      "label": "Vivillon Patterns",
+      "subtitle": "All 20 regional wing pattern variations"
+    },
+    "alcremieVariations": {
+      "label": "Alcremie Variations",
+      "subtitle": "All sweet and cream flavor combinations"
+    },
+    "colorVariations": {
+      "label": "Color Variations",
+      "subtitle": "Pokémon with alternate color forms (e.g. Flabébé)"
+    },
+    "sizeVariations": {
+      "label": "Size Variations",
+      "subtitle": "Pokémon with distinct size forms (e.g. Pumpkaboo)"
+    },
+    "megaEvolutions": {
+      "label": "Mega Evolutions",
+      "subtitle": "Mega and Primal forms"
+    },
+    "gmaxForms": {
+      "label": "Gigantamax Forms",
+      "subtitle": "Gigantamax variants from Sword & Shield"
+    },
+    "battleForms": {
+      "label": "Battle Forms",
+      "subtitle": "Forms that change during battle (e.g. Aegislash)"
+    },
+    "originForms": {
+      "label": "Origin Forms",
+      "subtitle": "Origin Formes and special alternate forms"
+    },
+    "costumedPokemon": {
+      "label": "Costumed Pokémon",
+      "subtitle": "Event-exclusive costume variants (e.g. Pikachu costumes)"
+    }
+  },
+  "Presets": {
+    "pageTitle": "Presets",
+    "pageSubtitle": "Organize your Pokémon Home boxes.",
+    "builtInPresets": "Built-in Presets",
+    "myPresets": "My Presets",
+    "customize": "Customize",
+    "duplicate": "Duplicate",
+    "edit": "Edit",
+    "delete": "Delete",
+    "newPreset": "New Preset",
+    "createPreset": "Create Preset",
+    "editPreset": "Edit Preset",
+    "save": "Save",
+    "cancel": "Cancel",
+    "seedFrom": "Start from",
+    "nameLabel": "Preset name",
+    "nameRequired": "Name is required.",
+    "rulesLabel": "Rules",
+    "previewLabel": "Preview",
+    "previewEmpty": "Add rules to see a preview",
+    "generatePreview": "Generate Preview",
+    "addRule": "Add Rule",
+    "rule": "Rule",
+    "matchRemaining": "Match remaining (catches all Pokémon not claimed by prior rules)",
+    "sortBy": "Sort by",
+    "boxName": "Box name",
+    "filterCategory": "Category",
+    "filterGeneration": "Generation",
+    "filterType": "Type",
+    "unsavedChangesTitle": "Unsaved changes",
+    "unsavedChangesDescription": "You have unsaved changes. Are you sure you want to discard them?",
+    "discard": "Discard",
+    "noPresets": "You haven't created any custom presets yet.",
+    "createFirstPreset": "Create your first preset",
+    "builtInReadOnly": "Built-in presets are read-only. Customize to create your own version.",
+    "builtInBadge": "Built-in",
+    "previewBoxes": "{count} boxes",
+    "sortOptions": {
+      "dex-number": "Dex Number",
+      "name": "Name",
+      "type-primary": "Primary Type",
+      "generation": "Generation",
+      "evolution-chain": "Evolution Chain",
+      "regional-dex": "Regional Dex"
+    },
+    "templateHint": "Available variables: {n}, {total}, {start}, {end}, {gen}, {type}, {region}"
+  },
+  "Home": {
+    "title": "Pokémon Box Manager",
+    "subtitle": "Manage your Pokémon Home boxes and track Pokédex completion."
+  },
+  "Pokedex": {
+    "pageTitle": "Pokédex",
+    "pageSubtitle": "Browse and search the full Pokédex."
+  },
+  "Stats": {
+    "pageTitle": "Stats",
+    "pageSubtitle": "Track your Pokédex completion progress."
+  },
+  "Missing": {
+    "pageTitle": "Missing",
+    "pageSubtitle": "Find which Pokémon you still need."
+  }
+}

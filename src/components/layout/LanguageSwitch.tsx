@@ -1,26 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
+import { usePathname, useRouter } from '@/i18n/navigation'
 import { Button } from '@/components/ui/button'
 
-type Locale = 'pt-BR' | 'en'
-
-const STORAGE_KEY = 'poke-box-locale'
-
-function getInitialLocale(): Locale {
-  if (typeof window === 'undefined') return 'pt-BR'
-  const stored = localStorage.getItem(STORAGE_KEY)
-  if (stored === 'pt-BR' || stored === 'en') return stored
-  return 'pt-BR'
-}
-
 export function LanguageSwitch() {
-  const [locale, setLocale] = useState<Locale>(getInitialLocale)
+  const t = useTranslations('Layout')
+  const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
 
   const toggle = () => {
-    const next: Locale = locale === 'pt-BR' ? 'en' : 'pt-BR'
-    setLocale(next)
-    localStorage.setItem(STORAGE_KEY, next)
+    const next = locale === 'pt-BR' ? 'en' : 'pt-BR'
+    router.replace(pathname, { locale: next })
   }
 
   return (
@@ -28,7 +20,7 @@ export function LanguageSwitch() {
       variant="ghost"
       size="sm"
       onClick={toggle}
-      aria-label="Switch language"
+      aria-label={t('switchLanguage')}
       className="h-8 px-2 text-xs font-medium"
     >
       {locale === 'pt-BR' ? 'PT' : 'EN'}

@@ -1,7 +1,7 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import { Link, usePathname } from '@/i18n/navigation'
 import {
   Home,
   Grid3X3,
@@ -15,14 +15,16 @@ import { cn } from '@/lib/utils'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
 import { MobileMoreMenu } from './MobileMoreMenu'
 
-const navItems = [
-  { href: '/', label: 'Home', icon: Home },
-  { href: '/boxes', label: 'Boxes', icon: Grid3X3 },
-  { href: '/pokedex', label: 'Pokedex', icon: BookOpen },
-  { href: '/stats', label: 'Stats', icon: BarChart3 },
-  { href: '/missing', label: 'Missing', icon: Search },
-  { href: '/settings', label: 'Settings', icon: Settings },
-  { href: '/presets', label: 'Presets', icon: Layers },
+type NavKey = 'home' | 'boxes' | 'pokedex' | 'stats' | 'missing' | 'settings' | 'presets'
+
+const navItems: { href: string; key: NavKey; icon: React.ComponentType<{ className?: string }> }[] = [
+  { href: '/', key: 'home', icon: Home },
+  { href: '/boxes', key: 'boxes', icon: Grid3X3 },
+  { href: '/pokedex', key: 'pokedex', icon: BookOpen },
+  { href: '/stats', key: 'stats', icon: BarChart3 },
+  { href: '/missing', key: 'missing', icon: Search },
+  { href: '/settings', key: 'settings', icon: Settings },
+  { href: '/presets', key: 'presets', icon: Layers },
 ]
 
 const primaryNavItems = navItems.slice(0, 4)
@@ -33,6 +35,7 @@ interface SidebarNavProps {
 
 function SidebarNav({ onNavigate }: SidebarNavProps) {
   const pathname = usePathname()
+  const t = useTranslations('Layout.nav')
   return (
     <nav className="flex flex-1 flex-col gap-1">
       {navItems.map((item) => {
@@ -50,7 +53,7 @@ function SidebarNav({ onNavigate }: SidebarNavProps) {
             )}
           >
             <item.icon className="h-4 w-4" />
-            {item.label}
+            {t(item.key)}
           </Link>
         )
       })}
@@ -65,6 +68,7 @@ interface SidebarProps {
 
 export function Sidebar({ open = false, onOpenChange }: SidebarProps) {
   const pathname = usePathname()
+  const tNav = useTranslations('Layout.nav')
 
   return (
     <>
@@ -106,7 +110,7 @@ export function Sidebar({ open = false, onOpenChange }: SidebarProps) {
               )}
             >
               <item.icon className="h-5 w-5" />
-              {item.label}
+              {tNav(item.key)}
             </Link>
           )
         })}

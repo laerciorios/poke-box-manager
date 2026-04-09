@@ -1,6 +1,7 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import { useRouter } from '@/i18n/navigation'
 import { MoreHorizontal, Search, Settings, Layers } from 'lucide-react'
 import {
   DropdownMenu,
@@ -9,26 +10,29 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-const moreItems = [
-  { href: '/missing', label: 'Missing', icon: Search },
-  { href: '/settings', label: 'Settings', icon: Settings },
-  { href: '/presets', label: 'Presets', icon: Layers },
+type NavKey = 'missing' | 'settings' | 'presets'
+
+const moreItems: { href: string; key: NavKey; icon: React.ComponentType<{ className?: string }> }[] = [
+  { href: '/missing', key: 'missing', icon: Search },
+  { href: '/settings', key: 'settings', icon: Settings },
+  { href: '/presets', key: 'presets', icon: Layers },
 ]
 
 export function MobileMoreMenu() {
   const router = useRouter()
+  const t = useTranslations('Layout.nav')
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex flex-col items-center gap-1 rounded-md px-3 py-1 text-xs text-muted-foreground transition-colors hover:text-foreground">
         <MoreHorizontal className="h-5 w-5" />
-        More
+        {t('more')}
       </DropdownMenuTrigger>
       <DropdownMenuContent side="top" align="end">
         {moreItems.map((item) => (
           <DropdownMenuItem key={item.href} onClick={() => router.push(item.href)}>
             <item.icon className="h-4 w-4" />
-            {item.label}
+            {t(item.key)}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

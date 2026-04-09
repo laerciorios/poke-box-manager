@@ -21,11 +21,11 @@
 
 ## 4. i18n Strings
 
-- [ ] 4.1 Add PT-BR messages for each toggle label, subtitle examples, and total footer lines in the appropriate `messages/pt-BR.json` (or equivalent) locale file
-- [ ] 4.2 Add EN messages for the same keys in `messages/en.json`
-- [ ] 4.3 Replace hardcoded strings in `VariationToggleItem` with `useTranslations` calls
+- [x] 4.1 Add PT-BR messages for each toggle label, subtitle examples, and total footer lines in the appropriate `messages/pt-BR.json` (or equivalent) locale file
+- [x] 4.2 Add EN messages for the same keys in `messages/en.json`
+- [x] 4.3 Replace hardcoded strings in `VariationToggleItem` with `useTranslations` calls
 
 ## 5. Settings Page Integration
 
 - [x] 5.1 Add a "Variações" / "Variations" section to the Settings page (`src/app/settings/page.tsx` or equivalent) that renders `VariationTogglesPanel`
-- [ ] 5.2 Verify the panel renders correctly in both PT-BR and EN locales via the dev server
+- [x] 5.2 Verify the panel renders correctly in both PT-BR and EN locales via the dev server

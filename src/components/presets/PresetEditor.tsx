@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -43,6 +44,7 @@ interface PresetEditorProps {
 }
 
 export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps) {
+  const t = useTranslations('Presets')
   const { createPreset, updatePreset } = usePresetsStore()
 
   const [name, setName] = useState('')
@@ -72,7 +74,13 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
     if (!presetId) return
     const preset = BUILTIN_PRESETS.find((p) => p.id === presetId)
     if (!preset) return
-    if (isDirty && rules.some((r) => r.filter.categories?.length || r.filter.generations?.length || r.filter.types?.length)) {
+    if (
+      isDirty &&
+      rules.some(
+        (r) =>
+          r.filter.categories?.length || r.filter.generations?.length || r.filter.types?.length,
+      )
+    ) {
       if (!window.confirm('Replace current rules with built-in preset rules?')) return
     }
     setRules(preset.rules.map((r) => ({ ...r })))
@@ -147,22 +155,25 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
   const canSave = name.trim().length > 0
 
   return (
-    <Dialog open={open} onOpenChange={(isOpen) => { if (!isOpen) handleCancel() }}>
+    <Dialog
+      open={open}
+      onOpenChange={(isOpen) => {
+        if (!isOpen) handleCancel()
+      }}
+    >
       <DialogContent
         className="flex max-h-[90dvh] w-full max-w-2xl flex-col gap-0 overflow-hidden p-0"
         showCloseButton={false}
       >
         <DialogHeader className="shrink-0 px-6 pt-6 pb-4">
-          <DialogTitle>
-            {initialPreset?.id ? 'Edit Preset' : 'New Preset'}
-          </DialogTitle>
+          <DialogTitle>{initialPreset?.id ? t('editPreset') : t('newPreset')}</DialogTitle>
         </DialogHeader>
 
         {/* Scrollable body */}
         <div className="flex-1 overflow-y-auto px-6 pb-4 space-y-5">
           {/* Name */}
           <div className="space-y-1.5">
-            <label className="text-sm font-medium">Preset name *</label>
+            <label className="text-sm font-medium">{t('nameLabel')} *</label>
             <Input
               value={name}
               onChange={(e) => handleNameChange(e.target.value)}
@@ -171,13 +182,13 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
               aria-required
             />
             {!canSave && name.length > 0 && (
-              <p className="text-xs text-destructive">Name is required.</p>
+              <p className="text-xs text-destructive">{t('nameRequired')}</p>
             )}
           </div>
 
           {/* Seed from built-in */}
           <div className="flex items-center gap-3">
-            <span className="text-sm font-medium shrink-0">Start from</span>
+            <span className="text-sm font-medium shrink-0">{t('seedFrom')}</span>
             <Select onValueChange={handleSeedFromBuiltin}>
               <SelectTrigger className="w-56">
                 <SelectValue placeholder="Select a built-in preset…" />
@@ -196,7 +207,7 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
 
           {/* Rules */}
           <div className="space-y-3">
-            <p className="text-sm font-medium">Rules</p>
+            <p className="text-sm font-medium">{t('rulesLabel')}</p>
             {rules.map((rule, i) => (
               <RuleRow
                 key={i}
@@ -217,7 +228,7 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
               className="w-full"
             >
               <Plus className="mr-2 size-4" />
-              Add Rule
+              {t('addRule')}
             </Button>
           </div>
 
@@ -225,17 +236,17 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
 
           {/* Preview */}
           <div className="space-y-2">
-            <p className="text-sm font-medium">Preview</p>
+            <p className="text-sm font-medium">{t('previewLabel')}</p>
             <PresetPreview rules={rules} name={name || 'Preview'} />
           </div>
         </div>
 
         <DialogFooter className="shrink-0">
           <Button variant="outline" onClick={handleCancel}>
-            Cancel
+            {t('cancel')}
           </Button>
           <Button onClick={handleSave} disabled={!canSave}>
-            Save
+            {t('save')}
           </Button>
         </DialogFooter>
       </DialogContent>

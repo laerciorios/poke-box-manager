@@ -26,9 +26,9 @@ The app ships with hardcoded English strings, a `LanguageSwitch` component that 
 
 ```
 src/app/
-  layout.tsx          # root — minimal HTML shell, no locale-specific code
+  layout.tsx          # root — owns <html> and <body>; reads locale via getLocale()
   [locale]/
-    layout.tsx        # NextIntlClientProvider + lang attribute
+    layout.tsx        # NextIntlClientProvider + Providers + AppShell (no html/body)
     page.tsx
     boxes/page.tsx
     presets/page.tsx
@@ -38,12 +38,14 @@ src/app/
     stats/page.tsx
 ```
 
-`src/middleware.ts` handles locale detection and redirects:
+`src/proxy.ts` handles locale detection and redirects (Next.js 16 uses `proxy.ts`, not `middleware.ts`):
 - `/` → `/{detected-locale}/`
 - `/boxes` → `/{detected-locale}/boxes`
 - Known locale prefix → pass through
 
 **Rationale**: This is the standard next-intl App Router integration. It keeps locale in the URL (shareable, crawlable) and avoids cookie-based hacks.
+
+**Critical layout constraint**: `<html>` and `<body>` must live in the root layout only. If the `[locale]/layout.tsx` also renders them, Next.js injects a second pair of `<html>`/`<body>` around the root layout output, producing nested HTML elements. Browsers attempt to fix invalid nested HTML, causing React hydration mismatches and an infinite reload loop. The root layout uses `getLocale()` from `next-intl/server` to set `lang={locale}` without receiving `params`.
 
 **Alternative considered**: Cookie-based locale without URL prefix. Rejected — spec explicitly requires `/pt-BR/boxes` URL format.
 

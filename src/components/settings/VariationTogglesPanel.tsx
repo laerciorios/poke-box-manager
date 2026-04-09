@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
+import { useTranslations } from 'next-intl'
 import { useSettingsStore } from '@/stores/useSettingsStore'
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import {
@@ -34,58 +35,9 @@ const TOGGLE_ORDER: (keyof VariationToggles)[] = [
   'costumedPokemon',
 ]
 
-const TOGGLE_LABELS: Record<keyof VariationToggles, { label: string; subtitle: string }> = {
-  regionalForms: {
-    label: 'Regional Forms',
-    subtitle: 'Alolan, Galarian, Hisuian, and Paldean variants',
-  },
-  genderForms: {
-    label: 'Gender Differences',
-    subtitle: 'Pokémon with visually distinct male/female sprites',
-  },
-  unownLetters: {
-    label: 'Unown Letters',
-    subtitle: 'All 28 Unown letter and symbol forms',
-  },
-  vivillonPatterns: {
-    label: 'Vivillon Patterns',
-    subtitle: 'All 20 regional wing pattern variations',
-  },
-  alcremieVariations: {
-    label: 'Alcremie Variations',
-    subtitle: 'All sweet and cream flavor combinations',
-  },
-  colorVariations: {
-    label: 'Color Variations',
-    subtitle: 'Pokémon with alternate color forms (e.g. Flabébé)',
-  },
-  sizeVariations: {
-    label: 'Size Variations',
-    subtitle: 'Pokémon with distinct size forms (e.g. Pumpkaboo)',
-  },
-  megaEvolutions: {
-    label: 'Mega Evolutions',
-    subtitle: 'Mega and Primal forms',
-  },
-  gmaxForms: {
-    label: 'Gigantamax Forms',
-    subtitle: 'Gigantamax variants from Sword & Shield',
-  },
-  battleForms: {
-    label: 'Battle Forms',
-    subtitle: 'Forms that change during battle (e.g. Aegislash)',
-  },
-  originForms: {
-    label: 'Origin Forms',
-    subtitle: 'Origin Formes and special alternate forms',
-  },
-  costumedPokemon: {
-    label: 'Costumed Pokémon',
-    subtitle: 'Event-exclusive costume variants (e.g. Pikachu costumes)',
-  },
-}
-
 export function VariationTogglesPanel() {
+  const tVariations = useTranslations('VariationToggles')
+  const tSettings = useTranslations('Settings')
   const variations = useSettingsStore((s) => s.variations)
   const setVariation = useSettingsStore((s) => s.setVariation)
   const registered = usePokedexStore((s) => s.registered)
@@ -114,8 +66,8 @@ export function VariationTogglesPanel() {
           <VariationToggleItem
             key={key}
             checked={variations[key]}
-            label={TOGGLE_LABELS[key].label}
-            subtitle={TOGGLE_LABELS[key].subtitle}
+            label={tVariations(`${key}.label`)}
+            subtitle={tVariations(`${key}.subtitle`)}
             additionalCount={VARIATION_COUNTS[key]}
             hasWarning={hasWarningByKey[key]}
             onToggle={(value) => setVariation(key, value)}
@@ -124,10 +76,16 @@ export function VariationTogglesPanel() {
       </div>
       <div className="pt-4 space-y-1 border-t">
         <p className="text-sm text-muted-foreground">
-          Total with selected variations: <span className="font-medium text-foreground">{total}</span>
+          {tSettings.rich('totalWithVariations', {
+            total,
+            strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span>,
+          })}
         </p>
         <p className="text-sm text-muted-foreground">
-          Base total (no variations): <span className="font-medium text-foreground">{BASE_POKEMON_COUNT}</span>
+          {tSettings.rich('baseTotal', {
+            base: BASE_POKEMON_COUNT,
+            strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span>,
+          })}
         </p>
       </div>
     </div>

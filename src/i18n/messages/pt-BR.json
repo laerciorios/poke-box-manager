@@ -1,0 +1,167 @@
+{
+  "Common": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "confirm": "Confirmar",
+    "edit": "Editar",
+    "duplicate": "Duplicar",
+    "close": "Fechar",
+    "discard": "Descartar"
+  },
+  "Layout": {
+    "appName": "PokeBox",
+    "switchLanguage": "Trocar idioma",
+    "nav": {
+      "home": "Início",
+      "boxes": "Boxes",
+      "pokedex": "Pokédex",
+      "stats": "Estatísticas",
+      "missing": "Faltando",
+      "settings": "Configurações",
+      "presets": "Predefinições",
+      "more": "Mais"
+    }
+  },
+  "Boxes": {
+    "pageTitle": "Boxes",
+    "pageSubtitle": "Gerencie suas boxes do Pokémon Home.",
+    "newBox": "Nova Box",
+    "autoFill": "Preencher",
+    "selectPreset": "Selecionar predefinição",
+    "emptyState": "Nenhuma box ainda. Crie sua primeira box ou use Preencher para começar.",
+    "createFirstBox": "Criar primeira box",
+    "registrationMode": "Modo de Registro",
+    "boxCounter": "{current} / {total}",
+    "confirmReplaceTitle": "Substituir boxes existentes?",
+    "confirmReplaceDescription": "Preencher irá substituir o layout atual das suas boxes pela predefinição selecionada. Seus dados de registro serão preservados.",
+    "confirmReplace": "Substituir"
+  },
+  "FloatingBar": {
+    "selected": "{count} selecionados",
+    "markAsRegistered": "Marcar como registrado",
+    "unmark": "Desmarcar"
+  },
+  "Settings": {
+    "pageTitle": "Configurações",
+    "pageSubtitle": "Configure suas preferências.",
+    "variationsSection": "Variações",
+    "variationsSectionDescription": "Escolha quais tipos de variação de Pokémon incluir no seu rastreamento.",
+    "totalWithVariations": "Total com variações selecionadas: <strong>{total}</strong>",
+    "baseTotal": "Total base (sem variações): <strong>{base}</strong>"
+  },
+  "VariationToggles": {
+    "warningTooltip": "Você tem Pokémon registrados desse tipo de variação. Desativar este toggle irá ocultá-los do rastreamento, mas não excluirá seus dados.",
+    "regionalForms": {
+      "label": "Formas Regionais",
+      "subtitle": "Variantes Alola, Galar, Hisui e Paldea"
+    },
+    "genderForms": {
+      "label": "Diferenças de Gênero",
+      "subtitle": "Pokémon com sprites visualmente distintos por gênero"
+    },
+    "unownLetters": {
+      "label": "Letras do Unown",
+      "subtitle": "Todas as 28 formas de letras e símbolos do Unown"
+    },
+    "vivillonPatterns": {
+      "label": "Padrões do Vivillon",
+      "subtitle": "Todas as 20 variações regionais de asas"
+    },
+    "alcremieVariations": {
+      "label": "Variações do Alcremie",
+      "subtitle": "Todas as combinações de doces e cremes"
+    },
+    "colorVariations": {
+      "label": "Variações de Cor",
+      "subtitle": "Pokémon com formas de cores alternativas (ex: Flabébé)"
+    },
+    "sizeVariations": {
+      "label": "Variações de Tamanho",
+      "subtitle": "Pokémon com formas de tamanhos distintos (ex: Pumpkaboo)"
+    },
+    "megaEvolutions": {
+      "label": "Mega Evoluções",
+      "subtitle": "Formas Mega e Primais"
+    },
+    "gmaxForms": {
+      "label": "Formas Gigantamax",
+      "subtitle": "Variantes Gigantamax de Sword & Shield"
+    },
+    "battleForms": {
+      "label": "Formas de Batalha",
+      "subtitle": "Formas que mudam durante a batalha (ex: Aegislash)"
+    },
+    "originForms": {
+      "label": "Formas de Origem",
+      "subtitle": "Formas de Origem e formas alternativas especiais"
+    },
+    "costumedPokemon": {
+      "label": "Pokémon Fantasiados",
+      "subtitle": "Variantes de fantasias exclusivas de eventos (ex: fantasias do Pikachu)"
+    }
+  },
+  "Presets": {
+    "pageTitle": "Predefinições",
+    "pageSubtitle": "Organize suas boxes do Pokémon Home.",
+    "builtInPresets": "Predefinições Padrão",
+    "myPresets": "Minhas Predefinições",
+    "customize": "Personalizar",
+    "duplicate": "Duplicar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "newPreset": "Nova Predefinição",
+    "createPreset": "Criar Predefinição",
+    "editPreset": "Editar Predefinição",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "seedFrom": "Começar com",
+    "nameLabel": "Nome da predefinição",
+    "nameRequired": "Nome é obrigatório.",
+    "rulesLabel": "Regras",
+    "previewLabel": "Pré-visualização",
+    "previewEmpty": "Adicione regras para ver a pré-visualização",
+    "generatePreview": "Gerar Pré-visualização",
+    "addRule": "Adicionar Regra",
+    "rule": "Regra",
+    "matchRemaining": "Capturar restantes (inclui todos os Pokémon não selecionados por regras anteriores)",
+    "sortBy": "Ordenar por",
+    "boxName": "Nome da box",
+    "filterCategory": "Categoria",
+    "filterGeneration": "Geração",
+    "filterType": "Tipo",
+    "unsavedChangesTitle": "Alterações não salvas",
+    "unsavedChangesDescription": "Você tem alterações não salvas. Tem certeza que deseja descartá-las?",
+    "discard": "Descartar",
+    "noPresets": "Você ainda não criou nenhuma predefinição personalizada.",
+    "createFirstPreset": "Crie sua primeira predefinição",
+    "builtInReadOnly": "Predefinições padrão são somente leitura. Personalize para criar sua própria versão.",
+    "builtInBadge": "Padrão",
+    "previewBoxes": "{count} boxes",
+    "sortOptions": {
+      "dex-number": "Número da Dex",
+      "name": "Nome",
+      "type-primary": "Tipo Principal",
+      "generation": "Geração",
+      "evolution-chain": "Cadeia Evolutiva",
+      "regional-dex": "Dex Regional"
+    },
+    "templateHint": "Variáveis disponíveis: {n}, {total}, {start}, {end}, {gen}, {type}, {region}"
+  },
+  "Home": {
+    "title": "Pokémon Box Manager",
+    "subtitle": "Gerencie suas boxes do Pokémon Home e acompanhe o progresso da Pokédex."
+  },
+  "Pokedex": {
+    "pageTitle": "Pokédex",
+    "pageSubtitle": "Explore e pesquise a Pokédex completa."
+  },
+  "Stats": {
+    "pageTitle": "Estatísticas",
+    "pageSubtitle": "Acompanhe seu progresso na Pokédex."
+  },
+  "Missing": {
+    "pageTitle": "Faltando",
+    "pageSubtitle": "Encontre quais Pokémon você ainda precisa."
+  }
+}

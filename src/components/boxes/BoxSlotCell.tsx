@@ -42,7 +42,7 @@ interface BoxSlotCellProps extends VariantProps<typeof slotVariants> {
   pokemonName?: string
   spriteUrl?: string
   selected?: boolean
-  onClick?: () => void
+  onClick?: (e?: React.MouseEvent) => void
   className?: string
 }
 

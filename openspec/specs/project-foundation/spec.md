@@ -19,7 +19,7 @@ The system SHALL be initialized as a Next.js 14+ project using App Router with T
 The project SHALL create the following directory structure under `src/`:
 - `app/` — App Router pages
 - `components/ui/` — shadcn/ui base components
-- `components/layout/` — Layout components (Sidebar, Header, ThemeToggle)
+- `components/layout/` — Layout components (Sidebar, Header, ThemeToggle, SearchBar, LanguageSwitch, MobileMoreMenu)
 - `components/boxes/` — Box-related components (empty, for future use)
 - `components/pokemon/` — Pokemon-related components (empty, for future use)
 - `components/pokedex/` — Pokedex components (empty, for future use)
@@ -36,6 +36,10 @@ The project SHALL create the following directory structure under `src/`:
 #### Scenario: All spec directories exist
 - **WHEN** the project setup is complete
 - **THEN** all directories listed above SHALL exist under `src/`
+
+#### Scenario: Layout components include new files
+- **WHEN** inspecting `src/components/layout/`
+- **THEN** `SearchBar.tsx`, `LanguageSwitch.tsx`, and `MobileMoreMenu.tsx` SHALL exist alongside existing layout components
 
 ### Requirement: ESLint configuration
 The project SHALL include ESLint with Next.js recommended rules. The `npm run lint` script SHALL be available and pass on the initial project.

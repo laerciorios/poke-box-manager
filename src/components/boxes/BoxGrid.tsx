@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import { SortableContext, rectSortingStrategy } from '@dnd-kit/sortable'
 import { Type } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -13,6 +14,7 @@ import { FloatingActionBar } from './FloatingActionBar'
 import type { Box, BoxSlot } from '@/types/box'
 import { BOX_SIZE } from '@/types/box'
 import { usePokedexStore } from '@/stores/usePokedexStore'
+import { useSettingsStore } from '@/stores/useSettingsStore'
 import { toSlotId } from '@/lib/dnd-utils'
 
 interface RegistrationModeProps {
@@ -58,6 +60,11 @@ export function BoxGrid({
 }: BoxGridProps) {
   const t = useTranslations('Boxes')
   const isRegistered = usePokedexStore((s) => s.isRegistered)
+  const registeredShiny = usePokedexStore((s) => s.registeredShiny)
+  const toggleShinyRegistered = usePokedexStore((s) => s.toggleShinyRegistered)
+  const shinyTrackerEnabled = useSettingsStore((s) => s.shinyTrackerEnabled)
+
+  const shinySet = useMemo(() => new Set(registeredShiny), [registeredShiny])
 
   const slots =
     box.slots.length >= BOX_SIZE
@@ -84,6 +91,13 @@ export function BoxGrid({
 
         const useTooltip = !!slot && !registrationMode?.isActive
 
+        const slotShinyKey = slot
+          ? slot.formId ? `${slot.pokemonId}:${slot.formId}` : `${slot.pokemonId}`
+          : undefined
+        const slotIsShinyRegistered = shinyTrackerEnabled && slotShinyKey
+          ? shinySet.has(slotShinyKey)
+          : undefined
+
         const cell = (
           <BoxSlotCell
             key={toSlotId(box.id, index)}
@@ -100,6 +114,11 @@ export function BoxGrid({
             onShinyToggle={registrationMode && slot ? (e) => {
               e.stopPropagation()
               registrationMode.onShinyToggle(box.id, index, slot)
+            } : undefined}
+            isShinyRegistered={slotIsShinyRegistered}
+            onShinyRegistrationToggle={shinyTrackerEnabled && registrationMode && slot ? (e) => {
+              e.stopPropagation()
+              toggleShinyRegistered(slot.pokemonId, slot.formId)
             } : undefined}
           />
         )

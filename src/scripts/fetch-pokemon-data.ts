@@ -62,6 +62,12 @@ async function main() {
   console.log(`  Fetching ${allVarietyUrls.length} alternate form pokemon data...`)
   const altPokemonRaw = await fetchBatched<any>(allVarietyUrls, 'alt-forms')
 
+  // Build name → pokemon data index for Home 3D sprite lookup in form normalizer
+  const altPokemonByName = new Map<string, any>()
+  for (const p of altPokemonRaw) {
+    altPokemonByName.set(p.name, p)
+  }
+
   // Now fetch form details for alt forms
   const altFormUrls = new Set<string>()
   for (const pokemon of altPokemonRaw) {
@@ -164,7 +170,7 @@ async function main() {
     const pokemonData = pokemonDataList[i]
     const formsData = formsBySpecies.get(pokemonIds[i]) ?? []
 
-    const entry = normalizePokemon(speciesData, pokemonData, formsData)
+    const entry = normalizePokemon(speciesData, pokemonData, formsData, altPokemonByName)
     pokemonEntries.push(entry)
 
     for (const form of entry.forms) {

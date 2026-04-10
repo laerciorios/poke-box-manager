@@ -38,7 +38,11 @@ The pipeline SHALL classify each Pokemon into one of the categories: `normal`, `
 - **THEN** the category SHALL be `normal`
 
 ### Requirement: PokemonForm normalization
-The pipeline SHALL transform raw PokeAPI form data into the `PokemonForm` interface. Each form SHALL include: `id`, `name`, `names` (PT-BR + EN), `formType`, and `sprite`. The optional `types` field is retained. The `gameAvailability` field SHALL NOT be present on `PokemonForm`.
+The pipeline SHALL transform raw PokeAPI form data into the `PokemonForm` interface. Each form SHALL include: `id`, `name`, `names` (PT-BR + EN), `formType`, `sprite`, and optionally `spriteShiny` and `types`. The `gameAvailability` field SHALL NOT be present on `PokemonForm`.
+
+For the `sprite` field, the pipeline SHALL prioritize the Home 3D sprite from the corresponding `/pokemon/<id>` variety endpoint (`sprites.other.home.front_default`), falling back to the pixel sprite from the `/pokemon-form/<id>` endpoint (`sprites.front_default`) when the Home 3D sprite is not available.
+
+For the `spriteShiny` field, the pipeline SHALL use the Home 3D shiny sprite from the variety endpoint (`sprites.other.home.front_shiny`), falling back to the pixel shiny sprite from the form endpoint (`sprites.front_shiny`) when the Home 3D sprite is not available. The field SHALL be omitted entirely when neither source provides a shiny sprite.
 
 #### Scenario: Regional form mapping
 - **WHEN** normalizing a form with name containing "-alola"
@@ -63,6 +67,20 @@ The pipeline SHALL transform raw PokeAPI form data into the `PokemonForm` interf
 #### Scenario: Unknown form type fallback
 - **WHEN** a form cannot be mapped to a known FormType
 - **THEN** the `formType` SHALL be `other`
+
+#### Scenario: Form sprite uses Home 3D when available
+- **WHEN** normalizing a Mega form that has a variety entry at its `/pokemon/<id>` endpoint with `sprites.other.home.front_default` present
+- **THEN** the `sprite` field SHALL be the Home 3D URL from that endpoint
+- **THEN** the `spriteShiny` field SHALL be the Home 3D shiny URL from that endpoint
+
+#### Scenario: Form sprite falls back to pixel when Home not available
+- **WHEN** normalizing a form whose variety entry has no `sprites.other.home.front_default`
+- **THEN** the `sprite` field SHALL fall back to `sprites.front_default` from the form endpoint
+- **THEN** the `spriteShiny` field SHALL fall back to `sprites.front_shiny` from the form endpoint when available
+
+#### Scenario: Form with no shiny sprite omits the field
+- **WHEN** normalizing a form with no shiny sprite in either endpoint
+- **THEN** the resulting `PokemonForm` SHALL NOT include a `spriteShiny` field
 
 ### Requirement: FormType enum coverage
 The pipeline SHALL support mapping to all FormType values defined in the spec: `regional-alola`, `regional-galar`, `regional-hisui`, `regional-paldea`, `mega`, `gmax`, `gender`, `unown`, `vivillon`, `alcremie`, `color`, `size`, `costume`, `battle`, `origin`, `tera`, `other`.

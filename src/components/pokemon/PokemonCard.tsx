@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { Sparkles } from 'lucide-react'
 
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { usePokedexStore } from '@/stores/usePokedexStore'
 import { getPokemonById, getEvolutionChain } from '@/lib/pokemon-lookup'
 import { getPokemonName, getFormName } from '@/lib/pokemon-names'
 import { cn } from '@/lib/utils'
@@ -82,6 +83,9 @@ function SpriteImage({
 
 export function PokemonCard({ pokemonId, isOpen, onClose }: PokemonCardProps) {
   const locale = useSettingsStore((s) => s.locale)
+  const shinyTrackerEnabled = useSettingsStore((s) => s.shinyTrackerEnabled)
+  const isShinyRegistered = usePokedexStore((s) => s.isShinyRegistered)
+  const toggleShinyRegistered = usePokedexStore((s) => s.toggleShinyRegistered)
   const t = useTranslations('Pokemon')
 
   const [isShiny, setIsShiny] = useState(false)
@@ -100,7 +104,7 @@ export function PokemonCard({ pokemonId, isOpen, onClose }: PokemonCardProps) {
     : getPokemonName(pokemon, locale)
 
   const baseSprite = activeForm?.sprite ?? pokemon.sprite
-  const shinySprite = pokemon.spriteShiny
+  const shinySprite = activeForm?.spriteShiny ?? pokemon.spriteShiny
   const displaySprite = isShiny && shinySprite ? shinySprite : baseSprite
 
   const displayTypes = activeForm?.types ?? pokemon.types
@@ -142,6 +146,21 @@ export function PokemonCard({ pokemonId, isOpen, onClose }: PokemonCardProps) {
               <Sparkles className="size-3.5" />
               {t('shiny')}
             </Button>
+            {shinyTrackerEnabled && (() => {
+              const shinyKey = activeFormId ?? undefined
+              const registered = isShinyRegistered(pokemonId, shinyKey)
+              return (
+                <Button
+                  variant={registered ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => toggleShinyRegistered(pokemonId, shinyKey)}
+                  className="gap-1.5"
+                >
+                  <Sparkles className="size-3.5" />
+                  {registered ? t('registeredShiny') : t('registerShiny')}
+                </Button>
+              )
+            })()}
           </div>
 
           {/* Types */}

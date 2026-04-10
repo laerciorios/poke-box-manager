@@ -13,6 +13,7 @@ interface SettingsActions {
   setShowPokemonNamesInBox: (value: boolean) => void
   toggleSidebar: () => void
   resetSettings: () => void
+  setShinyTrackerEnabled: (value: boolean) => void
 }
 
 type SettingsStore = SettingsState & SettingsActions
@@ -61,14 +62,21 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
     resetSettings: () => {
       set({ ...DEFAULT_SETTINGS })
     },
+
+    setShinyTrackerEnabled: (value) => {
+      set({ shinyTrackerEnabled: value })
+    },
   }),
   {
-    version: 2,
+    version: 3,
     migrate: (persisted: unknown, fromVersion: number) => {
       const state = persisted as Record<string, unknown>
       if (fromVersion < 2) {
         delete state.gameFilter
         delete state.activeGames
+      }
+      if (fromVersion < 3) {
+        state.shinyTrackerEnabled ??= false
       }
       return state as unknown as SettingsStore
     },

@@ -23,6 +23,9 @@ export default async function StatsPage() {
           boxPartial: t('boxPartial'),
           boxEmpty: t('boxEmpty'),
           emptyState: t('emptyState'),
+          shinySection: t('shinySection'),
+          shinyRegisteredLabel: t('shinyRegisteredLabel'),
+          shinyGenerationSection: t('shinyGenerationSection'),
         }}
       />
     </div>

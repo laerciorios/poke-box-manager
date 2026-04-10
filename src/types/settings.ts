@@ -27,6 +27,7 @@ export interface SettingsState {
   lastBackup?: string
   showPokemonNamesInBox: boolean
   sidebarCollapsed: boolean
+  shinyTrackerEnabled: boolean
 }
 
 export const DEFAULT_VARIATIONS: VariationToggles = {
@@ -53,4 +54,5 @@ export const DEFAULT_SETTINGS: SettingsState = {
   autoSave: true,
   showPokemonNamesInBox: false,
   sidebarCollapsed: false,
+  shinyTrackerEnabled: false,
 }

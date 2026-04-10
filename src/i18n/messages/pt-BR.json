@@ -72,7 +72,12 @@
     "boxDisplaySection": "Exibição das Boxes",
     "boxDisplaySectionDescription": "Personalize como os Pokémon são exibidos na grade de boxes.",
     "showPokemonNamesInBox": "Exibir nomes dos Pokémon",
-    "showPokemonNamesInBoxSubtitle": "Mostrar o nome do Pokémon abaixo de cada sprite na grade de boxes"
+    "showPokemonNamesInBoxSubtitle": "Mostrar o nome do Pokémon abaixo de cada sprite na grade de boxes",
+    "shinyTrackerSection": "Rastreador Shiny",
+    "shinyTrackerSectionDescription": "Rastreie quais Pokémon você possui uma versão shiny, independentemente do registro normal.",
+    "shinyTrackerEnable": "Ativar Rastreador Shiny",
+    "shinyTrackerEnableSubtitle": "Exibe indicadores de brilho nos Pokémon shiny registrados na visão das boxes e adiciona uma seção de progresso shiny na página de estatísticas",
+    "shinyRegisteredCount": "{count, plural, =1 {1 Pokémon shiny registrado} other {# Pokémon shiny registrados}}"
   },
   "VariationToggles": {
     "warningTooltip": "Você tem Pokémon registrados desse tipo de variação. Desativar este toggle irá ocultá-los do rastreamento, mas não excluirá seus dados.",
@@ -177,7 +182,9 @@
     "category": "Categoria",
     "forms": "Formas",
     "evolution": "Cadeia Evolutiva",
-    "shiny": "Shiny"
+    "shiny": "Shiny",
+    "registerShiny": "Registrar Shiny",
+    "registeredShiny": "Shiny Registrado"
   },
   "Home": {
     "title": "Pokémon Box Manager",
@@ -200,7 +207,10 @@
     "boxComplete": "Completas",
     "boxPartial": "Parciais",
     "boxEmpty": "Vazias",
-    "emptyState": "Nenhum dado ainda. Adicione caixas e registre seus Pokémon para ver as estatísticas."
+    "emptyState": "Nenhum dado ainda. Adicione caixas e registre seus Pokémon para ver as estatísticas.",
+    "shinySection": "Progresso Shiny",
+    "shinyRegisteredLabel": "Shiny Registrados",
+    "shinyGenerationSection": "Por Geração"
   },
   "Missing": {
     "pageTitle": "Faltando",

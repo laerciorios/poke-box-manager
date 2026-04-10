@@ -8,23 +8,34 @@ export function normalizeForms(
   formsData: any[],
   speciesId: number,
   defaultPokemonName: string,
+  altPokemonByName: Map<string, any> = new Map(),
 ): PokemonForm[] {
   // Filter out the default form (same name as species)
   const altForms = formsData.filter(
     (form) => form.name !== defaultPokemonName && form.form_name !== '',
   )
 
-  return altForms.map((form) => normalizeForm(form, speciesId))
+  return altForms.map((form) => {
+    const altPokemon = altPokemonByName.get(form.name)
+    return normalizeForm(form, speciesId, altPokemon)
+  })
 }
 
-function normalizeForm(formData: any, speciesId: number): PokemonForm {
+function normalizeForm(formData: any, speciesId: number, altPokemonData?: any): PokemonForm {
   const id: string = formData.name
   const name: string = formData.form_name || formData.name
   const names = extractNames(formData.form_names ?? [], name)
   const formType = classifyFormType(formData.name, speciesId)
 
   const sprite =
-    formData.sprites?.front_default ?? ''
+    altPokemonData?.sprites?.other?.home?.front_default ??
+    formData.sprites?.front_default ??
+    ''
+
+  const spriteShiny: string | undefined =
+    altPokemonData?.sprites?.other?.home?.front_shiny ??
+    formData.sprites?.front_shiny ??
+    undefined
 
   const types: [string, string?] | undefined = formData.types?.length
     ? extractFormTypes(formData.types)
@@ -36,6 +47,7 @@ function normalizeForm(formData: any, speciesId: number): PokemonForm {
     names,
     formType,
     sprite,
+    ...(spriteShiny && { spriteShiny }),
     ...(types && { types }),
   }
 }

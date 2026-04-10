@@ -30,12 +30,18 @@ export interface BoxHeatmapEntry {
   state: BoxState
 }
 
+export interface ShinyStats {
+  overall: { registered: number; total: number; percentage: number }
+  byGeneration: GenerationStat[]
+}
+
 export interface StatsData {
   overall: { registered: number; total: number; percentage: number }
   byGeneration: GenerationStat[]
   byType: TypeStat[]
   boxSummary: { complete: number; partial: number; empty: number }
   boxes: BoxHeatmapEntry[]
+  shiny?: ShinyStats
 }
 
 interface RawPokemon {
@@ -72,13 +78,16 @@ function classifyBoxState(slots: (null | { registered: boolean })[]): BoxState {
 
 export function useStatsData(): StatsData {
   const registered = usePokedexStore((s) => s.registered)
+  const registeredShiny = usePokedexStore((s) => s.registeredShiny)
   const boxes = useBoxStore((s) => s.boxes)
   const activeGenerations = useSettingsStore((s) => s.activeGenerations)
   const variations = useSettingsStore((s) => s.variations)
   const locale = useSettingsStore((s) => s.locale)
+  const shinyTrackerEnabled = useSettingsStore((s) => s.shinyTrackerEnabled)
 
   return useMemo(() => {
     const registeredSet = new Set(registered)
+    const registeredShinySet = shinyTrackerEnabled ? new Set(registeredShiny) : null
     const enabledFormTypes = buildEnabledFormTypes(variations)
     const activeGenSet = new Set(activeGenerations)
 
@@ -89,9 +98,9 @@ export function useStatsData(): StatsData {
     }
 
     // Per-generation accumulators
-    const genMap = new Map<number, { total: number; registered: number }>()
+    const genMap = new Map<number, { total: number; registered: number; shiny: number }>()
     for (const genId of activeGenerations) {
-      genMap.set(genId, { total: 0, registered: 0 })
+      genMap.set(genId, { total: 0, registered: 0, shiny: 0 })
     }
 
     // Per-type accumulators
@@ -104,15 +113,17 @@ export function useStatsData(): StatsData {
       typeMap.set(type, t)
     }
 
-    function addToGen(genId: number, isRegistered: boolean) {
+    function addToGen(genId: number, isRegistered: boolean, isShiny: boolean) {
       const g = genMap.get(genId)
       if (!g) return
       g.total++
       if (isRegistered) g.registered++
+      if (isShiny) g.shiny++
     }
 
     let overallTotal = 0
     let overallRegistered = 0
+    let overallShiny = 0
 
     for (const mon of pokemonData as RawPokemon[]) {
       if (!activeGenSet.has(mon.generation)) continue
@@ -120,9 +131,11 @@ export function useStatsData(): StatsData {
       // Base species
       const baseKey = String(mon.id)
       const baseRegistered = registeredSet.has(baseKey)
+      const baseShiny = registeredShinySet ? registeredShinySet.has(baseKey) : false
       overallTotal++
       if (baseRegistered) overallRegistered++
-      addToGen(mon.generation, baseRegistered)
+      if (baseShiny) overallShiny++
+      addToGen(mon.generation, baseRegistered, baseShiny)
       for (const type of mon.types) addToType(type, baseRegistered)
 
       // Forms
@@ -130,9 +143,11 @@ export function useStatsData(): StatsData {
         if (!enabledFormTypes.has(form.formType)) continue
         const formKey = `${mon.id}:${form.id}`
         const formRegistered = registeredSet.has(formKey)
+        const formShiny = registeredShinySet ? registeredShinySet.has(formKey) : false
         overallTotal++
         if (formRegistered) overallRegistered++
-        addToGen(mon.generation, formRegistered)
+        if (formShiny) overallShiny++
+        addToGen(mon.generation, formRegistered, formShiny)
         for (const type of form.types) addToType(type, formRegistered)
       }
     }
@@ -158,6 +173,30 @@ export function useStatsData(): StatsData {
         }
       })
 
+    const shiny: ShinyStats | undefined = shinyTrackerEnabled
+      ? {
+          overall: {
+            registered: overallShiny,
+            total: overallTotal,
+            percentage:
+              overallTotal > 0
+                ? Math.round((overallShiny / overallTotal) * 1000) / 10
+                : 0,
+          },
+          byGeneration: activeGenerations
+            .filter((id) => genMap.has(id))
+            .map((id) => {
+              const g = genMap.get(id)!
+              return {
+                id,
+                name: genNames.get(id) ?? `Gen ${id}`,
+                registered: g.shiny,
+                total: g.total,
+              }
+            }),
+        }
+      : undefined
+
     const byType: TypeStat[] = Array.from(typeMap.entries()).map(([type, t]) => ({
       type,
       registered: t.registered,
@@ -176,6 +215,6 @@ export function useStatsData(): StatsData {
       boxSummary[entry.state]++
     }
 
-    return { overall, byGeneration, byType, boxSummary, boxes: boxEntries }
-  }, [registered, boxes, activeGenerations, variations, locale])
+    return { overall, byGeneration, byType, boxSummary, boxes: boxEntries, shiny }
+  }, [registered, registeredShiny, boxes, activeGenerations, variations, locale, shinyTrackerEnabled])
 }

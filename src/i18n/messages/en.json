@@ -72,7 +72,12 @@
     "boxDisplaySection": "Box Display",
     "boxDisplaySectionDescription": "Customize how Pokémon are shown in the box grid.",
     "showPokemonNamesInBox": "Show Pokémon names",
-    "showPokemonNamesInBoxSubtitle": "Display the Pokémon name below each sprite in the box grid"
+    "showPokemonNamesInBoxSubtitle": "Display the Pokémon name below each sprite in the box grid",
+    "shinyTrackerSection": "Shiny Tracker",
+    "shinyTrackerSectionDescription": "Track which Pokémon you have a shiny version of, independently of normal registration.",
+    "shinyTrackerEnable": "Enable Shiny Tracker",
+    "shinyTrackerEnableSubtitle": "Shows sparkle indicators on shiny-registered Pokémon in box view and adds a shiny progress section to the stats page",
+    "shinyRegisteredCount": "{count, plural, =1 {1 shiny Pokémon registered} other {# shiny Pokémon registered}}"
   },
   "VariationToggles": {
     "warningTooltip": "You have registered Pokémon of this variation type. Disabling this toggle will hide them from tracking, but won't delete your data.",
@@ -177,7 +182,9 @@
     "category": "Category",
     "forms": "Forms",
     "evolution": "Evolution Chain",
-    "shiny": "Shiny"
+    "shiny": "Shiny",
+    "registerShiny": "Register Shiny",
+    "registeredShiny": "Shiny Registered"
   },
   "Home": {
     "title": "Pokémon Box Manager",
@@ -200,7 +207,10 @@
     "boxComplete": "Complete",
     "boxPartial": "Partial",
     "boxEmpty": "Empty",
-    "emptyState": "No data yet. Add boxes and register your Pokémon to see statistics."
+    "emptyState": "No data yet. Add boxes and register your Pokémon to see statistics.",
+    "shinySection": "Shiny Progress",
+    "shinyRegisteredLabel": "Shiny Registered",
+    "shinyGenerationSection": "By Generation"
   },
   "Missing": {
     "pageTitle": "Missing",

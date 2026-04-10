@@ -33,6 +33,7 @@ export interface PokemonForm {
   names: Record<Locale, string>
   formType: FormType
   sprite: string
+  spriteShiny?: string
   types?: [string, string?]
 }
 

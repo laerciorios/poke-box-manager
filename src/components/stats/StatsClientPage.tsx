@@ -7,6 +7,7 @@ import { GenerationBars } from './GenerationBars'
 import { TypeGrid } from './TypeGrid'
 import { BoxHeatmap } from './BoxHeatmap'
 import { BoxSummary } from './BoxSummary'
+import { ShinyProgressSection } from './ShinyProgressSection'
 
 interface StatsClientPageProps {
   t: {
@@ -21,11 +22,14 @@ interface StatsClientPageProps {
     boxPartial: string
     boxEmpty: string
     emptyState: string
+    shinySection: string
+    shinyRegisteredLabel: string
+    shinyGenerationSection: string
   }
 }
 
 export function StatsClientPage({ t }: StatsClientPageProps) {
-  const { overall, byGeneration, byType, boxSummary, boxes } = useStatsData()
+  const { overall, byGeneration, byType, boxSummary, boxes, shiny } = useStatsData()
 
   const isEmpty = boxes.length === 0 && overall.registered === 0
 
@@ -102,6 +106,23 @@ export function StatsClientPage({ t }: StatsClientPageProps) {
           </CardHeader>
           <CardContent>
             <BoxHeatmap boxes={boxes} />
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Row 4: Shiny progress (only when shiny tracker enabled) */}
+      {shiny && (
+        <Card>
+          <CardHeader>
+            <CardTitle>{t.shinySection}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ShinyProgressSection
+              shiny={shiny}
+              labelTitle={t.shinyRegisteredLabel}
+              labelRegistered={t.shinyRegisteredLabel}
+              labelGeneration={t.shinyGenerationSection}
+            />
           </CardContent>
         </Card>
       )}

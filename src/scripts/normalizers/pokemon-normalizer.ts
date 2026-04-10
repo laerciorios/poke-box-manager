@@ -9,6 +9,7 @@ export function normalizePokemon(
   speciesData: any,
   pokemonData: any,
   formsData: any[],
+  altPokemonByName: Map<string, any> = new Map(),
 ): PokemonEntry {
   const id: number = speciesData.id
   const name: string = speciesData.name
@@ -30,7 +31,7 @@ export function normalizePokemon(
   const evolutionChainId = extractEvolutionChainId(speciesData.evolution_chain?.url)
   const homeAvailable = sprite !== ''
 
-  const forms = normalizeForms(formsData, id, pokemonData.name)
+  const forms = normalizeForms(formsData, id, pokemonData.name, altPokemonByName)
 
   return {
     id,

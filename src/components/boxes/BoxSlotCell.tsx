@@ -53,6 +53,8 @@ interface BoxSlotCellProps extends VariantProps<typeof slotVariants> {
   registrationModeActive?: boolean
   hasShinySprite?: boolean
   onShinyToggle?: (e: React.MouseEvent) => void
+  isShinyRegistered?: boolean
+  onShinyRegistrationToggle?: (e: React.MouseEvent) => void
 }
 
 function getSlotState(slot: BoxSlot | null): SlotState {
@@ -141,6 +143,8 @@ function SortableSlotCell({
   registrationModeActive,
   hasShinySprite,
   onShinyToggle,
+  isShinyRegistered,
+  onShinyRegistrationToggle,
 }: BoxSlotCellProps) {
   const state = getSlotState(slot)
 
@@ -180,7 +184,7 @@ function SortableSlotCell({
     }
   }
 
-  const showShinyButton = !!slot && (slot.shiny || (registrationModeActive && hasShinySprite))
+  const showShinyRegistered = !!slot && (isShinyRegistered || (registrationModeActive && !!onShinyRegistrationToggle))
 
   const cellContent = (
     <>
@@ -201,19 +205,19 @@ function SortableSlotCell({
               <Check className="size-2.5" />
             </div>
           )}
-          {showShinyButton && (
+          {showShinyRegistered && (
             <div
-              role={registrationModeActive ? "button" : undefined}
+              role={registrationModeActive && onShinyRegistrationToggle ? "button" : undefined}
               className={cn(
                 "absolute top-0.5 left-0.5 z-10 inline-flex size-4 items-center justify-center rounded-full ring-1 shadow-sm transition-all",
-                slot.shiny
-                  ? "bg-yellow-400/90 text-yellow-900 ring-yellow-400/50 opacity-100"
+                isShinyRegistered
+                  ? "bg-amber-400/90 text-amber-900 ring-amber-400/50 opacity-100"
                   : "bg-card/95 text-muted-foreground ring-border/70 opacity-0 group-hover:opacity-100",
-                registrationModeActive && "cursor-pointer"
+                registrationModeActive && onShinyRegistrationToggle ? "cursor-pointer" : "pointer-events-none"
               )}
-              onClick={registrationModeActive ? (e) => {
+              onClick={registrationModeActive && onShinyRegistrationToggle ? (e) => {
                 e.stopPropagation()
-                onShinyToggle?.(e)
+                onShinyRegistrationToggle(e)
               } : undefined}
             >
               <Sparkles className="size-2.5" />
@@ -265,6 +269,8 @@ export function BoxSlotCell({
   registrationModeActive,
   hasShinySprite,
   onShinyToggle,
+  isShinyRegistered,
+  onShinyRegistrationToggle,
 }: BoxSlotCellProps) {
   const [spriteLoaded, setSpriteLoaded] = useState(false)
   const [spriteError, setSpriteError] = useState(false)
@@ -285,6 +291,8 @@ export function BoxSlotCell({
         registrationModeActive={registrationModeActive}
         hasShinySprite={hasShinySprite}
         onShinyToggle={onShinyToggle}
+        isShinyRegistered={isShinyRegistered}
+        onShinyRegistrationToggle={onShinyRegistrationToggle}
       />
     )
   }
@@ -303,7 +311,7 @@ export function BoxSlotCell({
     }
   }
 
-  const showShinyButtonNonSortable = !!slot && (slot.shiny || (registrationModeActive && hasShinySprite))
+  const showShinyRegisteredNonSortable = !!slot && (isShinyRegistered || (registrationModeActive && !!onShinyRegistrationToggle))
 
   const cellContent = (
     <>
@@ -346,19 +354,19 @@ export function BoxSlotCell({
               <Check className="size-2.5" />
             </div>
           )}
-          {showShinyButtonNonSortable && (
+          {showShinyRegisteredNonSortable && (
             <div
-              role={registrationModeActive ? "button" : undefined}
+              role={registrationModeActive && onShinyRegistrationToggle ? "button" : undefined}
               className={cn(
                 "absolute top-0.5 left-0.5 z-10 inline-flex size-4 items-center justify-center rounded-full ring-1 shadow-sm transition-all",
-                slot.shiny
-                  ? "bg-yellow-400/90 text-yellow-900 ring-yellow-400/50 opacity-100"
+                isShinyRegistered
+                  ? "bg-amber-400/90 text-amber-900 ring-amber-400/50 opacity-100"
                   : "bg-card/95 text-muted-foreground ring-border/70 opacity-0 group-hover:opacity-100",
-                registrationModeActive && "cursor-pointer"
+                registrationModeActive && onShinyRegistrationToggle ? "cursor-pointer" : "pointer-events-none"
               )}
-              onClick={registrationModeActive ? (e) => {
+              onClick={registrationModeActive && onShinyRegistrationToggle ? (e) => {
                 e.stopPropagation()
-                onShinyToggle?.(e)
+                onShinyRegistrationToggle(e)
               } : undefined}
             >
               <Sparkles className="size-2.5" />

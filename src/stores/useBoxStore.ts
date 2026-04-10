@@ -1,3 +1,4 @@
+import { arrayMove } from '@dnd-kit/sortable'
 import { createPersistedStore } from '@/lib/store'
 import type { Box, BoxSlot } from '@/types/box'
 import { BOX_SIZE } from '@/types/box'
@@ -7,6 +8,7 @@ interface BoxState {
   createBox: (name: string) => void
   deleteBox: (boxId: string) => void
   renameBox: (boxId: string, newName: string) => void
+  setBoxLabel: (boxId: string, label: string | undefined) => void
   setSlot: (boxId: string, slotIndex: number, slot: BoxSlot) => void
   clearSlot: (boxId: string, slotIndex: number) => void
   moveSlot: (
@@ -15,6 +17,7 @@ interface BoxState {
     toBoxId: string,
     toIndex: number,
   ) => void
+  reorderSlots: (boxId: string, fromIndex: number, toIndex: number) => void
   reorderBox: (boxId: string, newIndex: number) => void
   setBoxes: (boxes: Box[]) => void
 }
@@ -41,6 +44,14 @@ export const useBoxStore = createPersistedStore<BoxState>(
       set({
         boxes: get().boxes.map((b) =>
           b.id === boxId ? { ...b, name: newName } : b,
+        ),
+      })
+    },
+
+    setBoxLabel: (boxId, label) => {
+      set({
+        boxes: get().boxes.map((b) =>
+          b.id === boxId ? { ...b, label } : b,
         ),
       })
     },
@@ -78,6 +89,14 @@ export const useBoxStore = createPersistedStore<BoxState>(
       fromBox.slots[fromIndex] = temp ?? null
 
       set({ boxes })
+    },
+
+    reorderSlots: (boxId, fromIndex, toIndex) => {
+      set({
+        boxes: get().boxes.map((b) =>
+          b.id !== boxId ? b : { ...b, slots: arrayMove(b.slots, fromIndex, toIndex) },
+        ),
+      })
     },
 
     reorderBox: (boxId, newIndex) => {

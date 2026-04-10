@@ -3,7 +3,9 @@
 import { useState } from "react"
 import Image from "next/image"
 import { cva, type VariantProps } from "class-variance-authority"
-import { CircleHelp, Check } from "lucide-react"
+import { CircleHelp, Check, GripVertical } from "lucide-react"
+import { useSortable } from "@dnd-kit/sortable"
+import { CSS } from "@dnd-kit/utilities"
 
 import { cn } from "@/lib/utils"
 import {
@@ -15,7 +17,7 @@ import { SpritePlaceholder } from "@/components/pokemon"
 import type { BoxSlot } from "@/types/box"
 
 const slotVariants = cva(
-  "relative flex items-center justify-center rounded-lg transition-all outline-none",
+  "relative flex items-center justify-center rounded-lg outline-none",
   {
     variants: {
       state: {
@@ -44,6 +46,8 @@ interface BoxSlotCellProps extends VariantProps<typeof slotVariants> {
   selected?: boolean
   onClick?: (e?: React.MouseEvent) => void
   className?: string
+  sortableId?: string
+  showName?: boolean
 }
 
 function getSlotState(slot: BoxSlot | null): SlotState {
@@ -51,21 +55,112 @@ function getSlotState(slot: BoxSlot | null): SlotState {
   return slot.registered ? "registered" : "missing"
 }
 
-export function BoxSlotCell({
+function getNameFontClass(name: string): string {
+  if (name.length <= 8) return "text-[10px]"
+  if (name.length <= 13) return "text-[9px]"
+  return "text-[8px]"
+}
+
+const SPRITE_SIZES =
+  "(max-width: 640px) 38px, (max-width: 768px) 48px, (max-width: 1024px) 60px, (max-width: 1280px) 75px, 90px"
+
+function SlotSprite({
+  slot,
+  spriteUrl,
+  pokemonName,
+  showName,
+  isDragging,
+  isDraggable,
+}: {
+  slot: BoxSlot
+  spriteUrl?: string
+  pokemonName?: string
+  showName?: boolean
+  isDragging?: boolean
+  isDraggable?: boolean
+}) {
+  const [spriteLoaded, setSpriteLoaded] = useState(false)
+  const [spriteError, setSpriteError] = useState(false)
+  const state = getSlotState(slot)
+
+  const spriteContainerClass = showName ? "w-[60%]" : "w-[75%]"
+
+  return (
+    <>
+      <div className={cn("relative aspect-square shrink-0", spriteContainerClass)}>
+        {(!spriteLoaded || spriteError) && (
+          <SpritePlaceholder className="absolute inset-0 w-full h-full" />
+        )}
+        {!spriteError && spriteUrl && (
+          <Image
+            src={spriteUrl}
+            alt={pokemonName ?? `#${slot.pokemonId}`}
+            fill
+            sizes={SPRITE_SIZES}
+            className={cn(
+              "object-contain transition-[opacity,transform] duration-[var(--transition-fast)]",
+              spriteLoaded ? "opacity-100" : "opacity-0",
+              state === "missing" && "opacity-30",
+              isDraggable && !isDragging && "group-hover:scale-110"
+            )}
+            onLoad={() => setSpriteLoaded(true)}
+            onError={() => setSpriteError(true)}
+          />
+        )}
+      </div>
+
+      {showName && pokemonName && (
+        <span
+          className={cn(
+            "w-full truncate text-center leading-none text-muted-foreground px-0.5",
+            getNameFontClass(pokemonName)
+          )}
+        >
+          {pokemonName}
+        </span>
+      )}
+    </>
+  )
+}
+
+function SortableSlotCell({
   slot,
   pokemonName,
   spriteUrl,
   selected = false,
   onClick,
   className,
+  sortableId,
+  showName,
 }: BoxSlotCellProps) {
-  const [spriteLoaded, setSpriteLoaded] = useState(false)
-  const [spriteError, setSpriteError] = useState(false)
   const state = getSlotState(slot)
 
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+    isOver,
+  } = useSortable({
+    id: sortableId!,
+    disabled: !slot,
+  })
+
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  }
+
+  const isDraggable = !!slot
   const cellClassName = cn(
     slotVariants({ state, selected }),
-    "aspect-square cursor-pointer hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring",
+    "group aspect-square hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring",
+    showName && slot ? "flex-col gap-0.5 p-1" : "",
+    isDraggable ? "cursor-grab active:cursor-grabbing" : "cursor-pointer",
+    isDragging && "opacity-30",
+    isOver && !isDragging && "ring-2 ring-primary",
     className
   )
 
@@ -80,49 +175,151 @@ export function BoxSlotCell({
     <>
       {state === "empty" ? (
         <CircleHelp className="size-6 text-muted-foreground/50" />
-      ) : (
+      ) : slot ? (
         <>
-          {(!spriteLoaded || spriteError) && (
-            <SpritePlaceholder size={48} className="absolute" />
+          <SlotSprite
+            slot={slot}
+            spriteUrl={spriteUrl}
+            pokemonName={pokemonName}
+            showName={showName}
+            isDragging={isDragging}
+            isDraggable={isDraggable}
+          />
+          {state === "registered" && (
+            <div className="absolute top-0.5 right-0.5 flex size-4 items-center justify-center rounded-full bg-green-500 text-white">
+              <Check className="size-2.5" />
+            </div>
           )}
+          {isDraggable && (
+            <GripVertical className="absolute bottom-0.5 right-0.5 size-3 text-muted-foreground/40 opacity-0 transition-opacity group-hover:opacity-100" />
+          )}
+        </>
+      ) : null}
+    </>
+  )
 
-          {slot && !spriteError && spriteUrl && (
-            <Image
-              src={spriteUrl}
-              alt={pokemonName ?? `#${slot.pokemonId}`}
-              width={48}
-              height={48}
-              loading="lazy"
+  const divProps = {
+    ...attributes,
+    ...listeners,
+    ref: setNodeRef,
+    style,
+    role: "button" as const,
+    className: cellClassName,
+    onClick,
+    onKeyDown: handleKeyDown,
+  }
+
+  if (slot && pokemonName && !showName) {
+    return (
+      <Tooltip>
+        <TooltipTrigger render={<div {...divProps} />}>
+          {cellContent}
+        </TooltipTrigger>
+        <TooltipContent>{pokemonName}</TooltipContent>
+      </Tooltip>
+    )
+  }
+
+  return <div {...divProps}>{cellContent}</div>
+}
+
+export function BoxSlotCell({
+  slot,
+  pokemonName,
+  spriteUrl,
+  selected = false,
+  onClick,
+  className,
+  sortableId,
+  showName,
+}: BoxSlotCellProps) {
+  const [spriteLoaded, setSpriteLoaded] = useState(false)
+  const [spriteError, setSpriteError] = useState(false)
+  const state = getSlotState(slot)
+
+  if (sortableId) {
+    return (
+      <SortableSlotCell
+        slot={slot}
+        pokemonName={pokemonName}
+        spriteUrl={spriteUrl}
+        selected={selected}
+        onClick={onClick}
+        className={className}
+        sortableId={sortableId}
+        showName={showName}
+      />
+    )
+  }
+
+  const cellClassName = cn(
+    slotVariants({ state, selected }),
+    "aspect-square cursor-pointer hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring",
+    showName && slot ? "flex-col gap-0.5 p-1" : "",
+    className
+  )
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      onClick?.()
+    }
+  }
+
+  const cellContent = (
+    <>
+      {state === "empty" ? (
+        <CircleHelp className="size-6 text-muted-foreground/50" />
+      ) : slot ? (
+        <>
+          <div className={cn("relative aspect-square shrink-0", showName ? "w-[60%]" : "w-[75%]")}>
+            {(!spriteLoaded || spriteError) && (
+              <SpritePlaceholder className="absolute inset-0 w-full h-full" />
+            )}
+            {!spriteError && spriteUrl && (
+              <Image
+                src={spriteUrl}
+                alt={pokemonName ?? `#${slot.pokemonId}`}
+                fill
+                sizes={SPRITE_SIZES}
+                className={cn(
+                  "object-contain transition-opacity duration-[var(--transition-fast)]",
+                  spriteLoaded ? "opacity-100" : "opacity-0",
+                  state === "missing" && "opacity-30"
+                )}
+                onLoad={() => setSpriteLoaded(true)}
+                onError={() => setSpriteError(true)}
+              />
+            )}
+          </div>
+          {showName && pokemonName && (
+            <span
               className={cn(
-                "relative transition-opacity duration-[var(--transition-fast)]",
-                spriteLoaded ? "opacity-100" : "opacity-0",
-                state === "missing" && "opacity-30"
+                "w-full truncate text-center leading-none text-muted-foreground px-0.5",
+                getNameFontClass(pokemonName)
               )}
-              onLoad={() => setSpriteLoaded(true)}
-              onError={() => setSpriteError(true)}
-            />
+            >
+              {pokemonName}
+            </span>
           )}
-
           {state === "registered" && (
             <div className="absolute top-0.5 right-0.5 flex size-4 items-center justify-center rounded-full bg-green-500 text-white">
               <Check className="size-2.5" />
             </div>
           )}
         </>
-      )}
+      ) : null}
     </>
   )
 
-  if (slot && pokemonName) {
+  if (slot && pokemonName && !showName) {
     return (
       <Tooltip>
         <TooltipTrigger
           className={cellClassName}
           onClick={onClick}
           onKeyDown={handleKeyDown}
-          render={
-            <div role="button" tabIndex={0} />
-          }
+          render={<div role="button" tabIndex={0} />}
         >
           {cellContent}
         </TooltipTrigger>

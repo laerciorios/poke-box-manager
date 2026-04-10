@@ -28,6 +28,8 @@ export interface SettingsState {
   spriteStyle: SpriteStyle
   autoSave: boolean
   lastBackup?: string
+  showPokemonNamesInBox: boolean
+  sidebarCollapsed: boolean
 }
 
 export const DEFAULT_VARIATIONS: VariationToggles = {
@@ -54,4 +56,6 @@ export const DEFAULT_SETTINGS: SettingsState = {
   locale: 'pt-BR',
   spriteStyle: 'home-3d',
   autoSave: true,
+  showPokemonNamesInBox: false,
+  sidebarCollapsed: false,
 }

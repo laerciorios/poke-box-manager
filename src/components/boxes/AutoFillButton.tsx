@@ -10,7 +10,6 @@ import {
   SelectItem,
   SelectSeparator,
   SelectTrigger,
-  SelectValue,
 } from '@/components/ui/select'
 import {
   Dialog,
@@ -46,6 +45,7 @@ export function AutoFillButton() {
 
   const [selectedPresetId, setSelectedPresetId] = useState<string | null>(allPresets[0]?.id ?? null)
   const [confirmOpen, setConfirmOpen] = useState(false)
+  const selectedPresetName = allPresets.find((p) => p.id === selectedPresetId)?.name
 
   const hasExistingData = boxes.some((box) => box.slots.some((slot) => slot !== null))
 
@@ -70,12 +70,19 @@ export function AutoFillButton() {
   return (
     <div className="flex items-center gap-2">
       <Select value={selectedPresetId} onValueChange={setSelectedPresetId}>
-        <SelectTrigger className="w-44">
-          <SelectValue placeholder="Select preset" />
+        <SelectTrigger className="w-56 max-w-[60vw]">
+          <span
+            className={selectedPresetName ? 'line-clamp-1' : 'line-clamp-1 text-muted-foreground'}
+          >
+            {selectedPresetName ?? t('selectPreset')}
+          </span>
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent
+          alignItemWithTrigger={false}
+          className="min-w-[20rem] max-w-[min(90vw,32rem)]"
+        >
           {BUILTIN_PRESETS.map((p) => (
-            <SelectItem key={p.id} value={p.id}>
+            <SelectItem key={p.id} value={p.id} title={p.name}>
               {p.name}
             </SelectItem>
           ))}
@@ -83,7 +90,7 @@ export function AutoFillButton() {
             <>
               <SelectSeparator />
               {userPresets.map((p) => (
-                <SelectItem key={p.id} value={p.id}>
+                <SelectItem key={p.id} value={p.id} title={p.name}>
                   {p.name}
                 </SelectItem>
               ))}

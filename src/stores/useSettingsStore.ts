@@ -1,9 +1,5 @@
 import { createPersistedStore } from '@/lib/store'
-import type {
-  SettingsState,
-  SpriteStyle,
-  VariationToggles,
-} from '@/types/settings'
+import type { SettingsState, SpriteStyle, VariationToggles } from '@/types/settings'
 import { DEFAULT_SETTINGS } from '@/types/settings'
 import type { Locale } from '@/types/locale'
 import type { GameId } from '@/types/game'
@@ -17,6 +13,8 @@ interface SettingsActions {
   setTheme: (theme: 'light' | 'dark' | 'system') => void
   setLocale: (locale: Locale) => void
   setSpriteStyle: (style: SpriteStyle) => void
+  setShowPokemonNamesInBox: (value: boolean) => void
+  toggleSidebar: () => void
   resetSettings: () => void
 }
 
@@ -61,6 +59,14 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
 
     setSpriteStyle: (style) => {
       set({ spriteStyle: style })
+    },
+
+    setShowPokemonNamesInBox: (value) => {
+      set({ showPokemonNamesInBox: value })
+    },
+
+    toggleSidebar: () => {
+      set((state) => ({ sidebarCollapsed: !state.sidebarCollapsed }))
     },
 
     resetSettings: () => {

@@ -12,6 +12,10 @@
   "Layout": {
     "appName": "PokeBox",
     "switchLanguage": "Switch language",
+    "sidebar": {
+      "collapse": "Collapse sidebar",
+      "expand": "Expand sidebar"
+    },
     "nav": {
       "home": "Home",
       "boxes": "Boxes",
@@ -35,7 +39,23 @@
     "boxCounter": "{current} / {total}",
     "confirmReplaceTitle": "Replace existing boxes?",
     "confirmReplaceDescription": "Auto-fill will replace your current box layout with the selected preset. Your registration data will be preserved.",
-    "confirmReplace": "Replace"
+    "confirmReplace": "Replace",
+    "confirmDeleteTitle": "Delete box?",
+    "confirmDeleteBoxWithPokemon": "This box contains Pokemon. Do you want to delete it anyway?",
+    "editBoxName": "Edit box name",
+    "toggleShowNames": "Toggle Pokémon names",
+    "boxColorPicker": "Set box color",
+    "clearColor": "Clear color",
+    "colors": {
+      "red": "Red",
+      "orange": "Orange",
+      "yellow": "Yellow",
+      "green": "Green",
+      "blue": "Blue",
+      "purple": "Purple",
+      "pink": "Pink",
+      "gray": "Gray"
+    }
   },
   "FloatingBar": {
     "selected": "{count} selected",
@@ -48,7 +68,11 @@
     "variationsSection": "Variations",
     "variationsSectionDescription": "Choose which Pokémon variation types to include in your tracking.",
     "totalWithVariations": "Total with selected variations: <strong>{total}</strong>",
-    "baseTotal": "Base total (no variations): <strong>{base}</strong>"
+    "baseTotal": "Base total (no variations): <strong>{base}</strong>",
+    "boxDisplaySection": "Box Display",
+    "boxDisplaySectionDescription": "Customize how Pokémon are shown in the box grid.",
+    "showPokemonNamesInBox": "Show Pokémon names",
+    "showPokemonNamesInBoxSubtitle": "Display the Pokémon name below each sprite in the box grid"
   },
   "VariationToggles": {
     "warningTooltip": "You have registered Pokémon of this variation type. Disabling this toggle will hide them from tracking, but won't delete your data.",

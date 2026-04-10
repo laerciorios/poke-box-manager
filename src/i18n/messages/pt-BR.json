@@ -12,6 +12,10 @@
   "Layout": {
     "appName": "PokeBox",
     "switchLanguage": "Trocar idioma",
+    "sidebar": {
+      "collapse": "Recolher barra lateral",
+      "expand": "Expandir barra lateral"
+    },
     "nav": {
       "home": "Início",
       "boxes": "Boxes",
@@ -35,7 +39,23 @@
     "boxCounter": "{current} / {total}",
     "confirmReplaceTitle": "Substituir boxes existentes?",
     "confirmReplaceDescription": "Preencher irá substituir o layout atual das suas boxes pela predefinição selecionada. Seus dados de registro serão preservados.",
-    "confirmReplace": "Substituir"
+    "confirmReplace": "Substituir",
+    "confirmDeleteTitle": "Excluir box?",
+    "confirmDeleteBoxWithPokemon": "Esta box contém Pokemon. Deseja excluir mesmo assim?",
+    "editBoxName": "Editar nome da box",
+    "toggleShowNames": "Alternar nomes dos Pokémon",
+    "boxColorPicker": "Definir cor da box",
+    "clearColor": "Limpar cor",
+    "colors": {
+      "red": "Vermelho",
+      "orange": "Laranja",
+      "yellow": "Amarelo",
+      "green": "Verde",
+      "blue": "Azul",
+      "purple": "Roxo",
+      "pink": "Rosa",
+      "gray": "Cinza"
+    }
   },
   "FloatingBar": {
     "selected": "{count} selecionados",
@@ -48,7 +68,11 @@
     "variationsSection": "Variações",
     "variationsSectionDescription": "Escolha quais tipos de variação de Pokémon incluir no seu rastreamento.",
     "totalWithVariations": "Total com variações selecionadas: <strong>{total}</strong>",
-    "baseTotal": "Total base (sem variações): <strong>{base}</strong>"
+    "baseTotal": "Total base (sem variações): <strong>{base}</strong>",
+    "boxDisplaySection": "Exibição das Boxes",
+    "boxDisplaySectionDescription": "Personalize como os Pokémon são exibidos na grade de boxes.",
+    "showPokemonNamesInBox": "Exibir nomes dos Pokémon",
+    "showPokemonNamesInBoxSubtitle": "Mostrar o nome do Pokémon abaixo de cada sprite na grade de boxes"
   },
   "VariationToggles": {
     "warningTooltip": "Você tem Pokémon registrados desse tipo de variação. Desativar este toggle irá ocultá-los do rastreamento, mas não excluirá seus dados.",

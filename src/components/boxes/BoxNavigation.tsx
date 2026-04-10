@@ -1,13 +1,19 @@
 "use client"
 
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { useBoxStore } from "@/stores/useBoxStore"
+import { BOX_LABEL_COLORS } from "@/lib/box-label-colors"
+import { BoxColorPicker } from "./BoxColorPicker"
 
 interface BoxNavigationProps {
+  boxId: string
   boxName: string
+  boxLabel?: string
   currentIndex: number
   totalBoxes: number
   onPrevious: () => void
@@ -16,31 +22,68 @@ interface BoxNavigationProps {
 }
 
 export function BoxNavigation({
+  boxId,
   boxName,
+  boxLabel,
   currentIndex,
   totalBoxes,
   onPrevious,
   onNext,
   className,
 }: BoxNavigationProps) {
+  const t = useTranslations("Boxes")
+  const renameBox = useBoxStore((s) => s.renameBox)
   const isFirst = currentIndex === 0
   const isLast = currentIndex === totalBoxes - 1
 
+  const [isEditing, setIsEditing] = useState(false)
+  const [draftName, setDraftName] = useState(boxName)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // Sync draftName when boxName changes externally
+  useEffect(() => {
+    if (!isEditing) setDraftName(boxName)
+  }, [boxName, isEditing])
+
+  const enterEditMode = () => {
+    setDraftName(boxName)
+    setIsEditing(true)
+    setTimeout(() => inputRef.current?.select(), 0)
+  }
+
+  const commitEdit = () => {
+    const trimmed = draftName.trim()
+    if (trimmed) {
+      renameBox(boxId, trimmed)
+    } else {
+      setDraftName(boxName)
+    }
+    setIsEditing(false)
+  }
+
+  const cancelEdit = () => {
+    setDraftName(boxName)
+    setIsEditing(false)
+  }
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
+      if (isEditing) return
       if (e.key === "ArrowLeft" && !isFirst) {
         onPrevious()
       } else if (e.key === "ArrowRight" && !isLast) {
         onNext()
       }
     },
-    [isFirst, isLast, onPrevious, onNext]
+    [isFirst, isLast, onPrevious, onNext, isEditing]
   )
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown)
     return () => document.removeEventListener("keydown", handleKeyDown)
   }, [handleKeyDown])
+
+  const colorDotClass = boxLabel ? BOX_LABEL_COLORS[boxLabel] : undefined
 
   return (
     <div
@@ -60,7 +103,42 @@ export function BoxNavigation({
       </Button>
 
       <div className="flex flex-col items-center gap-0.5">
-        <span className="text-lg font-semibold">{boxName}</span>
+        <div className="flex items-center gap-1.5">
+          {colorDotClass && (
+            <span className={cn("size-2.5 rounded-full shrink-0", colorDotClass)} />
+          )}
+
+          {isEditing ? (
+            <input
+              ref={inputRef}
+              type="text"
+              value={draftName}
+              aria-label={t("editBoxName")}
+              className="w-40 rounded border border-input bg-background px-2 py-0.5 text-center text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-ring"
+              onChange={(e) => setDraftName(e.target.value)}
+              onBlur={commitEdit}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault()
+                  commitEdit()
+                } else if (e.key === "Escape") {
+                  e.preventDefault()
+                  cancelEdit()
+                }
+              }}
+            />
+          ) : (
+            <span
+              className="cursor-text text-lg font-semibold select-none"
+              onDoubleClick={enterEditMode}
+              title={t("editBoxName")}
+            >
+              {boxName}
+            </span>
+          )}
+
+          <BoxColorPicker boxId={boxId} currentLabel={boxLabel} />
+        </div>
         <span className="text-xs text-muted-foreground">
           {currentIndex + 1} / {totalBoxes}
         </span>

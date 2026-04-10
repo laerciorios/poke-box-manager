@@ -189,7 +189,18 @@
   },
   "Stats": {
     "pageTitle": "Stats",
-    "pageSubtitle": "Track your Pokédex completion progress."
+    "pageSubtitle": "Track your Pokédex completion progress.",
+    "overallSection": "Overall Progress",
+    "registeredLabel": "Registered",
+    "totalLabel": "Total",
+    "generationSection": "By Generation",
+    "typeSection": "By Type",
+    "heatmapSection": "Box Map",
+    "boxSummarySection": "Box Summary",
+    "boxComplete": "Complete",
+    "boxPartial": "Partial",
+    "boxEmpty": "Empty",
+    "emptyState": "No data yet. Add boxes and register your Pokémon to see statistics."
   },
   "Missing": {
     "pageTitle": "Missing",

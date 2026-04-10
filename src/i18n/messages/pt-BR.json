@@ -189,7 +189,18 @@
   },
   "Stats": {
     "pageTitle": "Estatísticas",
-    "pageSubtitle": "Acompanhe seu progresso na Pokédex."
+    "pageSubtitle": "Acompanhe seu progresso na Pokédex.",
+    "overallSection": "Progresso Geral",
+    "registeredLabel": "Registrados",
+    "totalLabel": "Total",
+    "generationSection": "Por Geração",
+    "typeSection": "Por Tipo",
+    "heatmapSection": "Mapa de Caixas",
+    "boxSummarySection": "Resumo de Caixas",
+    "boxComplete": "Completas",
+    "boxPartial": "Parciais",
+    "boxEmpty": "Vazias",
+    "emptyState": "Nenhum dado ainda. Adicione caixas e registre seus Pokémon para ver as estatísticas."
   },
   "Missing": {
     "pageTitle": "Faltando",

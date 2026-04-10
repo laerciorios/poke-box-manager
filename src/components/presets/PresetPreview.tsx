@@ -11,7 +11,7 @@ import { BOX_SIZE } from '@/types/box'
 import pokemonData from '@/data/pokemon.json'
 import evolutionChainsData from '@/data/evolution-chains.json'
 
-const allPokemon = pokemonData as import('@/types/pokemon').PokemonEntry[]
+const allPokemon = pokemonData as unknown as import('@/types/pokemon').PokemonEntry[]
 const evolutionChains = evolutionChainsData as Record<number, number[]>
 
 interface PresetPreviewProps {

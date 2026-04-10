@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/tooltip"
 import { SpritePlaceholder } from "@/components/pokemon"
 import type { BoxSlot } from "@/types/box"
+import { Sparkles } from "lucide-react"
 
 const slotVariants = cva(
   "relative flex items-center justify-center rounded-lg outline-none",
@@ -48,6 +49,10 @@ interface BoxSlotCellProps extends VariantProps<typeof slotVariants> {
   className?: string
   sortableId?: string
   showName?: boolean
+  suppressTooltip?: boolean
+  registrationModeActive?: boolean
+  hasShinySprite?: boolean
+  onShinyToggle?: (e: React.MouseEvent) => void
 }
 
 function getSlotState(slot: BoxSlot | null): SlotState {
@@ -132,6 +137,10 @@ function SortableSlotCell({
   className,
   sortableId,
   showName,
+  suppressTooltip,
+  registrationModeActive,
+  hasShinySprite,
+  onShinyToggle,
 }: BoxSlotCellProps) {
   const state = getSlotState(slot)
 
@@ -171,6 +180,8 @@ function SortableSlotCell({
     }
   }
 
+  const showShinyButton = !!slot && (slot.shiny || (registrationModeActive && hasShinySprite))
+
   const cellContent = (
     <>
       {state === "empty" ? (
@@ -188,6 +199,24 @@ function SortableSlotCell({
           {state === "registered" && (
             <div className="absolute top-0.5 right-0.5 flex size-4 items-center justify-center rounded-full bg-green-500 text-white">
               <Check className="size-2.5" />
+            </div>
+          )}
+          {showShinyButton && (
+            <div
+              role={registrationModeActive ? "button" : undefined}
+              className={cn(
+                "absolute top-0.5 left-0.5 z-10 inline-flex size-4 items-center justify-center rounded-full ring-1 shadow-sm transition-all",
+                slot.shiny
+                  ? "bg-yellow-400/90 text-yellow-900 ring-yellow-400/50 opacity-100"
+                  : "bg-card/95 text-muted-foreground ring-border/70 opacity-0 group-hover:opacity-100",
+                registrationModeActive && "cursor-pointer"
+              )}
+              onClick={registrationModeActive ? (e) => {
+                e.stopPropagation()
+                onShinyToggle?.(e)
+              } : undefined}
+            >
+              <Sparkles className="size-2.5" />
             </div>
           )}
           {isDraggable && (
@@ -209,7 +238,7 @@ function SortableSlotCell({
     onKeyDown: handleKeyDown,
   }
 
-  if (slot && pokemonName && !showName) {
+  if (slot && pokemonName && !showName && !suppressTooltip) {
     return (
       <Tooltip>
         <TooltipTrigger render={<div {...divProps} />}>
@@ -232,6 +261,10 @@ export function BoxSlotCell({
   className,
   sortableId,
   showName,
+  suppressTooltip,
+  registrationModeActive,
+  hasShinySprite,
+  onShinyToggle,
 }: BoxSlotCellProps) {
   const [spriteLoaded, setSpriteLoaded] = useState(false)
   const [spriteError, setSpriteError] = useState(false)
@@ -248,13 +281,17 @@ export function BoxSlotCell({
         className={className}
         sortableId={sortableId}
         showName={showName}
+        suppressTooltip={suppressTooltip}
+        registrationModeActive={registrationModeActive}
+        hasShinySprite={hasShinySprite}
+        onShinyToggle={onShinyToggle}
       />
     )
   }
 
   const cellClassName = cn(
     slotVariants({ state, selected }),
-    "aspect-square cursor-pointer hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring",
+    "group aspect-square cursor-pointer hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring",
     showName && slot ? "flex-col gap-0.5 p-1" : "",
     className
   )
@@ -265,6 +302,8 @@ export function BoxSlotCell({
       onClick?.()
     }
   }
+
+  const showShinyButtonNonSortable = !!slot && (slot.shiny || (registrationModeActive && hasShinySprite))
 
   const cellContent = (
     <>
@@ -307,12 +346,30 @@ export function BoxSlotCell({
               <Check className="size-2.5" />
             </div>
           )}
+          {showShinyButtonNonSortable && (
+            <div
+              role={registrationModeActive ? "button" : undefined}
+              className={cn(
+                "absolute top-0.5 left-0.5 z-10 inline-flex size-4 items-center justify-center rounded-full ring-1 shadow-sm transition-all",
+                slot.shiny
+                  ? "bg-yellow-400/90 text-yellow-900 ring-yellow-400/50 opacity-100"
+                  : "bg-card/95 text-muted-foreground ring-border/70 opacity-0 group-hover:opacity-100",
+                registrationModeActive && "cursor-pointer"
+              )}
+              onClick={registrationModeActive ? (e) => {
+                e.stopPropagation()
+                onShinyToggle?.(e)
+              } : undefined}
+            >
+              <Sparkles className="size-2.5" />
+            </div>
+          )}
         </>
       ) : null}
     </>
   )
 
-  if (slot && pokemonName && !showName) {
+  if (slot && pokemonName && !showName && !suppressTooltip) {
     return (
       <Tooltip>
         <TooltipTrigger

@@ -1,11 +1,17 @@
 ## ADDED Requirements
 
 ### Requirement: PokemonEntry normalization
-The pipeline SHALL transform raw PokeAPI species and Pokemon data into the `PokemonEntry` interface as defined in spec section 2.3. Each entry SHALL include: `id`, `name`, `names` (PT-BR + EN), `generation`, `types`, `category`, `sprite`, `spriteShiny`, `forms`, `gameAvailability`, `evolutionChainId`, and `homeAvailable`.
+The pipeline SHALL transform raw PokeAPI species and Pokemon data into the `PokemonEntry` interface as defined in spec section 2.3. Each entry SHALL include: `id`, `name`, `names` (PT-BR + EN), `generation`, `types`, `category`, `sprite`, `spriteShiny`, `forms`, `evolutionChainId`, and `homeAvailable`. The `gameAvailability` field SHALL NOT be present on `PokemonEntry`.
 
 #### Scenario: Complete PokemonEntry for standard Pokemon
 - **WHEN** normalizing data for Pikachu (id: 25)
-- **THEN** the output SHALL include: id=25, name="pikachu", names with PT-BR and EN translations, generation=1, types=["electric"], category="normal", valid sprite URLs, and correct game availability
+- **THEN** the output SHALL include: id=25, name="pikachu", names with PT-BR and EN translations, generation=1, types=["electric"], category="normal", and valid sprite URLs
+- **THEN** the output SHALL NOT include a `gameAvailability` field
+
+#### Scenario: Complete PokemonEntry for Gen 8+ Pokemon
+- **WHEN** normalizing data for Eternatus (id: 890)
+- **THEN** the output SHALL include all required fields without errors
+- **THEN** the output SHALL NOT include a `gameAvailability` field
 
 #### Scenario: Name fallback when PT-BR missing
 - **WHEN** a Pokemon species has no PT-BR name in PokeAPI
@@ -32,7 +38,7 @@ The pipeline SHALL classify each Pokemon into one of the categories: `normal`, `
 - **THEN** the category SHALL be `normal`
 
 ### Requirement: PokemonForm normalization
-The pipeline SHALL transform raw PokeAPI form data into the `PokemonForm` interface. Each form SHALL include: `id`, `name`, `names` (PT-BR + EN), `formType`, `sprite`, and optionally `types` and `gameAvailability`.
+The pipeline SHALL transform raw PokeAPI form data into the `PokemonForm` interface. Each form SHALL include: `id`, `name`, `names` (PT-BR + EN), `formType`, and `sprite`. The optional `types` field is retained. The `gameAvailability` field SHALL NOT be present on `PokemonForm`.
 
 #### Scenario: Regional form mapping
 - **WHEN** normalizing a form with name containing "-alola"
@@ -70,19 +76,20 @@ The pipeline SHALL generate the following files in `src/data/`:
 - `pokemon.json` — Array of all PokemonEntry objects
 - `forms.json` — Map of formId to PokemonForm details
 - `types.json` — Array of type objects with translated names
-- `games.json` — Array of game objects with generation and version group info
 - `generations.json` — Array of generation metadata
 - `evolution-chains.json` — Map of chainId to array of Pokemon IDs in the chain
 
+`games.json` SHALL NOT be written to `src/data/`. Version-group data MAY be fetched internally during the pipeline for generation enrichment purposes but SHALL NOT be persisted as a separate output file.
+
 #### Scenario: All output files generated
 - **WHEN** the pipeline completes successfully
-- **THEN** all 6 JSON files SHALL exist in `src/data/`
-- **THEN** each file SHALL be valid JSON parseable by `JSON.parse()`
+- **THEN** exactly 5 JSON files SHALL exist in `src/data/`: `pokemon.json`, `forms.json`, `types.json`, `generations.json`, `evolution-chains.json`
+- **THEN** `games.json` SHALL NOT exist in `src/data/`
 
 #### Scenario: Pokemon.json completeness
 - **WHEN** inspecting `pokemon.json`
 - **THEN** it SHALL contain entries for all Pokemon in the National Dex (1025+ entries)
-- **THEN** each entry SHALL conform to the PokemonEntry interface
+- **THEN** each entry SHALL conform to the updated PokemonEntry interface (no `gameAvailability`)
 
 ### Requirement: TypeScript type definitions
 The pipeline SHALL create type definition files at `src/types/pokemon.ts` and `src/types/game.ts` matching the interfaces defined in spec section 2.3 (PokemonEntry, PokemonForm, FormType, Box, BoxSlot, and game-related types).

@@ -34,7 +34,6 @@ export interface PokemonForm {
   formType: FormType
   sprite: string
   types?: [string, string?]
-  gameAvailability?: string[]
 }
 
 export interface PokemonEntry {
@@ -47,7 +46,6 @@ export interface PokemonEntry {
   sprite: string
   spriteShiny?: string
   forms: PokemonForm[]
-  gameAvailability: string[]
   evolutionChainId?: number
   homeAvailable: boolean
 }

@@ -1,20 +1,19 @@
 ## ADDED Requirements
 
 ### Requirement: SettingsState interface
-The system SHALL define a `SettingsState` interface at `src/types/settings.ts` containing all user-configurable settings as defined in spec section 2.4:
+The system SHALL define a `SettingsState` interface at `src/types/settings.ts` containing all user-configurable settings. The `gameFilter` and `activeGames` fields SHALL NOT be present in `SettingsState`. All other fields from the previous definition are retained:
 - `variations: VariationToggles` — which form variations to track
 - `activeGenerations: number[]` — active generation filters (1-9)
-- `gameFilter: 'switch-only' | 'all'` — game filter mode
-- `activeGames: GameId[]` — list of active game IDs
 - `theme: 'light' | 'dark' | 'system'` — appearance theme
 - `locale: Locale` — UI language
 - `spriteStyle: SpriteStyle` — sprite display preference
 - `autoSave: boolean` — whether to auto-save changes
 - `lastBackup?: string` — ISO date of last backup
 
-#### Scenario: Settings cover all spec 2.4 fields
+#### Scenario: Settings cover all required fields
 - **WHEN** inspecting the SettingsState interface
-- **THEN** all fields from spec section 2.4 SHALL be present
+- **THEN** `variations`, `activeGenerations`, `theme`, `locale`, `spriteStyle`, `autoSave`, and `lastBackup` SHALL be present
+- **THEN** `gameFilter` and `activeGames` SHALL NOT be present
 
 #### Scenario: Default generations include all
 - **WHEN** creating default settings
@@ -36,11 +35,11 @@ The system SHALL define a `SpriteStyle` union type with values: `'home-3d'`, `'p
 - **THEN** all four options from spec section 2.4 SHALL be valid values
 
 ### Requirement: GameId type alias
-The system SHALL export a `GameId` type alias (`type GameId = string`) from `src/types/game.ts` for semantic clarity in game-related fields.
+The system SHALL continue to export a `GameId` type alias (`type GameId = string`) from `src/types/game.ts` for semantic clarity.
 
-#### Scenario: GameId used in settings and pokemon types
-- **WHEN** referencing game identifiers in SettingsState or PokemonEntry
-- **THEN** the `GameId` type SHALL be used instead of raw `string`
+#### Scenario: GameId remains importable
+- **WHEN** a source file imports `GameId` from `@/types/game`
+- **THEN** the type SHALL resolve to `string`
 
 ### Requirement: Barrel export
 The system SHALL provide a barrel export file at `src/types/index.ts` that re-exports all types from all type files (`pokemon.ts`, `game.ts`, `locale.ts`, `box.ts`, `preset.ts`, `settings.ts`).

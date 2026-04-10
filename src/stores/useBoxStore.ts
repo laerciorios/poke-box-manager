@@ -20,6 +20,7 @@ interface BoxState {
   reorderSlots: (boxId: string, fromIndex: number, toIndex: number) => void
   reorderBox: (boxId: string, newIndex: number) => void
   setBoxes: (boxes: Box[]) => void
+  toggleShiny: (boxId: string, slotIndex: number) => void
 }
 
 export const useBoxStore = createPersistedStore<BoxState>(
@@ -110,6 +111,19 @@ export const useBoxStore = createPersistedStore<BoxState>(
 
     setBoxes: (boxes) => {
       set({ boxes })
+    },
+
+    toggleShiny: (boxId, slotIndex) => {
+      set({
+        boxes: get().boxes.map((b) => {
+          if (b.id !== boxId) return b
+          const slots = [...b.slots]
+          const slot = slots[slotIndex]
+          if (!slot) return b
+          slots[slotIndex] = { ...slot, shiny: !slot.shiny }
+          return { ...b, slots }
+        }),
+      })
     },
   }),
   { version: 1 },

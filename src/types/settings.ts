@@ -1,5 +1,4 @@
 import type { Locale } from './locale'
-import type { GameId } from './game'
 
 export type SpriteStyle = 'home-3d' | 'pixel-gen5' | 'pixel-gen8' | 'official-art'
 
@@ -21,8 +20,6 @@ export interface VariationToggles {
 export interface SettingsState {
   variations: VariationToggles
   activeGenerations: number[]
-  gameFilter: 'switch-only' | 'all'
-  activeGames: GameId[]
   theme: 'light' | 'dark' | 'system'
   locale: Locale
   spriteStyle: SpriteStyle
@@ -50,8 +47,6 @@ export const DEFAULT_VARIATIONS: VariationToggles = {
 export const DEFAULT_SETTINGS: SettingsState = {
   variations: DEFAULT_VARIATIONS,
   activeGenerations: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  gameFilter: 'all',
-  activeGames: [],
   theme: 'dark',
   locale: 'pt-BR',
   spriteStyle: 'home-3d',

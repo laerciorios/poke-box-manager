@@ -2,14 +2,11 @@ import { createPersistedStore } from '@/lib/store'
 import type { SettingsState, SpriteStyle, VariationToggles } from '@/types/settings'
 import { DEFAULT_SETTINGS } from '@/types/settings'
 import type { Locale } from '@/types/locale'
-import type { GameId } from '@/types/game'
 
 interface SettingsActions {
   setVariation: (key: keyof VariationToggles, value: boolean) => void
   setVariations: (toggles: Partial<VariationToggles>) => void
   setActiveGenerations: (generations: number[]) => void
-  setGameFilter: (mode: 'switch-only' | 'all') => void
-  setActiveGames: (games: GameId[]) => void
   setTheme: (theme: 'light' | 'dark' | 'system') => void
   setLocale: (locale: Locale) => void
   setSpriteStyle: (style: SpriteStyle) => void
@@ -41,14 +38,6 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
       set({ activeGenerations: generations })
     },
 
-    setGameFilter: (mode) => {
-      set({ gameFilter: mode })
-    },
-
-    setActiveGames: (games) => {
-      set({ activeGames: games })
-    },
-
     setTheme: (theme) => {
       set({ theme })
     },
@@ -73,5 +62,15 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
       set({ ...DEFAULT_SETTINGS })
     },
   }),
-  { version: 1 },
+  {
+    version: 2,
+    migrate: (persisted: unknown, fromVersion: number) => {
+      const state = persisted as Record<string, unknown>
+      if (fromVersion < 2) {
+        delete state.gameFilter
+        delete state.activeGames
+      }
+      return state as unknown as SettingsStore
+    },
+  },
 )

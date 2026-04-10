@@ -18,6 +18,7 @@ import { BoxDragLayer } from '@/components/boxes/BoxDragLayer'
 import { AutoFillButton } from '@/components/boxes/AutoFillButton'
 import { useBoxStore } from '@/stores/useBoxStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { usePokedexStore } from '@/stores/usePokedexStore'
 import { useRegistrationMode } from '@/hooks/useRegistrationMode'
 import { fromSlotId } from '@/lib/dnd-utils'
 import { getPokemonName, getFormName } from '@/lib/pokemon-names'
@@ -42,9 +43,17 @@ function getSlotName(
   return pokemon ? getPokemonName(pokemon, locale) : undefined
 }
 
-function getSpriteUrl(slot: { pokemonId: number; formId?: string }): string | undefined {
+function getSpriteUrl(slot: { pokemonId: number; formId?: string; shiny?: boolean }): string | undefined {
   if (slot.formId) return formsById[slot.formId]?.sprite
-  return pokemonById.get(slot.pokemonId)?.sprite
+  const pokemon = pokemonById.get(slot.pokemonId)
+  if (!pokemon) return undefined
+  if (slot.shiny && pokemon.spriteShiny) return pokemon.spriteShiny
+  return pokemon.sprite
+}
+
+function hasShinySprite(slot: { pokemonId: number; formId?: string }): boolean {
+  if (slot.formId) return false
+  return !!pokemonById.get(slot.pokemonId)?.spriteShiny
 }
 
 interface ActiveDrag {
@@ -62,6 +71,9 @@ export default function BoxesPage() {
   const deleteBox = useBoxStore((s) => s.deleteBox)
   const moveSlot = useBoxStore((s) => s.moveSlot)
   const reorderSlots = useBoxStore((s) => s.reorderSlots)
+  const toggleShiny = useBoxStore((s) => s.toggleShiny)
+  const isRegistered = usePokedexStore((s) => s.isRegistered)
+  const toggleRegistered = usePokedexStore((s) => s.toggleRegistered)
   const showPokemonNamesInBox = useSettingsStore((s) => s.showPokemonNamesInBox)
   const setShowPokemonNamesInBox = useSettingsStore((s) => s.setShowPokemonNamesInBox)
   const [activeBoxIndex, setActiveBoxIndex] = useState(0)
@@ -108,6 +120,13 @@ export default function BoxesPage() {
 
   function handleAddBox() {
     createBox(`Box ${boxes.length + 1}`)
+  }
+
+  function handleShinyToggle(boxId: string, slotIndex: number, slot: BoxSlot) {
+    if (!slot.shiny && !isRegistered(slot.pokemonId, slot.formId)) {
+      toggleRegistered(slot.pokemonId, slot.formId)
+    }
+    toggleShiny(boxId, slotIndex)
   }
 
   function handleDeleteBox(boxId: string) {
@@ -178,9 +197,11 @@ export default function BoxesPage() {
                     onToggle: registration.toggleMode,
                     handleSlotClick: registration.handleSlotClick,
                     markSelected: registration.markSelected,
+                    onShinyToggle: handleShinyToggle,
                   }}
                   getPokemonName={(slot) => getSlotName(slot, locale)}
                   getSpriteUrl={getSpriteUrl}
+                  hasShinySprite={hasShinySprite}
                   dndEnabled={!registration.isActive}
                   showPokemonNames={showPokemonNamesInBox}
                   onToggleShowNames={() => setShowPokemonNamesInBox(!showPokemonNamesInBox)}

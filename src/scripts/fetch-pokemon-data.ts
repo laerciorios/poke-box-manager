@@ -180,6 +180,7 @@ async function main() {
   for (const vg of versionGroupsRaw) {
     vgMap.set(vg.id, vg)
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const games: GameEntry[] = versionsRaw.map((v: any) => {
     const game = normalizeGame(v)
     const vg = vgMap.get(game.versionGroupId)
@@ -200,7 +201,6 @@ async function main() {
   writeJson('pokemon.json', pokemonEntries)
   writeJson('forms.json', allForms)
   writeJson('types.json', types)
-  writeJson('games.json', games)
   writeJson('generations.json', generations)
   writeJson('evolution-chains.json', evolutionChains)
 
@@ -211,7 +211,6 @@ async function main() {
   console.log(`   Pokemon:    ${pokemonEntries.length}`)
   console.log(`   Forms:      ${Object.keys(allForms).length}`)
   console.log(`   Types:      ${types.length}`)
-  console.log(`   Games:      ${games.length}`)
   console.log(`   Generations:${generations.length}`)
   console.log(`   Evo Chains: ${Object.keys(evolutionChains).length}`)
   console.log(`   Time:       ${elapsed}s`)

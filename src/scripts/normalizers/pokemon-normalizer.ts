@@ -27,7 +27,6 @@ export function normalizePokemon(
     pokemonData.sprites?.front_shiny ??
     undefined
 
-  const gameAvailability = extractGameAvailability(pokemonData.game_indices)
   const evolutionChainId = extractEvolutionChainId(speciesData.evolution_chain?.url)
   const homeAvailable = sprite !== ''
 
@@ -43,7 +42,6 @@ export function normalizePokemon(
     sprite,
     ...(spriteShiny && { spriteShiny }),
     forms,
-    gameAvailability,
     ...(evolutionChainId !== undefined && { evolutionChainId }),
     homeAvailable,
   }
@@ -60,11 +58,6 @@ function extractTypes(types: any[]): [string, string?] {
     return [sorted[0].type.name, sorted[1].type.name]
   }
   return [sorted[0]?.type?.name ?? 'normal']
-}
-
-function extractGameAvailability(gameIndices: any[]): string[] {
-  if (!gameIndices) return []
-  return gameIndices.map((gi: any) => gi.version?.name).filter(Boolean)
 }
 
 function extractEvolutionChainId(url?: string): number | undefined {

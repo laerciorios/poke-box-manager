@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { PokemonTooltip } from '@/components/pokemon'
 import { BoxSlotCell } from './BoxSlotCell'
 import { RegistrationModeToggle } from './RegistrationModeToggle'
 import { FloatingActionBar } from './FloatingActionBar'
@@ -25,6 +26,7 @@ interface RegistrationModeProps {
     slot: BoxSlot | null,
   ) => void
   markSelected: (registered: boolean) => void
+  onShinyToggle: (boxId: string, slotIndex: number, slot: BoxSlot) => void
 }
 
 interface BoxGridProps {
@@ -33,7 +35,8 @@ interface BoxGridProps {
   selectedSlotIndex?: number | null
   onSlotClick?: (index: number) => void
   getPokemonName?: (slot: { pokemonId: number; formId?: string }) => string | undefined
-  getSpriteUrl?: (slot: { pokemonId: number; formId?: string }) => string | undefined
+  getSpriteUrl?: (slot: { pokemonId: number; formId?: string; shiny?: boolean }) => string | undefined
+  hasShinySprite?: (slot: { pokemonId: number; formId?: string }) => boolean
   className?: string
   dndEnabled?: boolean
   showPokemonNames?: boolean
@@ -47,6 +50,7 @@ export function BoxGrid({
   onSlotClick,
   getPokemonName,
   getSpriteUrl,
+  hasShinySprite,
   className,
   dndEnabled = false,
   showPokemonNames = false,
@@ -78,17 +82,34 @@ export function BoxGrid({
           ? (e?: React.MouseEvent) => registrationMode.handleSlotClick(box.id, index, e!, slot)
           : () => onSlotClick?.(index)
 
-        return (
+        const useTooltip = !!slot && !registrationMode?.isActive
+
+        const cell = (
           <BoxSlotCell
             key={toSlotId(box.id, index)}
             slot={slotWithLiveRegistered}
             selected={isSelected}
             pokemonName={slot ? getPokemonName?.(slot) : undefined}
-            spriteUrl={slot ? getSpriteUrl?.(slot) : undefined}
+            spriteUrl={slotWithLiveRegistered ? getSpriteUrl?.(slotWithLiveRegistered) : undefined}
             onClick={handleClick}
             sortableId={dndEnabled ? toSlotId(box.id, index) : undefined}
             showName={showPokemonNames}
+            suppressTooltip={useTooltip}
+            registrationModeActive={registrationMode?.isActive}
+            hasShinySprite={slot ? hasShinySprite?.(slot) : undefined}
+            onShinyToggle={registrationMode && slot ? (e) => {
+              e.stopPropagation()
+              registrationMode.onShinyToggle(box.id, index, slot)
+            } : undefined}
           />
+        )
+
+        return useTooltip ? (
+          <PokemonTooltip key={toSlotId(box.id, index)} pokemonId={slot.pokemonId}>
+            {cell}
+          </PokemonTooltip>
+        ) : (
+          cell
         )
       })}
     </div>

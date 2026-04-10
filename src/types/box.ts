@@ -6,6 +6,7 @@ export interface BoxSlot {
   pokemonId: number
   formId?: string
   registered: boolean
+  shiny?: boolean
 }
 
 export interface Box {

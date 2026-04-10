@@ -172,6 +172,13 @@
     },
     "templateHint": "Variáveis disponíveis: {n}, {total}, {start}, {end}, {gen}, {type}, {region}"
   },
+  "Pokemon": {
+    "generation": "Geração {n}",
+    "category": "Categoria",
+    "forms": "Formas",
+    "evolution": "Cadeia Evolutiva",
+    "shiny": "Shiny"
+  },
   "Home": {
     "title": "Pokémon Box Manager",
     "subtitle": "Gerencie suas boxes do Pokémon Home e acompanhe o progresso da Pokédex."

@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { PokemonEntry } from '../types/pokemon'
-import type { TypeEntry, GameEntry, GenerationEntry } from '../types/game'
+import type { TypeEntry, GenerationEntry } from '../types/game'
 
 const DATA_DIR = join(process.cwd(), 'src', 'data')
 
@@ -9,7 +9,6 @@ const REQUIRED_FILES = [
   'pokemon.json',
   'forms.json',
   'types.json',
-  'games.json',
   'generations.json',
   'evolution-chains.json',
 ]
@@ -70,7 +69,6 @@ function main() {
   const pokemon = loadJson<PokemonEntry[]>('pokemon.json')!
   const forms = loadJson<Record<string, unknown>>('forms.json')!
   const types = loadJson<TypeEntry[]>('types.json')!
-  const games = loadJson<GameEntry[]>('games.json')!
   const generations = loadJson<GenerationEntry[]>('generations.json')!
   const evolutionChains = loadJson<Record<string, number[]>>('evolution-chains.json')!
 
@@ -150,22 +148,6 @@ function main() {
     ok('All Pokemon type references are valid')
   }
 
-  // Check game references
-  const gameNames = new Set(games.map((g) => g.id))
-  let invalidGameRefs = 0
-  for (const entry of pokemon) {
-    for (const g of entry.gameAvailability) {
-      if (!gameNames.has(g)) {
-        invalidGameRefs++
-      }
-    }
-  }
-  if (invalidGameRefs === 0) {
-    ok('All game availability references are valid')
-  } else {
-    warn(`${invalidGameRefs} game availability references point to unknown games`)
-  }
-
   // Check evolution chain references
   const chainIds = new Set(Object.keys(evolutionChains).map(Number))
   let invalidChainRefs = 0
@@ -187,7 +169,6 @@ function main() {
   console.log(`  Pokemon:          ${pokemon.length}`)
   console.log(`  Forms:            ${Object.keys(forms).length}`)
   console.log(`  Types:            ${types.length}`)
-  console.log(`  Games:            ${games.length}`)
   console.log(`  Generations:      ${generations.length}`)
   console.log(`  Evolution Chains: ${Object.keys(evolutionChains).length}`)
   console.log('──────────────────────────────────────')

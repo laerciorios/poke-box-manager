@@ -172,6 +172,13 @@
     },
     "templateHint": "Available variables: {n}, {total}, {start}, {end}, {gen}, {type}, {region}"
   },
+  "Pokemon": {
+    "generation": "Generation {n}",
+    "category": "Category",
+    "forms": "Forms",
+    "evolution": "Evolution Chain",
+    "shiny": "Shiny"
+  },
   "Home": {
     "title": "Pokémon Box Manager",
     "subtitle": "Manage your Pokémon Home boxes and track Pokédex completion."

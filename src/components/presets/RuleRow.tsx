@@ -20,13 +20,13 @@ import { Separator } from '@/components/ui/separator'
 import type { PresetRule } from '@/types/preset'
 import type { PokemonCategory } from '@/types/pokemon'
 
-const CATEGORIES: { value: PokemonCategory; label: string }[] = [
-  { value: 'normal', label: 'Normal' },
-  { value: 'legendary', label: 'Legendary' },
-  { value: 'mythical', label: 'Mythical' },
-  { value: 'baby', label: 'Baby' },
-  { value: 'ultra-beast', label: 'Ultra Beast' },
-  { value: 'paradox', label: 'Paradox' },
+const CATEGORY_KEYS: { value: PokemonCategory; labelKey: string }[] = [
+  { value: 'normal', labelKey: 'categoryNormal' },
+  { value: 'legendary', labelKey: 'categoryLegendary' },
+  { value: 'mythical', labelKey: 'categoryMythical' },
+  { value: 'baby', labelKey: 'categoryBaby' },
+  { value: 'ultra-beast', labelKey: 'categoryUltraBeast' },
+  { value: 'paradox', labelKey: 'categoryParadox' },
 ]
 
 const GENERATIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -167,7 +167,7 @@ export function RuleRow({
       <div>
         <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">{t('filterCategory')}</p>
         <div className="flex flex-wrap gap-3">
-          {CATEGORIES.map(({ value, label }) => (
+          {CATEGORY_KEYS.map(({ value, labelKey }) => (
             <label key={value} className={`flex items-center gap-1.5 cursor-pointer ${filterDisabled ? 'opacity-40 pointer-events-none' : ''}`}>
               <input
                 type="checkbox"
@@ -176,7 +176,7 @@ export function RuleRow({
                 onChange={(e) => toggleCategory(value, e.target.checked)}
                 className="size-4 rounded"
               />
-              <span className="text-sm">{label}</span>
+              <span className="text-sm">{t(labelKey)}</span>
             </label>
           ))}
         </div>

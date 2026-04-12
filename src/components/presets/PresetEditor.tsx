@@ -81,7 +81,7 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
           r.filter.categories?.length || r.filter.generations?.length || r.filter.types?.length,
       )
     ) {
-      if (!window.confirm('Replace current rules with built-in preset rules?')) return
+      if (!window.confirm(t('confirmReplaceRules'))) return
     }
     setRules(preset.rules.map((r) => ({ ...r })))
     setIsDirty(true)
@@ -148,7 +148,7 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
   }
 
   function handleCancel() {
-    if (isDirty && !window.confirm('Discard changes?')) return
+    if (isDirty && !window.confirm(t('unsavedChangesDescription'))) return
     onClose()
   }
 
@@ -178,7 +178,7 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
               value={name}
               onChange={(e) => handleNameChange(e.target.value)}
               maxLength={60}
-              placeholder="My Custom Preset"
+              placeholder={t('newPresetNamePlaceholder')}
               aria-required
             />
             {!canSave && name.length > 0 && (
@@ -191,7 +191,7 @@ export function PresetEditor({ open, onClose, initialPreset }: PresetEditorProps
             <span className="text-sm font-medium shrink-0">{t('seedFrom')}</span>
             <Select onValueChange={handleSeedFromBuiltin}>
               <SelectTrigger className="w-56">
-                <SelectValue placeholder="Select a built-in preset…" />
+                <SelectValue placeholder={t('selectBuiltInPlaceholder')} />
               </SelectTrigger>
               <SelectContent>
                 {BUILTIN_PRESETS.map((p) => (

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { applyPreset } from '@/lib/box-engine/organizer'
 import type { OrganizationPreset, PresetRule } from '@/types/preset'
@@ -20,12 +21,13 @@ interface PresetPreviewProps {
 }
 
 export function PresetPreview({ rules, name }: PresetPreviewProps) {
+  const t = useTranslations('Presets')
   const [boxes, setBoxes] = useState<Box[] | null>(null)
 
   if (rules.length === 0) {
     return (
       <div className="rounded-lg border border-dashed p-6 text-center text-sm text-muted-foreground">
-        Add at least one rule to see a preview.
+        {t('previewEmpty')}
       </div>
     )
   }
@@ -54,11 +56,11 @@ export function PresetPreview({ rules, name }: PresetPreviewProps) {
     <div className="space-y-4">
       <div className="flex items-center gap-3">
         <Button type="button" variant="outline" size="sm" onClick={handlePreview}>
-          Preview
+          {t('generatePreview')}
         </Button>
         {boxes && (
           <span className="text-sm text-muted-foreground">
-            {totalBoxes} box{totalBoxes !== 1 ? 'es' : ''} · {totalPokemon} Pokémon
+            {t('previewStats', { boxes: totalBoxes, pokemon: totalPokemon })}
           </span>
         )}
       </div>

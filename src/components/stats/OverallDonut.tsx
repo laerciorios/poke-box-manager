@@ -39,8 +39,8 @@ export function OverallDonut({
               dataKey="value"
               strokeWidth={0}
             >
-              <Cell fill="hsl(var(--primary))" />
-              <Cell fill="hsl(var(--muted))" />
+              <Cell fill="var(--primary)" />
+              <Cell fill="var(--muted)" />
             </Pie>
           </PieChart>
         </ResponsiveContainer>

@@ -1,6 +1,7 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
+import type { Locale } from '@/types/locale'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -32,21 +33,24 @@ function PresetCard({
   onDelete,
 }: PresetCardProps) {
   const t = useTranslations('Presets')
+  const locale = useLocale() as Locale
+  const displayName = preset.names?.[locale] ?? preset.name
+  const displayDescription = preset.descriptions?.[locale] ?? preset.description
   return (
     <Card className="flex flex-col gap-3 p-4">
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <span className="truncate font-medium">{preset.name}</span>
+            <span className="truncate font-medium">{displayName}</span>
             {isBuiltIn && (
-              <Badge variant="secondary" className="shrink-0 text-xs">
+              <Badge variant="secondary" className="shrink-0 text-xs" title={t('builtInReadOnly')}>
                 {t('builtInBadge')}
               </Badge>
             )}
           </div>
-          <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{preset.description}</p>
+          <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{displayDescription}</p>
           <p className="mt-1 text-xs text-muted-foreground">
-            {preset.rules.length} rule{preset.rules.length !== 1 ? 's' : ''}
+            {t('rulesCount', { count: preset.rules.length })}
           </p>
         </div>
       </div>
@@ -90,13 +94,13 @@ export function PresetList({ onEdit, onNew }: PresetListProps) {
   function handleDuplicateBuiltin(preset: OrganizationPreset) {
     createPreset({
       ...preset,
-      name: `${preset.name} (Copy)`,
+      name: `${preset.name} (${t('copySuffix')})`,
       isBuiltIn: false,
     })
   }
 
   function handleDelete(presetId: string) {
-    if (window.confirm('Delete this preset? This cannot be undone.')) {
+    if (window.confirm(t('confirmDeleteDescription'))) {
       deletePreset(presetId)
     }
   }
@@ -105,7 +109,7 @@ export function PresetList({ onEdit, onNew }: PresetListProps) {
     onEdit({
       ...preset,
       id: '',
-      name: `${preset.name} (Custom)`,
+      name: `${preset.name} (${t('customSuffix')})`,
       isBuiltIn: false,
     })
   }

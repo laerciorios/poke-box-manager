@@ -1,17 +1,26 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 
 interface SearchBarProps {
   value: string
   onChange: (value: string) => void
+  onFocus?: () => void
   placeholder?: string
 }
 
-export function SearchBar({ value, onChange, placeholder = 'Search...' }: SearchBarProps) {
+export function SearchBar({ value, onChange, onFocus, placeholder = 'Search...' }: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement>(null)
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  // Local state for immediate display; context is updated after 150ms debounce
+  const [localValue, setLocalValue] = useState(value)
+
+  // Sync local value if context resets (e.g. close() clears query to '')
+  useEffect(() => {
+    if (value === '') setLocalValue('')
+  }, [value])
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -30,14 +39,22 @@ export function SearchBar({ value, onChange, placeholder = 'Search...' }: Search
     return () => window.removeEventListener('keydown', handler)
   }, [onChange])
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value
+    setLocalValue(val)
+    if (debounceRef.current) clearTimeout(debounceRef.current)
+    debounceRef.current = setTimeout(() => onChange(val), 150)
+  }
+
   return (
     <div className="relative flex items-center">
       <Search className="absolute left-2.5 h-4 w-4 text-muted-foreground" />
       <Input
         ref={inputRef}
         type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
+        value={localValue}
+        onChange={handleChange}
+        onFocus={onFocus}
         placeholder={placeholder}
         aria-label="Search"
         className="h-8 w-48 pl-8 pr-16 text-sm lg:w-64"

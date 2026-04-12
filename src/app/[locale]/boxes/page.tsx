@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import {
   DndContext,
@@ -78,7 +78,28 @@ export default function BoxesPage() {
   const setShowPokemonNamesInBox = useSettingsStore((s) => s.setShowPokemonNamesInBox)
   const [activeBoxIndex, setActiveBoxIndex] = useState(0)
   const [activeDrag, setActiveDrag] = useState<ActiveDrag | null>(null)
+  const [highlightSlotIndex, setHighlightSlotIndex] = useState<number | null>(null)
   const registration = useRegistrationMode()
+
+  // Navigate to a specific box+slot from ?box=<id>&slot=<index> URL params (set by search result click)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const boxId = params.get('box')
+    const slotParam = params.get('slot')
+    if (boxId && boxes.length > 0) {
+      const idx = boxes.findIndex((b) => b.id === boxId)
+      if (idx !== -1) {
+        setActiveBoxIndex(idx)
+        if (slotParam !== null) {
+          const slotIndex = parseInt(slotParam, 10)
+          setHighlightSlotIndex(Number.isFinite(slotIndex) ? slotIndex : null)
+          // Clear highlight after 2s
+          setTimeout(() => setHighlightSlotIndex(null), 2000)
+        }
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [boxes.length])
 
   const safeIndex = Math.min(activeBoxIndex, Math.max(0, boxes.length - 1))
   const activeBox = boxes[safeIndex] ?? null
@@ -199,6 +220,7 @@ export default function BoxesPage() {
                     markSelected: registration.markSelected,
                     onShinyToggle: handleShinyToggle,
                   }}
+                  selectedSlotIndex={highlightSlotIndex}
                   getPokemonName={(slot) => getSlotName(slot, locale)}
                   getSpriteUrl={getSpriteUrl}
                   hasShinySprite={hasShinySprite}

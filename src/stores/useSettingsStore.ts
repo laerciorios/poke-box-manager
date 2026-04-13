@@ -1,5 +1,5 @@
 import { createPersistedStore } from '@/lib/store'
-import type { SettingsState, SpriteStyle, VariationToggles } from '@/types/settings'
+import type { SettingsState, SpriteStyle, VariationToggles, PokedexView } from '@/types/settings'
 import { DEFAULT_SETTINGS } from '@/types/settings'
 import type { Locale } from '@/types/locale'
 
@@ -14,6 +14,7 @@ interface SettingsActions {
   toggleSidebar: () => void
   resetSettings: () => void
   setShinyTrackerEnabled: (value: boolean) => void
+  setPokedexView: (view: PokedexView) => void
 }
 
 type SettingsStore = SettingsState & SettingsActions
@@ -66,9 +67,13 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
     setShinyTrackerEnabled: (value) => {
       set({ shinyTrackerEnabled: value })
     },
+
+    setPokedexView: (view) => {
+      set({ pokedexView: view })
+    },
   }),
   {
-    version: 3,
+    version: 4,
     migrate: (persisted: unknown, fromVersion: number) => {
       const state = persisted as Record<string, unknown>
       if (fromVersion < 2) {
@@ -77,6 +82,9 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
       }
       if (fromVersion < 3) {
         state.shinyTrackerEnabled ??= false
+      }
+      if (fromVersion < 4) {
+        state.pokedexView ??= 'table'
       }
       return state as unknown as SettingsStore
     },

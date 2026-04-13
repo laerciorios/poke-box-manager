@@ -1,6 +1,7 @@
 import type { Locale } from './locale'
 
 export type SpriteStyle = 'home-3d' | 'pixel-gen5' | 'pixel-gen8' | 'official-art'
+export type PokedexView = 'table' | 'grid'
 
 export interface VariationToggles {
   regionalForms: boolean
@@ -28,6 +29,7 @@ export interface SettingsState {
   showPokemonNamesInBox: boolean
   sidebarCollapsed: boolean
   shinyTrackerEnabled: boolean
+  pokedexView: PokedexView
 }
 
 export const DEFAULT_VARIATIONS: VariationToggles = {
@@ -55,4 +57,5 @@ export const DEFAULT_SETTINGS: SettingsState = {
   showPokemonNamesInBox: false,
   sidebarCollapsed: false,
   shinyTrackerEnabled: false,
+  pokedexView: 'table',
 }

@@ -2,6 +2,7 @@ import { arrayMove } from '@dnd-kit/sortable'
 import { createPersistedStore } from '@/lib/store'
 import type { Box, BoxSlot } from '@/types/box'
 import { BOX_SIZE } from '@/types/box'
+import { useSettingsStore } from '@/stores/useSettingsStore'
 
 interface BoxState {
   boxes: Box[]
@@ -35,10 +36,12 @@ export const useBoxStore = createPersistedStore<BoxState>(
         slots: Array.from({ length: BOX_SIZE }, () => null),
       }
       set({ boxes: [...get().boxes, newBox] })
+      useSettingsStore.getState().recordChange()
     },
 
     deleteBox: (boxId) => {
       set({ boxes: get().boxes.filter((b) => b.id !== boxId) })
+      useSettingsStore.getState().recordChange()
     },
 
     renameBox: (boxId, newName) => {
@@ -47,6 +50,7 @@ export const useBoxStore = createPersistedStore<BoxState>(
           b.id === boxId ? { ...b, name: newName } : b,
         ),
       })
+      useSettingsStore.getState().recordChange()
     },
 
     setBoxLabel: (boxId, label) => {
@@ -55,6 +59,7 @@ export const useBoxStore = createPersistedStore<BoxState>(
           b.id === boxId ? { ...b, label } : b,
         ),
       })
+      useSettingsStore.getState().recordChange()
     },
 
     setSlot: (boxId, slotIndex, slot) => {
@@ -66,6 +71,7 @@ export const useBoxStore = createPersistedStore<BoxState>(
           return { ...b, slots }
         }),
       })
+      useSettingsStore.getState().recordChange()
     },
 
     clearSlot: (boxId, slotIndex) => {
@@ -77,6 +83,7 @@ export const useBoxStore = createPersistedStore<BoxState>(
           return { ...b, slots }
         }),
       })
+      useSettingsStore.getState().recordChange()
     },
 
     moveSlot: (fromBoxId, fromIndex, toBoxId, toIndex) => {
@@ -90,6 +97,7 @@ export const useBoxStore = createPersistedStore<BoxState>(
       fromBox.slots[fromIndex] = temp ?? null
 
       set({ boxes })
+      useSettingsStore.getState().recordChange()
     },
 
     reorderSlots: (boxId, fromIndex, toIndex) => {
@@ -98,6 +106,7 @@ export const useBoxStore = createPersistedStore<BoxState>(
           b.id !== boxId ? b : { ...b, slots: arrayMove(b.slots, fromIndex, toIndex) },
         ),
       })
+      useSettingsStore.getState().recordChange()
     },
 
     reorderBox: (boxId, newIndex) => {
@@ -107,10 +116,12 @@ export const useBoxStore = createPersistedStore<BoxState>(
       const [box] = boxes.splice(currentIndex, 1)
       boxes.splice(newIndex, 0, box)
       set({ boxes })
+      useSettingsStore.getState().recordChange()
     },
 
     setBoxes: (boxes) => {
       set({ boxes })
+      useSettingsStore.getState().recordChange()
     },
 
     toggleShiny: (boxId, slotIndex) => {
@@ -124,6 +135,7 @@ export const useBoxStore = createPersistedStore<BoxState>(
           return { ...b, slots }
         }),
       })
+      useSettingsStore.getState().recordChange()
     },
   }),
   { version: 1 },

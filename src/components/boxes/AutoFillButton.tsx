@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Wand2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -23,6 +23,7 @@ import { usePresetsStore } from '@/stores/usePresetsStore'
 import { useBoxStore } from '@/stores/useBoxStore'
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { useModalStack } from '@/contexts/ModalStackContext'
 import { BUILTIN_PRESETS } from '@/lib/presets/builtin-presets'
 import { applyPreset } from '@/lib/preset-engine'
 import pokemonData from '@/data/pokemon.json'
@@ -43,9 +44,18 @@ export function AutoFillButton() {
 
   const allPresets = [...BUILTIN_PRESETS, ...userPresets]
 
+  const { push, pop } = useModalStack()
   const [selectedPresetId, setSelectedPresetId] = useState<string | null>(allPresets[0]?.id ?? null)
   const [confirmOpen, setConfirmOpen] = useState(false)
   const selectedPresetName = allPresets.find((p) => p.id === selectedPresetId)?.name
+
+  useEffect(() => {
+    if (confirmOpen) {
+      push('autofill-confirm', () => setConfirmOpen(false))
+    } else {
+      pop('autofill-confirm')
+    }
+  }, [confirmOpen, push, pop])
 
   const hasExistingData = boxes.some((box) => box.slots.some((slot) => slot !== null))
 

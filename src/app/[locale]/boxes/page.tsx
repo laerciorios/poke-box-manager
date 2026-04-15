@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import {
   DndContext,
@@ -20,6 +20,9 @@ import { useBoxStore } from '@/stores/useBoxStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import { useRegistrationMode } from '@/hooks/useRegistrationMode'
+import { useSlotFocus } from '@/hooks/useSlotFocus'
+import { useSwipeGesture } from '@/hooks/useSwipeGesture'
+import { useKeyboardShortcut } from '@/contexts/KeyboardShortcutContext'
 import { fromSlotId } from '@/lib/dnd-utils'
 import { getPokemonName, getFormName } from '@/lib/pokemon-names'
 import pokemonData from '@/data/pokemon.json'
@@ -80,6 +83,9 @@ export default function BoxesPage() {
   const [activeDrag, setActiveDrag] = useState<ActiveDrag | null>(null)
   const [highlightSlotIndex, setHighlightSlotIndex] = useState<number | null>(null)
   const registration = useRegistrationMode()
+  const { focusedSlotIndex, moveFocus } = useSlotFocus()
+  const isDraggingRef = useRef(false)
+  const swipeContainerRef = useRef<HTMLDivElement>(null)
 
   // Navigate to a specific box+slot from ?box=<id>&slot=<index> URL params (set by search result click)
   useEffect(() => {
@@ -106,7 +112,7 @@ export default function BoxesPage() {
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: { distance: 5 },
+      activationConstraint: { distance: 8, delay: 150, tolerance: 5 },
     }),
   )
 
@@ -115,6 +121,7 @@ export default function BoxesPage() {
     const box = boxes.find((b) => b.id === boxId)
     const slot = box?.slots[slotIndex] ?? null
     setActiveDrag({ boxId, slotIndex, slot })
+    isDraggingRef.current = true
   }
 
   function handleDragEnd(event: DragEndEvent) {
@@ -129,6 +136,7 @@ export default function BoxesPage() {
       }
     }
     setActiveDrag(null)
+    isDraggingRef.current = false
   }
 
   function handlePrevious() {
@@ -138,6 +146,37 @@ export default function BoxesPage() {
   function handleNext() {
     setActiveBoxIndex((i) => Math.min(boxes.length - 1, i + 1))
   }
+
+  // Swipe gesture for touch box navigation (guarded against active drag)
+  useSwipeGesture(swipeContainerRef, {
+    onSwipeLeft: () => { if (!isDraggingRef.current) handleNext() },
+    onSwipeRight: () => { if (!isDraggingRef.current) handlePrevious() },
+  })
+
+  // Enter: toggle registration for the keyboard-focused slot (registration mode only)
+  useKeyboardShortcut('box-enter-register', (e: KeyboardEvent) => {
+    if (e.key !== 'Enter') return
+    if (!registration.isActive) return
+    if (focusedSlotIndex === null) return
+    const slot = activeBox?.slots[focusedSlotIndex]
+    if (!slot) return
+    toggleRegistered(slot.pokemonId, slot.formId)
+  })
+
+  // Arrow-key slot navigation (suppressed during drag)
+  useKeyboardShortcut('box-arrow-nav', (e: KeyboardEvent) => {
+    if (isDraggingRef.current) return
+    const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']
+    if (!arrowKeys.includes(e.key)) return
+    e.preventDefault()
+    const dirMap: Record<string, 'up' | 'down' | 'left' | 'right'> = {
+      ArrowUp: 'up',
+      ArrowDown: 'down',
+      ArrowLeft: 'left',
+      ArrowRight: 'right',
+    }
+    moveFocus(dirMap[e.key], boxes.length, safeIndex, setActiveBoxIndex)
+  })
 
   function handleAddBox() {
     createBox(`Box ${boxes.length + 1}`)
@@ -201,15 +240,20 @@ export default function BoxesPage() {
 
             {activeBox && (
               <div className="space-y-4">
-                <BoxNavigation
-                  boxId={activeBox.id}
-                  boxName={activeBox.name}
-                  boxLabel={activeBox.label}
-                  currentIndex={safeIndex}
-                  totalBoxes={boxes.length}
-                  onPrevious={handlePrevious}
-                  onNext={handleNext}
-                />
+                {/* swipeContainerRef on the navigation area keeps swipe away from the scrollable grid */}
+                <div ref={swipeContainerRef}>
+                  <BoxNavigation
+                    boxId={activeBox.id}
+                    boxName={activeBox.name}
+                    boxLabel={activeBox.label}
+                    currentIndex={safeIndex}
+                    totalBoxes={boxes.length}
+                    onPrevious={handlePrevious}
+                    onNext={handleNext}
+                    onKeyboardPrev={handlePrevious}
+                    onKeyboardNext={handleNext}
+                  />
+                </div>
                 <BoxGrid
                   box={activeBox}
                   registrationMode={{
@@ -221,6 +265,7 @@ export default function BoxesPage() {
                     onShinyToggle: handleShinyToggle,
                   }}
                   selectedSlotIndex={highlightSlotIndex}
+                  keyboardFocusIndex={focusedSlotIndex}
                   getPokemonName={(slot) => getSlotName(slot, locale)}
                   getSpriteUrl={getSpriteUrl}
                   hasShinySprite={hasShinySprite}

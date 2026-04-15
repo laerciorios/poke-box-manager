@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
+import { useSearchBar } from '@/contexts/SearchBarContext'
+import { useKeyboardShortcut } from '@/contexts/KeyboardShortcutContext'
 
 interface SearchBarProps {
   value: string
@@ -13,31 +15,46 @@ interface SearchBarProps {
 
 export function SearchBar({ value, onChange, onFocus, placeholder = 'Search...' }: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement>(null)
+  const { inputRef: contextInputRef } = useSearchBar()
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   // Local state for immediate display; context is updated after 150ms debounce
   const [localValue, setLocalValue] = useState(value)
+
+  // Expose inputRef to context so KeyboardShortcutProvider can focus it
+  useEffect(() => {
+    contextInputRef.current = inputRef.current
+    return () => {
+      contextInputRef.current = null
+    }
+  })
 
   // Sync local value if context resets (e.g. close() clears query to '')
   useEffect(() => {
     if (value === '') setLocalValue('')
   }, [value])
 
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        if (document.activeElement !== inputRef.current) {
-          e.preventDefault()
-          inputRef.current?.focus()
-        }
+  // Register Cmd/Ctrl+K and / to focus the search input
+  useKeyboardShortcut('search-focus', (e: KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault()
+      if (document.activeElement !== inputRef.current) {
+        inputRef.current?.focus()
       }
-      if (e.key === 'Escape' && document.activeElement === inputRef.current) {
-        onChange('')
-        inputRef.current?.blur()
+    } else if (e.key === '/') {
+      e.preventDefault()
+      if (document.activeElement !== inputRef.current) {
+        inputRef.current?.focus()
       }
     }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [onChange])
+  })
+
+  // Register Escape to clear and blur search input when it's focused
+  useKeyboardShortcut('search-escape', (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && document.activeElement === inputRef.current) {
+      onChange('')
+      inputRef.current?.blur()
+    }
+  })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = e.target.value

@@ -39,7 +39,7 @@ export const GENERATION_REGION: Record<number, string> = {
 export function sortPokemon(
   pokemon: PokemonEntry[],
   criteria: SortCriteria,
-  evolutionChains: Record<number, number[]> = {},
+  evolutionChains: Record<number, { pokemonIds: number[] }> = {},
 ): PokemonEntry[] {
   const arr = [...pokemon]
 
@@ -68,9 +68,9 @@ export function sortPokemon(
       const chainKey = new Map<number, number>() // pokemonId → min chain dex id
       const chainPos = new Map<number, number>() // pokemonId → position within chain
 
-      for (const members of Object.values(evolutionChains)) {
-        const minId = Math.min(...members)
-        members.forEach((id, idx) => {
+      for (const { pokemonIds } of Object.values(evolutionChains)) {
+        const minId = Math.min(...pokemonIds)
+        pokemonIds.forEach((id, idx) => {
           chainKey.set(id, minId)
           chainPos.set(id, idx)
         })

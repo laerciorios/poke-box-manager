@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Plus, Trash2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -15,6 +15,7 @@ import {
 import { cn } from '@/lib/utils'
 import { BOX_LABEL_COLORS, BOX_LABEL_BORDER_COLORS } from '@/lib/box-label-colors'
 import { usePokedexStore } from '@/stores/usePokedexStore'
+import { useModalStack } from '@/contexts/ModalStackContext'
 import type { Box } from '@/types/box'
 import { BOX_SIZE } from '@/types/box'
 
@@ -122,6 +123,15 @@ export function BoxOverview({
   const registered = usePokedexStore((s) => s.registered)
   const registeredSet = new Set(registered)
   const [pendingDeleteBox, setPendingDeleteBox] = useState<Box | null>(null)
+  const { push, pop } = useModalStack()
+
+  useEffect(() => {
+    if (pendingDeleteBox) {
+      push('box-delete-confirm', () => setPendingDeleteBox(null))
+    } else {
+      pop('box-delete-confirm')
+    }
+  }, [pendingDeleteBox, push, pop])
 
   function requestDeleteBox(box: Box) {
     const hasPokemon = box.slots.some(Boolean)

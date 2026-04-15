@@ -1,10 +1,16 @@
 import pokemonData from '@/data/pokemon.json'
 import evolutionChainsData from '@/data/evolution-chains.json'
 import type { PokemonEntry } from '@/types/pokemon'
-import type { EvolutionChain } from '@/types/game'
+import type { EvolutionChain, EvolutionStep } from '@/types/game'
 
 const pokemonList = pokemonData as unknown as PokemonEntry[]
-const evolutionChainsRaw = evolutionChainsData as Record<string, number[]>
+
+interface RawChainEntry {
+  pokemonIds: number[]
+  steps: EvolutionStep[]
+}
+
+const evolutionChainsRaw = evolutionChainsData as Record<string, RawChainEntry>
 
 const pokemonById = new Map<number, PokemonEntry>(
   pokemonList.map((p) => [p.id, p]),
@@ -15,7 +21,7 @@ export function getPokemonById(id: number): PokemonEntry | undefined {
 }
 
 export function getEvolutionChain(chainId: number): EvolutionChain | undefined {
-  const pokemonIds = evolutionChainsRaw[chainId]
-  if (!pokemonIds) return undefined
-  return { id: chainId, pokemonIds }
+  const raw = evolutionChainsRaw[chainId]
+  if (!raw) return undefined
+  return { id: chainId, pokemonIds: raw.pokemonIds, steps: raw.steps }
 }

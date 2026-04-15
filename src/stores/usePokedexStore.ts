@@ -1,4 +1,5 @@
 import { createPersistedStore } from '@/lib/store'
+import { useSettingsStore } from '@/stores/useSettingsStore'
 
 interface PokedexState {
   registered: string[]
@@ -32,6 +33,7 @@ export const usePokedexStore = createPersistedStore<PokedexState>(
         current.add(key)
       }
       set({ registered: [...current] })
+      useSettingsStore.getState().recordChange()
     },
 
     isRegistered: (pokemonId, formId) => {
@@ -43,15 +45,18 @@ export const usePokedexStore = createPersistedStore<PokedexState>(
       const current = new Set(get().registered)
       for (const key of keys) current.add(key)
       set({ registered: [...current] })
+      useSettingsStore.getState().recordChange()
     },
 
     unregisterAll: (keys) => {
       const toRemove = new Set(keys)
       set({ registered: get().registered.filter((k) => !toRemove.has(k)) })
+      useSettingsStore.getState().recordChange()
     },
 
     clearAll: () => {
       set({ registered: [] })
+      useSettingsStore.getState().recordChange()
     },
 
     registeredShiny: [],

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import type { ReactNode } from 'react'
 
@@ -95,9 +95,31 @@ function TooltipPreview({ pokemonId }: { pokemonId: number }) {
 
 export function PokemonTooltip({ pokemonId, children }: PokemonTooltipProps) {
   const [isCardOpen, setIsCardOpen] = useState(false)
+  const [isTouch, setIsTouch] = useState(false)
+
+  // Detect coarse-pointer (touch) devices at mount — not during SSR
+  useEffect(() => {
+    setIsTouch(window.matchMedia('(pointer: coarse)').matches)
+  }, [])
 
   if (!pokemonId) {
     return <>{children}</>
+  }
+
+  // On touch devices: suppress hover tooltip, open card directly on tap
+  if (isTouch) {
+    return (
+      <>
+        <div onClick={() => setIsCardOpen(true)}>
+          {children}
+        </div>
+        <PokemonCard
+          pokemonId={pokemonId}
+          isOpen={isCardOpen}
+          onClose={() => setIsCardOpen(false)}
+        />
+      </>
+    )
   }
 
   return (

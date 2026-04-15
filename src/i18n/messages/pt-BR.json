@@ -67,6 +67,7 @@
     "pageSubtitle": "Configure suas preferências.",
     "variationsSection": "Variações",
     "variationsSectionDescription": "Escolha quais tipos de variação de Pokémon incluir no seu rastreamento.",
+    "variationFiltersLabel": "Filtros de Variação ({count} ativos)",
     "totalWithVariations": "Total com variações selecionadas: <strong>{total}</strong>",
     "baseTotal": "Total base (sem variações): <strong>{base}</strong>",
     "boxDisplaySection": "Exibição das Boxes",
@@ -77,7 +78,30 @@
     "shinyTrackerSectionDescription": "Rastreie quais Pokémon você possui uma versão shiny, independentemente do registro normal.",
     "shinyTrackerEnable": "Ativar Rastreador Shiny",
     "shinyTrackerEnableSubtitle": "Exibe indicadores de brilho nos Pokémon shiny registrados na visão das boxes e adiciona uma seção de progresso shiny na página de estatísticas",
-    "shinyRegisteredCount": "{count, plural, =1 {1 Pokémon shiny registrado} other {# Pokémon shiny registrados}}"
+    "shinyRegisteredCount": "{count, plural, =1 {1 Pokémon shiny registrado} other {# Pokémon shiny registrados}}",
+    "dataBackupSection": "Dados e Backup",
+    "dataBackupSectionDescription": "Exporte seus dados para mantê-los seguros ou importe um backup anterior.",
+    "exportJson": "Exportar JSON",
+    "exportMissingList": "Exportar lista de faltando",
+    "downloadAsTxt": "Baixar como .txt",
+    "copyToClipboard": "Copiar para área de transferência",
+    "copied": "Copiado!",
+    "importData": "Importar",
+    "importConfirmTitle": "Importar backup",
+    "importConfirmDescription": "Escolha como aplicar os dados importados:",
+    "importMetaExportedAt": "Exportado em",
+    "importMetaBoxes": "{count, plural, =1 {1 box} other {# boxes}}",
+    "importMetaRegistered": "{count, plural, =1 {1 Pokémon registrado} other {# Pokémon registrados}}",
+    "importMetaPresets": "{count, plural, =1 {1 predefinição} other {# predefinições}}",
+    "importReplace": "Substituir todos os dados",
+    "importMerge": "Mesclar",
+    "importCancel": "Cancelar",
+    "importErrorInvalid": "Arquivo inválido. Selecione um backup válido do Poke Box Manager.",
+    "importErrorNotJson": "O arquivo não é um JSON válido.",
+    "importErrorGeneric": "Falha ao ler o arquivo.",
+    "backupReminderTitle": "Não se esqueça de fazer backup!",
+    "backupReminderDescription": "Você tem {count} alterações não exportadas. Exporte seus dados para não perder o progresso.",
+    "backupReminderExportNow": "Exportar agora"
   },
   "VariationToggles": {
     "warningTooltip": "Você tem Pokémon registrados desse tipo de variação. Desativar este toggle irá ocultá-los do rastreamento, mas não excluirá seus dados.",
@@ -316,5 +340,15 @@
     "nextUpBanner": "Mostrando os próximos {count} faltando em ordem do Pokédex",
     "nextUpCountLabel": "Mostrar",
     "missingCount": "{count} faltando"
+  },
+  "ui": {
+    "shortcuts": {
+      "title": "Atalhos de Teclado",
+      "focusSearch": "Focar na busca",
+      "navigateSlots": "Navegar nos slots",
+      "toggleRegistration": "Marcar/desmarcar registro",
+      "closePanel": "Fechar painel / diálogo",
+      "showHelp": "Mostrar esta ajuda"
+    }
   }
 }

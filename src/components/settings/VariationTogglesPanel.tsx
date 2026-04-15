@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react'
 import { useTranslations } from 'next-intl'
+import { ChevronDown } from 'lucide-react'
 import { useSettingsStore } from '@/stores/useSettingsStore'
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import {
@@ -11,6 +12,13 @@ import {
   computeTotal,
 } from '@/lib/variation-counts'
 import { VariationToggleItem } from './VariationToggleItem'
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '@/components/ui/collapsible'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { cn } from '@/lib/utils'
 import type { VariationToggles } from '@/types/settings'
 import formsData from '@/data/forms.json'
 
@@ -41,6 +49,7 @@ export function VariationTogglesPanel() {
   const variations = useSettingsStore((s) => s.variations)
   const setVariation = useSettingsStore((s) => s.setVariation)
   const registered = usePokedexStore((s) => s.registered)
+  const isMobile = useMediaQuery('(max-width: 767px)')
 
   const hasWarningByKey = useMemo(() => {
     const result = {} as Record<keyof VariationToggles, boolean>
@@ -57,37 +66,69 @@ export function VariationTogglesPanel() {
     return result
   }, [registered])
 
+  const activeCount = useMemo(
+    () => TOGGLE_ORDER.filter((key) => variations[key]).length,
+    [variations],
+  )
+
   const total = computeTotal(variations)
+
+  const toggleList = (
+    <div className="divide-y">
+      {TOGGLE_ORDER.map((key) => (
+        <VariationToggleItem
+          key={key}
+          checked={variations[key]}
+          label={tVariations(`${key}.label`)}
+          subtitle={tVariations(`${key}.subtitle`)}
+          additionalCount={VARIATION_COUNTS[key]}
+          hasWarning={hasWarningByKey[key]}
+          onToggle={(value) => setVariation(key, value)}
+        />
+      ))}
+    </div>
+  )
+
+  const summary = (
+    <div className="pt-4 space-y-1 border-t">
+      <p className="text-sm text-muted-foreground">
+        {tSettings.rich('totalWithVariations', {
+          total,
+          strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span>,
+        })}
+      </p>
+      <p className="text-sm text-muted-foreground">
+        {tSettings.rich('baseTotal', {
+          base: BASE_POKEMON_COUNT,
+          strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span>,
+        })}
+      </p>
+    </div>
+  )
+
+  if (isMobile) {
+    return (
+      <div className="space-y-1">
+        <Collapsible defaultOpen={false}>
+          <CollapsibleTrigger className="flex w-full items-center justify-between rounded-md border border-border bg-card px-4 py-3 text-sm font-medium hover:bg-accent/50 transition-colors">
+            <span>
+              {tSettings('variationFiltersLabel', { count: activeCount })}
+            </span>
+            <ChevronDown className="size-4 text-muted-foreground transition-transform duration-200 [[data-open]_&]:rotate-180" />
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            {toggleList}
+          </CollapsibleContent>
+        </Collapsible>
+        {summary}
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-1">
-      <div className="divide-y">
-        {TOGGLE_ORDER.map((key) => (
-          <VariationToggleItem
-            key={key}
-            checked={variations[key]}
-            label={tVariations(`${key}.label`)}
-            subtitle={tVariations(`${key}.subtitle`)}
-            additionalCount={VARIATION_COUNTS[key]}
-            hasWarning={hasWarningByKey[key]}
-            onToggle={(value) => setVariation(key, value)}
-          />
-        ))}
-      </div>
-      <div className="pt-4 space-y-1 border-t">
-        <p className="text-sm text-muted-foreground">
-          {tSettings.rich('totalWithVariations', {
-            total,
-            strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span>,
-          })}
-        </p>
-        <p className="text-sm text-muted-foreground">
-          {tSettings.rich('baseTotal', {
-            base: BASE_POKEMON_COUNT,
-            strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span>,
-          })}
-        </p>
-      </div>
+      {toggleList}
+      {summary}
     </div>
   )
 }

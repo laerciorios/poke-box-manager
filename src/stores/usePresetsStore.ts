@@ -1,5 +1,6 @@
 import { createPersistedStore } from '@/lib/store'
 import type { OrganizationPreset } from '@/types/preset'
+import { useSettingsStore } from '@/stores/useSettingsStore'
 
 interface PresetsState {
   presets: OrganizationPreset[]
@@ -28,6 +29,7 @@ export const usePresetsStore = createPersistedStore<PresetsState>(
         id: crypto.randomUUID(),
       }
       set({ presets: [...get().presets, newPreset] })
+      useSettingsStore.getState().recordChange()
     },
 
     updatePreset: (presetId, changes) => {
@@ -37,6 +39,7 @@ export const usePresetsStore = createPersistedStore<PresetsState>(
           return { ...p, ...changes, id: p.id, isBuiltIn: p.isBuiltIn }
         }),
       })
+      useSettingsStore.getState().recordChange()
     },
 
     deletePreset: (presetId) => {
@@ -45,6 +48,7 @@ export const usePresetsStore = createPersistedStore<PresetsState>(
           (p) => p.id !== presetId || p.isBuiltIn,
         ),
       })
+      useSettingsStore.getState().recordChange()
     },
 
     duplicatePreset: (presetId) => {
@@ -57,6 +61,7 @@ export const usePresetsStore = createPersistedStore<PresetsState>(
         isBuiltIn: false,
       }
       set({ presets: [...get().presets, duplicate] })
+      useSettingsStore.getState().recordChange()
     },
   }),
   { version: 1 },

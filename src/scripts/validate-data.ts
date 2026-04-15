@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { PokemonEntry } from '../types/pokemon'
-import type { TypeEntry, GenerationEntry } from '../types/game'
+import type { TypeEntry, GenerationEntry, EvolutionStep } from '../types/game'
 
 const DATA_DIR = join(process.cwd(), 'src', 'data')
 
@@ -70,7 +70,7 @@ function main() {
   const forms = loadJson<Record<string, unknown>>('forms.json')!
   const types = loadJson<TypeEntry[]>('types.json')!
   const generations = loadJson<GenerationEntry[]>('generations.json')!
-  const evolutionChains = loadJson<Record<string, number[]>>('evolution-chains.json')!
+  const evolutionChains = loadJson<Record<string, { pokemonIds: number[]; steps: EvolutionStep[] }>>('evolution-chains.json')!
 
   // ─── Schema validation ─────────────────────────────────────────────
   console.log('\nSchema validation:')

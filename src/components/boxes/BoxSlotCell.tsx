@@ -45,6 +45,7 @@ interface BoxSlotCellProps extends VariantProps<typeof slotVariants> {
   pokemonName?: string
   spriteUrl?: string
   selected?: boolean
+  keyboardFocused?: boolean
   onClick?: (e?: React.MouseEvent) => void
   className?: string
   sortableId?: string
@@ -135,6 +136,7 @@ function SortableSlotCell({
   pokemonName,
   spriteUrl,
   selected = false,
+  keyboardFocused = false,
   onClick,
   className,
   sortableId,
@@ -169,11 +171,12 @@ function SortableSlotCell({
   const isDraggable = !!slot
   const cellClassName = cn(
     slotVariants({ state, selected }),
-    "group aspect-square hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring",
+    "group aspect-square hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring max-md:min-w-[44px] max-md:min-h-[44px]",
     showName && slot ? "flex-col gap-0.5 p-1" : "",
     isDraggable ? "cursor-grab active:cursor-grabbing" : "cursor-pointer",
     isDragging && "opacity-30",
     isOver && !isDragging && "ring-2 ring-primary",
+    keyboardFocused && "ring-2 ring-primary outline-none",
     className
   )
 
@@ -261,6 +264,7 @@ export function BoxSlotCell({
   pokemonName,
   spriteUrl,
   selected = false,
+  keyboardFocused = false,
   onClick,
   className,
   sortableId,
@@ -283,6 +287,7 @@ export function BoxSlotCell({
         pokemonName={pokemonName}
         spriteUrl={spriteUrl}
         selected={selected}
+        keyboardFocused={keyboardFocused}
         onClick={onClick}
         className={className}
         sortableId={sortableId}
@@ -299,8 +304,9 @@ export function BoxSlotCell({
 
   const cellClassName = cn(
     slotVariants({ state, selected }),
-    "group aspect-square cursor-pointer hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring",
+    "group aspect-square cursor-pointer hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring max-md:min-w-[44px] max-md:min-h-[44px]",
     showName && slot ? "flex-col gap-0.5 p-1" : "",
+    keyboardFocused && "ring-2 ring-primary outline-none",
     className
   )
 

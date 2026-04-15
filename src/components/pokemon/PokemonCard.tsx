@@ -9,6 +9,7 @@ import { useSettingsStore } from '@/stores/useSettingsStore'
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import { getPokemonById, getEvolutionChain } from '@/lib/pokemon-lookup'
 import { getPokemonName, getFormName } from '@/lib/pokemon-names'
+import { getEvolutionMethodLabel } from '@/lib/evolution-method-label'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
@@ -19,6 +20,8 @@ import {
 } from '@/components/ui/sheet'
 import { SpritePlaceholder } from './SpritePlaceholder'
 import type { PokemonForm } from '@/types/pokemon'
+import type { EvolutionChain, EvolutionMethod, EvolutionStep } from '@/types/game'
+import type { Locale } from '@/types/locale'
 
 // Classic Pokémon type colors
 const TYPE_COLORS: Record<string, string> = {
@@ -80,6 +83,112 @@ function SpriteImage({
     </div>
   )
 }
+
+// ─── Evolution tree helpers ────────────────────────────────────────────────
+
+interface EvoNodeData {
+  toId: number
+  methods: EvolutionMethod[]
+  children: EvoNodeData[]
+}
+
+function buildEvoTree(fromId: number, steps: EvolutionStep[]): EvoNodeData[] {
+  const byTarget = new Map<number, EvolutionMethod[]>()
+  for (const step of steps.filter((s) => s.fromId === fromId)) {
+    const arr = byTarget.get(step.toId) ?? []
+    arr.push(step.method)
+    byTarget.set(step.toId, arr)
+  }
+  return Array.from(byTarget.entries()).map(([toId, methods]) => ({
+    toId,
+    methods,
+    children: buildEvoTree(toId, steps),
+  }))
+}
+
+interface EvoNodeRendererProps {
+  pokemonId: number
+  branches: EvoNodeData[]
+  currentPokemonId: number
+  locale: Locale
+}
+
+function EvoNodeRenderer({ pokemonId, branches, currentPokemonId, locale }: EvoNodeRendererProps) {
+  const pokemon = getPokemonById(pokemonId)
+  if (!pokemon) return null
+  const isCurrent = pokemonId === currentPokemonId
+  const name = getPokemonName(pokemon, locale)
+
+  return (
+    <div className="flex items-start gap-1.5 min-w-0">
+      <div className={cn(
+        'flex flex-col items-center gap-0.5 shrink-0',
+        isCurrent && 'ring-2 ring-primary rounded-lg p-0.5',
+      )}>
+        <div className="relative w-11 h-11">
+          <Image src={pokemon.sprite} alt={name} fill sizes="44px" className="object-contain" />
+        </div>
+        <span className="text-[10px] text-muted-foreground max-w-[52px] truncate text-center leading-tight">
+          {name}
+        </span>
+      </div>
+
+      {branches.length > 0 && (
+        <div className="flex flex-col gap-3 min-w-0 mt-1">
+          {branches.map((branch) => {
+            const labels = branch.methods
+              .map((m) => getEvolutionMethodLabel(m, locale))
+              .filter((v, i, arr) => arr.indexOf(v) === i)
+
+            return (
+              <div key={branch.toId} className="flex items-start gap-1 min-w-0">
+                <div className="flex flex-col items-center shrink-0 mt-1.5 gap-0.5">
+                  <span className="text-muted-foreground text-xs leading-none">→</span>
+                  {labels.map((label, i) => (
+                    <span key={i} className="text-[9px] text-muted-foreground whitespace-nowrap leading-tight">
+                      {label}
+                    </span>
+                  ))}
+                </div>
+                <EvoNodeRenderer
+                  pokemonId={branch.toId}
+                  branches={branch.children}
+                  currentPokemonId={currentPokemonId}
+                  locale={locale}
+                />
+              </div>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
+interface EvolutionTreeProps {
+  chain: EvolutionChain
+  currentPokemonId: number
+  locale: Locale
+}
+
+function EvolutionTree({ chain, currentPokemonId, locale }: EvolutionTreeProps) {
+  const toIds = new Set(chain.steps.map((s) => s.toId))
+  const rootId = chain.pokemonIds.find((id) => !toIds.has(id)) ?? chain.pokemonIds[0]
+  const branches = buildEvoTree(rootId, chain.steps)
+
+  return (
+    <div className="overflow-x-auto">
+      <EvoNodeRenderer
+        pokemonId={rootId}
+        branches={branches}
+        currentPokemonId={currentPokemonId}
+        locale={locale}
+      />
+    </div>
+  )
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
 
 export function PokemonCard({ pokemonId, isOpen, onClose }: PokemonCardProps) {
   const locale = useSettingsStore((s) => s.locale)
@@ -247,38 +356,16 @@ export function PokemonCard({ pokemonId, isOpen, onClose }: PokemonCardProps) {
           )}
 
           {/* Evolution chain */}
-          {evolutionChain && evolutionChain.pokemonIds.length > 1 && (
+          {evolutionChain && evolutionChain.steps.length > 0 && (
             <div className="flex flex-col gap-2">
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                 {t('evolution')}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {evolutionChain.pokemonIds.map((evoId, idx) => {
-                  const evo = getPokemonById(evoId)
-                  if (!evo) return null
-                  return (
-                    <div key={evoId} className="flex items-center gap-1">
-                      {idx > 0 && (
-                        <span className="text-muted-foreground text-xs">→</span>
-                      )}
-                      <div className="flex flex-col items-center gap-0.5">
-                        <div className="relative w-12 h-12">
-                          <Image
-                            src={evo.sprite}
-                            alt={getPokemonName(evo, locale)}
-                            fill
-                            sizes="48px"
-                            className="object-contain"
-                          />
-                        </div>
-                        <span className="text-[10px] text-muted-foreground max-w-[48px] truncate text-center">
-                          {getPokemonName(evo, locale)}
-                        </span>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
+              <EvolutionTree
+                chain={evolutionChain}
+                currentPokemonId={pokemonId}
+                locale={locale}
+              />
             </div>
           )}
         </div>

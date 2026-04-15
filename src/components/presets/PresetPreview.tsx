@@ -13,7 +13,7 @@ import pokemonData from '@/data/pokemon.json'
 import evolutionChainsData from '@/data/evolution-chains.json'
 
 const allPokemon = pokemonData as unknown as import('@/types/pokemon').PokemonEntry[]
-const evolutionChains = evolutionChainsData as Record<number, number[]>
+const evolutionChains = evolutionChainsData as unknown as Record<number, { pokemonIds: number[] }>
 
 interface PresetPreviewProps {
   rules: PresetRule[]

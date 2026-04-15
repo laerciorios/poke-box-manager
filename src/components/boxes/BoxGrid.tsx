@@ -35,6 +35,7 @@ interface BoxGridProps {
   box: Box
   registrationMode?: RegistrationModeProps
   selectedSlotIndex?: number | null
+  keyboardFocusIndex?: number | null
   onSlotClick?: (index: number) => void
   getPokemonName?: (slot: { pokemonId: number; formId?: string }) => string | undefined
   getSpriteUrl?: (slot: { pokemonId: number; formId?: string; shiny?: boolean }) => string | undefined
@@ -49,6 +50,7 @@ export function BoxGrid({
   box,
   registrationMode,
   selectedSlotIndex,
+  keyboardFocusIndex,
   onSlotClick,
   getPokemonName,
   getSpriteUrl,
@@ -84,6 +86,7 @@ export function BoxGrid({
         const isSelected = registrationMode
           ? registrationMode.selectedKeys.has(locationKey)
           : selectedSlotIndex === index
+        const isKeyboardFocused = keyboardFocusIndex === index
 
         const handleClick = registrationMode
           ? (e?: React.MouseEvent) => registrationMode.handleSlotClick(box.id, index, e!, slot)
@@ -103,6 +106,7 @@ export function BoxGrid({
             key={toSlotId(box.id, index)}
             slot={slotWithLiveRegistered}
             selected={isSelected}
+            keyboardFocused={isKeyboardFocused}
             pokemonName={slot ? getPokemonName?.(slot) : undefined}
             spriteUrl={slotWithLiveRegistered ? getSpriteUrl?.(slotWithLiveRegistered) : undefined}
             onClick={handleClick}
@@ -171,7 +175,7 @@ export function BoxGrid({
         </div>
       )}
 
-      <div className="max-md:overflow-x-auto max-md:-mx-4 max-md:px-4">
+      <div className="max-md:overflow-x-auto max-md:-mx-4 max-md:px-4 max-md:[touch-action:manipulation]">
         {dndEnabled ? (
           <SortableContext items={sortableItems} strategy={rectSortingStrategy}>
             {gridContent}

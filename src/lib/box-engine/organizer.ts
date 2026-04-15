@@ -135,7 +135,7 @@ function buildBoxesForRule(
 export function applyPreset(
   preset: OrganizationPreset,
   pokemon: PokemonEntry[],
-  evolutionChains: Record<number, number[]> = {},
+  evolutionChains: Record<number, { pokemonIds: number[] }> = {},
 ): Box[] {
   if (pokemon.length === 0) return []
 

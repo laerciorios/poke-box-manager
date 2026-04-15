@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 
@@ -18,6 +18,8 @@ interface BoxNavigationProps {
   totalBoxes: number
   onPrevious: () => void
   onNext: () => void
+  onKeyboardPrev?: () => void
+  onKeyboardNext?: () => void
   className?: string
 }
 
@@ -29,6 +31,8 @@ export function BoxNavigation({
   totalBoxes,
   onPrevious,
   onNext,
+  onKeyboardPrev,
+  onKeyboardNext,
   className,
 }: BoxNavigationProps) {
   const t = useTranslations("Boxes")
@@ -65,23 +69,6 @@ export function BoxNavigation({
     setDraftName(boxName)
     setIsEditing(false)
   }
-
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (isEditing) return
-      if (e.key === "ArrowLeft" && !isFirst) {
-        onPrevious()
-      } else if (e.key === "ArrowRight" && !isLast) {
-        onNext()
-      }
-    },
-    [isFirst, isLast, onPrevious, onNext, isEditing]
-  )
-
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [handleKeyDown])
 
   const colorDotClass = boxLabel ? BOX_LABEL_COLORS[boxLabel] : undefined
 

@@ -7,7 +7,7 @@ import { normalizeGame, enrichGameWithGeneration } from './normalizers/game-norm
 import { normalizeGeneration } from './normalizers/generation-normalizer'
 import { normalizeEvolutionChain } from './normalizers/evolution-normalizer'
 import type { PokemonEntry, PokemonForm } from '../types/pokemon'
-import type { TypeEntry, GameEntry, GenerationEntry, EvolutionChain } from '../types/game'
+import type { TypeEntry, GameEntry, GenerationEntry, EvolutionChain, EvolutionStep } from '../types/game'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -197,10 +197,10 @@ async function main() {
   const generations: GenerationEntry[] = gensRaw.map(normalizeGeneration)
 
   // Normalize evolution chains
-  const evolutionChains: Record<number, number[]> = {}
+  const evolutionChains: Record<number, { pokemonIds: number[]; steps: EvolutionChain['steps'] }> = {}
   for (const chainRaw of chainsRaw) {
     const chain: EvolutionChain = normalizeEvolutionChain(chainRaw)
-    evolutionChains[chain.id] = chain.pokemonIds
+    evolutionChains[chain.id] = { pokemonIds: chain.pokemonIds, steps: chain.steps }
   }
 
   // Write JSON files

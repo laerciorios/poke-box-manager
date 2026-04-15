@@ -30,6 +30,7 @@ export interface SettingsState {
   sidebarCollapsed: boolean
   shinyTrackerEnabled: boolean
   pokedexView: PokedexView
+  pendingChanges: number
 }
 
 export const DEFAULT_VARIATIONS: VariationToggles = {
@@ -58,4 +59,5 @@ export const DEFAULT_SETTINGS: SettingsState = {
   sidebarCollapsed: false,
   shinyTrackerEnabled: false,
   pokedexView: 'table',
+  pendingChanges: 0,
 }

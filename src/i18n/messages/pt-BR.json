@@ -215,6 +215,11 @@
     "newPresetNamePlaceholder": "Minha Predefinição",
     "previewStats": "{boxes} caixas · {pokemon} Pokémon"
   },
+  "Notes": {
+    "placeholder": "Adicionar uma nota…",
+    "label": "Nota",
+    "clearLabel": "Limpar nota"
+  },
   "Pokemon": {
     "generation": "Geração {n}",
     "category": "Categoria",
@@ -349,6 +354,37 @@
       "closePanel": "Fechar painel / diálogo",
       "showHelp": "Mostrar esta ajuda"
     }
+  },
+  "Acquisition": {
+    "howToObtain": "Como obter",
+    "clear": "Limpar",
+    "stepsCompleted": "{done} / {total} etapas concluídas"
+  },
+  "BoxCalculator": {
+    "boxesNeeded": "Boxes necessárias",
+    "pokemonPerBox": "{count} Pokémon · {perBox} por box",
+    "lastBoxDetail": "Última box: {slots} / {total} slots usados",
+    "basedOnSettings": "Com base nas suas configurações atuais"
+  },
+  "Tags": {
+    "manageTitle": "Gerenciar Tags",
+    "newTag": "Nova Tag",
+    "namePlaceholder": "Nome da tag…",
+    "editTag": "Editar {name}",
+    "deleteTag": "Excluir {name}",
+    "emptyState": "Nenhuma tag ainda. Crie sua primeira tag.",
+    "noTagsYet": "Nenhuma tag ainda — crie tags primeiro.",
+    "createTagsFirst": "Criar tags",
+    "filterLabel": "Filtrar por tag",
+    "manageTags": "Gerenciar Tags",
+    "tagsSection": "Tags",
+    "tooltipTags": "Tags: {names}"
+  },
+  "ActivityHistory": {
+    "title": "Histórico de Atividades",
+    "emptyState": "Nenhuma atividade ainda.",
+    "undo": "Desfazer",
+    "entriesCount": "{count} {count, plural, =1 {entrada} other {entradas}}"
   },
   "accessibility": {
     "nav": "Navegação principal",

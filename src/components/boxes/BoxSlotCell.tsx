@@ -16,7 +16,9 @@ import {
 } from "@/components/ui/tooltip"
 import { SpritePlaceholder } from "@/components/pokemon"
 import type { BoxSlot } from "@/types/box"
-import { Sparkles } from "lucide-react"
+import type { Tag } from "@/types/tags"
+import { TagDotGroup } from "@/components/tags/TagDotGroup"
+import { PencilLine, Sparkles } from "lucide-react"
 
 const slotVariants = cva(
   "relative flex items-center justify-center rounded-lg outline-none",
@@ -60,6 +62,8 @@ interface BoxSlotCellProps extends VariantProps<typeof slotVariants> {
   tabIndexValue?: number
   /** Whether the grid is in the viewport; when false, sprites are skipped */
   visible?: boolean
+  tags?: Tag[]
+  dimmed?: boolean
 }
 
 function getSlotState(slot: BoxSlot | null): SlotState {
@@ -154,6 +158,8 @@ function SortableSlotCell({
   isShiny,
   tabIndexValue = 0,
   visible,
+  tags,
+  dimmed,
 }: BoxSlotCellProps) {
   const state = getSlotState(slot)
   const tA11y = useTranslations("accessibility")
@@ -183,6 +189,7 @@ function SortableSlotCell({
     showName && slot ? "flex-col gap-0.5 p-1" : "",
     isDraggable ? "cursor-grab active:cursor-grabbing" : "cursor-pointer",
     isDragging && "opacity-30",
+    dimmed && "opacity-30",
     isOver && !isDragging && "ring-2 ring-primary",
     keyboardFocused && "ring-2 ring-primary outline-none",
     className
@@ -203,6 +210,7 @@ function SortableSlotCell({
     : tA11y("slotNotRegistered", { name: pokemonName ?? `#${slot.pokemonId}` })
 
   const showShinyRegistered = !!slot && (isShiny || (registrationModeActive && !!onShinyToggle))
+  const hasTags = !!tags?.length
 
   const cellContent = (
     <>
@@ -245,6 +253,12 @@ function SortableSlotCell({
           {isDraggable && (
             <GripVertical className="absolute bottom-0.5 right-0.5 size-3 text-muted-foreground/40 opacity-0 transition-opacity motion-reduce:transition-none group-hover:opacity-100" />
           )}
+          {(hasTags || !!slot?.note) && (
+            <div className="absolute bottom-0.5 left-0.5 z-10 flex items-center gap-0.5" aria-hidden="true">
+              {hasTags && <TagDotGroup tags={tags!} />}
+              {!!slot?.note && <PencilLine className="size-3 text-muted-foreground/70" />}
+            </div>
+          )}
         </>
       ) : null}
     </>
@@ -271,7 +285,12 @@ function SortableSlotCell({
         <TooltipTrigger render={<div {...divProps} />}>
           {cellContent}
         </TooltipTrigger>
-        <TooltipContent>{pokemonName}</TooltipContent>
+        <TooltipContent>
+          <span>{pokemonName}</span>
+          {hasTags && (
+            <span className="text-muted-foreground"> · {tags!.map((t) => t.name).join(', ')}</span>
+          )}
+        </TooltipContent>
       </Tooltip>
     )
   }
@@ -296,6 +315,8 @@ export function BoxSlotCell({
   isShiny,
   tabIndexValue = 0,
   visible,
+  tags,
+  dimmed,
 }: BoxSlotCellProps) {
   const [spriteLoaded, setSpriteLoaded] = useState(false)
   const [spriteError, setSpriteError] = useState(false)
@@ -321,6 +342,8 @@ export function BoxSlotCell({
         isShiny={isShiny}
         tabIndexValue={tabIndexValue}
         visible={visible}
+        tags={tags}
+        dimmed={dimmed}
       />
     )
   }
@@ -337,6 +360,7 @@ export function BoxSlotCell({
     "group aspect-square cursor-pointer hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring max-md:min-w-[44px] max-md:min-h-[44px]",
     showName && slot ? "flex-col gap-0.5 p-1" : "",
     keyboardFocused && "ring-2 ring-primary outline-none",
+    dimmed && "opacity-30",
     className
   )
 
@@ -348,6 +372,7 @@ export function BoxSlotCell({
   }
 
   const showShinyRegisteredNonSortable = !!slot && (isShiny || (registrationModeActive && !!onShinyToggle))
+  const hasTags = !!tags?.length
 
   const cellContent = (
     <>
@@ -408,6 +433,12 @@ export function BoxSlotCell({
               <Sparkles className="size-2.5" />
             </div>
           )}
+          {(hasTags || !!slot?.note) && (
+            <div className="absolute bottom-0.5 left-0.5 z-10 flex items-center gap-0.5" aria-hidden="true">
+              {hasTags && <TagDotGroup tags={tags!} />}
+              {!!slot?.note && <PencilLine className="size-3 text-muted-foreground/70" />}
+            </div>
+          )}
         </>
       ) : null}
     </>
@@ -431,7 +462,12 @@ export function BoxSlotCell({
         >
           {cellContent}
         </TooltipTrigger>
-        <TooltipContent>{pokemonName}</TooltipContent>
+        <TooltipContent>
+          <span>{pokemonName}</span>
+          {hasTags && (
+            <span className="text-muted-foreground"> · {tags!.map((t) => t.name).join(', ')}</span>
+          )}
+        </TooltipContent>
       </Tooltip>
     )
   }

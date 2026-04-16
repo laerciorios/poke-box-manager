@@ -121,6 +121,26 @@ function getMoveTypeName(type: string, locale: Locale): string {
 }
 
 /**
+ * Returns true for plain level-up steps with no special conditions.
+ * These are excluded from the acquisition checklist.
+ */
+export function isTrivialStep(method: EvolutionMethod): boolean {
+  if (method.trigger !== 'level-up') return false
+  return (
+    !method.happiness &&
+    !method.affection &&
+    !method.beauty &&
+    !method.timeOfDay &&
+    !method.location &&
+    !method.knownMove &&
+    !method.knownMoveType &&
+    !method.needsRain &&
+    !method.turnUpsideDown &&
+    method.relativePhysicalStats === undefined
+  )
+}
+
+/**
  * Returns a human-readable label for an evolution method.
  * Examples:
  *   level-up + minLevel=16 → "Nível 16" / "Lv. 16"

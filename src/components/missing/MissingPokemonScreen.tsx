@@ -1,10 +1,12 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { useBoxStore } from '@/stores/useBoxStore'
+import { useTagsStore } from '@/stores/useTagsStore'
 import {
   buildMissingEntries,
   applyFiltersAndSort,
@@ -15,6 +17,7 @@ import { MissingPokemonCard } from './MissingPokemonCard'
 import { MissingFilters } from './MissingFilters'
 import { MissingSortControl } from './MissingSortControl'
 import { NextUpBanner } from './NextUpBanner'
+import { TagFilterPanel } from '@/components/tags/TagFilterPanel'
 
 export function MissingPokemonScreen() {
   const t = useTranslations('Missing')
@@ -24,6 +27,9 @@ export function MissingPokemonScreen() {
   const variations = useSettingsStore((s) => s.variations)
   const activeGenerations = useSettingsStore((s) => s.activeGenerations)
   const locale = useSettingsStore((s) => s.locale)
+  const boxes = useBoxStore((s) => s.boxes)
+  const allTags = useTagsStore((s) => s.tags)
+  const [selectedTagIds, setSelectedTagIds] = useState<Set<string>>(new Set())
 
   // Parse URL params
   const genParam = searchParams.get('gen')
@@ -38,22 +44,52 @@ export function MissingPokemonScreen() {
     return buildMissingEntries(registeredSet, variations, activeGenerations, locale)
   }, [registered, variations, activeGenerations, locale])
 
+  const taggedFormKeys = useMemo(() => {
+    if (!selectedTagIds.size) return null
+    const keys = new Set<string>()
+    for (const box of boxes) {
+      for (const slot of box.slots) {
+        if (!slot?.tagIds) continue
+        if (slot.tagIds.some((id) => selectedTagIds.has(id))) {
+          const key = slot.formId ? `${slot.pokemonId}:${slot.formId}` : String(slot.pokemonId)
+          keys.add(key)
+        }
+      }
+    }
+    return keys
+  }, [boxes, selectedTagIds])
+
   const displayed = useMemo(() => {
+    let base: typeof allMissing
+
     if (nextupCount !== null) {
-      // Next up mode: first N in dex order, no additional filters
-      return allMissing.slice(0, nextupCount)
+      base = allMissing.slice(0, nextupCount)
+    } else {
+      const genFilter = genParam ? [parseInt(genParam, 10)] : []
+      base = applyFiltersAndSort(allMissing, {
+        generations: genFilter,
+        type: typeParam,
+        category: catParam,
+        sort: sortParam,
+      })
     }
 
-    const genFilter = genParam ? [parseInt(genParam, 10)] : []
-    return applyFiltersAndSort(allMissing, {
-      generations: genFilter,
-      type: typeParam,
-      category: catParam,
-      sort: sortParam,
-    })
-  }, [allMissing, nextupCount, genParam, typeParam, catParam, sortParam])
+    if (taggedFormKeys) {
+      return base.filter((e) => taggedFormKeys.has(e.formKey))
+    }
+    return base
+  }, [allMissing, nextupCount, genParam, typeParam, catParam, sortParam, taggedFormKeys])
 
-  const isFiltered = Boolean(nextupCount !== null || genParam || typeParam || catParam !== 'all')
+  const isFiltered = Boolean(nextupCount !== null || genParam || typeParam || catParam !== 'all' || selectedTagIds.size)
+
+  const handleToggleTagFilter = (tagId: string) => {
+    setSelectedTagIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(tagId)) next.delete(tagId)
+      else next.add(tagId)
+      return next
+    })
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -61,9 +97,16 @@ export function MissingPokemonScreen() {
       {nextupCount !== null ? (
         <NextUpBanner count={nextupCount} />
       ) : (
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <MissingFilters />
-          <MissingSortControl />
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <MissingFilters />
+            <MissingSortControl />
+          </div>
+          <TagFilterPanel
+            tags={allTags}
+            selectedTagIds={selectedTagIds}
+            onToggle={handleToggleTagFilter}
+          />
         </div>
       )}
 

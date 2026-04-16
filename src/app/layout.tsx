@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import { cn } from '@/lib/utils'
 import { DEFAULT_LOCALE } from '@/types/locale'
 import type { Locale } from '@/types/locale'
+import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration'
 import './globals.css'
 
 const inter = Inter({
@@ -40,6 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       suppressHydrationWarning
     >
       <body className="min-h-full bg-background text-foreground">
+        <ServiceWorkerRegistration />
         {children}
       </body>
     </html>

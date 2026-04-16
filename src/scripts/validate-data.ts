@@ -162,6 +162,18 @@ function main() {
     warn(`${invalidChainRefs} Pokemon reference unknown evolution chains`)
   }
 
+  // Assert every chain has a steps array
+  let missingSteps = 0
+  for (const [chainId, chain] of Object.entries(evolutionChains)) {
+    if (!Array.isArray(chain.steps)) {
+      error(`Evolution chain ${chainId} is missing "steps" array`)
+      missingSteps++
+    }
+  }
+  if (missingSteps === 0) {
+    ok(`All ${Object.keys(evolutionChains).length} evolution chains have a "steps" array`)
+  }
+
   // ─── Summary ───────────────────────────────────────────────────────
   console.log('\n══════════════════════════════════════')
   console.log('  DATA VALIDATION SUMMARY')

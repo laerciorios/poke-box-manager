@@ -54,7 +54,7 @@ The system SHALL render a form switcher showing all available forms of the Pokem
 
 ### Requirement: PokemonCard displays evolution chain
 
-The system SHALL show the evolution chain for the Pokemon by looking up its `evolutionChainId` in `evolution-chains.json` and rendering each Pokemon in the chain with its sprite and name.
+The system SHALL show the evolution chain for the Pokemon by looking up its `evolutionChainId` in `evolution-chains.json` and rendering each Pokemon in the chain with its sprite and name. Below the evolution chain display, the card SHALL render an `AcquisitionChecklist` for the currently displayed Pokémon when non-trivial acquisition steps exist.
 
 #### Scenario: Evolution chain rendered in order
 
@@ -65,6 +65,16 @@ The system SHALL show the evolution chain for the Pokemon by looking up its `evo
 
 - **WHEN** the Pokemon has no `evolutionChainId`
 - **THEN** no evolution chain section SHALL be rendered
+
+#### Scenario: Acquisition checklist shown below evolution chain
+
+- **WHEN** the displayed Pokémon has at least one non-trivial evolution step targeting it
+- **THEN** an `AcquisitionChecklist` section SHALL be rendered below the evolution chain
+
+#### Scenario: No acquisition checklist for trivial evolutions
+
+- **WHEN** all steps leading to the displayed Pokémon are trivial (simple level-up)
+- **THEN** no checklist section SHALL be rendered in the card
 
 ### Requirement: PokemonCard opens as a side sheet
 
@@ -92,27 +102,76 @@ The system SHALL accept `pokemonId: number` as its primary data prop and resolve
 ## ADDED Requirements
 
 ### Requirement: PokemonCard shows Register Shiny button when tracker is enabled
+
 When `shinyTrackerEnabled` is `true` in `useSettingsStore`, `PokemonCard` SHALL render a "Register Shiny" button that reflects the current shiny-registration state for the displayed Pokémon (and the active form, if one is selected). Clicking the button SHALL call `usePokedexStore.toggleShinyRegistered(pokemonId, formId?)`.
 
 #### Scenario: Register Shiny button is visible when tracker is enabled
+
 - **WHEN** `PokemonCard` is open and `shinyTrackerEnabled` is `true`
 - **THEN** a "Register Shiny" (or "Registered Shiny ✓") button SHALL be visible below the shiny sprite toggle
 
 #### Scenario: Register Shiny button is hidden when tracker is disabled
+
 - **WHEN** `PokemonCard` is open and `shinyTrackerEnabled` is `false`
 - **THEN** no shiny registration button SHALL be rendered
 
 #### Scenario: Button reflects current shiny-registration state
+
 - **WHEN** the Pokémon is already shiny-registered
 - **THEN** the button SHALL display in an "active" or "registered" visual state (e.g., filled variant)
 - **WHEN** the Pokémon is not shiny-registered
 - **THEN** the button SHALL display in an "inactive" or "outline" visual state
 
 #### Scenario: Clicking the button toggles shiny registration
+
 - **WHEN** the user clicks the "Register Shiny" button for an unregistered-shiny Pokémon
 - **THEN** `toggleShinyRegistered(pokemonId)` SHALL be called (using active form's formId if a form is selected)
 - **THEN** the button state SHALL update to reflect the new shiny-registration status
 
 #### Scenario: Shiny registration uses the active form's key
+
 - **WHEN** the user has selected an alternate form in the form switcher and clicks "Register Shiny"
 - **THEN** `toggleShinyRegistered(pokemonId, activeFormId)` SHALL be called with the form's id
+
+## ADDED Requirements
+
+### Requirement: PokemonCard displays and edits the slot note when opened from a box slot
+
+When `PokemonCard` is opened with a `boxId` and `slotIndex` context, it SHALL render a note section containing a textarea pre-filled with `slot.note`. Changes are saved to `useBoxStore` via `setSlotNote` on textarea blur. When opened without slot context (e.g., from the Pokédex page), no note section is rendered.
+
+#### Scenario: Note section visible when opened from a box slot
+
+- **WHEN** `PokemonCard` is opened with valid `boxId` and `slotIndex` props
+- **THEN** a note textarea SHALL be rendered in the card content
+
+#### Scenario: Textarea pre-filled with existing note
+
+- **WHEN** `PokemonCard` opens for a slot whose `note` is `"Pending trade with @friend"`
+- **THEN** the textarea SHALL display `"Pending trade with @friend"`
+
+#### Scenario: Textarea shows placeholder when no note exists
+
+- **WHEN** `PokemonCard` opens for a slot with no note
+- **THEN** the textarea SHALL be empty with a localized placeholder text (e.g., "Add a note..." / "Adicionar uma nota...")
+
+#### Scenario: Blur saves changed note
+
+- **WHEN** the user edits the textarea and moves focus away from it
+- **THEN** `setSlotNote(boxId, slotIndex, newValue)` SHALL be called with the current textarea value
+- **THEN** the slot's note in the store SHALL reflect the new value
+
+#### Scenario: Blur with empty textarea clears the note
+
+- **WHEN** the user clears the textarea and moves focus away
+- **THEN** `setSlotNote(boxId, slotIndex, "")` SHALL be called
+- **THEN** `BoxSlot.note` SHALL become `undefined`
+
+#### Scenario: Textarea enforces 500-character limit
+
+- **WHEN** the note textarea is rendered
+- **THEN** it SHALL have `maxLength={500}` to prevent input beyond the cap
+
+#### Scenario: Note section absent when no slot context
+
+- **WHEN** `PokemonCard` is opened without `boxId` or `slotIndex` props
+- **THEN** no note textarea or note section SHALL be rendered

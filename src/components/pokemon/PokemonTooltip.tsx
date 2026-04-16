@@ -40,6 +40,8 @@ const TYPE_COLORS: Record<string, string> = {
 interface PokemonTooltipProps {
   pokemonId: number | null | undefined
   children: ReactNode
+  boxId?: string
+  slotIndex?: number
 }
 
 function TooltipPreview({ pokemonId }: { pokemonId: number }) {
@@ -93,7 +95,7 @@ function TooltipPreview({ pokemonId }: { pokemonId: number }) {
   )
 }
 
-export function PokemonTooltip({ pokemonId, children }: PokemonTooltipProps) {
+export function PokemonTooltip({ pokemonId, children, boxId, slotIndex }: PokemonTooltipProps) {
   const [isCardOpen, setIsCardOpen] = useState(false)
   const [isTouch, setIsTouch] = useState(false)
 
@@ -117,6 +119,8 @@ export function PokemonTooltip({ pokemonId, children }: PokemonTooltipProps) {
           pokemonId={pokemonId}
           isOpen={isCardOpen}
           onClose={() => setIsCardOpen(false)}
+          boxId={boxId}
+          slotIndex={slotIndex}
         />
       </>
     )
@@ -143,6 +147,8 @@ export function PokemonTooltip({ pokemonId, children }: PokemonTooltipProps) {
         pokemonId={pokemonId}
         isOpen={isCardOpen}
         onClose={() => setIsCardOpen(false)}
+        boxId={boxId}
+        slotIndex={slotIndex}
       />
     </>
   )

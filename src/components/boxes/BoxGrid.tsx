@@ -13,6 +13,7 @@ import { BoxSlotCell } from './BoxSlotCell'
 import { RegistrationModeToggle } from './RegistrationModeToggle'
 import { FloatingActionBar } from './FloatingActionBar'
 import type { Box, BoxSlot } from '@/types/box'
+import type { Tag } from '@/types/tags'
 import { BOX_SIZE } from '@/types/box'
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
@@ -48,6 +49,8 @@ interface BoxGridProps {
   dndEnabled?: boolean
   showPokemonNames?: boolean
   onToggleShowNames?: () => void
+  getSlotTags?: (slot: BoxSlot) => Tag[]
+  isSlotDimmed?: (slotIndex: number) => boolean
 }
 
 export function BoxGrid({
@@ -63,6 +66,8 @@ export function BoxGrid({
   dndEnabled = false,
   showPokemonNames = false,
   onToggleShowNames,
+  getSlotTags,
+  isSlotDimmed,
 }: BoxGridProps) {
   const t = useTranslations('Boxes')
   const tA11y = useTranslations('accessibility')
@@ -159,6 +164,9 @@ export function BoxGrid({
         // Roving tabindex: active slot gets 0, all others get -1
         const tabIndexValue = index === activeIndex ? 0 : -1
 
+        const slotTags = slot && getSlotTags ? getSlotTags(slot) : undefined
+        const dimmed = isSlotDimmed ? isSlotDimmed(index) : false
+
         const cell = (
           <BoxSlotCell
             key={toSlotId(box.id, index)}
@@ -180,11 +188,13 @@ export function BoxGrid({
             } : undefined}
             tabIndexValue={tabIndexValue}
             visible={gridVisible}
+            tags={slotTags}
+            dimmed={dimmed}
           />
         )
 
         return useTooltip ? (
-          <PokemonTooltip key={toSlotId(box.id, index)} pokemonId={slot.pokemonId}>
+          <PokemonTooltip key={toSlotId(box.id, index)} pokemonId={slot.pokemonId} boxId={box.id} slotIndex={index}>
             {cell}
           </PokemonTooltip>
         ) : (

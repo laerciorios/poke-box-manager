@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
 import {
@@ -12,6 +13,7 @@ import {
   Layers,
   PanelLeftClose,
   PanelLeftOpen,
+  Tag,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
@@ -19,6 +21,7 @@ import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { useSettingsStore } from '@/stores/useSettingsStore'
 import { MobileMoreMenu } from './MobileMoreMenu'
+import { TagManagerModal } from '@/components/tags/TagManagerModal'
 
 type NavKey = 'home' | 'boxes' | 'pokedex' | 'stats' | 'missing' | 'settings' | 'presets'
 
@@ -95,6 +98,36 @@ function SidebarNav({ collapsed = false, onNavigate }: SidebarNavProps) {
   )
 }
 
+function ManageTagsButton({ collapsed }: { collapsed?: boolean }) {
+  const [open, setOpen] = useState(false)
+  const t = useTranslations('Tags')
+
+  const label = t('manageTags')
+  const btnClassName = cn(
+    'flex items-center rounded-md py-2 text-sm font-medium transition-colors text-muted-foreground hover:bg-muted hover:text-foreground w-full',
+    collapsed ? 'justify-center px-2' : 'gap-3 px-3',
+  )
+
+  return (
+    <>
+      {collapsed ? (
+        <Tooltip>
+          <TooltipTrigger render={<button type="button" onClick={() => setOpen(true)} className={btnClassName} aria-label={label} />}>
+            <Tag className="h-4 w-4" />
+          </TooltipTrigger>
+          <TooltipContent side="right">{label}</TooltipContent>
+        </Tooltip>
+      ) : (
+        <button type="button" onClick={() => setOpen(true)} className={btnClassName}>
+          <Tag className="h-4 w-4" />
+          {label}
+        </button>
+      )}
+      <TagManagerModal isOpen={open} onClose={() => setOpen(false)} />
+    </>
+  )
+}
+
 interface SidebarProps {
   open?: boolean
   onOpenChange?: (open: boolean) => void
@@ -132,30 +165,32 @@ export function Sidebar({ open = false, onOpenChange }: SidebarProps) {
             {!isCollapsed && <span className="text-lg font-semibold">{appName}</span>}
           </div>
           <SidebarNav collapsed={isCollapsed} />
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={toggleSidebar}
-                  aria-label={toggleLabel}
-                  className={cn(
-                    'mt-auto',
-                    isCollapsed ? 'justify-center px-0' : 'justify-start gap-2 px-3',
-                  )}
-                />
-              }
-            >
-              {isCollapsed ? (
-                <PanelLeftOpen className="h-4 w-4" />
-              ) : (
-                <PanelLeftClose className="h-4 w-4" />
-              )}
-              {!isCollapsed && <span>{toggleLabel}</span>}
-            </TooltipTrigger>
-            {isCollapsed && <TooltipContent side="right">{toggleLabel}</TooltipContent>}
-          </Tooltip>
+          <div className="mt-auto flex flex-col gap-1">
+            <ManageTagsButton collapsed={isCollapsed} />
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={toggleSidebar}
+                    aria-label={toggleLabel}
+                    className={cn(
+                      isCollapsed ? 'justify-center px-0' : 'justify-start gap-2 px-3',
+                    )}
+                  />
+                }
+              >
+                {isCollapsed ? (
+                  <PanelLeftOpen className="h-4 w-4" />
+                ) : (
+                  <PanelLeftClose className="h-4 w-4" />
+                )}
+                {!isCollapsed && <span>{toggleLabel}</span>}
+              </TooltipTrigger>
+              {isCollapsed && <TooltipContent side="right">{toggleLabel}</TooltipContent>}
+            </Tooltip>
+          </div>
         </div>
       </aside>
 
@@ -169,6 +204,9 @@ export function Sidebar({ open = false, onOpenChange }: SidebarProps) {
               <span className="text-lg font-semibold">PokeBox</span>
             </div>
             <SidebarNav onNavigate={() => onOpenChange?.(false)} />
+            <div className="mt-auto">
+              <ManageTagsButton />
+            </div>
           </div>
         </SheetContent>
       </Sheet>

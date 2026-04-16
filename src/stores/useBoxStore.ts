@@ -3,6 +3,8 @@ import { createPersistedStore } from '@/lib/store'
 import type { Box, BoxSlot } from '@/types/box'
 import { BOX_SIZE } from '@/types/box'
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { useHistoryStore } from '@/stores/useHistoryStore'
+import { buildDescription } from '@/lib/history-descriptions'
 
 interface BoxState {
   boxes: Box[]
@@ -22,6 +24,10 @@ interface BoxState {
   reorderBox: (boxId: string, newIndex: number) => void
   setBoxes: (boxes: Box[]) => void
   toggleShiny: (boxId: string, slotIndex: number) => void
+  setSlotNote: (boxId: string, slotIndex: number, note: string) => void
+  addTagToSlot: (boxId: string, slotIndex: number, tagId: string) => void
+  removeTagFromSlot: (boxId: string, slotIndex: number, tagId: string) => void
+  purgeTagId: (tagId: string) => void
 }
 
 export const useBoxStore = createPersistedStore<BoxState>(
@@ -87,7 +93,13 @@ export const useBoxStore = createPersistedStore<BoxState>(
     },
 
     moveSlot: (fromBoxId, fromIndex, toBoxId, toIndex) => {
-      const boxes = get().boxes.map((b) => ({ ...b, slots: [...b.slots] }))
+      const current = get().boxes
+      const fromBoxBefore = current.find((b) => b.id === fromBoxId)
+      const toBoxBefore = current.find((b) => b.id === toBoxId)
+      const fromSlotSnapshot = fromBoxBefore?.slots[fromIndex] ?? null
+      const toSlotSnapshot = toBoxBefore?.slots[toIndex] ?? null
+
+      const boxes = current.map((b) => ({ ...b, slots: [...b.slots] }))
       const fromBox = boxes.find((b) => b.id === fromBoxId)
       const toBox = boxes.find((b) => b.id === toBoxId)
       if (!fromBox || !toBox) return
@@ -98,6 +110,24 @@ export const useBoxStore = createPersistedStore<BoxState>(
 
       set({ boxes })
       useSettingsStore.getState().recordChange()
+
+      const undoPayload = {
+        type: 'move-slot',
+        fromBoxId,
+        fromIndex,
+        toBoxId,
+        toIndex,
+        fromSlot: fromSlotSnapshot,
+        toSlot: toSlotSnapshot,
+      } as const
+      const locale = useSettingsStore.getState().locale
+      useHistoryStore.getState().pushEntry({
+        id: crypto.randomUUID(),
+        timestamp: Date.now(),
+        actionType: 'move-slot',
+        description: buildDescription('move-slot', undoPayload, locale),
+        undoPayload,
+      })
     },
 
     reorderSlots: (boxId, fromIndex, toIndex) => {
@@ -117,11 +147,32 @@ export const useBoxStore = createPersistedStore<BoxState>(
       boxes.splice(newIndex, 0, box)
       set({ boxes })
       useSettingsStore.getState().recordChange()
+
+      const undoPayload = { type: 'reorder-box', boxId, previousIndex: currentIndex } as const
+      const locale = useSettingsStore.getState().locale
+      useHistoryStore.getState().pushEntry({
+        id: crypto.randomUUID(),
+        timestamp: Date.now(),
+        actionType: 'reorder-box',
+        description: buildDescription('reorder-box', undoPayload, locale),
+        undoPayload,
+      })
     },
 
     setBoxes: (boxes) => {
+      const previousBoxes = structuredClone(get().boxes)
       set({ boxes })
       useSettingsStore.getState().recordChange()
+
+      const undoPayload = { type: 'preset-apply', previousBoxes } as const
+      const locale = useSettingsStore.getState().locale
+      useHistoryStore.getState().pushEntry({
+        id: crypto.randomUUID(),
+        timestamp: Date.now(),
+        actionType: 'preset-apply',
+        description: buildDescription('preset-apply', undoPayload, locale),
+        undoPayload,
+      })
     },
 
     toggleShiny: (boxId, slotIndex) => {
@@ -137,6 +188,69 @@ export const useBoxStore = createPersistedStore<BoxState>(
       })
       useSettingsStore.getState().recordChange()
     },
+
+    setSlotNote: (boxId, slotIndex, note) => {
+      set({
+        boxes: get().boxes.map((b) => {
+          if (b.id !== boxId) return b
+          const slots = [...b.slots]
+          const slot = slots[slotIndex]
+          if (!slot) return b
+          const trimmed = note.trim().slice(0, 500)
+          slots[slotIndex] = { ...slot, note: trimmed || undefined }
+          return { ...b, slots }
+        }),
+      })
+      useSettingsStore.getState().recordChange()
+    },
+
+    addTagToSlot: (boxId, slotIndex, tagId) => {
+      set({
+        boxes: get().boxes.map((b) => {
+          if (b.id !== boxId) return b
+          const slots = [...b.slots]
+          const slot = slots[slotIndex]
+          if (!slot) return b
+          const existing = slot.tagIds ?? []
+          if (existing.includes(tagId)) return b
+          slots[slotIndex] = { ...slot, tagIds: [...existing, tagId] }
+          return { ...b, slots }
+        }),
+      })
+      useSettingsStore.getState().recordChange()
+    },
+
+    removeTagFromSlot: (boxId, slotIndex, tagId) => {
+      set({
+        boxes: get().boxes.map((b) => {
+          if (b.id !== boxId) return b
+          const slots = [...b.slots]
+          const slot = slots[slotIndex]
+          if (!slot) return b
+          const filtered = (slot.tagIds ?? []).filter((id) => id !== tagId)
+          slots[slotIndex] = { ...slot, tagIds: filtered.length ? filtered : undefined }
+          return { ...b, slots }
+        }),
+      })
+      useSettingsStore.getState().recordChange()
+    },
+
+    purgeTagId: (tagId) => {
+      set({
+        boxes: get().boxes.map((b) => ({
+          ...b,
+          slots: b.slots.map((slot) => {
+            if (!slot?.tagIds?.includes(tagId)) return slot
+            const filtered = slot.tagIds.filter((id) => id !== tagId)
+            return { ...slot, tagIds: filtered.length ? filtered : undefined }
+          }),
+        })),
+      })
+      useSettingsStore.getState().recordChange()
+    },
   }),
-  { version: 1 },
+  {
+    version: 2,
+    migrate: (state) => state as BoxState,
+  },
 )

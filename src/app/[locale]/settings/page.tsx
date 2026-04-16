@@ -3,6 +3,7 @@ import { VariationTogglesPanel } from '@/components/settings'
 import { BoxDisplayPanel } from '@/components/settings/BoxDisplayPanel'
 import { ShinyTrackerPanel } from '@/components/settings/ShinyTrackerPanel'
 import { DataBackupPanel } from '@/components/settings/DataBackupPanel'
+import { BoxCalculatorCard } from '@/components/settings/BoxCalculatorCard'
 
 export default async function SettingsPage() {
   const t = await getTranslations('Settings')
@@ -35,6 +36,7 @@ export default async function SettingsPage() {
           <p className="text-sm text-muted-foreground">{t('variationsSectionDescription')}</p>
         </div>
         <VariationTogglesPanel />
+        <BoxCalculatorCard />
       </section>
 
       <section className="space-y-4">

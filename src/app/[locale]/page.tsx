@@ -10,6 +10,8 @@ import { RecentStrip } from '@/components/home/RecentStrip'
 import { QuickActions } from '@/components/home/QuickActions'
 import { GenerationMilestones } from '@/components/home/GenerationMilestones'
 import { PokemonCard } from '@/components/pokemon/PokemonCard'
+import { BoxCalculatorCard } from '@/components/settings/BoxCalculatorCard'
+import { ActivityHistoryPanel } from '@/components/history/ActivityHistoryPanel'
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -41,6 +43,8 @@ export default function HomePage() {
         <section className="space-y-3">
           <SectionHeading>{t('quickStats')}</SectionHeading>
           <QuickStats stats={stats} />
+          <BoxCalculatorCard />
+          <ActivityHistoryPanel />
         </section>
 
         {/* Quick Actions */}

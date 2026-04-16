@@ -9,6 +9,8 @@ import { LayoutList, LayoutGrid } from 'lucide-react'
 
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { useBoxStore } from '@/stores/useBoxStore'
+import { useTagsStore } from '@/stores/useTagsStore'
 import { buildPokedexRows } from '@/lib/pokedex-rows'
 import { PokemonCard } from '@/components/pokemon/PokemonCard'
 import { PokedexSearch } from './PokedexSearch'
@@ -16,6 +18,7 @@ import { PokedexFilters } from './PokedexFilters'
 import { PokedexSortHeader } from './PokedexSortHeader'
 import { PokedexTableRow } from './PokedexRow'
 import { PokedexCard } from './PokedexCard'
+import { TagFilterPanel } from '@/components/tags/TagFilterPanel'
 
 import pokemonData from '@/data/pokemon.json'
 import type { PokemonEntry, PokemonCategory } from '@/types/pokemon'
@@ -42,6 +45,9 @@ export function PokedexPage() {
   const locale = useSettingsStore((s) => s.locale)
   const pokedexView = useSettingsStore((s) => s.pokedexView)
   const setPokedexView = useSettingsStore((s) => s.setPokedexView)
+  const boxes = useBoxStore((s) => s.boxes)
+  const allTags = useTagsStore((s) => s.tags)
+  const [selectedTagIds, setSelectedTagIds] = useState<Set<string>>(new Set())
 
   // URL params
   const genParam = searchParams.get('gen') ?? ''
@@ -58,6 +64,30 @@ export function PokedexPage() {
 
   // O(1) registration lookup
   const registeredSet = useMemo(() => new Set(registered), [registered])
+
+  const taggedSlotKeys = useMemo(() => {
+    if (!selectedTagIds.size) return null
+    const keys = new Set<string>()
+    for (const box of boxes) {
+      for (const slot of box.slots) {
+        if (!slot?.tagIds) continue
+        if (slot.tagIds.some((id) => selectedTagIds.has(id))) {
+          const key = slot.formId ? `${slot.pokemonId}:${slot.formId}` : String(slot.pokemonId)
+          keys.add(key)
+        }
+      }
+    }
+    return keys
+  }, [boxes, selectedTagIds])
+
+  const handleToggleTagFilter = (tagId: string) => {
+    setSelectedTagIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(tagId)) next.delete(tagId)
+      else next.add(tagId)
+      return next
+    })
+  }
 
   // Build full row list
   const allRows = useMemo(
@@ -112,8 +142,15 @@ export function PokedexPage() {
       return dirParam === 'desc' ? -cmp : cmp
     })
 
+    if (taggedSlotKeys) {
+      rows = rows.filter((row) => {
+        const key = row.formId ? `${row.pokemonId}:${row.formId}` : String(row.pokemonId)
+        return taggedSlotKeys.has(key)
+      })
+    }
+
     return rows
-  }, [allRows, query, genParam, typeParam, catParam, sortParam, dirParam])
+  }, [allRows, query, genParam, typeParam, catParam, sortParam, dirParam, taggedSlotKeys])
 
   // Virtualizer (table view only)
   const parentRef = useRef<HTMLDivElement>(null)
@@ -144,6 +181,7 @@ export function PokedexPage() {
   return (
     <div className="flex flex-col gap-4">
       {/* Controls bar */}
+      <div className="flex flex-col gap-2">
       <div className="flex flex-wrap items-center gap-3">
         <PokedexSearch value={query} onChange={setQuery} />
         <PokedexFilters />
@@ -175,6 +213,12 @@ export function PokedexPage() {
             <LayoutGrid size={16} />
           </button>
         </div>
+      </div>
+      <TagFilterPanel
+        tags={allTags}
+        selectedTagIds={selectedTagIds}
+        onToggle={handleToggleTagFilter}
+      />
       </div>
 
       {/* Row count */}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import {
   DndContext,
@@ -23,6 +23,8 @@ import { AutoFillButton } from '@/components/boxes/AutoFillButton'
 import { useBoxStore } from '@/stores/useBoxStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
 import { usePokedexStore } from '@/stores/usePokedexStore'
+import { useTagsStore } from '@/stores/useTagsStore'
+import { TagFilterPanel } from '@/components/tags/TagFilterPanel'
 import { useRegistrationMode } from '@/hooks/useRegistrationMode'
 import { useSlotFocus } from '@/hooks/useSlotFocus'
 import { useSwipeGesture } from '@/hooks/useSwipeGesture'
@@ -76,6 +78,8 @@ export default function BoxesPage() {
   const tA11y = useTranslations('accessibility')
   const locale = useLocale() as Locale
   const boxes = useBoxStore((s) => s.boxes)
+  const allTags = useTagsStore((s) => s.tags)
+  const [selectedTagIds, setSelectedTagIds] = useState<Set<string>>(new Set())
   const createBox = useBoxStore((s) => s.createBox)
   const deleteBox = useBoxStore((s) => s.deleteBox)
   const moveSlot = useBoxStore((s) => s.moveSlot)
@@ -115,6 +119,17 @@ export default function BoxesPage() {
   }, [boxes.length])
 
   const safeIndex = Math.min(activeBoxIndex, Math.max(0, boxes.length - 1))
+
+  const tagMap = useMemo(() => new Map(allTags.map((t) => [t.id, t])), [allTags])
+
+  const handleToggleTagFilter = (tagId: string) => {
+    setSelectedTagIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(tagId)) next.delete(tagId)
+      else next.add(tagId)
+      return next
+    })
+  }
   const activeBox = boxes[safeIndex] ?? null
 
   const sensors = useSensors(
@@ -327,6 +342,11 @@ export default function BoxesPage() {
                     onKeyboardNext={handleNext}
                   />
                 </div>
+                <TagFilterPanel
+                  tags={allTags}
+                  selectedTagIds={selectedTagIds}
+                  onToggle={handleToggleTagFilter}
+                />
                 <BoxGrid
                   box={activeBox}
                   registrationMode={{
@@ -345,6 +365,18 @@ export default function BoxesPage() {
                   dndEnabled={!registration.isActive}
                   showPokemonNames={showPokemonNamesInBox}
                   onToggleShowNames={() => setShowPokemonNamesInBox(!showPokemonNamesInBox)}
+                  getSlotTags={(slot) =>
+                    (slot.tagIds ?? []).flatMap((id) => {
+                      const tag = tagMap.get(id)
+                      return tag ? [tag] : []
+                    })
+                  }
+                  isSlotDimmed={(index) => {
+                    if (!selectedTagIds.size) return false
+                    const slot = activeBox.slots[index]
+                    if (!slot) return true
+                    return !(slot.tagIds ?? []).some((id) => selectedTagIds.has(id))
+                  }}
                 />
               </div>
             )}

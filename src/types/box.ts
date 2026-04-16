@@ -7,6 +7,8 @@ export interface BoxSlot {
   formId?: string
   registered: boolean
   shiny?: boolean
+  note?: string
+  tagIds?: string[]
 }
 
 export interface Box {

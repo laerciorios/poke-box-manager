@@ -1,16 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Sparkles } from 'lucide-react'
 
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { useBoxStore } from '@/stores/useBoxStore'
 import { getPokemonById, getEvolutionChain } from '@/lib/pokemon-lookup'
 import { getPokemonName, getFormName } from '@/lib/pokemon-names'
 import { getEvolutionMethodLabel } from '@/lib/evolution-method-label'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { Textarea } from '@/components/ui/textarea'
 import {
   Sheet,
   SheetContent,
@@ -18,6 +20,9 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet'
 import { SpritePlaceholder } from './SpritePlaceholder'
+import { AcquisitionChecklist } from './AcquisitionChecklist'
+import { TagAssignmentPanel } from '@/components/tags/TagAssignmentPanel'
+import { TagManagerModal } from '@/components/tags/TagManagerModal'
 import type { PokemonForm } from '@/types/pokemon'
 import type { EvolutionChain, EvolutionMethod, EvolutionStep } from '@/types/game'
 import type { Locale } from '@/types/locale'
@@ -44,10 +49,14 @@ const TYPE_COLORS: Record<string, string> = {
   fairy: '#EE99AC',
 }
 
+const NOTE_MAX = 500
+
 interface PokemonCardProps {
   pokemonId: number
   isOpen: boolean
   onClose: () => void
+  boxId?: string
+  slotIndex?: number
 }
 
 function SpriteImage({
@@ -189,12 +198,28 @@ function EvolutionTree({ chain, currentPokemonId, locale }: EvolutionTreeProps) 
 
 // ──────────────────────────────────────────────────────────────────────────────
 
-export function PokemonCard({ pokemonId, isOpen, onClose }: PokemonCardProps) {
+export function PokemonCard({ pokemonId, isOpen, onClose, boxId, slotIndex }: PokemonCardProps) {
   const locale = useSettingsStore((s) => s.locale)
   const t = useTranslations('Pokemon')
+  const tNotes = useTranslations('Notes')
+  const tTags = useTranslations('Tags')
+
+  const hasSlotContext = boxId !== undefined && slotIndex !== undefined
+  const storedNote = useBoxStore((s) => {
+    if (!hasSlotContext) return undefined
+    const box = s.boxes.find((b) => b.id === boxId)
+    return box?.slots[slotIndex!]?.note ?? ''
+  })
+  const setSlotNote = useBoxStore((s) => s.setSlotNote)
 
   const [isShiny, setIsShiny] = useState(false)
   const [activeFormId, setActiveFormId] = useState<string | null>(null)
+  const [noteValue, setNoteValue] = useState(storedNote ?? '')
+  const [tagManagerOpen, setTagManagerOpen] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) setNoteValue(storedNote ?? '')
+  }, [isOpen, boxId, slotIndex])
 
   const pokemon = getPokemonById(pokemonId)
 
@@ -218,6 +243,14 @@ export function PokemonCard({ pokemonId, isOpen, onClose }: PokemonCardProps) {
   const evolutionChain = pokemon.evolutionChainId
     ? getEvolutionChain(pokemon.evolutionChainId)
     : undefined
+
+  const handleNoteBlur = () => {
+    if (!hasSlotContext) return
+    const trimmed = noteValue.trim().slice(0, NOTE_MAX)
+    if (trimmed !== (storedNote ?? '')) {
+      setSlotNote(boxId!, slotIndex!, trimmed)
+    }
+  }
 
   const handleOpenChange = (open: boolean) => {
     if (!open) {
@@ -347,6 +380,50 @@ export function PokemonCard({ pokemonId, isOpen, onClose }: PokemonCardProps) {
                 currentPokemonId={pokemonId}
                 locale={locale}
               />
+            </div>
+          )}
+
+          {/* Acquisition checklist */}
+          <AcquisitionChecklist pokemonId={pokemonId} />
+
+          {/* Tags — only shown when opened from a box slot */}
+          {hasSlotContext && (
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                  {tTags('tagsSection')}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setTagManagerOpen(true)}
+                  className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors"
+                >
+                  {tTags('manageTags')}
+                </button>
+              </div>
+              <TagAssignmentPanel boxId={boxId!} slotIndex={slotIndex!} />
+              <TagManagerModal isOpen={tagManagerOpen} onClose={() => setTagManagerOpen(false)} />
+            </div>
+          )}
+
+          {/* Note editor — only shown when opened from a box slot */}
+          {hasSlotContext && (
+            <div className="flex flex-col gap-1.5">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                {tNotes('label')}
+              </p>
+              <Textarea
+                value={noteValue}
+                onChange={(e) => setNoteValue(e.target.value.slice(0, NOTE_MAX))}
+                onBlur={handleNoteBlur}
+                placeholder={tNotes('placeholder')}
+                maxLength={NOTE_MAX}
+                rows={3}
+                className="resize-none text-sm"
+              />
+              <p className="text-xs text-muted-foreground text-right">
+                {noteValue.length} / {NOTE_MAX}
+              </p>
             </div>
           )}
         </div>

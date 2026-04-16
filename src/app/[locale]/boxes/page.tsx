@@ -5,11 +5,15 @@ import { useLocale, useTranslations } from 'next-intl'
 import {
   DndContext,
   type DragEndEvent,
+  type DragOverEvent,
   type DragStartEvent,
+  KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
+  type Announcements,
 } from '@dnd-kit/core'
+import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import { Button } from '@/components/ui/button'
 import { BoxGrid } from '@/components/boxes/BoxGrid'
 import { BoxNavigation } from '@/components/boxes/BoxNavigation'
@@ -23,6 +27,7 @@ import { useRegistrationMode } from '@/hooks/useRegistrationMode'
 import { useSlotFocus } from '@/hooks/useSlotFocus'
 import { useSwipeGesture } from '@/hooks/useSwipeGesture'
 import { useKeyboardShortcut } from '@/contexts/KeyboardShortcutContext'
+import { useAnnounce } from '@/contexts/AnnouncerContext'
 import { fromSlotId } from '@/lib/dnd-utils'
 import { getPokemonName, getFormName } from '@/lib/pokemon-names'
 import pokemonData from '@/data/pokemon.json'
@@ -68,6 +73,7 @@ interface ActiveDrag {
 export default function BoxesPage() {
   const t = useTranslations('Boxes')
   const tCommon = useTranslations('Common')
+  const tA11y = useTranslations('accessibility')
   const locale = useLocale() as Locale
   const boxes = useBoxStore((s) => s.boxes)
   const createBox = useBoxStore((s) => s.createBox)
@@ -83,6 +89,7 @@ export default function BoxesPage() {
   const [activeDrag, setActiveDrag] = useState<ActiveDrag | null>(null)
   const [highlightSlotIndex, setHighlightSlotIndex] = useState<number | null>(null)
   const registration = useRegistrationMode()
+  const announce = useAnnounce()
   const { focusedSlotIndex, moveFocus } = useSlotFocus()
   const isDraggingRef = useRef(false)
   const swipeContainerRef = useRef<HTMLDivElement>(null)
@@ -113,6 +120,9 @@ export default function BoxesPage() {
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: { distance: 8, delay: 150, tolerance: 5 },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
     }),
   )
 
@@ -189,6 +199,39 @@ export default function BoxesPage() {
     toggleShiny(boxId, slotIndex)
   }
 
+  // Wraps single-slot registration click with screen reader announcement (task 5.1)
+  function handleRegistrationSlotClick(
+    boxId: string,
+    slotIndex: number,
+    event: React.MouseEvent,
+    slot: BoxSlot | null,
+  ) {
+    const isPlainClick = !event.ctrlKey && !event.metaKey && !event.shiftKey
+    const wasRegistered = slot ? isRegistered(slot.pokemonId, slot.formId) : false
+    registration.handleSlotClick(boxId, slotIndex, event, slot)
+    if (isPlainClick && slot) {
+      const name = getSlotName(slot, locale) ?? `#${slot.pokemonId}`
+      announce(
+        wasRegistered
+          ? tA11y('unregistered', { name })
+          : tA11y('registered', { name }),
+      )
+    }
+  }
+
+  // Wraps bulk registration action with screen reader announcement (task 5.2)
+  function handleMarkSelected(registered: boolean) {
+    const count = registration.selectedKeys.size
+    registration.markSelected(registered)
+    if (count > 0) {
+      announce(
+        registered
+          ? tA11y('bulkRegistered', { count })
+          : tA11y('bulkUnregistered', { count }),
+      )
+    }
+  }
+
   function handleDeleteBox(boxId: string) {
     const currentIndex = boxes.findIndex((box) => box.id === boxId)
     if (currentIndex === -1) return
@@ -205,8 +248,38 @@ export default function BoxesPage() {
   const activeDragName = activeDragSlot ? getSlotName(activeDragSlot, locale) : undefined
   const activeDragSprite = activeDragSlot ? getSpriteUrl(activeDragSlot) : undefined
 
+  const dndAnnouncements: Announcements = {
+    onDragStart({ active }) {
+      const { boxId, slotIndex } = fromSlotId(String(active.id))
+      const box = boxes.find((b) => b.id === boxId)
+      const slot = box?.slots[slotIndex] ?? null
+      const name = slot ? (getSlotName(slot, locale) ?? `#${slot.pokemonId}`) : String(slotIndex + 1)
+      return tA11y('dragStart', { name, position: slotIndex + 1 })
+    },
+    onDragOver({ active, over }) {
+      if (!over) return undefined
+      const { slotIndex } = fromSlotId(String(over.id))
+      const name = activeDragName ?? String(active.id)
+      return tA11y('dragOver', { name, position: slotIndex + 1 })
+    },
+    onDragEnd({ active, over }) {
+      if (!over) return undefined
+      const { slotIndex } = fromSlotId(String(over.id))
+      const name = activeDragName ?? String(active.id)
+      return tA11y('dragEnd', { name, position: slotIndex + 1 })
+    },
+    onDragCancel() {
+      return tA11y('dragCancel')
+    },
+  }
+
   return (
-    <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+    <DndContext
+      sensors={sensors}
+      accessibility={{ announcements: dndAnnouncements }}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+    >
       <div className="space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-2xl font-bold">{t('pageTitle')}</h1>
@@ -260,8 +333,8 @@ export default function BoxesPage() {
                     isActive: registration.isActive,
                     selectedKeys: registration.selectedKeys,
                     onToggle: registration.toggleMode,
-                    handleSlotClick: registration.handleSlotClick,
-                    markSelected: registration.markSelected,
+                    handleSlotClick: handleRegistrationSlotClick,
+                    markSelected: handleMarkSelected,
                     onShinyToggle: handleShinyToggle,
                   }}
                   selectedSlotIndex={highlightSlotIndex}

@@ -6,6 +6,7 @@ import { SearchProvider } from '@/contexts/SearchContext'
 import { KeyboardShortcutProvider, useKeyboardShortcut } from '@/contexts/KeyboardShortcutContext'
 import { ModalStackProvider, useModalStack } from '@/contexts/ModalStackContext'
 import { SearchBarProvider } from '@/contexts/SearchBarContext'
+import { AnnouncerProvider } from '@/contexts/AnnouncerContext'
 
 // Registers Escape → close top modal (lower priority than search-escape in SearchBar)
 function EscapeModalShortcut() {
@@ -25,9 +26,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <KeyboardShortcutProvider>
           <ModalStackProvider>
             <EscapeModalShortcut />
-            <SearchBarProvider>
-              <SearchProvider>{children}</SearchProvider>
-            </SearchBarProvider>
+            <AnnouncerProvider>
+              <SearchBarProvider>
+                <SearchProvider>{children}</SearchProvider>
+              </SearchBarProvider>
+            </AnnouncerProvider>
           </ModalStackProvider>
         </KeyboardShortcutProvider>
       </TooltipProvider>

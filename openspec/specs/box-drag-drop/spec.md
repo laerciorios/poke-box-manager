@@ -1,105 +1,58 @@
 ## ADDED Requirements
 
-### Requirement: Slots are draggable sources
+### Requirement: DndContext includes a KeyboardSensor for accessible drag-and-drop
 
-Every non-empty `BoxSlotCell` SHALL be a draggable source using `@dnd-kit/core`'s `useDraggable` hook. Empty slots SHALL NOT be draggable.
+The `DndContext` SHALL include `@dnd-kit`'s `KeyboardSensor` in its `sensors` array alongside the existing pointer/mouse sensors. This enables keyboard users to initiate, move, and complete or cancel drag operations without a pointer device.
 
-#### Scenario: Non-empty slot can be dragged
+#### Scenario: Space initiates a drag on a focused slot
 
-- **WHEN** the user begins a drag gesture on a slot that contains a `BoxSlot`
-- **THEN** a drag interaction SHALL start with the draggable ID `"boxId:slotIndex"`
-- **THEN** the slot cell SHALL render at reduced opacity to indicate it is the drag source
+- **WHEN** a non-empty `BoxSlotCell` is focused via keyboard and the user presses Space
+- **THEN** a keyboard drag SHALL begin on that slot
 
-#### Scenario: Empty slot cannot be dragged
+#### Scenario: Arrow keys move the drag target
 
-- **WHEN** the user attempts to drag an empty slot (slot value is `null`)
-- **THEN** no drag interaction SHALL start
+- **WHEN** a keyboard drag is in progress
+- **THEN** pressing arrow keys SHALL move the active droppable target to an adjacent slot
 
-### Requirement: All slots are droppable targets
+#### Scenario: Space drops at the current target
 
-Every slot (empty and occupied) in every mounted `BoxGrid` SHALL be a droppable target using `@dnd-kit/core`'s `useDroppable` hook, identified by `"boxId:slotIndex"`.
+- **WHEN** a keyboard drag is in progress and a target slot is highlighted
+- **THEN** pressing Space SHALL complete the drop (equivalent to pointer release)
 
-#### Scenario: Drop zone highlight appears on hover
+#### Scenario: Escape cancels the drag
 
-- **WHEN** a drag is in flight and the pointer enters a slot's drop zone
-- **THEN** that slot SHALL render a distinct visual highlight (e.g., ring border)
+- **WHEN** a keyboard drag is in progress
+- **THEN** pressing Escape SHALL cancel the drag and leave all slots unchanged
 
-#### Scenario: Drop zone highlight clears on pointer leave
+### Requirement: DndContext provides screen reader announcements for all drag lifecycle events
 
-- **WHEN** the pointer leaves a slot's drop zone without dropping
-- **THEN** the highlight SHALL be removed
+The `DndContext` `accessibility.announcements` prop SHALL be populated with i18n-aware strings (from `next-intl`) for each drag lifecycle event: `onDragStart`, `onDragOver`, `onDragEnd`, `onDragCancel`.
 
-### Requirement: Dropping onto an empty slot moves the Pokemon
+#### Scenario: Drag start is announced
 
-When the user drops a dragged slot onto an empty target slot, `useBoxStore.moveSlot` SHALL be called, resulting in the Pokemon occupying the target slot and the source slot becoming empty.
+- **WHEN** the user picks up a Pokémon (keyboard or pointer)
+- **THEN** the screen reader SHALL announce something like "Picked up Bulbasaur. Use arrow keys to move."
 
-#### Scenario: Drag from slot A (occupied) to slot B (empty)
+#### Scenario: Drag-over a new slot is announced
 
-- **WHEN** the user drops a Pokemon from slot A onto an empty slot B
-- **THEN** `useBoxStore.moveSlot(fromBoxId, fromIndex, toBoxId, toIndex)` SHALL be called
-- **THEN** slot B SHALL contain the Pokemon that was in slot A
-- **THEN** slot A SHALL be empty (`null`)
+- **WHEN** the drag moves over a different slot
+- **THEN** the screen reader SHALL announce the target slot position (e.g., "Over slot 3 of Box 2, currently occupied by Charmander")
 
-#### Scenario: Drop on the same slot is a no-op
+#### Scenario: Successful drop is announced
 
-- **WHEN** the user drops a slot onto itself (same `boxId` and `slotIndex`)
-- **THEN** no store mutation SHALL occur
+- **WHEN** the user drops a Pokémon onto a valid target
+- **THEN** the screen reader SHALL announce the completed move (e.g., "Bulbasaur moved to slot 3 of Box 2")
 
-### Requirement: Dropping onto an occupied slot swaps the two Pokemon
+#### Scenario: Drag cancel is announced
 
-When the user drops a dragged slot onto a slot that is already occupied, `useBoxStore.moveSlot` SHALL be called, resulting in the two Pokemon exchanging positions.
+- **WHEN** the drag is cancelled (Escape or drop outside a valid target)
+- **THEN** the screen reader SHALL announce "Drag cancelled. Bulbasaur returned to its original position."
 
-#### Scenario: Drag from slot A (occupied) to slot B (occupied)
+### Requirement: DnD overlay animation respects prefers-reduced-motion
 
-- **WHEN** the user drops a Pokemon from slot A onto an occupied slot B
-- **THEN** `useBoxStore.moveSlot(fromBoxId, fromIndex, toBoxId, toIndex)` SHALL be called
-- **THEN** slot B SHALL contain the Pokemon that was in slot A
-- **THEN** slot A SHALL contain the Pokemon that was in slot B
+The `DragOverlay` ghost sprite transition (fade-in, scale) SHALL be suppressed when `prefers-reduced-motion: reduce` is active. This is a cross-cutting concern aligned with the `reduced-motion` capability.
 
-### Requirement: Cross-box drag is supported when both boxes are mounted
+#### Scenario: Ghost overlay appears instantly under reduced motion
 
-When the destination box is currently rendered in the DOM (e.g., in overview mode), a drag from one box to another SHALL be recognized as a valid drop.
-
-#### Scenario: Drag from box 1 slot to box 2 slot
-
-- **WHEN** both `BoxGrid` components for box 1 and box 2 are mounted under the same `DndContext`
-- **THEN** dropping a slot from box 1 onto a slot in box 2 SHALL call `useBoxStore.moveSlot` with the correct source and destination box IDs
-
-#### Scenario: Drop outside any valid target cancels the drag
-
-- **WHEN** the user releases the drag pointer outside any droppable target
-- **THEN** no store mutation SHALL occur
-- **THEN** the source slot SHALL return to its original appearance
-
-### Requirement: DragOverlay renders a ghost sprite
-
-A single `DragOverlay` SHALL be mounted inside `DndContext`. While a drag is active, it SHALL render the sprite of the dragged Pokemon at slightly larger scale with a drop shadow.
-
-#### Scenario: Ghost appears on drag start
-
-- **WHEN** a drag interaction begins on a non-empty slot
-- **THEN** a ghost overlay SHALL appear at the pointer position showing the Pokemon sprite
-
-#### Scenario: Ghost follows the pointer
-
-- **WHEN** the user moves the pointer during a drag
-- **THEN** the ghost overlay SHALL follow the pointer continuously
-
-#### Scenario: Ghost disappears on drag end
-
-- **WHEN** the drag ends (drop or cancel)
-- **THEN** the ghost overlay SHALL be removed
-
-### Requirement: Single DndContext wraps the box page
-
-A single `DndContext` from `@dnd-kit/core` SHALL wrap the entire box page, encompassing all rendered `BoxGrid` components, to enable cross-box drag support.
-
-#### Scenario: DndContext is a single ancestor
-
-- **WHEN** the box page renders multiple `BoxGrid` components
-- **THEN** all grids SHALL be descendants of the same `DndContext` instance
-
-#### Scenario: onDragEnd triggers moveSlot
-
-- **WHEN** a drag ends over a valid droppable target
-- **THEN** the `DndContext`'s `onDragEnd` handler SHALL parse the active and over IDs and call `useBoxStore.moveSlot` with the extracted box and slot indices
+- **WHEN** `prefers-reduced-motion: reduce` is active and a drag begins
+- **THEN** the `DragOverlay` SHALL appear at the pointer/keyboard position immediately with no animation

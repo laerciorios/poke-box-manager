@@ -17,6 +17,7 @@ export function RegistrationModeToggle({ isActive, onToggle }: RegistrationModeT
       size="sm"
       onClick={onToggle}
       aria-pressed={isActive}
+      aria-label={t('registrationMode')}
     >
       <BookOpen className="size-3.5" />
       {t('registrationMode')}

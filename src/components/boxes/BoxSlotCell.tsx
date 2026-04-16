@@ -6,6 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { CircleHelp, Check, GripVertical } from "lucide-react"
 import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
+import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 import {
@@ -54,8 +55,11 @@ interface BoxSlotCellProps extends VariantProps<typeof slotVariants> {
   registrationModeActive?: boolean
   hasShinySprite?: boolean
   onShinyToggle?: (e: React.MouseEvent) => void
-  isShinyRegistered?: boolean
-  onShinyRegistrationToggle?: (e: React.MouseEvent) => void
+  isShiny?: boolean
+  /** Roving tabindex value — 0 for active slot, -1 for all others */
+  tabIndexValue?: number
+  /** Whether the grid is in the viewport; when false, sprites are skipped */
+  visible?: boolean
 }
 
 function getSlotState(slot: BoxSlot | null): SlotState {
@@ -79,6 +83,7 @@ function SlotSprite({
   showName,
   isDragging,
   isDraggable,
+  visible,
 }: {
   slot: BoxSlot
   spriteUrl?: string
@@ -86,6 +91,7 @@ function SlotSprite({
   showName?: boolean
   isDragging?: boolean
   isDraggable?: boolean
+  visible?: boolean
 }) {
   const [spriteLoaded, setSpriteLoaded] = useState(false)
   const [spriteError, setSpriteError] = useState(false)
@@ -99,14 +105,14 @@ function SlotSprite({
         {(!spriteLoaded || spriteError) && (
           <SpritePlaceholder className="absolute inset-0 w-full h-full" />
         )}
-        {!spriteError && spriteUrl && (
+        {!spriteError && spriteUrl && visible !== false && (
           <Image
             src={spriteUrl}
             alt={pokemonName ?? `#${slot.pokemonId}`}
             fill
             sizes={SPRITE_SIZES}
             className={cn(
-              "object-contain transition-[opacity,transform] duration-[var(--transition-fast)]",
+              "object-contain transition-[opacity,transform] duration-[var(--transition-fast)] motion-reduce:transition-none",
               spriteLoaded ? "opacity-100" : "opacity-0",
               state === "missing" && "opacity-30",
               isDraggable && !isDragging && "group-hover:scale-110"
@@ -145,10 +151,12 @@ function SortableSlotCell({
   registrationModeActive,
   hasShinySprite,
   onShinyToggle,
-  isShinyRegistered,
-  onShinyRegistrationToggle,
+  isShiny,
+  tabIndexValue = 0,
+  visible,
 }: BoxSlotCellProps) {
   const state = getSlotState(slot)
+  const tA11y = useTranslations("accessibility")
 
   const {
     attributes,
@@ -187,7 +195,14 @@ function SortableSlotCell({
     }
   }
 
-  const showShinyRegistered = !!slot && (isShinyRegistered || (registrationModeActive && !!onShinyRegistrationToggle))
+  // Compute ARIA label based on slot state
+  const ariaLabel = !slot
+    ? tA11y("emptySlot")
+    : slot.registered
+    ? tA11y("slotRegistered", { name: pokemonName ?? `#${slot.pokemonId}` })
+    : tA11y("slotNotRegistered", { name: pokemonName ?? `#${slot.pokemonId}` })
+
+  const showShinyRegistered = !!slot && (isShiny || (registrationModeActive && !!onShinyToggle))
 
   const cellContent = (
     <>
@@ -202,32 +217,33 @@ function SortableSlotCell({
             showName={showName}
             isDragging={isDragging}
             isDraggable={isDraggable}
+            visible={visible}
           />
           {state === "registered" && (
-            <div className="absolute top-0.5 right-0.5 flex size-4 items-center justify-center rounded-full bg-green-500 text-white">
+            <div className="absolute top-0.5 right-0.5 flex size-4 items-center justify-center rounded-full bg-green-600 text-white">
               <Check className="size-2.5" />
             </div>
           )}
           {showShinyRegistered && (
             <div
-              role={registrationModeActive && onShinyRegistrationToggle ? "button" : undefined}
+              role={registrationModeActive && onShinyToggle ? "button" : undefined}
               className={cn(
-                "absolute top-0.5 left-0.5 z-10 inline-flex size-4 items-center justify-center rounded-full ring-1 shadow-sm transition-all",
-                isShinyRegistered
+                "absolute top-0.5 left-0.5 z-10 inline-flex size-4 items-center justify-center rounded-full ring-1 shadow-sm transition-all motion-reduce:transition-none",
+                isShiny
                   ? "bg-amber-400/90 text-amber-900 ring-amber-400/50 opacity-100"
                   : "bg-card/95 text-muted-foreground ring-border/70 opacity-0 group-hover:opacity-100",
-                registrationModeActive && onShinyRegistrationToggle ? "cursor-pointer" : "pointer-events-none"
+                registrationModeActive && onShinyToggle ? "cursor-pointer" : "pointer-events-none"
               )}
-              onClick={registrationModeActive && onShinyRegistrationToggle ? (e) => {
+              onClick={registrationModeActive && onShinyToggle ? (e) => {
                 e.stopPropagation()
-                onShinyRegistrationToggle(e)
+                onShinyToggle(e)
               } : undefined}
             >
               <Sparkles className="size-2.5" />
             </div>
           )}
           {isDraggable && (
-            <GripVertical className="absolute bottom-0.5 right-0.5 size-3 text-muted-foreground/40 opacity-0 transition-opacity group-hover:opacity-100" />
+            <GripVertical className="absolute bottom-0.5 right-0.5 size-3 text-muted-foreground/40 opacity-0 transition-opacity motion-reduce:transition-none group-hover:opacity-100" />
           )}
         </>
       ) : null}
@@ -239,7 +255,11 @@ function SortableSlotCell({
     ...listeners,
     ref: setNodeRef,
     style,
-    role: "button" as const,
+    role: "gridcell" as const,
+    tabIndex: tabIndexValue,
+    "aria-label": ariaLabel,
+    "aria-selected": registrationModeActive ? selected : undefined,
+    "aria-roledescription": isDraggable ? tA11y("draggable") : undefined,
     className: cellClassName,
     onClick,
     onKeyDown: handleKeyDown,
@@ -273,12 +293,14 @@ export function BoxSlotCell({
   registrationModeActive,
   hasShinySprite,
   onShinyToggle,
-  isShinyRegistered,
-  onShinyRegistrationToggle,
+  isShiny,
+  tabIndexValue = 0,
+  visible,
 }: BoxSlotCellProps) {
   const [spriteLoaded, setSpriteLoaded] = useState(false)
   const [spriteError, setSpriteError] = useState(false)
   const state = getSlotState(slot)
+  const tA11y = useTranslations("accessibility")
 
   if (sortableId) {
     return (
@@ -296,11 +318,19 @@ export function BoxSlotCell({
         registrationModeActive={registrationModeActive}
         hasShinySprite={hasShinySprite}
         onShinyToggle={onShinyToggle}
-        isShinyRegistered={isShinyRegistered}
-        onShinyRegistrationToggle={onShinyRegistrationToggle}
+        isShiny={isShiny}
+        tabIndexValue={tabIndexValue}
+        visible={visible}
       />
     )
   }
+
+  // Compute ARIA label based on slot state
+  const ariaLabel = !slot
+    ? tA11y("emptySlot")
+    : slot.registered
+    ? tA11y("slotRegistered", { name: pokemonName ?? `#${slot.pokemonId}` })
+    : tA11y("slotNotRegistered", { name: pokemonName ?? `#${slot.pokemonId}` })
 
   const cellClassName = cn(
     slotVariants({ state, selected }),
@@ -317,7 +347,7 @@ export function BoxSlotCell({
     }
   }
 
-  const showShinyRegisteredNonSortable = !!slot && (isShinyRegistered || (registrationModeActive && !!onShinyRegistrationToggle))
+  const showShinyRegisteredNonSortable = !!slot && (isShiny || (registrationModeActive && !!onShinyToggle))
 
   const cellContent = (
     <>
@@ -329,14 +359,14 @@ export function BoxSlotCell({
             {(!spriteLoaded || spriteError) && (
               <SpritePlaceholder className="absolute inset-0 w-full h-full" />
             )}
-            {!spriteError && spriteUrl && (
+            {!spriteError && spriteUrl && visible !== false && (
               <Image
                 src={spriteUrl}
                 alt={pokemonName ?? `#${slot.pokemonId}`}
                 fill
                 sizes={SPRITE_SIZES}
                 className={cn(
-                  "object-contain transition-opacity duration-[var(--transition-fast)]",
+                  "object-contain transition-opacity duration-[var(--transition-fast)] motion-reduce:transition-none",
                   spriteLoaded ? "opacity-100" : "opacity-0",
                   state === "missing" && "opacity-30"
                 )}
@@ -356,23 +386,23 @@ export function BoxSlotCell({
             </span>
           )}
           {state === "registered" && (
-            <div className="absolute top-0.5 right-0.5 flex size-4 items-center justify-center rounded-full bg-green-500 text-white">
+            <div className="absolute top-0.5 right-0.5 flex size-4 items-center justify-center rounded-full bg-green-600 text-white">
               <Check className="size-2.5" />
             </div>
           )}
           {showShinyRegisteredNonSortable && (
             <div
-              role={registrationModeActive && onShinyRegistrationToggle ? "button" : undefined}
+              role={registrationModeActive && onShinyToggle ? "button" : undefined}
               className={cn(
-                "absolute top-0.5 left-0.5 z-10 inline-flex size-4 items-center justify-center rounded-full ring-1 shadow-sm transition-all",
-                isShinyRegistered
+                "absolute top-0.5 left-0.5 z-10 inline-flex size-4 items-center justify-center rounded-full ring-1 shadow-sm transition-all motion-reduce:transition-none",
+                isShiny
                   ? "bg-amber-400/90 text-amber-900 ring-amber-400/50 opacity-100"
                   : "bg-card/95 text-muted-foreground ring-border/70 opacity-0 group-hover:opacity-100",
-                registrationModeActive && onShinyRegistrationToggle ? "cursor-pointer" : "pointer-events-none"
+                registrationModeActive && onShinyToggle ? "cursor-pointer" : "pointer-events-none"
               )}
-              onClick={registrationModeActive && onShinyRegistrationToggle ? (e) => {
+              onClick={registrationModeActive && onShinyToggle ? (e) => {
                 e.stopPropagation()
-                onShinyRegistrationToggle(e)
+                onShinyToggle(e)
               } : undefined}
             >
               <Sparkles className="size-2.5" />
@@ -390,7 +420,14 @@ export function BoxSlotCell({
           className={cellClassName}
           onClick={onClick}
           onKeyDown={handleKeyDown}
-          render={<div role="button" tabIndex={0} />}
+          render={
+            <div
+              role="gridcell"
+              tabIndex={tabIndexValue}
+              aria-label={ariaLabel}
+              aria-selected={registrationModeActive ? selected : undefined}
+            />
+          }
         >
           {cellContent}
         </TooltipTrigger>
@@ -401,8 +438,10 @@ export function BoxSlotCell({
 
   return (
     <div
-      role="button"
-      tabIndex={0}
+      role="gridcell"
+      tabIndex={tabIndexValue}
+      aria-label={ariaLabel}
+      aria-selected={registrationModeActive ? selected : undefined}
       className={cellClassName}
       onClick={onClick}
       onKeyDown={handleKeyDown}

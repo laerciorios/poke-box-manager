@@ -69,6 +69,17 @@ function buildEnabledFormTypes(variations: VariationToggles): Set<string> {
   return enabled
 }
 
+function computeShinyKeys(boxes: import('@/types/box').Box[]): Set<string> {
+  const keys = new Set<string>()
+  for (const box of boxes) {
+    for (const slot of box.slots) {
+      if (!slot?.shiny) continue
+      keys.add(slot.formId ? `${slot.pokemonId}:${slot.formId}` : `${slot.pokemonId}`)
+    }
+  }
+  return keys
+}
+
 function classifyBoxState(slots: (null | { registered: boolean })[]): BoxState {
   const occupied = slots.filter((s) => s !== null)
   if (occupied.length === 0) return 'empty'
@@ -78,7 +89,6 @@ function classifyBoxState(slots: (null | { registered: boolean })[]): BoxState {
 
 export function useStatsData(): StatsData {
   const registered = usePokedexStore((s) => s.registered)
-  const registeredShiny = usePokedexStore((s) => s.registeredShiny)
   const boxes = useBoxStore((s) => s.boxes)
   const activeGenerations = useSettingsStore((s) => s.activeGenerations)
   const variations = useSettingsStore((s) => s.variations)
@@ -87,7 +97,7 @@ export function useStatsData(): StatsData {
 
   return useMemo(() => {
     const registeredSet = new Set(registered)
-    const registeredShinySet = shinyTrackerEnabled ? new Set(registeredShiny) : null
+    const registeredShinySet = shinyTrackerEnabled ? computeShinyKeys(boxes) : null
     const enabledFormTypes = buildEnabledFormTypes(variations)
     const activeGenSet = new Set(activeGenerations)
 
@@ -216,5 +226,5 @@ export function useStatsData(): StatsData {
     }
 
     return { overall, byGeneration, byType, boxSummary, boxes: boxEntries, shiny }
-  }, [registered, registeredShiny, boxes, activeGenerations, variations, locale, shinyTrackerEnabled])
+  }, [registered, boxes, activeGenerations, variations, locale, shinyTrackerEnabled])
 }

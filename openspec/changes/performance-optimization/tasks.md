@@ -4,7 +4,7 @@
 - [ ] 1.2 Add `react-window` and `@types/react-window` to `dependencies`
 - [ ] 1.3 Add `@ducanh2912/next-pwa` to `dependencies`
 - [ ] 1.4 Update `next.config.ts` to wrap the config with `withPWA` (disabled in development, enabled in production)
-- [ ] 1.5 Add `public/sw.js`, `public/workbox-*.js` to `.gitignore`
+- [x] 1.5 Add `public/sw.js`, `public/workbox-*.js` to `.gitignore`
 
 ## 2. Build Script — Sprite Download and WebP Conversion
 
@@ -16,25 +16,25 @@
 
 ## 3. Build Script — Per-Generation JSON Shards
 
-- [ ] 3.1 Define the `PokemonManifest` TypeScript type in `src/types/` or `src/data/`
-- [ ] 3.2 Add a `splitByGeneration(entries: PokemonEntry[])` function that partitions the full list into 9 arrays keyed by generation ID
-- [ ] 3.3 Write each partition to `src/data/pokemon-gen-{1..9}.json`
-- [ ] 3.4 Write `src/data/pokemon-manifest.json` with each generation's `id`, `range`, and `chunk` key
+- [x] 3.1 Define the `PokemonManifest` TypeScript type in `src/types/` or `src/data/`
+- [x] 3.2 Add a `splitByGeneration(entries: PokemonEntry[])` function that partitions the full list into 9 arrays keyed by generation ID
+- [x] 3.3 Write each partition to `src/data/pokemon-gen-{1..9}.json`
+- [x] 3.4 Write `src/data/pokemon-manifest.json` with each generation's `id`, `range`, and `chunk` key
 - [ ] 3.5 Verify all 9 shard files and the manifest are produced correctly after re-running the fetch script
 
 ## 4. Data Layer — Dynamic Generation Imports
 
-- [ ] 4.1 Create `src/lib/pokemon-data.ts`: import `pokemon-manifest.json` statically; export `loadGeneration(genId: number): Promise<PokemonEntry[]>` that dynamically imports the correct chunk and caches it in a module-level `Map`
+- [x] 4.1 Create `src/lib/pokemon-data.ts`: import `pokemon-manifest.json` statically; export `loadGeneration(genId: number): Promise<PokemonEntry[]>` that dynamically imports the correct chunk and caches it in a module-level `Map`
 - [ ] 4.2 Update all existing static `import pokemonData from '@/data/pokemon.json'` usages to use `loadGeneration` or a `loadActiveGenerations()` helper
-- [ ] 4.3 Implement `loadActiveGenerations(): Promise<PokemonEntry[]>` that reads active generation IDs from `useSettingsStore` and calls `Promise.all` over the relevant `loadGeneration` calls
+- [x] 4.3 Implement `loadActiveGenerations(): Promise<PokemonEntry[]>` that reads active generation IDs from `useSettingsStore` and calls `Promise.all` over the relevant `loadGeneration` calls
 - [ ] 4.4 Ensure the Pokédex page and box organizer await `loadActiveGenerations()` before rendering Pokémon lists
 - [ ] 4.5 Remove or deprecate `src/data/pokemon.json` once all consumers use the shard loader (keep as full manifest for reference if needed)
 
 ## 5. BoxGrid — IntersectionObserver Lazy Loading
 
-- [ ] 5.1 Add a `useInViewport(ref: RefObject<Element>)` hook in `src/hooks/` that uses `IntersectionObserver` and disconnects after first intersection
-- [ ] 5.2 Wire `useInViewport` to the `BoxGrid` container ref; pass the resulting `visible` boolean down to each `BoxSlotCell`
-- [ ] 5.3 Update `BoxSlotCell` to accept a `visible?: boolean` prop; render only `SpritePlaceholder` when `visible` is `false`
+- [x] 5.1 Add a `useInViewport(ref: RefObject<Element>)` hook in `src/hooks/` that uses `IntersectionObserver` and disconnects after first intersection
+- [x] 5.2 Wire `useInViewport` to the `BoxGrid` container ref; pass the resulting `visible` boolean down to each `BoxSlotCell`
+- [x] 5.3 Update `BoxSlotCell` to accept a `visible?: boolean` prop; render only `SpritePlaceholder` when `visible` is `false`
 - [ ] 5.4 Update `BoxSlotCell` sprite markup to use `<picture>` with `<source type="image/webp" srcSet="...">` and `<img src="...png">` fallback
 - [ ] 5.5 Verify that boxes scrolled out of initial viewport show zero sprite network requests on first load (check Network tab)
 
@@ -67,4 +67,4 @@
 - [ ] 9.2 Verify JS bundle gzip is <150KB (check Next.js build output or `next-bundle-analyzer`)
 - [ ] 9.3 Verify total active-generation data gzip is <300KB per page load
 - [ ] 9.4 Confirm LCP <1.5s, CLS <0.1 in Lighthouse report
-- [ ] 9.5 Add `@next/bundle-analyzer` to `devDependencies` and document `npm run analyze` command in README/CLAUDE.md
+- [x] 9.5 Add `@next/bundle-analyzer` to `devDependencies` and document `npm run analyze` command in README/CLAUDE.md

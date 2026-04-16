@@ -37,6 +37,15 @@ export interface PokemonForm {
   types?: [string, string?]
 }
 
+export type PokemonManifest = {
+  generations: {
+    id: number
+    name: string
+    range: [number, number]
+    chunk: string
+  }[]
+}
+
 export interface PokemonEntry {
   id: number
   name: string

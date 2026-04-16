@@ -85,6 +85,7 @@ export function BoxNavigation({
         onClick={onPrevious}
         disabled={isFirst}
         aria-label="Previous box"
+        className="max-md:min-h-[44px] max-md:min-w-[44px]"
       >
         <ChevronLeft />
       </Button>
@@ -137,6 +138,7 @@ export function BoxNavigation({
         onClick={onNext}
         disabled={isLast}
         aria-label="Next box"
+        className="max-md:min-h-[44px] max-md:min-w-[44px]"
       >
         <ChevronRight />
       </Button>

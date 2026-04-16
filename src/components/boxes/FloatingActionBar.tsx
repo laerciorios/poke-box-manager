@@ -19,7 +19,7 @@ export function FloatingActionBar({
   if (selectedCount === 0) return null
 
   return (
-    <div className="flex items-center gap-2 rounded-lg border bg-card px-3 py-1.5 shadow-md">
+    <div role="toolbar" className="flex items-center gap-2 rounded-lg border bg-card px-3 py-1.5 shadow-md">
       <span className="text-sm text-muted-foreground">{t('selected', { count: selectedCount })}</span>
       <Button size="sm" onClick={onMarkRegistered}>
         <CheckCircle className="size-3.5" />

@@ -38,7 +38,7 @@ export function applyImportReplace(envelope: ExportEnvelope): void {
   const { boxes, registered, settings, presets } = envelope.data
 
   useBoxStore.setState({ boxes })
-  usePokedexStore.setState({ registered, registeredShiny: [] })
+  usePokedexStore.setState({ registered })
   usePresetsStore.setState({ presets })
 
   // Apply settings fields individually, excluding pendingChanges

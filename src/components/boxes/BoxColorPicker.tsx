@@ -59,7 +59,7 @@ export function BoxColorPicker({ boxId, currentLabel }: BoxColorPickerProps) {
               onClick={() => handleSelectColor(key)}
               aria-label={t(`colors.${key}`)}
               className={cn(
-                "size-7 rounded-full transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                "size-7 rounded-full transition-transform motion-reduce:transition-none hover:scale-110 motion-reduce:hover:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 BOX_LABEL_COLORS[key],
                 currentLabel === key && "ring-2 ring-offset-1 ring-foreground"
               )}

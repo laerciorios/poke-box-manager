@@ -1,68 +1,31 @@
 ## ADDED Requirements
 
-### Requirement: BoxGrid renders a 6×5 CSS grid of slots
+### Requirement: BoxGrid implements roving tabindex grid navigation pattern
 
-The system SHALL provide a `BoxGrid` component at `src/components/boxes/BoxGrid.tsx` that renders a `Box` object as a 6-column, 5-row CSS Grid. Each of the 30 slots SHALL be rendered as a `BoxSlotCell`. The component SHALL accept a `Box` prop and render its `slots` array in grid order (left-to-right, top-to-bottom).
+`BoxGrid` SHALL manage a single roving tabindex across its 30 slot cells. Only one slot SHALL have `tabIndex={0}` at a time; all others SHALL have `tabIndex={-1}`. Arrow key events on the grid container SHALL move the active (tabIndex 0) slot and programmatically focus it.
 
-#### Scenario: Render a full box
+#### Scenario: Only one slot is in tab order at a time
 
-- **WHEN** `BoxGrid` receives a `Box` with 30 slots
-- **THEN** a CSS Grid with 6 columns and 5 rows SHALL be rendered
-- **THEN** each slot SHALL be rendered as a `BoxSlotCell` component
+- **WHEN** `BoxGrid` is rendered
+- **THEN** exactly one `BoxSlotCell` SHALL have `tabIndex={0}`
+- **THEN** all other slots SHALL have `tabIndex={-1}`
 
-#### Scenario: Render a box with empty slots
+#### Scenario: Arrow keys move the active slot and shift tabIndex
 
-- **WHEN** `BoxGrid` receives a `Box` where some slots are `null`
-- **THEN** `null` slots SHALL be rendered as `BoxSlotCell` in the `empty` state
-- **THEN** the grid layout SHALL remain 6×5 regardless of empty slots
+- **WHEN** a slot with `tabIndex={0}` is focused and the user presses an arrow key
+- **THEN** the adjacent slot in that direction SHALL receive `tabIndex={0}` and programmatic focus
+- **THEN** the previously active slot SHALL revert to `tabIndex={-1}`
 
-### Requirement: BoxGrid is responsive across breakpoints
+#### Scenario: Active slot index persists between focus-out and focus-in
 
-The `BoxGrid` SHALL adapt its layout to the viewport width as defined in spec section 5.2. On mobile viewports (`<768px`), every slot cell SHALL meet a minimum tap-target size of 44×44px. Additionally, the `BoxGrid` container SHALL apply `touch-action: manipulation` on mobile to suppress double-tap zoom and the 300ms tap delay.
+- **WHEN** the user Tabs out of the grid and later Tabs back in
+- **THEN** focus SHALL return to the slot that was last active (not reset to index 0)
 
-#### Scenario: Desktop layout (≥1024px)
+### Requirement: BoxGrid root element carries grid ARIA role and accessible name
 
-- **WHEN** the viewport width is 1024px or greater
-- **THEN** the grid SHALL display as a full 6×5 grid with comfortable cell sizing
+The `BoxGrid` container SHALL use `role="grid"` and `aria-label` so screen readers announce the grid's identity on focus.
 
-#### Scenario: Tablet layout (768–1023px)
+#### Scenario: Grid role and label on container
 
-- **WHEN** the viewport width is between 768px and 1023px
-- **THEN** the grid SHALL display as a 6×5 grid with reduced cell sizing
-
-#### Scenario: Mobile layout (<768px)
-
-- **WHEN** the viewport width is less than 768px
-- **THEN** the grid SHALL be horizontally scrollable
-- **THEN** the grid SHALL maintain 6 columns at a fixed cell size
-- **THEN** each slot cell SHALL have a minimum width and height of 44px
-- **THEN** the grid container SHALL apply `touch-action: manipulation` to prevent double-tap zoom
-
-### Requirement: BoxGrid supports slot selection callback
-
-The `BoxGrid` SHALL accept an optional `onSlotClick` callback and an optional `selectedSlotIndex` prop.
-
-#### Scenario: Slot click triggers callback
-
-- **WHEN** a user clicks on a `BoxSlotCell` within the grid
-- **THEN** the `onSlotClick` callback SHALL be called with the slot index (0–29)
-
-#### Scenario: Selected slot is visually highlighted
-
-- **WHEN** `selectedSlotIndex` matches a slot's index
-- **THEN** that slot SHALL be rendered in the `selected` visual state
-
-### Requirement: BoxGrid accepts and renders keyboard focus state
-
-The `BoxGrid` component SHALL accept a `keyboardFocusIndex?: number | null` prop. When this prop is non-null, the `BoxSlotCell` at that index SHALL render a keyboard focus ring. All other slots SHALL not render the focus ring.
-
-#### Scenario: Focus ring appears on focused slot
-
-- **WHEN** `BoxGrid` receives `keyboardFocusIndex={7}`
-- **THEN** the `BoxSlotCell` at index 7 SHALL render with a keyboard focus ring class (e.g., `ring-2 ring-primary`)
-- **THEN** all other `BoxSlotCell` components SHALL NOT render the keyboard focus ring
-
-#### Scenario: No focus ring when keyboardFocusIndex is null
-
-- **WHEN** `BoxGrid` receives `keyboardFocusIndex={null}` or the prop is omitted
-- **THEN** no `BoxSlotCell` SHALL render a keyboard focus ring
+- **WHEN** `BoxGrid` renders with a box named "Box 1"
+- **THEN** the container element SHALL have `role="grid"` and `aria-label="Box 1"` (localized)

@@ -14,7 +14,7 @@ import {
   PanelLeftOpen,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { useSettingsStore } from '@/stores/useSettingsStore'
@@ -43,9 +43,10 @@ interface SidebarNavProps {
 function SidebarNav({ collapsed = false, onNavigate }: SidebarNavProps) {
   const pathname = usePathname()
   const t = useTranslations('Layout.nav')
+  const tA11y = useTranslations('accessibility')
 
   return (
-    <nav className="flex flex-1 flex-col gap-1">
+    <nav className="flex flex-1 flex-col gap-1" aria-label={tA11y('nav')}>
       {navItems.map((item) => {
         const isActive = pathname === item.href
         const label = t(item.key)
@@ -104,6 +105,7 @@ export function Sidebar({ open = false, onOpenChange }: SidebarProps) {
   const tNav = useTranslations('Layout.nav')
   const tLayout = useTranslations('Layout')
   const tSidebar = useTranslations('Layout.sidebar')
+  const tA11y = useTranslations('accessibility')
   const appName = tLayout('appName')
   const sidebarCollapsed = useSettingsStore((s) => s.sidebarCollapsed)
   const toggleSidebar = useSettingsStore((s) => s.toggleSidebar)
@@ -115,13 +117,13 @@ export function Sidebar({ open = false, onOpenChange }: SidebarProps) {
       {/* Desktop sidebar — fixed, visible at lg+ */}
       <aside
         className={cn(
-          'hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col lg:transition-[width] lg:duration-[var(--transition-normal)] lg:ease-in-out',
+          'hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col lg:transition-[width] lg:duration-[var(--transition-normal)] lg:ease-in-out lg:motion-reduce:transition-none',
           isCollapsed ? 'lg:w-16' : 'lg:w-56',
         )}
       >
         <div
           className={cn(
-            'flex grow flex-col gap-y-4 overflow-y-auto border-r border-border bg-surface py-6 transition-[padding] duration-[var(--transition-normal)] ease-in-out',
+            'flex grow flex-col gap-y-4 overflow-y-auto border-r border-border bg-surface py-6 transition-[padding] duration-[var(--transition-normal)] ease-in-out motion-reduce:transition-none',
             isCollapsed ? 'px-2' : 'px-4',
           )}
         >
@@ -160,6 +162,7 @@ export function Sidebar({ open = false, onOpenChange }: SidebarProps) {
       {/* Tablet Sheet sidebar — visible at md to lg via hamburger */}
       <Sheet open={open} onOpenChange={onOpenChange}>
         <SheetContent side="left" className="w-56 p-0">
+          <SheetTitle className="sr-only">{tA11y('nav')}</SheetTitle>
           <div className="flex grow flex-col gap-y-4 overflow-y-auto px-4 py-6">
             <div className="flex items-center gap-2 px-2">
               <Grid3X3 className="h-6 w-6 text-accent" />
@@ -171,7 +174,7 @@ export function Sidebar({ open = false, onOpenChange }: SidebarProps) {
       </Sheet>
 
       {/* Mobile bottom nav — hidden at md+ (tablet uses Sheet, desktop uses fixed sidebar) */}
-      <nav className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-around border-t border-border bg-surface py-2 md:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-around border-t border-border bg-surface py-2 md:hidden" aria-label={tA11y('mobileNav')}>
         {primaryNavItems.map((item) => {
           const isActive = pathname === item.href
           return (

@@ -220,9 +220,7 @@
     "category": "Categoria",
     "forms": "Formas",
     "evolution": "Cadeia Evolutiva",
-    "shiny": "Shiny",
-    "registerShiny": "Registrar Shiny",
-    "registeredShiny": "Shiny Registrado"
+    "shiny": "Shiny"
   },
   "Home": {
     "title": "Pokémon Box Manager",
@@ -315,7 +313,8 @@
     "inBox": "Em {boxName}",
     "emptyState": "Nenhum Pokémon encontrado para \"{query}\"",
     "resultCount": "{count} resultado",
-    "resultCountPlural": "{count} resultados"
+    "resultCountPlural": "{count} resultados",
+    "drawerTitle": "Resultados da busca"
   },
   "Missing": {
     "pageTitle": "Faltando",
@@ -350,5 +349,22 @@
       "closePanel": "Fechar painel / diálogo",
       "showHelp": "Mostrar esta ajuda"
     }
+  },
+  "accessibility": {
+    "nav": "Navegação principal",
+    "mobileNav": "Navegação mobile",
+    "boxGrid": "Grade da box: {boxName}",
+    "emptySlot": "Slot vazio",
+    "slotRegistered": "{name}, registrado",
+    "slotNotRegistered": "{name}, não registrado",
+    "draggable": "arrastável",
+    "dragStart": "Pegou {name} da posição {position}",
+    "dragOver": "Movendo {name} sobre a posição {position}",
+    "dragEnd": "Soltou {name} na posição {position}",
+    "dragCancel": "Arrastar cancelado",
+    "registered": "{name} registrado",
+    "unregistered": "{name} não registrado",
+    "bulkRegistered": "{count, plural, =1 {1 Pokémon registrado} other {# Pokémon registrados}}",
+    "bulkUnregistered": "{count, plural, =1 {1 Pokémon não registrado} other {# Pokémon não registrados}}"
   }
 }

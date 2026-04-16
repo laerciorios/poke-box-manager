@@ -8,11 +8,6 @@ interface PokedexState {
   registerAll: (keys: string[]) => void
   unregisterAll: (keys: string[]) => void
   clearAll: () => void
-  registeredShiny: string[]
-  toggleShinyRegistered: (pokemonId: number, formId?: string) => void
-  isShinyRegistered: (pokemonId: number, formId?: string) => boolean
-  registerAllShiny: (keys: string[]) => void
-  unregisterAllShiny: (keys: string[]) => void
 }
 
 function makeKey(pokemonId: number, formId?: string): string {
@@ -58,42 +53,14 @@ export const usePokedexStore = createPersistedStore<PokedexState>(
       set({ registered: [] })
       useSettingsStore.getState().recordChange()
     },
-
-    registeredShiny: [],
-
-    toggleShinyRegistered: (pokemonId, formId) => {
-      const key = makeKey(pokemonId, formId)
-      const current = new Set(get().registeredShiny)
-      if (current.has(key)) {
-        current.delete(key)
-      } else {
-        current.add(key)
-      }
-      set({ registeredShiny: [...current] })
-    },
-
-    isShinyRegistered: (pokemonId, formId) => {
-      const key = makeKey(pokemonId, formId)
-      return get().registeredShiny.includes(key)
-    },
-
-    registerAllShiny: (keys) => {
-      const current = new Set(get().registeredShiny)
-      for (const key of keys) current.add(key)
-      set({ registeredShiny: [...current] })
-    },
-
-    unregisterAllShiny: (keys) => {
-      const toRemove = new Set(keys)
-      set({ registeredShiny: get().registeredShiny.filter((k) => !toRemove.has(k)) })
-    },
   }),
   {
-    version: 2,
+    version: 3,
     migrate: (persisted: unknown, fromVersion: number) => {
       const state = persisted as Record<string, unknown>
-      if (fromVersion < 2) {
-        state.registeredShiny ??= []
+      // v2 introduced registeredShiny — now removed (shiny lives on slot.shiny in BoxStore)
+      if (fromVersion < 3) {
+        delete state.registeredShiny
       }
       return state as unknown as PokedexState
     },

@@ -7,7 +7,7 @@ import { usePokedexStore } from '@/stores/usePokedexStore'
 import { useBoxStore } from '@/stores/useBoxStore'
 import { useSearch } from '@/contexts/SearchContext'
 import { SEARCH_INDEX, search } from '@/lib/search/engine'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { SearchFilterChips } from './SearchFilterChips'
 import { SearchResultCard } from './SearchResultCard'
 import type { SearchResult } from '@/lib/search/types'
@@ -111,6 +111,7 @@ export function SearchResults() {
       {/* Mobile: bottom Sheet — only open when actually on a mobile viewport */}
       <Sheet open={showPanel && isMobile} onOpenChange={(open) => { if (!open) close() }}>
         <SheetContent side="bottom" className="md:hidden max-h-[85vh] p-0 rounded-t-xl">
+          <SheetTitle className="sr-only">{t('drawerTitle')}</SheetTitle>
           {panelContent}
         </SheetContent>
       </Sheet>

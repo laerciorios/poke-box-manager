@@ -25,7 +25,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <Sidebar open={sidebarOpen} onOpenChange={setSidebarOpen} />
       <div
         className={cn(
-          'lg:transition-[padding-left] lg:duration-[var(--transition-normal)] lg:ease-in-out',
+          'lg:transition-[padding-left] lg:duration-[var(--transition-normal)] lg:ease-in-out lg:motion-reduce:transition-none',
           sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-56',
         )}
       >

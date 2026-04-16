@@ -6,7 +6,7 @@ import { normalizeType } from './normalizers/type-normalizer'
 import { normalizeGame, enrichGameWithGeneration } from './normalizers/game-normalizer'
 import { normalizeGeneration } from './normalizers/generation-normalizer'
 import { normalizeEvolutionChain } from './normalizers/evolution-normalizer'
-import type { PokemonEntry, PokemonForm } from '../types/pokemon'
+import type { PokemonEntry, PokemonForm, PokemonManifest } from '../types/pokemon'
 import type { TypeEntry, GameEntry, GenerationEntry, EvolutionChain, EvolutionStep } from '../types/game'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -205,6 +205,24 @@ async function main() {
 
   // Write JSON files
   writeJson('pokemon.json', pokemonEntries)
+
+  // Write per-generation shards + manifest
+  const byGen = splitByGeneration(pokemonEntries)
+  const manifest: PokemonManifest = { generations: [] }
+  for (const [genId, entries] of byGen) {
+    const chunk = `pokemon-gen-${genId}.json`
+    writeJson(chunk, entries)
+    const ids = entries.map((e) => e.id)
+    manifest.generations.push({
+      id: genId,
+      name: `generation-${genId}`,
+      range: [Math.min(...ids), Math.max(...ids)],
+      chunk,
+    })
+  }
+  manifest.generations.sort((a, b) => a.id - b.id)
+  writeJson('pokemon-manifest.json', manifest)
+
   writeJson('forms.json', allForms)
   writeJson('types.json', types)
   writeJson('generations.json', generations)
@@ -220,6 +238,17 @@ async function main() {
   console.log(`   Generations:${generations.length}`)
   console.log(`   Evo Chains: ${Object.keys(evolutionChains).length}`)
   console.log(`   Time:       ${elapsed}s`)
+}
+
+function splitByGeneration(entries: PokemonEntry[]): Map<number, PokemonEntry[]> {
+  const map = new Map<number, PokemonEntry[]>()
+  for (const entry of entries) {
+    const gen = entry.generation
+    const bucket = map.get(gen) ?? []
+    bucket.push(entry)
+    map.set(gen, bucket)
+  }
+  return map
 }
 
 function writeJson(filename: string, data: unknown) {

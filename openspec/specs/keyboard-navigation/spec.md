@@ -1,69 +1,78 @@
 ## ADDED Requirements
 
-### Requirement: Arrow keys move focus between slots in the box grid
+### Requirement: Box grid uses roving tabindex for arrow-key navigation
 
-The system SHALL track a `focusedSlotIndex` (0-29) in the active box view. Pressing `ArrowUp`, `ArrowDown`, `ArrowLeft`, or `ArrowRight` when no text input is focused SHALL move the focused slot index accordingly. The focused slot SHALL receive a visible keyboard focus ring distinct from the selection/registration highlight.
+The `BoxGrid` component SHALL implement the roving tabindex pattern so that only one slot at a time is included in the page tab order. Arrow keys (Up/Down/Left/Right) SHALL move focus to the adjacent slot within the 6×5 grid. Tab and Shift-Tab SHALL move focus out of the grid entirely.
 
-#### Scenario: Right arrow moves focus one column right
+#### Scenario: Initial focus enters the grid at the first slot
 
-- **WHEN** `focusedSlotIndex` is set to any slot that is not in the last column (indices 5, 11, 17, 23, 29)
-- **THEN** pressing `ArrowRight` SHALL increment `focusedSlotIndex` by 1
+- **WHEN** the user Tabs into a `BoxGrid`
+- **THEN** focus SHALL land on the first slot (index 0)
+- **THEN** only that slot SHALL have `tabIndex={0}`; all other slots SHALL have `tabIndex={-1}`
 
-#### Scenario: Left arrow moves focus one column left
+#### Scenario: Arrow-right moves focus one column right
 
-- **WHEN** `focusedSlotIndex` is set to any slot that is not in the first column (indices 0, 6, 12, 18, 24)
-- **THEN** pressing `ArrowLeft` SHALL decrement `focusedSlotIndex` by 1
+- **WHEN** a slot is focused and the user presses ArrowRight
+- **THEN** focus SHALL move to the slot at index + 1 (same row, next column)
+- **THEN** if the slot is in the last column (index % 6 === 5), focus SHALL not wrap
 
-#### Scenario: Down arrow moves focus one row down
+#### Scenario: Arrow-left moves focus one column left
 
-- **WHEN** `focusedSlotIndex` is set to any slot in rows 0-3 (indices 0-23)
-- **THEN** pressing `ArrowDown` SHALL increment `focusedSlotIndex` by 6
+- **WHEN** a slot is focused and the user presses ArrowLeft
+- **THEN** focus SHALL move to the slot at index − 1 (same row, previous column)
+- **THEN** if the slot is in the first column (index % 6 === 0), focus SHALL not wrap
 
-#### Scenario: Up arrow moves focus one row up
+#### Scenario: Arrow-down moves focus one row down
 
-- **WHEN** `focusedSlotIndex` is set to any slot in rows 1-4 (indices 6-29)
-- **THEN** pressing `ArrowUp` SHALL decrement `focusedSlotIndex` by 6
+- **WHEN** a slot is focused and the user presses ArrowDown
+- **THEN** focus SHALL move to the slot at index + 6 (next row, same column)
+- **THEN** if the slot is in the last row, focus SHALL not wrap
 
-#### Scenario: Focus ring is visible on the focused slot
+#### Scenario: Arrow-up moves focus one row up
 
-- **WHEN** `focusedSlotIndex` is non-null
-- **THEN** the corresponding `BoxSlotCell` SHALL render a keyboard focus ring (e.g., `ring-2 ring-primary`)
-- **THEN** all other slots SHALL NOT render the keyboard focus ring
+- **WHEN** a slot is focused and the user presses ArrowUp
+- **THEN** focus SHALL move to the slot at index − 6 (previous row, same column)
+- **THEN** if the slot is in the first row, focus SHALL not wrap
 
-#### Scenario: Arrow keys are suppressed during drag-and-drop
+#### Scenario: Tab exits the grid forward
 
-- **WHEN** a drag operation is active (`dndContext.active` is non-null)
-- **THEN** arrow-key presses SHALL NOT change `focusedSlotIndex`
+- **WHEN** a slot within the grid is focused and the user presses Tab
+- **THEN** focus SHALL move to the next focusable element outside the grid
 
-### Requirement: Arrow keys at grid boundary jump to adjacent box
+#### Scenario: Shift-Tab exits the grid backward
 
-When `focusedSlotIndex` is at a grid boundary and the user presses an arrow key in the direction of that boundary, the system SHALL navigate to the adjacent box and set focus to the wrap-around slot.
+- **WHEN** a slot within the grid is focused and the user presses Shift-Tab
+- **THEN** focus SHALL move to the previous focusable element outside the grid
 
-#### Scenario: Right arrow at last column wraps to next box
+### Requirement: Box navigation (switcher) is keyboard accessible
 
-- **WHEN** `focusedSlotIndex` is in the last column (e.g., index 5, 11, ... 29) and the user presses `ArrowRight`
-- **THEN** the next box SHALL become active
-- **THEN** `focusedSlotIndex` SHALL be set to the slot on the same row in the first column (e.g., 0, 6, ... 24)
+The box list / switcher UI SHALL be fully navigable by keyboard. Each box item SHALL be reachable via Tab and activatable via Enter or Space.
 
-#### Scenario: Left arrow at first column wraps to previous box
+#### Scenario: Tab reaches each box item
 
-- **WHEN** `focusedSlotIndex` is in the first column (e.g., index 0, 6, ... 24) and the user presses `ArrowLeft`
-- **THEN** the previous box SHALL become active
-- **THEN** `focusedSlotIndex` SHALL be set to the slot on the same row in the last column (e.g., 5, 11, ... 29)
+- **WHEN** the user Tabs through the sidebar or box navigation panel
+- **THEN** each box item SHALL receive focus in DOM order
 
-#### Scenario: No wrap when already at first or last box boundary
+#### Scenario: Enter activates a box item
 
-- **WHEN** `focusedSlotIndex` is at the first-column boundary of the first box and the user presses `ArrowLeft`
-- **THEN** `focusedSlotIndex` SHALL NOT change and no navigation SHALL occur
-- **WHEN** `focusedSlotIndex` is at the last-column boundary of the last box and the user presses `ArrowRight`
-- **THEN** `focusedSlotIndex` SHALL NOT change and no navigation SHALL occur
+- **WHEN** a box item is focused and the user presses Enter
+- **THEN** that box SHALL become the active box (equivalent to a click)
 
-### Requirement: Slot focus is cleared when focus enters a text input
+#### Scenario: Space activates a box item
 
-The system SHALL set `focusedSlotIndex` to `null` whenever focus moves into a text input, textarea, select, or contenteditable element, ensuring the focus ring disappears and arrow keys no longer navigate slots.
+- **WHEN** a box item is focused and the user presses Space
+- **THEN** that box SHALL become the active box
 
-#### Scenario: Focus ring clears on input focus
+### Requirement: Sidebar navigation is fully keyboard accessible
 
-- **WHEN** the user clicks or tabs into any `<input>`, `<textarea>`, `<select>`, or `[contenteditable]` element
-- **THEN** `focusedSlotIndex` SHALL be set to `null`
-- **THEN** no slot in the grid SHALL render a keyboard focus ring
+All sidebar navigation links SHALL be reachable via Tab and activatable via Enter.
+
+#### Scenario: Tab reaches each navigation link
+
+- **WHEN** the user Tabs through the sidebar
+- **THEN** each navigation link SHALL receive visible focus in order
+
+#### Scenario: Enter navigates to the linked route
+
+- **WHEN** a navigation link is focused and the user presses Enter
+- **THEN** the app SHALL navigate to the corresponding route

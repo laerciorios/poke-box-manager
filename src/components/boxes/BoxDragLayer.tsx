@@ -16,7 +16,7 @@ export function BoxDragLayer({ slot, pokemonName, spriteUrl }: BoxDragLayerProps
 
   return (
     <DragOverlay dropAnimation={null} zIndex={100}>
-      <div className="flex size-14 items-center justify-center rounded-lg bg-card drop-shadow-xl scale-[1.2]">
+      <div className="flex size-14 items-center justify-center rounded-lg bg-card drop-shadow-xl scale-[1.2] motion-reduce:transition-none motion-reduce:transform-none">
         {spriteUrl ? (
           <Image
             src={spriteUrl}

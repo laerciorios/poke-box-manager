@@ -1,15 +1,27 @@
 'use client'
 
+import { useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { Switch } from '@/components/ui/switch'
 import { useSettingsStore } from '@/stores/useSettingsStore'
-import { usePokedexStore } from '@/stores/usePokedexStore'
+import { useBoxStore } from '@/stores/useBoxStore'
 
 export function ShinyTrackerPanel() {
   const t = useTranslations('Settings')
   const shinyTrackerEnabled = useSettingsStore((s) => s.shinyTrackerEnabled)
   const setShinyTrackerEnabled = useSettingsStore((s) => s.setShinyTrackerEnabled)
-  const registeredShiny = usePokedexStore((s) => s.registeredShiny)
+  const boxes = useBoxStore((s) => s.boxes)
+
+  const shinyCount = useMemo(() => {
+    const keys = new Set<string>()
+    for (const box of boxes) {
+      for (const slot of box.slots) {
+        if (!slot?.shiny) continue
+        keys.add(slot.formId ? `${slot.pokemonId}:${slot.formId}` : `${slot.pokemonId}`)
+      }
+    }
+    return keys.size
+  }, [boxes])
 
   return (
     <div className="divide-y">
@@ -26,10 +38,10 @@ export function ShinyTrackerPanel() {
           aria-label={t('shinyTrackerEnable')}
         />
       </div>
-      {shinyTrackerEnabled && registeredShiny.length > 0 && (
+      {shinyTrackerEnabled && shinyCount > 0 && (
         <div className="py-3">
           <p className="text-sm text-muted-foreground">
-            {t('shinyRegisteredCount', { count: registeredShiny.length })}
+            {t('shinyRegisteredCount', { count: shinyCount })}
           </p>
         </div>
       )}

@@ -40,7 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={cn('h-full antialiased font-sans', inter.variable, jetbrainsMono.variable)}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-background text-foreground">
+      <body className="min-h-full bg-background text-foreground" suppressHydrationWarning>
         <ServiceWorkerRegistration />
         {children}
       </body>

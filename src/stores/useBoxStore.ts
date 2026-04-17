@@ -6,8 +6,11 @@ import { useSettingsStore } from '@/stores/useSettingsStore'
 import { useHistoryStore } from '@/stores/useHistoryStore'
 import { buildDescription } from '@/lib/history-descriptions'
 
+const MAX_BOXES = 200
+
 interface BoxState {
   boxes: Box[]
+  addBox: () => void
   createBox: (name: string) => void
   deleteBox: (boxId: string) => void
   renameBox: (boxId: string, newName: string) => void
@@ -34,6 +37,18 @@ export const useBoxStore = createPersistedStore<BoxState>(
   'boxes',
   (set, get) => ({
     boxes: [],
+
+    addBox: () => {
+      const current = get().boxes
+      if (current.length >= MAX_BOXES) return
+      const newBox: Box = {
+        id: crypto.randomUUID(),
+        name: `Box ${current.length + 1}`,
+        slots: Array.from({ length: BOX_SIZE }, () => null),
+      }
+      set({ boxes: [...current, newBox] })
+      useSettingsStore.getState().recordChange()
+    },
 
     createBox: (name) => {
       const newBox: Box = {
@@ -161,7 +176,8 @@ export const useBoxStore = createPersistedStore<BoxState>(
 
     setBoxes: (boxes) => {
       const previousBoxes = structuredClone(get().boxes)
-      set({ boxes })
+      const clamped = boxes.length > MAX_BOXES ? boxes.slice(0, MAX_BOXES) : boxes
+      set({ boxes: clamped })
       useSettingsStore.getState().recordChange()
 
       const undoPayload = { type: 'preset-apply', previousBoxes } as const
@@ -252,5 +268,6 @@ export const useBoxStore = createPersistedStore<BoxState>(
   {
     version: 2,
     migrate: (state) => state as BoxState,
+    partialize: (state) => ({ boxes: state.boxes }) as BoxState,
   },
 )

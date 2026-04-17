@@ -49,6 +49,7 @@ export function buildPokedexRows(
     for (const form of entry.forms) {
       const toggleKey = FORM_TYPE_TO_TOGGLE_KEY.get(form.formType)
       if (!toggleKey || !variations[toggleKey]) continue
+      if (!form.sprite) continue
 
       rows.push({
         key: `${entry.id}:${form.id}`,

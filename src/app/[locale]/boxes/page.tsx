@@ -20,6 +20,8 @@ import { BoxNavigation } from '@/components/boxes/BoxNavigation'
 import { BoxOverview } from '@/components/boxes/BoxOverview'
 import { BoxDragLayer } from '@/components/boxes/BoxDragLayer'
 import { AutoFillButton } from '@/components/boxes/AutoFillButton'
+import { BoxActionsMenu } from '@/components/boxes/BoxActionsMenu'
+import { PokemonPickerDialog } from '@/components/boxes/PokemonPickerDialog'
 import { useBoxStore } from '@/stores/useBoxStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
 import { usePokedexStore } from '@/stores/usePokedexStore'
@@ -54,7 +56,7 @@ function getSlotName(
 }
 
 function getSpriteUrl(slot: { pokemonId: number; formId?: string; shiny?: boolean }): string | undefined {
-  if (slot.formId) return formsById[slot.formId]?.sprite
+  if (slot.formId) return formsById[slot.formId]?.sprite || undefined
   const pokemon = pokemonById.get(slot.pokemonId)
   if (!pokemon) return undefined
   if (slot.shiny && pokemon.spriteShiny) return pokemon.spriteShiny
@@ -80,11 +82,12 @@ export default function BoxesPage() {
   const boxes = useBoxStore((s) => s.boxes)
   const allTags = useTagsStore((s) => s.tags)
   const [selectedTagIds, setSelectedTagIds] = useState<Set<string>>(new Set())
-  const createBox = useBoxStore((s) => s.createBox)
+  const addBox = useBoxStore((s) => s.addBox)
   const deleteBox = useBoxStore((s) => s.deleteBox)
   const moveSlot = useBoxStore((s) => s.moveSlot)
   const reorderSlots = useBoxStore((s) => s.reorderSlots)
   const toggleShiny = useBoxStore((s) => s.toggleShiny)
+  const setSlot = useBoxStore((s) => s.setSlot)
   const isRegistered = usePokedexStore((s) => s.isRegistered)
   const toggleRegistered = usePokedexStore((s) => s.toggleRegistered)
   const showPokemonNamesInBox = useSettingsStore((s) => s.showPokemonNamesInBox)
@@ -92,6 +95,7 @@ export default function BoxesPage() {
   const [activeBoxIndex, setActiveBoxIndex] = useState(0)
   const [activeDrag, setActiveDrag] = useState<ActiveDrag | null>(null)
   const [highlightSlotIndex, setHighlightSlotIndex] = useState<number | null>(null)
+  const [pickerSlot, setPickerSlot] = useState<{ slotIndex: number } | null>(null)
   const registration = useRegistrationMode()
   const announce = useAnnounce()
   const { focusedSlotIndex, moveFocus } = useSlotFocus()
@@ -204,7 +208,8 @@ export default function BoxesPage() {
   })
 
   function handleAddBox() {
-    createBox(`Box ${boxes.length + 1}`)
+    addBox()
+    setActiveBoxIndex(boxes.length)
   }
 
   function handleShinyToggle(boxId: string, slotIndex: number, slot: BoxSlot) {
@@ -304,9 +309,12 @@ export default function BoxesPage() {
         </div>
 
         {boxes.length === 0 ? (
-          <div className="rounded-lg border border-dashed p-12 text-center">
-            <p className="mb-4 text-muted-foreground">{t('emptyState')}</p>
-            <Button onClick={() => createBox('Box 1')}>{t('createFirstBox')}</Button>
+          <div className="rounded-lg border border-dashed p-12 text-center space-y-3">
+            <p className="text-muted-foreground">{t('emptyState')}</p>
+            <div className="flex items-center justify-center gap-2 flex-wrap">
+              <Button onClick={handleAddBox}>{t('emptyStateAddBox')}</Button>
+              <span className="text-sm text-muted-foreground">{t('emptyStateOrAutoFill')}</span>
+            </div>
           </div>
         ) : (
           <>
@@ -329,7 +337,7 @@ export default function BoxesPage() {
             {activeBox && (
               <div className="space-y-4">
                 {/* swipeContainerRef on the navigation area keeps swipe away from the scrollable grid */}
-                <div ref={swipeContainerRef}>
+                <div ref={swipeContainerRef} className="flex items-center gap-2">
                   <BoxNavigation
                     boxId={activeBox.id}
                     boxName={activeBox.name}
@@ -338,8 +346,15 @@ export default function BoxesPage() {
                     totalBoxes={boxes.length}
                     onPrevious={handlePrevious}
                     onNext={handleNext}
+                    onAddBox={handleAddBox}
+                    addBoxDisabled={boxes.length >= 200}
                     onKeyboardPrev={handlePrevious}
                     onKeyboardNext={handleNext}
+                    className="flex-1"
+                  />
+                  <BoxActionsMenu
+                    boxId={activeBox.id}
+                    onDeleteBox={handleDeleteBox}
                   />
                 </div>
                 <TagFilterPanel
@@ -349,6 +364,7 @@ export default function BoxesPage() {
                 />
                 <BoxGrid
                   box={activeBox}
+                  onEmptySlotClick={(slotIndex) => setPickerSlot({ slotIndex })}
                   registrationMode={{
                     isActive: registration.isActive,
                     selectedKeys: registration.selectedKeys,
@@ -389,6 +405,17 @@ export default function BoxesPage() {
         pokemonName={activeDragName}
         spriteUrl={activeDragSprite}
       />
+
+      {pickerSlot && activeBox && (
+        <PokemonPickerDialog
+          open
+          onClose={() => setPickerSlot(null)}
+          onSelect={(item) => {
+            setSlot(activeBox.id, pickerSlot.slotIndex, { pokemonId: item.pokemonId, formId: item.formId, registered: false })
+            setPickerSlot(null)
+          }}
+        />
+      )}
     </DndContext>
   )
 }

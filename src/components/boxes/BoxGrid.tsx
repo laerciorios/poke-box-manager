@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { PokemonTooltip } from '@/components/pokemon'
 import { BoxSlotCell } from './BoxSlotCell'
+import { SlotContextMenu } from './SlotContextMenu'
 import { RegistrationModeToggle } from './RegistrationModeToggle'
 import { FloatingActionBar } from './FloatingActionBar'
 import type { Box, BoxSlot } from '@/types/box'
@@ -51,6 +52,7 @@ interface BoxGridProps {
   onToggleShowNames?: () => void
   getSlotTags?: (slot: BoxSlot) => Tag[]
   isSlotDimmed?: (slotIndex: number) => boolean
+  onEmptySlotClick?: (slotIndex: number) => void
 }
 
 export function BoxGrid({
@@ -68,6 +70,7 @@ export function BoxGrid({
   onToggleShowNames,
   getSlotTags,
   isSlotDimmed,
+  onEmptySlotClick,
 }: BoxGridProps) {
   const t = useTranslations('Boxes')
   const tA11y = useTranslations('accessibility')
@@ -155,7 +158,13 @@ export function BoxGrid({
 
         const handleClick = registrationMode
           ? (e?: React.MouseEvent) => registrationMode.handleSlotClick(box.id, index, e!, slot)
-          : () => onSlotClick?.(index)
+          : () => {
+              if (!slot && onEmptySlotClick) {
+                onEmptySlotClick(index)
+              } else {
+                onSlotClick?.(index)
+              }
+            }
 
         const useTooltip = !!slot && !registrationMode?.isActive
 
@@ -193,13 +202,25 @@ export function BoxGrid({
           />
         )
 
-        return useTooltip ? (
-          <PokemonTooltip key={toSlotId(box.id, index)} pokemonId={slot.pokemonId} boxId={box.id} slotIndex={index}>
-            {cell}
-          </PokemonTooltip>
-        ) : (
-          cell
+        const wrapped = (
+          <SlotContextMenu
+            key={toSlotId(box.id, index)}
+            boxId={box.id}
+            slotIndex={index}
+            slot={slot}
+            getSpriteUrl={getSpriteUrl ? (s) => getSpriteUrl(s) : undefined}
+          >
+            {useTooltip ? (
+              <PokemonTooltip pokemonId={slot.pokemonId} boxId={box.id} slotIndex={index}>
+                {cell}
+              </PokemonTooltip>
+            ) : (
+              cell
+            )}
+          </SlotContextMenu>
         )
+
+        return wrapped
       })}
     </div>
   )

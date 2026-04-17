@@ -233,7 +233,7 @@ export function PokemonCard({ pokemonId, isOpen, onClose, boxId, slotIndex }: Po
     ? getFormName(activeForm, locale)
     : getPokemonName(pokemon, locale)
 
-  const baseSprite = activeForm?.sprite ?? pokemon.sprite
+  const baseSprite = activeForm?.sprite || pokemon.sprite
   const shinySprite = activeForm?.spriteShiny ?? pokemon.spriteShiny
   const displaySprite = isShiny && shinySprite ? shinySprite : baseSprite
 
@@ -340,7 +340,7 @@ export function PokemonCard({ pokemonId, isOpen, onClose, boxId, slotIndex }: Po
                   </span>
                 </button>
 
-                {pokemon.forms.map((form) => (
+                {pokemon.forms.filter((form) => !!form.sprite).map((form) => (
                   <button
                     key={form.id}
                     onClick={() => setActiveFormId(form.id)}

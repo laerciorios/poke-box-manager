@@ -19,7 +19,7 @@ interface PokedexTableRowProps {
 
 function SpriteCell({ src, name }: { src: string; name: string }) {
   const [error, setError] = useState(false)
-  if (error) return <SpritePlaceholder size={40} />
+  if (error || !src) return <SpritePlaceholder size={40} />
   return (
     <Image
       src={src}

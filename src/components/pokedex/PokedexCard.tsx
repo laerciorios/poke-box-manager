@@ -36,7 +36,7 @@ export function PokedexCard({
     >
       {/* Sprite */}
       <div className="flex h-16 w-16 items-center justify-center">
-        {imgError ? (
+        {imgError || !row.sprite ? (
           <SpritePlaceholder size={64} />
         ) : (
           <Image

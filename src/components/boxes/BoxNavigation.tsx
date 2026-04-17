@@ -1,11 +1,12 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Plus } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useBoxStore } from "@/stores/useBoxStore"
 import { BOX_LABEL_COLORS } from "@/lib/box-label-colors"
 import { BoxColorPicker } from "./BoxColorPicker"
@@ -18,6 +19,8 @@ interface BoxNavigationProps {
   totalBoxes: number
   onPrevious: () => void
   onNext: () => void
+  onAddBox?: () => void
+  addBoxDisabled?: boolean
   onKeyboardPrev?: () => void
   onKeyboardNext?: () => void
   className?: string
@@ -31,6 +34,8 @@ export function BoxNavigation({
   totalBoxes,
   onPrevious,
   onNext,
+  onAddBox,
+  addBoxDisabled = false,
   onKeyboardPrev,
   onKeyboardNext,
   className,
@@ -132,16 +137,47 @@ export function BoxNavigation({
         </span>
       </div>
 
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={onNext}
-        disabled={isLast}
-        aria-label="Next box"
-        className="max-md:min-h-[44px] max-md:min-w-[44px]"
-      >
-        <ChevronRight />
-      </Button>
+      <div className="flex items-center gap-1">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onNext}
+          disabled={isLast}
+          aria-label="Next box"
+          className="max-md:min-h-[44px] max-md:min-w-[44px]"
+        >
+          <ChevronRight />
+        </Button>
+
+        {onAddBox && (
+          addBoxDisabled ? (
+            <Tooltip>
+              <TooltipTrigger render={<span />}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  disabled
+                  aria-label={t("addBox")}
+                  className="max-md:min-h-[44px] max-md:min-w-[44px]"
+                >
+                  <Plus />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t("boxLimitReached")}</TooltipContent>
+            </Tooltip>
+          ) : (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onAddBox}
+              aria-label={t("addBox")}
+              className="max-md:min-h-[44px] max-md:min-w-[44px]"
+            >
+              <Plus />
+            </Button>
+          )
+        )}
+      </div>
     </div>
   )
 }

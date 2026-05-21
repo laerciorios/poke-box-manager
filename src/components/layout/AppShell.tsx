@@ -1,39 +1,37 @@
 'use client'
 
-import { useState } from 'react'
-import { cn } from '@/lib/utils'
-import { useSettingsStore } from '@/stores/useSettingsStore'
-import { useKeyboardShortcut } from '@/contexts/KeyboardShortcutContext'
-import { Header } from './Header'
+import * as React from 'react'
+import { motion, useReducedMotion, AnimatePresence } from 'motion/react'
+import { usePathname } from '@/i18n/navigation'
 import { Sidebar } from './Sidebar'
-import { BackupReminderBanner } from './BackupReminderBanner'
-import { ShortcutHelpOverlay } from './ShortcutHelpOverlay'
+import { Header } from './Header'
+import { MobileNav } from './MobileNav'
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [helpOpen, setHelpOpen] = useState(false)
-  const sidebarCollapsed = useSettingsStore((s) => s.sidebarCollapsed)
-
-  useKeyboardShortcut('help-overlay', (e: KeyboardEvent) => {
-    if (e.key === '?' && !e.metaKey && !e.ctrlKey && !e.altKey) {
-      setHelpOpen((prev) => !prev)
-    }
-  })
+  const pathname = usePathname()
+  const reduce = useReducedMotion()
 
   return (
-    <>
-      <Sidebar open={sidebarOpen} onOpenChange={setSidebarOpen} />
-      <div
-        className={cn(
-          'lg:transition-[padding-left] lg:duration-[var(--transition-normal)] lg:ease-in-out lg:motion-reduce:transition-none',
-          sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-56',
-        )}
-      >
-        <Header onMenuClick={() => setSidebarOpen(true)} />
-        <BackupReminderBanner />
-        <main className="p-4 pb-20 md:pb-4 lg:p-6 lg:pb-6">{children}</main>
+    <div className="flex h-svh">
+      <Sidebar />
+      <div className="flex-1 flex flex-col min-w-0">
+        <Header />
+        <main className="flex-1 overflow-y-auto pb-20 md:pb-0">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={pathname}
+              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? { opacity: 1 } : { opacity: 0, y: -4 }}
+              transition={reduce ? { duration: 0 } : { duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="min-h-full"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </main>
       </div>
-      <ShortcutHelpOverlay open={helpOpen} onClose={() => setHelpOpen(false)} />
-    </>
+      <MobileNav />
+    </div>
   )
 }

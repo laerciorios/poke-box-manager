@@ -1,33 +1,19 @@
-import { getTranslations } from 'next-intl/server'
-import { StatsClientPage } from '@/components/stats/StatsClientPage'
+'use client'
 
-export default async function StatsPage() {
-  const t = await getTranslations('Stats')
+import { BarChart3 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { ComingSoon } from '@/components/layout/ComingSoon'
 
+export default function StatsPage() {
+  const t = useTranslations('Stats')
   return (
-    <div className="flex flex-col gap-6 p-4 md:p-6">
-      <div>
-        <h1 className="text-2xl font-bold">{t('pageTitle')}</h1>
-        <p className="mt-1 text-muted-foreground">{t('pageSubtitle')}</p>
-      </div>
-      <StatsClientPage
-        t={{
-          overallSection: t('overallSection'),
-          registeredLabel: t('registeredLabel'),
-          totalLabel: t('totalLabel'),
-          generationSection: t('generationSection'),
-          typeSection: t('typeSection'),
-          heatmapSection: t('heatmapSection'),
-          boxSummarySection: t('boxSummarySection'),
-          boxComplete: t('boxComplete'),
-          boxPartial: t('boxPartial'),
-          boxEmpty: t('boxEmpty'),
-          emptyState: t('emptyState'),
-          shinySection: t('shinySection'),
-          shinyRegisteredLabel: t('shinyRegisteredLabel'),
-          shinyGenerationSection: t('shinyGenerationSection'),
-        }}
-      />
-    </div>
+    <ComingSoon
+      eyebrow={t('eyebrow')}
+      title={t('title')}
+      description={t('description')}
+      bullets={t.raw('bullets') as string[]}
+      icon={BarChart3}
+      accentColor="var(--shiny)"
+    />
   )
 }

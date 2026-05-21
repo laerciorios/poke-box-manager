@@ -1,43 +1,75 @@
 'use client'
 
-import { Menu } from 'lucide-react'
+import * as React from 'react'
+import { Moon, Sun, Languages } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
-import { ThemeToggle } from './ThemeToggle'
-import { SearchBar } from './SearchBar'
-import { LanguageSwitch } from './LanguageSwitch'
-import { SearchResults } from '@/components/search/SearchResults'
-import { useSearch } from '@/contexts/SearchContext'
+import { useSettingsStore } from '@/stores/useSettingsStore'
+import { useRouter, usePathname } from '@/i18n/navigation'
+import { useParams } from 'next/navigation'
 
-interface HeaderProps {
-  onMenuClick?: () => void
-}
+export function Header() {
+  const tApp = useTranslations('Layout')
+  const theme = useSettingsStore((s) => s.theme)
+  const setTheme = useSettingsStore((s) => s.setTheme)
+  const setLocale = useSettingsStore((s) => s.setLocale)
+  const router = useRouter()
+  const pathname = usePathname()
+  const { locale } = useParams<{ locale: 'pt-BR' | 'en' }>()
 
-export function Header({ onMenuClick }: HeaderProps) {
-  const { query, setQuery, open } = useSearch()
+  const toggleTheme = () => {
+    const resolved =
+      theme === 'system'
+        ? typeof window !== 'undefined' &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+        : theme
+    setTheme(resolved === 'dark' ? 'light' : 'dark')
+  }
+
+  const toggleLocale = () => {
+    const next = locale === 'pt-BR' ? 'en' : 'pt-BR'
+    setLocale(next)
+    router.replace(pathname, { locale: next })
+  }
 
   return (
-    <header className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-border bg-surface px-4 lg:px-6">
-      <div className="relative flex items-center gap-3">
-        {/* Hamburger: tablet only (md to lg) */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onMenuClick}
-          aria-label="Open navigation"
-          className="hidden md:flex lg:hidden"
-        >
-          <Menu className="h-5 w-5" />
-        </Button>
-        <SearchBar
-          value={query}
-          onChange={setQuery}
-          onFocus={() => { if (query) open() }}
-        />
-        <SearchResults />
-      </div>
-      <div className="flex items-center gap-1">
-        <LanguageSwitch />
-        <ThemeToggle />
+    <header className="h-16 shrink-0 border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-md sticky top-0 z-30">
+      <div className="h-full flex items-center justify-between px-5 md:px-8">
+        <div className="md:hidden flex items-center gap-2">
+          <div className="grid grid-cols-2 gap-0.5 size-6">
+            <span className="rounded-[2px] bg-[var(--accent)]" />
+            <span className="rounded-[2px] bg-[var(--shiny)]" />
+            <span className="rounded-[2px] bg-[var(--registered)]" />
+            <span className="rounded-[2px] bg-[var(--muted-foreground)]" />
+          </div>
+          <span className="font-display font-semibold">{tApp('appName')}</span>
+        </div>
+
+        <div className="hidden md:block" />
+
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleLocale}
+            aria-label={tApp('switchLanguage')}
+            title={locale === 'pt-BR' ? 'Switch to English' : 'Trocar para português'}
+          >
+            <Languages className="size-4" />
+            <span className="sr-only">{tApp('switchLanguage')}</span>
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            aria-label={tApp('toggleTheme')}
+          >
+            <Sun className="size-4 dark:hidden" />
+            <Moon className="size-4 hidden dark:block" />
+          </Button>
+        </div>
       </div>
     </header>
   )

@@ -2,16 +2,13 @@ import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { Providers } from '@/components/layout/Providers'
+import { ThemeProvider } from '@/components/layout/ThemeProvider'
 import { AppShell } from '@/components/layout/AppShell'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
-// This layout provides i18n context and the app shell (sidebar, header).
-// <html> and <body> live in the root layout (app/layout.tsx) to avoid
-// nested HTML elements that break React hydration.
 export default async function LocaleLayout({
   children,
   params,
@@ -26,9 +23,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <Providers>
+      <ThemeProvider>
         <AppShell>{children}</AppShell>
-      </Providers>
+      </ThemeProvider>
     </NextIntlClientProvider>
   )
 }

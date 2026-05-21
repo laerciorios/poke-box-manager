@@ -1,25 +1,21 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 
 /**
  * Returns true when the given CSS media query matches.
- * Defaults to false during SSR to avoid hydration mismatches.
+ * Uses useSyncExternalStore so the initial render and subscription stay
+ * consistent without setState-in-effect cascades.
  */
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false)
-
-  useEffect(() => {
-    const mql = window.matchMedia(query)
-    setMatches(mql.matches)
-
-    function listener(e: MediaQueryListEvent) {
-      setMatches(e.matches)
-    }
-
-    mql.addEventListener('change', listener)
-    return () => mql.removeEventListener('change', listener)
-  }, [query])
-
-  return matches
+  return useSyncExternalStore(
+    (onChange) => {
+      if (typeof window === 'undefined') return () => {}
+      const mql = window.matchMedia(query)
+      mql.addEventListener('change', onChange)
+      return () => mql.removeEventListener('change', onChange)
+    },
+    () => (typeof window === 'undefined' ? false : window.matchMedia(query).matches),
+    () => false,
+  )
 }

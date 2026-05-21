@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import { headers } from 'next/headers'
 import { cn } from '@/lib/utils'
 import { DEFAULT_LOCALE } from '@/types/locale'
 import type { Locale } from '@/types/locale'
-import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration'
 import './globals.css'
 
 const inter = Inter({
@@ -19,17 +18,18 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
+const display = Space_Grotesk({
+  variable: '--font-display',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Pokemon Box Manager',
-  description: 'Manage your Pokemon Home boxes and track Pokedex completion',
+  title: 'PokéBox — Planeje suas boxes do Pokémon Home',
+  description:
+    'Companion offline-first para colecionadores. Organize boxes 6×5, registre Pokémon, e acompanhe sua Pokédex sem sair do navegador.',
 }
 
-// Root layout owns <html> and <body> — required by Next.js App Router to avoid
-// nested HTML elements that break React hydration (see design.md §1).
-//
-// The locale is read from the "x-next-intl-locale" header that src/proxy.ts
-// injects on every request, so we get the correct lang attribute without
-// duplicating locale logic in this layout.
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const headersList = await headers()
   const locale = (headersList.get('x-next-intl-locale') ?? DEFAULT_LOCALE) as Locale
@@ -37,11 +37,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang={locale}
-      className={cn('h-full antialiased font-sans', inter.variable, jetbrainsMono.variable)}
+      data-theme="dark"
+      className={cn(
+        'h-full antialiased',
+        inter.variable,
+        display.variable,
+        jetbrainsMono.variable,
+      )}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-background text-foreground" suppressHydrationWarning>
-        <ServiceWorkerRegistration />
+      <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
         {children}
       </body>
     </html>

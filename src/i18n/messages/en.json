@@ -5,429 +5,217 @@
     "delete": "Delete",
     "confirm": "Confirm",
     "edit": "Edit",
-    "duplicate": "Duplicate",
     "close": "Close",
-    "discard": "Discard"
+    "backToHome": "Back to home"
   },
   "Layout": {
-    "appName": "PokeBox",
+    "appName": "PokéBox",
     "switchLanguage": "Switch language",
-    "sidebar": {
-      "collapse": "Collapse sidebar",
-      "expand": "Expand sidebar"
-    },
+    "toggleTheme": "Toggle theme",
+    "localFirst": "Everything local",
+    "localFirstHint": "Your data stays on this device. Nothing is sent to servers.",
     "nav": {
       "home": "Home",
       "boxes": "Boxes",
       "pokedex": "Pokédex",
       "stats": "Stats",
-      "missing": "Missing",
-      "settings": "Settings",
       "presets": "Presets",
-      "more": "More"
+      "missing": "Missing",
+      "settings": "Settings"
+    }
+  },
+  "Landing": {
+    "hero": {
+      "badge": "Offline-first companion for Pokémon Home",
+      "title": "Plan your <em>boxes</em> before you touch them.",
+      "subtitle": "A calm, precise surface for organizing 6×5 boxes, tracking your Pokédex and deciding what to transfer — no spreadsheets, no login, no noise.",
+      "cta": "Create my first box",
+      "ctaSecondary": "Explore the Pokédex"
+    },
+    "features": {
+      "eyebrow": "What's included",
+      "title": "Everything missing from your collection flow.",
+      "subtitle": "Built for collectors who open the app next to Pokémon Home — not instead of it.",
+      "items": {
+        "boxes": {
+          "title": "6×5 boxes",
+          "description": "Same grid as Pokémon Home, with names, colors and organization your way."
+        },
+        "pokedex": {
+          "title": "Full Pokédex",
+          "description": "1,000+ Pokémon across nine generations, with forms, regionals and variants."
+        },
+        "stats": {
+          "title": "Deep stats",
+          "description": "Progress by generation, type, box and shiny. Heatmaps and milestones."
+        },
+        "presets": {
+          "title": "Presets",
+          "description": "Save organization rules and apply them to new boxes in seconds."
+        },
+        "missing": {
+          "title": "Missing analysis",
+          "description": "See exactly what's left to close a generation or type."
+        },
+        "offline": {
+          "title": "100% in-browser",
+          "description": "IndexedDB. No account, no server, no telemetry. Backup whenever you want."
+        }
+      }
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "Four steps. No long onboarding.",
+      "steps": {
+        "create": {
+          "title": "Create boxes",
+          "description": "Add as many boxes as you need. Each is a 6×5 grid like in Home."
+        },
+        "register": {
+          "title": "Register Pokémon",
+          "description": "Tick what you already caught. Filter by generation or type."
+        },
+        "organize": {
+          "title": "Organize",
+          "description": "Move Pokémon between slots and boxes. Save presets to repeat."
+        },
+        "track": {
+          "title": "Track progress",
+          "description": "See stats, identify missing ones, finish your dex calmly."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to organize?",
+      "subtitle": "Everything runs in your browser. You can start without signing up.",
+      "primary": "Get started",
+      "secondary": "Browse the Pokédex"
+    }
+  },
+  "Dashboard": {
+    "eyebrow": "Your progress",
+    "title": "Welcome back.",
+    "subtitle": "You've completed {percentage}% of the Pokédex with active variations.",
+    "continue": "Open Boxes",
+    "overall": "Overall progress",
+    "overallHint": "Includes regional forms and variants selected in Settings.",
+    "tiles": {
+      "boxes": { "label": "Boxes" },
+      "pokemon": { "label": "Pokémon in boxes" },
+      "registered": { "label": "Registered" },
+      "shiny": { "label": "Shinies" }
+    },
+    "generations": "Progress by generation",
+    "generationsHint": "Each bar reflects your registration rate.",
+    "seeStats": "See details",
+    "actions": {
+      "box": {
+        "title": "Open Boxes",
+        "description": "Edit slots and move Pokémon"
+      },
+      "pokedex": {
+        "title": "Open Pokédex",
+        "description": "Filter and register Pokémon"
+      },
+      "presets": {
+        "title": "Presets",
+        "description": "Coming soon — Phase 2"
+      }
     }
   },
   "Boxes": {
-    "pageTitle": "Boxes",
-    "pageSubtitle": "Manage your Pokémon Home boxes.",
-    "newBox": "New Box",
-    "autoFill": "Auto-fill",
-    "selectPreset": "Select preset",
-    "emptyState": "No boxes yet. Create your first box or use Auto-fill to get started.",
-    "createFirstBox": "Create first box",
-    "registrationMode": "Registration Mode",
-    "boxCounter": "{current} / {total}",
-    "confirmReplaceTitle": "Replace existing boxes?",
-    "confirmReplaceDescription": "Auto-fill will replace your current box layout with the selected preset. Your registration data will be preserved.",
-    "confirmReplace": "Replace",
-    "confirmDeleteTitle": "Delete box?",
-    "confirmDeleteBoxWithPokemon": "This box contains Pokemon. Do you want to delete it anyway?",
-    "editBoxName": "Edit box name",
-    "toggleShowNames": "Toggle Pokémon names",
-    "boxColorPicker": "Set box color",
-    "clearColor": "Clear color",
-    "colors": {
-      "red": "Red",
-      "orange": "Orange",
-      "yellow": "Yellow",
-      "green": "Green",
-      "blue": "Blue",
-      "purple": "Purple",
-      "pink": "Pink",
-      "gray": "Gray"
-    },
-    "defaultBoxName": "Box {n}",
-    "addBox": "Add box",
-    "boxLimitReached": "Box limit reached (200 max)",
-    "emptyStateAddBox": "Add box",
-    "emptyStateOrAutoFill": "or use Auto-fill with a preset above.",
-    "pickerTitle": "Choose a Pokémon",
-    "pickerPlaceholder": "Search by name or #number…",
-    "pickerEmpty": "No Pokémon found.",
-    "placePokemon": "Place Pokémon",
-    "changePokemon": "Change Pokémon",
-    "clearSlot": "Clear slot",
-    "moveTo": "Move to…",
-    "moveToTitle": "Move Pokémon",
-    "moveToStep1": "Select target box",
-    "moveToStep2": "Select target slot",
-    "moveToConfirm": "Move here",
-    "boxActions": "Box actions",
-    "clearBox": "Clear box",
-    "clearBoxConfirmTitle": "Clear this box?",
-    "clearBoxConfirmDesc": "All {count} Pokémon in this box will be removed. This cannot be undone.",
-    "reapplyPreset": "Re-apply preset",
-    "reapplyPresetConfirmTitle": "Re-apply preset?",
-    "reapplyPresetConfirmDesc": "Your manual changes will be overwritten with the preset layout. This cannot be undone.",
-    "noPresetTooltip": "No preset selected. Choose one with Auto-fill first.",
+    "eyebrow": "Organization",
+    "title": "Your boxes",
+    "subtitle": "Each box has 30 slots, same layout as Pokémon Home.",
+    "addBox": "New box",
+    "emptyTitle": "No boxes yet",
+    "emptyDescription": "Create your first box to start organizing Pokémon. You can rename or delete it at any time.",
+    "createFirst": "Create first box",
+    "rename": "Rename",
+    "confirmRename": "Confirm name",
+    "cancelRename": "Cancel",
     "deleteBox": "Delete box",
-    "deleteBoxConfirmTitle": "Delete this box?",
-    "deleteBoxConfirmDesc": "This box and all its Pokémon will be permanently removed."
+    "deleteConfirm": "Delete the box \"{name}\"? This cannot be undone.",
+    "emptySlot": "Empty slot {index}",
+    "markRegistered": "Mark as registered",
+    "unmarkRegistered": "Unmark registered"
   },
-  "FloatingBar": {
-    "selected": "{count} selected",
-    "markAsRegistered": "Mark as registered",
-    "unmark": "Unmark"
-  },
-  "Settings": {
-    "pageTitle": "Settings",
-    "pageSubtitle": "Configure your preferences.",
-    "variationsSection": "Variations",
-    "variationsSectionDescription": "Choose which Pokémon variation types to include in your tracking.",
-    "variationFiltersLabel": "Variation Filters ({count} active)",
-    "totalWithVariations": "Total with selected variations: <strong>{total}</strong>",
-    "baseTotal": "Base total (no variations): <strong>{base}</strong>",
-    "boxDisplaySection": "Box Display",
-    "boxDisplaySectionDescription": "Customize how Pokémon are shown in the box grid.",
-    "showPokemonNamesInBox": "Show Pokémon names",
-    "showPokemonNamesInBoxSubtitle": "Display the Pokémon name below each sprite in the box grid",
-    "shinyTrackerSection": "Shiny Tracker",
-    "shinyTrackerSectionDescription": "Track which Pokémon you have a shiny version of, independently of normal registration.",
-    "shinyTrackerEnable": "Enable Shiny Tracker",
-    "shinyTrackerEnableSubtitle": "Shows sparkle indicators on shiny-registered Pokémon in box view and adds a shiny progress section to the stats page",
-    "shinyRegisteredCount": "{count, plural, =1 {1 shiny Pokémon registered} other {# shiny Pokémon registered}}",
-    "dataBackupSection": "Data & Backup",
-    "dataBackupSectionDescription": "Export your data to keep it safe, or import a previous backup.",
-    "exportJson": "Export JSON",
-    "exportMissingList": "Export missing list",
-    "downloadAsTxt": "Download as .txt",
-    "copyToClipboard": "Copy to clipboard",
-    "copied": "Copied!",
-    "importData": "Import",
-    "importConfirmTitle": "Import backup",
-    "importConfirmDescription": "Choose how to apply the imported data:",
-    "importMetaExportedAt": "Exported on",
-    "importMetaBoxes": "{count, plural, =1 {1 box} other {# boxes}}",
-    "importMetaRegistered": "{count, plural, =1 {1 Pokémon registered} other {# Pokémon registered}}",
-    "importMetaPresets": "{count, plural, =1 {1 preset} other {# presets}}",
-    "importReplace": "Replace all data",
-    "importMerge": "Merge",
-    "importCancel": "Cancel",
-    "importErrorInvalid": "Invalid file. Please select a valid Poke Box Manager backup.",
-    "importErrorNotJson": "File is not valid JSON.",
-    "importErrorGeneric": "Failed to read file.",
-    "backupReminderTitle": "Don't forget to back up!",
-    "backupReminderDescription": "You have {count} unsaved changes. Export your data to avoid losing progress.",
-    "backupReminderExportNow": "Export now"
-  },
-  "VariationToggles": {
-    "warningTooltip": "You have registered Pokémon of this variation type. Disabling this toggle will hide them from tracking, but won't delete your data.",
-    "regionalForms": {
-      "label": "Regional Forms",
-      "subtitle": "Alolan, Galarian, Hisuian, and Paldean variants"
-    },
-    "genderForms": {
-      "label": "Gender Differences",
-      "subtitle": "Pokémon with visually distinct male/female sprites"
-    },
-    "unownLetters": {
-      "label": "Unown Letters",
-      "subtitle": "All 28 Unown letter and symbol forms"
-    },
-    "vivillonPatterns": {
-      "label": "Vivillon Patterns",
-      "subtitle": "All 20 regional wing pattern variations"
-    },
-    "alcremieVariations": {
-      "label": "Alcremie Variations",
-      "subtitle": "All sweet and cream flavor combinations"
-    },
-    "colorVariations": {
-      "label": "Color Variations",
-      "subtitle": "Pokémon with alternate color forms (e.g. Flabébé)"
-    },
-    "sizeVariations": {
-      "label": "Size Variations",
-      "subtitle": "Pokémon with distinct size forms (e.g. Pumpkaboo)"
-    },
-    "megaEvolutions": {
-      "label": "Mega Evolutions",
-      "subtitle": "Mega and Primal forms"
-    },
-    "gmaxForms": {
-      "label": "Gigantamax Forms",
-      "subtitle": "Gigantamax variants from Sword & Shield"
-    },
-    "battleForms": {
-      "label": "Battle Forms",
-      "subtitle": "Forms that change during battle (e.g. Aegislash)"
-    },
-    "originForms": {
-      "label": "Origin Forms",
-      "subtitle": "Origin Formes and special alternate forms"
-    },
-    "costumedPokemon": {
-      "label": "Costumed Pokémon",
-      "subtitle": "Event-exclusive costume variants (e.g. Pikachu costumes)"
-    }
-  },
-  "Presets": {
-    "pageTitle": "Presets",
-    "pageSubtitle": "Organize your Pokémon Home boxes.",
-    "builtInPresets": "Built-in Presets",
-    "myPresets": "My Presets",
-    "customize": "Customize",
-    "duplicate": "Duplicate",
-    "edit": "Edit",
-    "delete": "Delete",
-    "newPreset": "New Preset",
-    "createPreset": "Create Preset",
-    "editPreset": "Edit Preset",
-    "save": "Save",
-    "cancel": "Cancel",
-    "seedFrom": "Start from",
-    "nameLabel": "Preset name",
-    "nameRequired": "Name is required.",
-    "rulesLabel": "Rules",
-    "previewLabel": "Preview",
-    "previewEmpty": "Add rules to see a preview",
-    "generatePreview": "Generate Preview",
-    "addRule": "Add Rule",
-    "rule": "Rule",
-    "matchRemaining": "Match remaining (catches all Pokémon not claimed by prior rules)",
-    "sortBy": "Sort by",
-    "boxName": "Box name",
-    "filterCategory": "Category",
-    "filterGeneration": "Generation",
-    "filterType": "Type",
-    "unsavedChangesTitle": "Unsaved changes",
-    "unsavedChangesDescription": "You have unsaved changes. Are you sure you want to discard them?",
-    "discard": "Discard",
-    "noPresets": "You haven't created any custom presets yet.",
-    "createFirstPreset": "Create your first preset",
-    "builtInReadOnly": "Built-in presets are read-only. Customize to create your own version.",
-    "builtInBadge": "Built-in",
-    "previewBoxes": "{count} boxes",
-    "sortOptions": {
-      "dex-number": "Dex Number",
-      "name": "Name",
-      "type-primary": "Primary Type",
-      "generation": "Generation",
-      "evolution-chain": "Evolution Chain",
-      "regional-dex": "Regional Dex"
-    },
-    "templateHint": "Available variables: {n}, {total}, {start}, {end}, {gen}, {type}, {region}",
-    "rulesCount": "{count, plural, =1 {1 rule} other {# rules}}",
-    "copySuffix": "Copy",
-    "customSuffix": "Custom",
-    "confirmDeleteDescription": "Delete this preset? This cannot be undone.",
-    "confirmReplaceRules": "Replace current rules with built-in preset rules?",
-    "categoryNormal": "Normal",
-    "categoryLegendary": "Legendary",
-    "categoryMythical": "Mythical",
-    "categoryBaby": "Baby",
-    "categoryUltraBeast": "Ultra Beast",
-    "categoryParadox": "Paradox",
-    "selectBuiltInPlaceholder": "Select a built-in preset…",
-    "newPresetNamePlaceholder": "My Custom Preset",
-    "previewStats": "{boxes} boxes · {pokemon} Pokémon"
-  },
-  "Notes": {
-    "placeholder": "Add a note…",
-    "label": "Note",
-    "clearLabel": "Clear note"
-  },
-  "Pokemon": {
-    "generation": "Generation {n}",
-    "category": "Category",
-    "forms": "Forms",
-    "evolution": "Evolution Chain",
-    "shiny": "Shiny"
-  },
-  "Home": {
-    "title": "Pokémon Box Manager",
-    "subtitle": "Manage your Pokémon Home boxes and track Pokédex completion.",
-    "overallProgress": "Overall Progress",
-    "quickStats": "Quick Stats",
-    "nextUp": "Next Up",
-    "recentlyAdded": "Recently Added",
-    "quickActions": "Quick Actions",
-    "generationProgress": "By Generation",
-    "statRegistered": "Registered",
-    "statTotal": "Total",
-    "statBoxesUsed": "Boxes used",
-    "statShiny": "Shiny",
-    "goToBoxes": "Boxes",
-    "goToMissing": "Missing",
-    "goToStats": "Stats",
-    "goToSettings": "Settings",
-    "nothingMissing": "You've caught them all!",
-    "noneRegistered": "No Pokémon registered yet.",
-    "milestone": "{threshold}%"
+  "Picker": {
+    "title": "Choose Pokémon",
+    "placeholder": "Search by name or number…",
+    "empty": "No Pokémon found",
+    "close": "Close"
   },
   "Pokedex": {
-    "pageTitle": "Pokédex",
-    "pageSubtitle": "Browse and search the full Pokédex.",
-    "colNumber": "No.",
-    "colName": "Name",
-    "colTypes": "Types",
-    "colGeneration": "Gen",
-    "colCategory": "Category",
-    "colStatus": "Status",
-    "filterGeneration": "Generation",
-    "filterType": "Type",
-    "filterCategory": "Category",
-    "allGenerations": "All generations",
-    "allTypes": "All types",
-    "allCategories": "All",
-    "categoryNormal": "Normal",
-    "categoryLegendary": "Legendary",
-    "categoryMythical": "Mythical",
-    "categoryBaby": "Baby",
-    "categoryUltraBeast": "Ultra Beast",
-    "categoryParadox": "Paradox",
-    "statusRegistered": "Registered",
-    "statusMissing": "Missing",
-    "statusMarkRegistered": "Mark as registered",
-    "statusMarkMissing": "Mark as missing",
-    "searchPlaceholder": "Search by name or number...",
-    "emptyState": "No Pokémon found for the current filters.",
-    "sortAsc": "Ascending",
-    "sortDesc": "Descending",
-    "rowCount": "{count} Pokémon"
+    "eyebrow": "Collection",
+    "title": "Pokédex",
+    "subtitle": "{count} of {total} registered across active generations.",
+    "searchPlaceholder": "Search by name or number…",
+    "all": "All",
+    "registered": "Registered",
+    "more": "+{count} results — refine your search to see more.",
+    "empty": "No Pokémon matches your search."
   },
   "Stats": {
-    "pageTitle": "Stats",
-    "pageSubtitle": "Track your Pokédex completion progress.",
-    "overallSection": "Overall Progress",
-    "registeredLabel": "Registered",
-    "totalLabel": "Total",
-    "generationSection": "By Generation",
-    "typeSection": "By Type",
-    "heatmapSection": "Box Map",
-    "boxSummarySection": "Box Summary",
-    "boxComplete": "Complete",
-    "boxPartial": "Partial",
-    "boxEmpty": "Empty",
-    "emptyState": "No data yet. Add boxes and register your Pokémon to see statistics.",
-    "shinySection": "Shiny Progress",
-    "shinyRegisteredLabel": "Shiny Registered",
-    "shinyGenerationSection": "By Generation"
+    "eyebrow": "Analysis",
+    "title": "Statistics",
+    "description": "Track your progress by generation, type, box and shinies. This page will be expanded in Phase 3 with charts and milestones.",
+    "bullets": [
+      "Overall progress donut with smooth animation",
+      "Per-generation bars with percentage and total",
+      "Box heatmap (complete / partial / empty)",
+      "Progress grid by Pokémon type",
+      "Milestone timeline (100, 250, 500, 1000 registered)",
+      "Optional shiny tab"
+    ]
   },
-  "Search": {
-    "placeholder": "Search Pokémon...",
-    "filterType": "Type",
-    "filterGeneration": "Generation",
-    "filterCategory": "Category",
-    "filterStatus": "Status",
-    "allTypes": "All types",
-    "allGenerations": "All gens",
-    "allCategories": "All",
-    "allStatus": "All",
-    "statusRegistered": "Registered",
-    "statusMissing": "Missing",
-    "categoryNormal": "Normal",
-    "categoryLegendary": "Legendary",
-    "categoryMythical": "Mythical",
-    "categoryUltraBeast": "Ultra Beast",
-    "categoryParadox": "Paradox",
-    "notInAnyBox": "Not in any box",
-    "inBox": "In {boxName}",
-    "emptyState": "No Pokémon found for \"{query}\"",
-    "resultCount": "{count} result",
-    "resultCountPlural": "{count} results",
-    "drawerTitle": "Search results"
+  "Presets": {
+    "eyebrow": "Advanced organization",
+    "title": "Presets",
+    "description": "Save organization rules (by generation, type, dex order) and apply them to new boxes in seconds. Available in Phase 3.",
+    "bullets": [
+      "Create and edit presets with multiple rules",
+      "Apply a preset across all boxes",
+      "Preview the layout before applying",
+      "Import and export presets"
+    ]
   },
   "Missing": {
-    "pageTitle": "Missing",
-    "pageSubtitle": "Find which Pokémon you still need.",
-    "filterGeneration": "Generation",
-    "filterType": "Type",
-    "filterCategory": "Category",
-    "allGenerations": "All generations",
-    "allTypes": "All types",
-    "allCategories": "All",
-    "categoryNormal": "Normal",
-    "categoryLegendary": "Legendary",
-    "categoryMythical": "Mythical",
-    "sortLabel": "Sort by",
-    "sortDex": "Dex number",
-    "sortName": "Name",
-    "sortType": "Type",
-    "sortGeneration": "Generation",
-    "quickAdd": "Quick Add",
-    "emptyState": "You've caught them all! No Pokémon missing.",
-    "emptyStateFiltered": "No missing Pokémon match the current filters.",
-    "nextUpBanner": "Showing next {count} missing in dex order",
-    "nextUpCountLabel": "Show",
-    "missingCount": "{count} missing"
+    "eyebrow": "Analysis",
+    "title": "Missing",
+    "description": "See exactly what's missing to complete a generation, a type or a category. Available in Phase 3.",
+    "bullets": [
+      "Filters by generation, type, category",
+      "Pokémon close to completing an evolution",
+      "Suggestions for next shinies to hunt",
+      "Export the missing list"
+    ]
   },
-  "ui": {
-    "shortcuts": {
-      "title": "Keyboard Shortcuts",
-      "focusSearch": "Focus search",
-      "navigateSlots": "Navigate slots",
-      "toggleRegistration": "Toggle registration",
-      "closePanel": "Close panel / dialog",
-      "showHelp": "Show this help"
+  "Settings": {
+    "eyebrow": "Preferences",
+    "title": "Settings",
+    "subtitle": "Basic settings. Variations, active generations and backup come back in Phase 2.",
+    "appearance": {
+      "title": "Appearance",
+      "description": "Pick light, dark or follow the system.",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "language": {
+      "title": "Language",
+      "description": "Sets the interface language and localized Pokémon names."
+    },
+    "data": {
+      "title": "Your data",
+      "description": "You have {boxes} box(es) and {registered} registered Pokémon in this browser.",
+      "warning": "Resetting erases all your boxes, your Pokédex and your preferences. This cannot be undone.",
+      "reset": "Erase all data",
+      "confirmReset": "Are you sure? All data in this browser will be deleted."
+    },
+    "about": {
+      "title": "About",
+      "description": "PokéBox — offline-first companion for Pokémon Home."
     }
-  },
-  "Acquisition": {
-    "howToObtain": "How to obtain",
-    "clear": "Clear",
-    "stepsCompleted": "{done} / {total} steps completed"
-  },
-  "BoxCalculator": {
-    "boxesNeeded": "Boxes needed",
-    "pokemonPerBox": "{count} Pokémon · {perBox} per box",
-    "lastBoxDetail": "Last box: {slots} / {total} slots used",
-    "basedOnSettings": "Based on your current settings"
-  },
-  "Tags": {
-    "manageTitle": "Manage Tags",
-    "newTag": "New Tag",
-    "namePlaceholder": "Tag name…",
-    "editTag": "Edit {name}",
-    "deleteTag": "Delete {name}",
-    "emptyState": "No tags yet. Create your first tag.",
-    "noTagsYet": "No tags yet — create tags first.",
-    "createTagsFirst": "Create tags",
-    "filterLabel": "Filter by tag",
-    "manageTags": "Manage Tags",
-    "tagsSection": "Tags",
-    "tooltipTags": "Tags: {names}"
-  },
-  "ActivityHistory": {
-    "title": "Activity History",
-    "emptyState": "No activity yet.",
-    "undo": "Undo",
-    "entriesCount": "{count} {count, plural, =1 {entry} other {entries}}"
-  },
-  "accessibility": {
-    "nav": "Main navigation",
-    "mobileNav": "Mobile navigation",
-    "boxGrid": "Box grid: {boxName}",
-    "emptySlot": "Empty slot",
-    "slotRegistered": "{name}, registered",
-    "slotNotRegistered": "{name}, not registered",
-    "draggable": "draggable",
-    "dragStart": "Picked up {name} from position {position}",
-    "dragOver": "Moving {name} over position {position}",
-    "dragEnd": "Dropped {name} at position {position}",
-    "dragCancel": "Dragging cancelled",
-    "registered": "{name} registered",
-    "unregistered": "{name} unregistered",
-    "bulkRegistered": "{count, plural, =1 {1 Pokémon registered} other {# Pokémon registered}}",
-    "bulkUnregistered": "{count, plural, =1 {1 Pokémon unregistered} other {# Pokémon unregistered}}"
   }
 }

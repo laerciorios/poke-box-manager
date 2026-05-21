@@ -22,8 +22,16 @@ colors:
   primary-dark: "oklch(0.92 0.005 25)"
   destructive-light: "oklch(0.577 0.245 27.325)"
   destructive-dark: "oklch(0.704 0.191 22.216)"
-  registered-green: "#16a34a"
-  shiny-amber: "#fbbf24"
+  registered-light: "oklch(0.55 0.13 145)"
+  registered-dark: "oklch(0.62 0.14 145)"
+  registered-foreground: "oklch(0.985 0.005 25)"
+  shiny-light: "oklch(0.78 0.17 80)"
+  shiny-dark: "oklch(0.82 0.17 80)"
+  shiny-foreground: "oklch(0.25 0.08 80)"
+  warning-light: "oklch(0.65 0.15 65)"
+  warning-dark: "oklch(0.72 0.15 65)"
+  warning-foreground-light: "oklch(0.985 0.005 25)"
+  warning-foreground-dark: "oklch(0.18 0.04 65)"
 typography:
   display:
     fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif"
@@ -181,9 +189,12 @@ The strategy is **Restrained**: tinted neutrals plus one accent, used on no more
 
 ### Tertiary (state colors)
 
-- **Registered Green** (`#16a34a`): The checkmark badge in the top-right of every registered slot. Functional, not decorative; never used outside the registered-state indicator.
-- **Shiny Amber** (`#fbbf24`): The shiny pip in the top-left of slots marked shiny. Same role: functional, never decorative.
-- **Destructive Red** (`#dc2626` light / `#ef4444` dark): Errors, delete actions, `aria-invalid` rings. Distinct hue from Signal Red on purpose: the brand color must never get confused with a destructive action.
+State colors are first-class CSS tokens, not Tailwind palette classes. Each one has a `--color-{name}` and a `--color-{name}-foreground` so they support both solid and tinted usage (`bg-registered`, `bg-registered/15`, `text-registered`, `text-registered-foreground`).
+
+- **Registered Green** (`oklch(0.55 0.13 145)` light / `oklch(0.62 0.14 145)` dark): The checkmark badge in the top-right of every registered slot, the Pokédex "registered" status pill (used as `bg-registered/15 text-registered`), the `BoxOverview` mini-grid dots, the `BoxHeatmap` complete-state cells, the `BoxSummary` complete tile. The token name is `registered`; the Tailwind utility is `bg-registered` / `text-registered`. Foreground (for solid-fill pips): `oklch(0.985 0.005 25)`. Never used outside registration semantics.
+- **Shiny Amber** (`oklch(0.78 0.17 80)` light / `oklch(0.82 0.17 80)` dark): The shiny pip in the top-left of slots marked shiny, the `Sparkles` icon in `ShinyProgressSection`, the shiny progress bar fill. Foreground (for solid-fill pips): `oklch(0.25 0.08 80)` (dark amber/brown). Same role across themes: shiny is desirable; the color is celebratory but contained to actual shiny indicators.
+- **Warning Amber** (`oklch(0.65 0.15 65)` light / `oklch(0.72 0.15 65)` dark): The `BackupReminderBanner`, the `VariationToggleItem` data-loss warning icon, the `BoxHeatmap` partial-state cells, the `BoxSummary` partial tile. Distinct from Shiny on purpose: Shiny is hue 80 (true amber), Warning is hue 65 (slightly more orange) so they don't visually collide. Warning means "you should respond," not "this is broken."
+- **Destructive Red** (`oklch(0.577 0.245 27.325)` light / `oklch(0.704 0.191 22.216)` dark): Errors, delete actions, `aria-invalid` rings. Distinct hue from Signal Red on purpose: the brand color must never get confused with a destructive action.
 
 ### Neutral
 
@@ -199,7 +210,7 @@ The neutral ramp runs in **two directions** by design. In light mode, every neut
 
 ### Type colors (data layer only)
 
-The 18 Pokémon type colors (`fire #F08030`, `water #6890F0`, `grass #78C850`, etc.) live in `src/lib/type-colors.ts`. They are reserved for type chips on Pokémon cards, the type grid in `/stats`, and search result rows. They never appear in app chrome.
+The 18 Pokémon type colors (`fire #F08030`, `water #6890F0`, `grass #78C850`, etc.) live in `src/lib/type-colors.ts` alongside a per-type foreground table (`TYPE_FOREGROUNDS`) and a `typeChipStyle(type)` helper. Each type's foreground is chosen for ≥4.5:1 contrast against its background: 13 light type colors get dark text (`oklch(0.18 0.01 25)`), and 5 dark types (fighting, poison, ghost, dragon, dark) get light text (`oklch(0.985 0.005 25)`). Components rendering type chips import `typeChipStyle` and spread it: `style={typeChipStyle(type)}`. Type colors are reserved for type chips on Pokémon cards, the type grid in `/stats`, and search result rows. They never appear in app chrome.
 
 ### Named Rules
 
@@ -218,7 +229,8 @@ The 18 Pokémon type colors (`fire #F08030`, `water #6890F0`, `grass #78C850`, e
 
 ### Hierarchy
 
-- **Display** (700, 1.5rem / 24px, line-height 1): Stat tile values on the Home page (e.g. registered counts), the `tabular-nums` numeric headlines. Bold weight is structural, not decorative. Reserved for the largest numbers on the screen.
+- **Display** (700, 1.5rem / 24px, line-height 1): Stat tile values on the Home page (e.g. registered counts), the `tabular-nums` numeric headlines. Bold weight is structural, not decorative. Reserved for the largest numbers on the screen. Bigger than the page title on purpose: the data is the lead, the page name is orientation.
+- **Page title** (600, 1.25rem / 20px, line-height tight): The `<h1>` on every page, rendered via the `<PageTitle>` primitive in `src/components/layout/PageTitle.tsx`. Optional subtitle in Body Muted (14px / 400 muted-foreground) sits directly beneath. Optional `actions` slot on the right for the page's primary CTA. Home uses `visuallyHidden` so the progress ring leads visually while the h1 stays present for assistive tech.
 - **Headline** (500, 1rem / 16px, line-height 1.4): Card titles. `font-heading` in code; inherits from Inter, no separate display face.
 - **Title** (500, 0.875rem / 14px, line-height 1.4): Nav link labels, button labels, dialog headings.
 - **Body** (400, 0.875rem / 14px, line-height 1.5): Default body text. Cap line length at 65–75ch wherever long prose appears (settings descriptions, help overlay copy).
@@ -232,6 +244,8 @@ The 18 Pokémon type colors (`fire #F08030`, `water #6890F0`, `grass #78C850`, e
 **The Tracked-Label Rule.** Section starts are signaled by an uppercase, tracked, muted-foreground label, never by an oversized heading. The Home page is the reference: `SectionHeading` is the smallest type on the page, not the largest.
 
 **The No-Hero-Type Rule.** No `font-size: clamp(2rem, 7vw, 5rem)` hero displays. The largest type in the product is the 24px stat value. Drama comes from rhythm, not from scale.
+
+**The Page-Title Rule.** Every page has exactly one `<h1>`, rendered through the `<PageTitle>` primitive. It is smaller than stat values (20px vs 24px) because the user navigated to the page, they know where they are. The loudest element is always the data, never the orientation label. Home is allowed to use `visuallyHidden` to keep the h1 present for assistive tech without competing visually with the progress ring.
 
 ## 4. Elevation
 
@@ -330,7 +344,8 @@ The single most important visual element in the product. A 6×5 grid of these ma
 - **Do** keep transition durations on the existing tokens: `--transition-fast: 150ms` (hover, focus), `--transition-normal: 200ms` (state changes, theme), `--transition-slow: 300ms` (sidebar collapse, layout).
 - **Do** respect `prefers-reduced-motion`: every transition currently uses `motion-reduce:transition-none`, and new ones must too.
 - **Do** use the existing radius scale (6/10/12/14/26 px) rather than inventing new values.
-- **Do** keep the type-color palette (`src/lib/type-colors.ts`) inside Pokémon data: type chips, the stats type grid, search result rows. Nowhere else.
+- **Do** keep the type-color palette (`src/lib/type-colors.ts`) inside Pokémon data: type chips, the stats type grid, search result rows. Nowhere else. Always use `typeChipStyle(type)` for chip backgrounds; never set `color: white` directly. The helper returns a paired foreground color that meets WCAG 4.5:1 against the type background.
+- **Do** use the semantic state tokens (`bg-registered`, `bg-shiny`, `bg-warning`, `bg-destructive`) for any state indicator. Solid fills get the paired `-foreground` token. Tints use opacity modifiers like `bg-registered/15 text-registered`. Empty / inactive states use `bg-muted text-muted-foreground`, not destructive.
 
 ### Don't
 
@@ -341,6 +356,9 @@ The single most important visual element in the product. A 6×5 grid of these ma
   - **Don't** ship the bento-grid AI app look: rounded-2xl cards in a 12-column bento, glass blurs, gradient mesh backgrounds, oversized hero typography that says nothing. The 2024 to 2026 startup template look is off-limits.
 - **Don't** use Signal Red (`#e63946`) for hover states, dividers, chart series, decorative borders, or any non-selection highlight. If you find yourself reaching for the accent, ask which existing accent usage you're competing with.
 - **Don't** use any of the 18 Pokémon type colors outside of type chips, the stats type grid, or search result rows. Type colors never appear on app chrome.
+- **Don't** hardcode `bg-green-*`, `bg-amber-*`, `bg-yellow-*`, `bg-red-*` Tailwind palette classes for state semantics. Use `bg-registered`, `bg-shiny`, `bg-warning`, `bg-destructive` instead. The Tailwind palette ships green-500 / amber-400 / yellow-400 with no hue control; the system tokens are tuned for the warm-neutral chrome and have paired foreground colors.
+- **Don't** put `text-white` on a type chip. White text fails AA on 13 of the 18 Pokémon type colors (every light-luminance type). Use `typeChipStyle(type)`.
+- **Don't** color empty / inactive states with `destructive`. Empty is not error. Use `bg-muted text-muted-foreground` or `bg-muted-foreground/30`.
 - **Don't** add `border-left` or `border-right` greater than 1px as a colored accent on cards, list items, callouts, or alerts. Side-stripe borders are absolutely banned.
 - **Don't** use `background-clip: text` with a gradient. Gradient text is absolutely banned.
 - **Don't** use blurs or glass cards as a default treatment. They are reserved for the search results overlay and dialog backdrops; nowhere else.

@@ -7,6 +7,7 @@ import { TOGGLE_FORM_TYPES } from '@/lib/variation-counts'
 import { usePokedexStore } from '@/stores/usePokedexStore'
 import { useBoxStore } from '@/stores/useBoxStore'
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { BOX_SIZE } from '@/types/box'
 import type { VariationToggles } from '@/types/settings'
 
 export interface GenerationStat {
@@ -28,6 +29,8 @@ export interface BoxHeatmapEntry {
   id: string
   name: string
   state: BoxState
+  registered: number
+  total: number
 }
 
 export interface ShinyStats {
@@ -218,6 +221,8 @@ export function useStatsData(): StatsData {
       id: box.id,
       name: box.name,
       state: classifyBoxState(box.slots),
+      registered: box.slots.filter((s) => s !== null && s.registered).length,
+      total: BOX_SIZE,
     }))
 
     const boxSummary = { complete: 0, partial: 0, empty: 0 }

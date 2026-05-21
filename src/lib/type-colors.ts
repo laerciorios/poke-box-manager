@@ -18,3 +18,38 @@ export const TYPE_COLORS: Record<string, string> = {
   steel: '#B8B8D0',
   fairy: '#EE99AC',
 }
+
+const INK = 'oklch(0.18 0.01 25)'
+const BONE = 'oklch(0.985 0.005 25)'
+
+// Each type color paired with an AA-contrast text color (≥ 4.5:1 for chip labels).
+// Five types are dark enough for light text; the remaining 13 are too light, so white
+// text would fail WCAG and must be dark instead. Verified against the official Pokémon
+// type palette in `TYPE_COLORS`.
+export const TYPE_FOREGROUNDS: Record<string, string> = {
+  normal: INK,
+  fire: INK,
+  water: INK,
+  grass: INK,
+  electric: INK,
+  ice: INK,
+  fighting: BONE,
+  poison: BONE,
+  ground: INK,
+  flying: INK,
+  psychic: INK,
+  bug: INK,
+  rock: INK,
+  ghost: BONE,
+  dragon: BONE,
+  dark: BONE,
+  steel: INK,
+  fairy: INK,
+}
+
+export function typeChipStyle(type: string): { backgroundColor: string; color: string } {
+  return {
+    backgroundColor: TYPE_COLORS[type] ?? '#999',
+    color: TYPE_FOREGROUNDS[type] ?? INK,
+  }
+}

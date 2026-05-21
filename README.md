@@ -1,145 +1,117 @@
-# Poke Box Manager
+# PokéBox — Poke Box Manager
 
-An offline-first Pokemon Home style box manager built with Next.js.
+Companion offline-first para Pokémon Home. Construído com Next.js 16, React 19,
+Tailwind 4 e Framer Motion. Tudo roda no navegador, sem backend, sem login.
 
-## About
+> **Versão 2.0** — Reescrita completa da camada de UI em 2026-05-21. A camada
+> de dados (pipeline de fetch da PokéAPI, stores Zustand, engines, tipos)
+> foi preservada. Veja [`docs/REWRITE.md`](docs/REWRITE.md) para o plano e
+> as fases.
 
-Poke Box Manager is a client-side web app for organizing and tracking Pokemon collections without relying on a backend server. It uses static Pokemon data generated at build time and stores user progress locally in the browser (IndexedDB).
+## O que é
 
-The project focuses on:
+PokéBox é uma superfície de planejamento para colecionadores de Pokémon. A
+ideia central é ser uma alternativa ao Pokémon Home para:
 
-- Home-like box management (30 slots per box, drag and drop, box overview)
-- Pokedex progress tracking
-- Missing Pokemon analysis
-- Collection stats (overall, by generation, by type, shiny progress)
-- Preset-based organization workflows
-- Internationalization (`pt-BR` and `en`)
+- Organizar boxes 6×5 (30 slots cada) antes de tocá-las no jogo.
+- Acompanhar progresso de Pokédex com formas, regionais e variantes.
+- Salvar predefinições de organização (por geração, por tipo, etc.).
+- Identificar Pokémon faltantes e shinies a caçar.
+- Visualizar estatísticas com heatmaps e milestones.
 
-## Main Features
+Tudo roda no navegador. Os dados ficam em IndexedDB. Não há conta, sync ou
+telemetria.
 
-- Offline-first experience (no runtime API dependency)
-- Local persistence with Zustand + IndexedDB
-- Build-time Pokemon data pipeline using PokeAPI
-- Box management with drag-and-drop interactions (`@dnd-kit`)
-- Shiny tracking and variation toggles
-- Visual analytics with Recharts
-- Responsive App Router UI with Next.js 16
+## Stack
 
-## How to Run
+- **Framework**: Next.js 16 (App Router) + React 19 + TypeScript
+- **Styling**: Tailwind CSS 4 + tokens OKLCH (light / dark)
+- **State**: Zustand persistido em IndexedDB (`idb-keyval`)
+- **Motion**: `motion/react` (Framer Motion v11) — respeita `prefers-reduced-motion`
+- **i18n**: `next-intl` (pt-BR default, en)
+- **DnD**: `@dnd-kit` (Fase 2)
+- **Data**: pipeline de fetch da PokéAPI em build time, gera JSON estático
 
-### Prerequisites
+## Como rodar
 
-- Node.js 20+
-- npm 10+
-
-### 1) Install dependencies
+Pré-requisitos: Node 20+, npm 10+.
 
 ```bash
 npm install
+npm run dev          # http://localhost:3000
 ```
 
-### 2) Start development server
-
-```bash
-npm run dev
-```
-
-Open `http://localhost:3000`.
-
-### 3) Production build
+Para um build de produção (re-fetcha dados da PokéAPI):
 
 ```bash
 npm run build
 npm run start
 ```
 
-### 4) Quality checks
+Para validar:
 
 ```bash
 npm run lint
 npm run format
 ```
 
-## Data Pipeline
-
-Pokemon data is generated ahead of time and stored in `src/data/*.json`.
-
-### Refresh data from PokeAPI
+## Pipeline de dados
 
 ```bash
-npm run fetch-data
+npm run fetch-data       # re-fetch da PokéAPI (cache em .cache/)
+npm run validate-data    # valida os JSONs gerados
+npm run generate-locales # gera nomes localizados
 ```
 
-### Generate localized Pokemon names
+## Estrutura
 
-```bash
-npm run generate-locales
 ```
-
-### Validate generated data
-
-```bash
-npm run validate-data
-```
-
-Notes:
-
-- The fetch script uses a local cache in `.cache/`.
-- The app imports static JSON directly; there are no runtime API calls.
-
-## Technologies
-
-- **Framework:** Next.js 16 (App Router), React 19, TypeScript
-- **Styling/UI:** Tailwind CSS 4, shadcn/ui, Base UI
-- **State Management:** Zustand
-- **Persistence:** IndexedDB (`idb-keyval`) via persisted Zustand stores
-- **I18n:** `next-intl`
-- **Drag and Drop:** `@dnd-kit`
-- **Charts:** Recharts
-- **Tooling:** ESLint, Prettier, tsx
-
-## Architecture Overview
-
-- **No backend:** everything runs client-side.
-- **Static domain data:** fetched and normalized at build time.
-- **Persisted user state:** stored locally in IndexedDB.
-- **Modular stores:** dedicated stores for boxes, pokedex, settings, and presets.
-
-### Core Stores
-
-- `useBoxStore` - box CRUD, slot movement/reordering, shiny toggles
-- `usePokedexStore` - registration state tracking
-- `useSettingsStore` - preferences and display toggles
-- `usePresetsStore` - organization preset management
-
-## Project Structure
-
-```text
 src/
-  app/                    # Next.js routes and layouts
-  components/             # UI and feature components
-  data/                   # Generated static Pokemon data
-  hooks/                  # Reusable React hooks
-  i18n/                   # Locale routing/messages/name dictionaries
-  lib/                    # Shared utilities and engines
-  scripts/                # Data fetch/normalize/validate scripts
-  stores/                 # Zustand persisted stores
-  types/                  # Domain types
-openspec/                 # Structured change proposals/specs/tasks
+  app/                # rotas e layouts (App Router)
+    [locale]/        # páginas com prefixo de locale
+  components/
+    ui/              # primitives (Button, Card, Badge, Input, ProgressRing)
+    motion/          # FadeIn, Reveal, Stagger, CountUp
+    layout/          # AppShell, Sidebar, Header, MobileNav, ThemeProvider, ComingSoon
+    home/            # LandingHero, FeatureGrid, HowItWorks, CallToAction, DashboardOverview
+    boxes/           # BoxView, BoxSlot
+    pokemon/         # Sprite, TypeChip, PokemonPicker
+  data/              # JSONs gerados pelo fetch script
+  hooks/             # hooks reutilizáveis
+  i18n/              # routing + messages pt-BR/en
+  lib/               # engines, utils, type-colors
+  scripts/           # pipeline de fetch da PokéAPI
+  stores/            # Zustand persistido em IndexedDB
+  types/             # domain types
+docs/
+  REWRITE.md         # plano da reescrita, fases, decisões arquiteturais
 ```
 
-## Localization
+## Status por fase
 
-- Supported locales: `pt-BR` (default) and `en`
-- Route structure is locale-aware (`/[locale]/...`)
-- Messages are in `src/i18n/messages/`
+A reescrita está dividida em fases — esta entrega corresponde à **Fase 1**.
 
-## Important Notes
+- ✅ **Fase 1**: design system novo, nova Home (landing + dashboard), Boxes
+  básico, Pokédex básico, Settings básico, stubs de Stats/Presets/Missing
+- ⏳ **Fase 2**: DnD em Boxes, filtros avançados na Pokédex, variations
+  toggles em Settings, backup reminder
+- ⏳ **Fase 3**: Stats com Recharts, Presets engine, Missing analysis,
+  History panel, Tags, Import/Export
+- ⏳ **Fase 4**: page transitions polidas, PWA / service worker, bundle
+  analysis
 
-- User data is local to the browser and device.
-- Clearing browser storage removes saved progress.
-- This repository currently does not include a dedicated automated test suite.
+Detalhes em [`docs/REWRITE.md`](docs/REWRITE.md).
 
-## License
+## Acessibilidade
 
-No license file is currently defined in this repository.
+Compromissos:
+
+- WCAG 2.2 AA como alvo.
+- `prefers-reduced-motion` respeitado em toda animação.
+- Focus rings visíveis em todos os elementos interativos.
+- Tipo e geração nunca dependem só de cor (sempre par com glyph/texto).
+- Keyboard parity em DnD (Fase 2, via `@dnd-kit/accessibility`).
+
+## Licença
+
+Sem licença definida.

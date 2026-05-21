@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 
 export interface SwipeGestureOptions {
   onSwipeLeft?: () => void
@@ -20,7 +20,9 @@ export function useSwipeGesture<T extends HTMLElement>(
   options: SwipeGestureOptions,
 ) {
   const optionsRef = useRef(options)
-  optionsRef.current = options
+  useLayoutEffect(() => {
+    optionsRef.current = options
+  })
 
   useEffect(() => {
     const el = ref.current

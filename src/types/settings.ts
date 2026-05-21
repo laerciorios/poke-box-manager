@@ -41,8 +41,12 @@ export const DEFAULT_VARIATIONS: VariationToggles = {
   alcremieVariations: false,
   colorVariations: false,
   sizeVariations: false,
-  megaEvolutions: true,
-  gmaxForms: true,
+  // Mega Evolutions and Gigantamax forms are battle-only — they can't be
+  // stored in a Pokémon Home box slot, so they're off by default to avoid
+  // bloating the dex with unreachable targets. Users can still opt-in
+  // from Settings to count them in stats.
+  megaEvolutions: false,
+  gmaxForms: false,
   battleForms: false,
   originForms: true,
   costumedPokemon: false,

@@ -6,6 +6,8 @@
     "confirm": "Confirm",
     "edit": "Edit",
     "close": "Close",
+    "apply": "Apply",
+    "remove": "Remove",
     "backToHome": "Back to home"
   },
   "Layout": {
@@ -126,8 +128,10 @@
   "Boxes": {
     "eyebrow": "Organization",
     "title": "Your boxes",
-    "subtitle": "Each box has 30 slots, same layout as Pokémon Home.",
+    "subtitle": "Drag to reorganize, right-click for more actions.",
     "addBox": "New box",
+    "autoFill": "Auto-fill",
+    "autoFillTitle": "Fills empty slots in Pokédex order, respecting active generations and variations",
     "emptyTitle": "No boxes yet",
     "emptyDescription": "Create your first box to start organizing Pokémon. You can rename or delete it at any time.",
     "createFirst": "Create first box",
@@ -138,7 +142,54 @@
     "deleteConfirm": "Delete the box \"{name}\"? This cannot be undone.",
     "emptySlot": "Empty slot {index}",
     "markRegistered": "Mark as registered",
-    "unmarkRegistered": "Unmark registered"
+    "unmarkRegistered": "Unmark registered",
+    "boxActions": "Box actions",
+    "clearAll": "Clear all slots",
+    "clearAllConfirm": "Clear all slots in \"{name}\"?",
+    "markAllRegistered": "Mark all as registered",
+    "unmarkAllRegistered": "Unmark all",
+    "moveBoxUp": "Move box up",
+    "moveBoxDown": "Move box down",
+    "boxColor": "Box color",
+    "noColor": "No color",
+    "slotMenu": {
+      "change": "Change Pokémon",
+      "clear": "Clear slot",
+      "toggleShiny": "Mark as shiny",
+      "untoggleShiny": "Unmark shiny",
+      "toggleRegistered": "Mark as registered",
+      "untoggleRegistered": "Unmark registered",
+      "moveTo": "Move to…",
+      "select": "Add to selection",
+      "deselect": "Remove from selection"
+    },
+    "moveDialog": {
+      "title": "Move Pokémon",
+      "description": "Pick the destination box and slot. The current occupant will move back to the origin.",
+      "destinationBox": "Destination box",
+      "destinationSlot": "Slot {index}",
+      "submit": "Move"
+    },
+    "selection": {
+      "count": "{count} slot selected",
+      "countPlural": "{count} slots selected",
+      "clear": "Clear selection",
+      "markRegistered": "Mark registered",
+      "unmarkRegistered": "Unmark",
+      "clearSlots": "Clear slots",
+      "moveTo": "Move to…"
+    },
+    "navigation": {
+      "previous": "Previous box",
+      "next": "Next box"
+    },
+    "dnd": {
+      "pickup": "Picked up {name} from slot {index} of {box}",
+      "pickupEmpty": "Picked up empty slot {index} of {box}",
+      "over": "Over slot {index} of {box}",
+      "drop": "Dropped on slot {index} of {box}",
+      "cancel": "Move cancelled"
+    }
   },
   "Picker": {
     "title": "Choose Pokémon",
@@ -150,11 +201,66 @@
     "eyebrow": "Collection",
     "title": "Pokédex",
     "subtitle": "{count} of {total} registered across active generations.",
-    "searchPlaceholder": "Search by name or number…",
+    "searchPlaceholder": "Search by name, number, or abbreviation…",
     "all": "All",
     "registered": "Registered",
     "more": "+{count} results — refine your search to see more.",
-    "empty": "No Pokémon matches your search."
+    "empty": "No Pokémon matches your search.",
+    "view": {
+      "table": "Table",
+      "grid": "Grid"
+    },
+    "filters": {
+      "title": "Filters",
+      "type": "Type",
+      "category": "Category",
+      "status": "Status",
+      "any": "All",
+      "onlyRegistered": "Registered",
+      "onlyMissing": "Missing",
+      "clear": "Clear filters",
+      "results": "{count} results",
+      "moreFilters": "More filters"
+    },
+    "categories": {
+      "normal": "Normal",
+      "legendary": "Legendary",
+      "mythical": "Mythical",
+      "baby": "Baby",
+      "ultra-beast": "Ultra Beast",
+      "paradox": "Paradox"
+    },
+    "formTypes": {
+      "regional-alola": "Alola",
+      "regional-galar": "Galar",
+      "regional-hisui": "Hisui",
+      "regional-paldea": "Paldea",
+      "mega": "Mega",
+      "gmax": "Gigantamax",
+      "gender": "Gender",
+      "unown": "Unown",
+      "vivillon": "Vivillon",
+      "alcremie": "Alcremie",
+      "color": "Color",
+      "size": "Size",
+      "costume": "Costume",
+      "battle": "Battle",
+      "origin": "Origin",
+      "tera": "Tera",
+      "other": "Other"
+    },
+    "details": {
+      "open": "View details",
+      "generation": "Generation {n}",
+      "shinySide": "Shiny variant",
+      "forms": "Forms",
+      "noForms": "No alternative forms",
+      "evolution": "Evolution line",
+      "noEvolution": "No evolution",
+      "register": "Register",
+      "unregister": "Unregister",
+      "orJoin": "or"
+    }
   },
   "Stats": {
     "eyebrow": "Analysis",
@@ -191,10 +297,16 @@
       "Export the missing list"
     ]
   },
+  "BackupBanner": {
+    "title": "You have {count} changes without a backup.",
+    "subtitle": "Take a backup to avoid losing data if your browser is cleared.",
+    "backupNow": "Backup now",
+    "later": "Remind me later"
+  },
   "Settings": {
     "eyebrow": "Preferences",
     "title": "Settings",
-    "subtitle": "Basic settings. Variations, active generations and backup come back in Phase 2.",
+    "subtitle": "Customize variations, generations, appearance, export and import your data.",
     "appearance": {
       "title": "Appearance",
       "description": "Pick light, dark or follow the system.",
@@ -206,12 +318,82 @@
       "title": "Language",
       "description": "Sets the interface language and localized Pokémon names."
     },
+    "variations": {
+      "title": "Variations",
+      "description": "Pick which variants count toward your total. The number on the right shows how many Pokémon each variation adds.",
+      "total": "Current total",
+      "totalHint": "{base} base + {variations} variations within active generations",
+      "regionalForms": "Regional forms",
+      "regionalFormsHint": "Alolan, Galarian, Hisuian, Paldean",
+      "genderForms": "Gender differences",
+      "genderFormsHint": "Cases like Nidoran, Pyroar",
+      "unownLetters": "Unown letters",
+      "unownLettersHint": "All 28 forms",
+      "vivillonPatterns": "Vivillon patterns",
+      "vivillonPatternsHint": "Regional and Pokéball patterns",
+      "alcremieVariations": "Alcremie variations",
+      "alcremieVariationsHint": "Colors and sweets",
+      "colorVariations": "Color variations",
+      "colorVariationsHint": "Shellos, Basculin",
+      "sizeVariations": "Size variations",
+      "sizeVariationsHint": "Pumpkaboo, Gourgeist",
+      "megaEvolutions": "Mega Evolutions",
+      "megaEvolutionsHint": "X, Y and unique forms",
+      "gmaxForms": "Gigantamax forms",
+      "gmaxFormsHint": "G-Max",
+      "battleForms": "Battle forms",
+      "battleFormsHint": "Necrozma, Zacian, etc.",
+      "originForms": "Origin forms",
+      "originFormsHint": "Giratina Origin, Dialga Origin, etc.",
+      "costumedPokemon": "Costumes",
+      "costumedPokemonHint": "Pikachu Cap, Eevee Star, etc."
+    },
+    "generations": {
+      "title": "Active generations",
+      "description": "Choose which generations are included in totals and filters.",
+      "select": "Select Gen {n}"
+    },
+    "spriteStyle": {
+      "title": "Sprite style",
+      "description": "Sets the look of sprites across all pages. Forms and Megas may fall back to 3D if pixel art is unavailable.",
+      "home-3d": "Home 3D",
+      "pixel-gen5": "Pixel Gen 5",
+      "pixel-gen8": "Pixel Gen 8",
+      "official-art": "Official Art"
+    },
+    "preferences": {
+      "title": "Display preferences",
+      "showNames": "Show names in boxes",
+      "showNamesHint": "Displays the name below each occupied sprite.",
+      "shinyTracker": "Shiny tracker",
+      "shinyTrackerHint": "Enables shiny marking on slots and details."
+    },
+    "backup": {
+      "title": "Backup and restore",
+      "description": "Save your data to a JSON file or restore from a backup. There's no server — you're responsible for the copy.",
+      "lastBackup": "Last backup: {date}",
+      "neverBackup": "You've never made a backup.",
+      "export": "Export data",
+      "import": "Import data",
+      "importDescription": "Select a previously exported .json file. You'll see a summary before applying.",
+      "selectFile": "Select file",
+      "summaryBoxes": "Boxes in file",
+      "summaryRegistered": "Registered in file",
+      "summaryPresets": "Presets in file",
+      "exportedAt": "Exported on {date}",
+      "merge": "Merge",
+      "replace": "Replace everything",
+      "replaceConfirm": "Are you sure? Current data will be replaced by the file's.",
+      "invalidFile": "Invalid file: {error}"
+    },
     "data": {
-      "title": "Your data",
+      "title": "Danger zone",
       "description": "You have {boxes} box(es) and {registered} registered Pokémon in this browser.",
       "warning": "Resetting erases all your boxes, your Pokédex and your preferences. This cannot be undone.",
       "reset": "Erase all data",
-      "confirmReset": "Are you sure? All data in this browser will be deleted."
+      "confirmReset": "Are you sure? All data in this browser will be deleted.",
+      "confirmResetType": "Type RESET to confirm.",
+      "confirmResetPlaceholder": "RESET"
     },
     "about": {
       "title": "About",

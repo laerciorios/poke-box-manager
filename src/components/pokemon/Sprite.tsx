@@ -3,14 +3,20 @@
 import * as React from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { useStyledSprite } from '@/lib/sprite-style'
 
 interface SpriteProps {
   src?: string
   alt: string
   size?: number
   className?: string
+  /** Force pixelated rendering regardless of user style preference. */
   pixelated?: boolean
   priority?: boolean
+  /** When true, the styled URL resolves to the shiny variant. */
+  shiny?: boolean
+  /** When true, ignore the user's spriteStyle preference and render `src` as-is. */
+  unstyled?: boolean
 }
 
 export function Sprite({
@@ -20,9 +26,19 @@ export function Sprite({
   className,
   pixelated,
   priority,
+  shiny = false,
+  unstyled = false,
 }: SpriteProps) {
+  const styled = useStyledSprite(src, shiny)
+  const resolved = unstyled ? src : styled.src
+  const pixelMode = unstyled ? pixelated : pixelated || styled.pixelated
   const [errored, setErrored] = React.useState(false)
-  if (!src || errored) {
+
+  React.useEffect(() => {
+    setErrored(false)
+  }, [resolved])
+
+  if (!resolved || errored) {
     return (
       <div
         className={cn(
@@ -44,13 +60,13 @@ export function Sprite({
     <div
       className={cn(
         'relative grid place-items-center',
-        pixelated && 'sprite-pixel',
+        pixelMode && 'sprite-pixel',
         className,
       )}
       style={{ width: size, height: size }}
     >
       <Image
-        src={src}
+        src={resolved}
         alt={alt}
         width={size}
         height={size}

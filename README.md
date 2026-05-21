@@ -89,14 +89,20 @@ docs/
 
 ## Status por fase
 
-A reescrita está dividida em fases — esta entrega corresponde à **Fase 1**.
+A reescrita está dividida em fases — esta entrega corresponde à **Fase 2**.
 
 - ✅ **Fase 1**: design system novo, nova Home (landing + dashboard), Boxes
   básico, Pokédex básico, Settings básico, stubs de Stats/Presets/Missing
-- ⏳ **Fase 2**: DnD em Boxes, filtros avançados na Pokédex, variations
-  toggles em Settings, backup reminder
+- ✅ **Fase 2**: DnD com `@dnd-kit` (paridade de teclado, anúncios
+  localizados, DragOverlay), context menu por slot, MoveTo dialog, AutoFill,
+  BoxColorPicker, FloatingActionBar (seleção múltipla), navegação por
+  teclado entre boxes; Pokédex virtualizada (`@tanstack/react-virtual`),
+  filtros por tipo / categoria / status / geração, modo tabela ↔ grade,
+  modal de detalhes com formas e linha evolutiva; Settings com 12 variation
+  toggles, picker de gerações, sprite style com preview, toggles de exibição,
+  export / import (merge ou replace), backup reminder global
 - ⏳ **Fase 3**: Stats com Recharts, Presets engine, Missing analysis,
-  History panel, Tags, Import/Export
+  History panel, Tags
 - ⏳ **Fase 4**: page transitions polidas, PWA / service worker, bundle
   analysis
 

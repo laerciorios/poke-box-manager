@@ -131,11 +131,50 @@ Veja `src/app/globals.css` para a definição canônica. Os tokens são:
 - [x] Stubs funcionais para Stats, Presets, Missing, Settings
 - [x] Mensagens i18n pt-BR e en
 
-### Fase 2 — Profundidade nas páginas core (próxima sessão)
+### Fase 2 — Profundidade nas páginas core ✅
 
-- [ ] Boxes: drag-and-drop com `@dnd-kit`, MoveTo, ContextMenu, AutoFill, BoxColorPicker, FloatingActionBar, BoxNavigation
-- [ ] Pokédex: filtros (geração, tipo, categoria), virtualização (`@tanstack/react-virtual`), card de detalhes com formas, modo grid
-- [ ] Settings: variations toggles, generations, theme, locale, sprite style, backup reminder
+Entregue em `2026-05-21`.
+
+- [x] **Boxes**
+  - DnD entre slots na mesma box e entre boxes com `@dnd-kit`
+  - Keyboard parity (Espaço, setas, Esc) via `KeyboardSensor` + `sortableKeyboardCoordinates`
+  - Anúncios localizados de pickup / over / drop / cancel
+  - `BoxSlotPreview` em `DragOverlay` para feedback visual
+  - Context menu por slot (botão direito ou long-press 550 ms): trocar Pokémon,
+    limpar, marcar shiny / registrado, mover para…, adicionar/remover da seleção
+  - `MoveToDialog` com preview do grid de destino
+  - Menu de ações da box: limpar tudo, marcar/desmarcar todos, mover ↑↓
+  - `BoxColorPicker` (faixa lateral, não fundo cheio) usando `BOX_LABEL_COLORS`
+  - `AutoFill` que respeita `activeGenerations` + `variations` e evita duplicatas
+  - `FloatingActionBar` com seleção múltipla (Shift/Cmd+click) para
+    marcar/desmarcar/limpar/mover lote
+  - Navegação entre boxes com ← → / PageUp / PageDown / J / K e widget flutuante
+- [x] **Pokédex**
+  - Virtualização com `@tanstack/react-virtual` (tabela e grade) — renderiza
+    todos os ~1.300 rows sem lag
+  - Toggle tabela ↔ grade persistido em `useSettingsStore.pokedexView`
+  - Filtros: por tipo (multi), categoria (multi), status (todos / registrados
+    / faltantes), geração (single), busca por `#001` / `001` / `1` / slug /
+    nome localizado / abreviação de tipo (3 letras)
+  - Linhas extras para formas conforme `variations` ativas (com indent na tabela)
+  - `PokedexDetails` modal: sprite normal + shiny (se tracker ativo), tipos,
+    todas as formas com toggle register, linha evolutiva via
+    `evolution-chains.json` + `getEvolutionMethodLabel`
+- [x] **Settings**
+  - 12 toggles de `VariationToggles` com contagem por toggle e total dinâmico
+    (`computeFilteredTotal`)
+  - Picker de gerações ativas (chips 1–9)
+  - Picker de estilo de sprite com preview ao vivo de cada estilo —
+    `Sprite` agora respeita `spriteStyle` global via `useStyledSprite` e
+    cai para `home-3d` quando a forma não tem arte equivalente
+  - Toggle "mostrar nomes nas boxes" e "rastreador de shinies"
+  - Backup + Restore: export JSON via `buildExportPayload` + `downloadJson`,
+    import com diff preview (boxes / registrados / presets), merge ou replace
+  - Reset zone agora exige digitar `RESET` para habilitar o botão
+- [x] **BackupReminderBanner** global no `AppShell` — mostra quando
+  `pendingChanges > 5` e o último backup é mais antigo que 7 dias (ou nunca
+  aconteceu). Dismiss persiste por 7 dias.
+- [x] Strings i18n adicionadas para Boxes / Pokédex / Settings em pt-BR e en.
 
 ### Fase 3 — Funcionalidades secundárias
 

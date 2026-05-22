@@ -58,11 +58,12 @@ Finalized games (verified against official Pokédex lists):
 - Gen 2: Gold, Silver, Crystal
 - Gen 3: FireRed, LeafGreen
 - Gen 7: Let's Go Pikachu, Let's Go Eevee
-- Gen 8: The Isle of Armor (DLC), The Crown Tundra (DLC), Legends Arceus
+- Gen 8: Brilliant Diamond, Shining Pearl, The Isle of Armor (DLC),
+  The Crown Tundra (DLC), Legends Arceus
 - Gen 9: Scarlet, Violet, The Teal Mask, The Indigo Disk, Legends Z-A,
   Mega Dimension
 
-19 games finalized. Remaining titles still wait for their official
+21 games finalized. Remaining titles still wait for their official
 Pokédex lists.
 
 Pending refinement: form-level exclusivity (e.g. Tauros Blaze Breed is

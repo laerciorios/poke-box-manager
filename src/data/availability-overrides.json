@@ -22,6 +22,7 @@
       "lets-go-eevee",
       "lets-go-pikachu",
       "mega-dimension",
+      "pokemon-go",
       "red",
       "scarlet",
       "shield",
@@ -50,7 +51,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Bulbasaur: only RBY (and FRLG via remake)."
   },
@@ -67,7 +69,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Ivysaur: only RBY."
   },
@@ -84,7 +87,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Venusaur: only RBY."
   },
@@ -102,7 +106,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Charmander."
   },
@@ -120,7 +125,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Charmeleon."
   },
@@ -138,7 +144,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Charizard."
   },
@@ -155,7 +162,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Squirtle."
   },
@@ -172,7 +180,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Wartortle."
   },
@@ -189,7 +198,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Blastoise."
   },
@@ -208,7 +218,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "11": {
@@ -226,7 +237,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "12": {
@@ -244,7 +256,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "13": {
@@ -260,7 +273,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Weedle: not in Yellow."
   },
@@ -277,7 +291,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Kakuna: not in Yellow."
   },
@@ -294,7 +309,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Beedrill: not in Yellow."
   },
@@ -312,7 +328,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -330,7 +347,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -348,7 +366,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -365,13 +384,15 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "forms": {
       "rattata-alola": {
         "games": [
           "lets-go-pikachu",
-          "lets-go-eevee"
+          "lets-go-eevee",
+          "pokemon-go"
         ]
       }
     }
@@ -389,7 +410,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "21": {
@@ -405,7 +427,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "22": {
@@ -421,7 +444,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "23": {
@@ -435,7 +459,8 @@
       "firered",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Ekans: Red only in Gen 1; available in all GSC."
   },
@@ -450,7 +475,8 @@
       "firered",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Arbok: Red only in Gen 1; available in all GSC."
   },
@@ -475,7 +501,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -499,14 +526,16 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Raichu: not in Yellow (Pikachu starter doesn't evolve).",
     "forms": {
       "raichu-alola": {
         "games": [
           "lets-go-pikachu",
-          "lets-go-eevee"
+          "lets-go-eevee",
+          "pokemon-go"
         ]
       }
     }
@@ -524,13 +553,15 @@
       "leafgreen",
       "lets-go-pikachu",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Sandshrew: Blue, Yellow; all GSC.",
     "forms": {
       "sandshrew-alola": {
         "games": [
-          "lets-go-pikachu"
+          "lets-go-pikachu",
+          "pokemon-go"
         ]
       }
     }
@@ -548,7 +579,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Sandslash: Blue, Yellow; all GSC."
   },
@@ -566,7 +598,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "30": {
@@ -583,7 +616,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "31": {
@@ -600,7 +634,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "32": {
@@ -617,7 +652,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "33": {
@@ -634,7 +670,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "34": {
@@ -651,7 +688,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "35": {
@@ -673,7 +711,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -696,7 +735,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -713,13 +753,15 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Vulpix: Blue, Yellow (Gen 1); Silver only in Gen 2 (not Gold, not Crystal).",
     "forms": {
       "vulpix-alola": {
         "games": [
-          "lets-go-eevee"
+          "lets-go-eevee",
+          "pokemon-go"
         ]
       }
     }
@@ -737,7 +779,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Ninetales: Blue, Yellow; Silver only in Gen 2."
   },
@@ -758,7 +801,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -779,7 +823,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -799,7 +844,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -819,7 +865,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -836,7 +883,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Oddish: Red, Yellow; all GSC."
   },
@@ -853,7 +901,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Gloom: Red, Yellow; all GSC."
   },
@@ -870,7 +919,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Vileplume: Red, Yellow; all GSC."
   },
@@ -888,7 +938,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "47": {
@@ -905,7 +956,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "48": {
@@ -924,7 +976,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -944,7 +997,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -966,14 +1020,16 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex).",
     "forms": {
       "diglett-alola": {
         "games": [
           "lets-go-pikachu",
-          "lets-go-eevee"
+          "lets-go-eevee",
+          "pokemon-go"
         ]
       }
     }
@@ -996,7 +1052,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1013,13 +1070,15 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Meowth: Blue only (Gen 1); Silver only (Gen 2).",
     "forms": {
       "meowth-alola": {
         "games": [
-          "lets-go-eevee"
+          "lets-go-eevee",
+          "pokemon-go"
         ]
       }
     }
@@ -1037,7 +1096,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Persian: Blue only (Gen 1); Silver only (Gen 2)."
   },
@@ -1057,7 +1117,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "55": {
@@ -1076,7 +1137,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "56": {
@@ -1092,7 +1154,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Mankey: Red, Yellow (Gen 1); Gold only (Gen 2)."
   },
@@ -1109,7 +1172,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Primeape: Red, Yellow; Gold only."
   },
@@ -1127,7 +1191,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Growlithe: Red, Yellow; Gold only."
   },
@@ -1145,7 +1210,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Arcanine: Red, Yellow; Gold only."
   },
@@ -1164,7 +1230,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -1183,7 +1250,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -1202,7 +1270,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -1222,7 +1291,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1242,7 +1312,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1262,7 +1333,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1283,7 +1355,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1304,7 +1377,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1325,7 +1399,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1341,7 +1416,8 @@
       "leafgreen",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Bellsprout: Blue, Yellow; all GSC."
   },
@@ -1357,7 +1433,8 @@
       "leafgreen",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Weepinbell: Blue, Yellow; all GSC."
   },
@@ -1373,7 +1450,8 @@
       "leafgreen",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Victreebel: Blue, Yellow; all GSC."
   },
@@ -1393,7 +1471,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1413,7 +1492,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1433,14 +1513,16 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex).",
     "forms": {
       "geodude-alola": {
         "games": [
           "lets-go-pikachu",
-          "lets-go-eevee"
+          "lets-go-eevee",
+          "pokemon-go"
         ]
       }
     }
@@ -1461,7 +1543,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1481,7 +1564,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1500,12 +1584,14 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "forms": {
       "ponyta-galar": {
         "games": [
-          "shield"
+          "shield",
+          "pokemon-go"
         ]
       }
     }
@@ -1525,12 +1611,14 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "forms": {
       "rapidash-galar": {
         "games": [
-          "shield"
+          "shield",
+          "pokemon-go"
         ]
       }
     }
@@ -1551,7 +1639,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "lets-go-eevee",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1571,7 +1660,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "lets-go-eevee",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1593,7 +1683,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1615,7 +1706,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1633,13 +1725,15 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC).",
     "forms": {
       "farfetchd-galar": {
         "games": [
-          "sword"
+          "sword",
+          "pokemon-go"
         ]
       }
     }
@@ -1658,7 +1752,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1676,7 +1771,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1693,7 +1789,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "lets-go-eevee",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1710,7 +1807,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "lets-go-eevee",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1729,13 +1827,15 @@
       "leafgreen",
       "lets-go-pikachu",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex).",
     "forms": {
       "grimer-alola": {
         "games": [
-          "lets-go-pikachu"
+          "lets-go-pikachu",
+          "pokemon-go"
         ]
       }
     }
@@ -1755,7 +1855,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -1776,7 +1877,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "91": {
@@ -1796,7 +1898,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "92": {
@@ -1819,7 +1922,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1843,7 +1947,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1867,7 +1972,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1888,7 +1994,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -1907,7 +2014,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "97": {
@@ -1925,7 +2033,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "98": {
@@ -1944,7 +2053,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "99": {
@@ -1963,7 +2073,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "100": {
@@ -1982,7 +2093,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "101": {
@@ -2001,7 +2113,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "102": {
@@ -2019,7 +2132,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2038,14 +2152,16 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex).",
     "forms": {
       "exeggutor-alola": {
         "games": [
           "lets-go-pikachu",
-          "lets-go-eevee"
+          "lets-go-eevee",
+          "pokemon-go"
         ]
       }
     }
@@ -2065,7 +2181,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -2084,14 +2201,16 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC).",
     "forms": {
       "marowak-alola": {
         "games": [
           "lets-go-pikachu",
-          "lets-go-eevee"
+          "lets-go-eevee",
+          "pokemon-go"
         ]
       }
     }
@@ -2112,7 +2231,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2132,7 +2252,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2151,7 +2272,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "109": {
@@ -2168,7 +2290,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Koffing: not in Yellow; all GSC."
   },
@@ -2186,7 +2309,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Weezing: not in Yellow; all GSC."
   },
@@ -2208,7 +2332,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2230,7 +2355,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2252,7 +2378,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2271,7 +2398,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "115": {
@@ -2289,7 +2417,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2308,7 +2437,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2327,7 +2457,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2347,7 +2478,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "119": {
@@ -2366,7 +2498,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "120": {
@@ -2383,7 +2516,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2401,7 +2535,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2423,7 +2558,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -2442,7 +2578,8 @@
       "the-isle-of-armor",
       "firered",
       "lets-go-pikachu",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Scyther: Red, Yellow; all GSC (Bug Catching Contest)."
   },
@@ -2459,7 +2596,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Jynx: not in Yellow; all GSC."
   },
@@ -2476,7 +2614,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Electabuzz: Red only (Gen 1); all GSC."
   },
@@ -2493,7 +2632,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Magmar: Blue only (Gen 1); all GSC."
   },
@@ -2509,7 +2649,8 @@
       "leafgreen",
       "lets-go-eevee",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Pinsir: Blue, Yellow; all GSC."
   },
@@ -2530,18 +2671,21 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex).",
     "forms": {
       "tauros-paldea-blaze-breed": {
         "games": [
-          "scarlet"
+          "scarlet",
+          "pokemon-go"
         ]
       },
       "tauros-paldea-aqua-breed": {
         "games": [
-          "violet"
+          "violet",
+          "pokemon-go"
         ]
       }
     }
@@ -2568,7 +2712,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2594,7 +2739,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2615,7 +2761,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -2637,7 +2784,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "133": {
@@ -2660,7 +2808,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2684,7 +2833,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2708,7 +2858,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2732,7 +2883,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2753,7 +2905,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -2769,7 +2922,8 @@
       "lets-go-eevee",
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Omanyte: Gen 1 fossil, not in GSC."
   },
@@ -2785,7 +2939,8 @@
       "lets-go-eevee",
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Omastar."
   },
@@ -2801,7 +2956,8 @@
       "lets-go-eevee",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Kabuto."
   },
@@ -2817,7 +2973,8 @@
       "lets-go-eevee",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Kabutops."
   },
@@ -2833,7 +2990,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Aerodactyl: Gen 1 fossil, not in GSC."
   },
@@ -2855,7 +3013,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -2869,7 +3028,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "lets-go-eevee",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Articuno: Gen 1 bird, not in GSC."
   },
@@ -2883,7 +3043,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "lets-go-eevee",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Zapdos: Gen 1 bird, not in GSC."
   },
@@ -2897,7 +3058,8 @@
       "leafgreen",
       "lets-go-pikachu",
       "lets-go-eevee",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Moltres: Gen 1 bird, not in GSC."
   },
@@ -2918,7 +3080,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2939,7 +3102,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2960,7 +3124,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -2975,7 +3140,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Mewtwo: Cerulean Cave sealed in GSC."
   },
@@ -2986,7 +3152,8 @@
       "lets-go-pikachu",
       "lets-go-eevee",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Mew: event only."
@@ -2999,7 +3166,8 @@
       "the-indigo-disk",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3011,7 +3179,8 @@
       "the-indigo-disk",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3023,7 +3192,8 @@
       "the-indigo-disk",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3035,7 +3205,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -3047,7 +3218,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -3059,7 +3231,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -3071,7 +3244,8 @@
       "the-indigo-disk",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3083,7 +3257,8 @@
       "the-indigo-disk",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3095,7 +3270,8 @@
       "the-indigo-disk",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3108,7 +3284,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3121,7 +3298,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3134,7 +3312,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3147,7 +3326,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3158,7 +3338,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Ledyba: Silver-exclusive (also in Crystal)."
   },
@@ -3169,7 +3350,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Ledian: Silver-exclusive (also in Crystal)."
   },
@@ -3182,7 +3364,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Spinarak: Gold-exclusive (also in Crystal)."
   },
@@ -3195,7 +3378,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Ariados: Gold-exclusive (also in Crystal)."
   },
@@ -3210,7 +3394,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -3224,7 +3409,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -3238,7 +3424,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -3258,7 +3445,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3276,7 +3464,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3292,7 +3481,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -3307,7 +3497,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "176": {
@@ -3321,7 +3512,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "177": {
@@ -3334,7 +3526,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "178": {
@@ -3347,7 +3540,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "179": {
@@ -3358,7 +3552,8 @@
       "violet",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Mareep: not obtainable in Crystal."
   },
@@ -3370,7 +3565,8 @@
       "violet",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Flaaffy: not obtainable in Crystal."
   },
@@ -3382,7 +3578,8 @@
       "violet",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Ampharos: not obtainable in Crystal."
   },
@@ -3396,7 +3593,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -3410,7 +3608,8 @@
       "the-isle-of-armor",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "184": {
@@ -3423,7 +3622,8 @@
       "the-isle-of-armor",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "185": {
@@ -3438,7 +3638,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3452,7 +3653,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3466,7 +3668,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "188": {
@@ -3479,7 +3682,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "189": {
@@ -3492,7 +3696,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "190": {
@@ -3503,7 +3708,8 @@
       "the-teal-mask",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3515,7 +3721,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "192": {
@@ -3526,7 +3733,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "193": {
@@ -3539,7 +3747,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3556,7 +3765,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3571,7 +3781,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3588,7 +3799,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3605,7 +3817,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3618,7 +3831,8 @@
       "violet",
       "legends-arceus",
       "firered",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ]
   },
   "199": {
@@ -3632,7 +3846,8 @@
       "legends-za",
       "the-isle-of-armor",
       "leafgreen",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3644,7 +3859,8 @@
       "violet",
       "legends-arceus",
       "leafgreen",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "201": {
@@ -3656,7 +3872,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "202": {
@@ -3669,7 +3886,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "203": {
@@ -3680,7 +3898,8 @@
       "violet",
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Girafarig: not obtainable in Crystal."
   },
@@ -3692,7 +3911,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "205": {
@@ -3703,7 +3923,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "206": {
@@ -3718,7 +3939,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3729,7 +3951,8 @@
       "the-teal-mask",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Gligar: Gold-exclusive (also in Crystal)."
   },
@@ -3745,7 +3968,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3756,7 +3980,8 @@
       "crystal",
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -3767,7 +3992,8 @@
       "crystal",
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -3785,7 +4011,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -3801,7 +4028,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "firered",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3814,7 +4042,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "214": {
@@ -3832,7 +4061,8 @@
       "leafgreen",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -3850,7 +4080,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3862,7 +4093,8 @@
       "violet",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Teddiursa: Gold-exclusive (also in Crystal)."
   },
@@ -3874,7 +4106,8 @@
       "violet",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Ursaring: Gold-exclusive (also in Crystal)."
   },
@@ -3887,7 +4120,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3900,7 +4134,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3917,7 +4152,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3934,7 +4170,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -3944,12 +4181,14 @@
       "silver",
       "crystal",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "forms": {
       "corsola-galar": {
         "games": [
-          "shield"
+          "shield",
+          "pokemon-go"
         ]
       }
     }
@@ -3964,7 +4203,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Remoraid: not obtainable in Crystal."
   },
@@ -3978,7 +4218,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Octillery: not obtainable in Crystal."
   },
@@ -3994,7 +4235,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Delibird: Silver-exclusive (also in Crystal)."
   },
@@ -4008,7 +4250,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Mantine: Gold-exclusive (also in Crystal)."
   },
@@ -4021,7 +4264,8 @@
       "the-isle-of-armor",
       "firered",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Skarmory: Silver-exclusive (also in Crystal)."
   },
@@ -4034,7 +4278,8 @@
       "scarlet",
       "violet",
       "legends-za",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4047,7 +4292,8 @@
       "scarlet",
       "violet",
       "legends-za",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4061,7 +4307,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4074,7 +4321,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Phanpy: Silver-exclusive (also in Crystal)."
   },
@@ -4087,7 +4335,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Donphan: Silver-exclusive (also in Crystal)."
   },
@@ -4103,7 +4352,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4116,7 +4366,8 @@
       "scarlet",
       "violet",
       "legends-arceus",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4127,7 +4378,8 @@
       "crystal",
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4142,7 +4394,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4157,7 +4410,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4170,7 +4424,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "239": {
@@ -4183,7 +4438,8 @@
       "the-crown-tundra",
       "firered",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4197,7 +4453,8 @@
       "the-crown-tundra",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4208,7 +4465,8 @@
       "crystal",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "242": {
@@ -4224,7 +4482,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4235,7 +4494,8 @@
       "crystal",
       "firered",
       "leafgreen",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ]
   },
   "244": {
@@ -4245,7 +4505,8 @@
       "crystal",
       "firered",
       "leafgreen",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ]
   },
   "245": {
@@ -4255,7 +4516,8 @@
       "crystal",
       "firered",
       "leafgreen",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ]
   },
   "246": {
@@ -4269,7 +4531,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4284,7 +4547,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4299,7 +4563,8 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4310,7 +4575,8 @@
       "firered",
       "leafgreen",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Lugia: catchable in Silver and Crystal.",
     "event": true
@@ -4322,13 +4588,16 @@
       "firered",
       "leafgreen",
       "brilliant-diamond",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Ho-Oh: catchable in Gold and Crystal.",
     "event": true
   },
   "251": {
-    "games": [],
+    "games": [
+      "pokemon-go"
+    ],
     "event": true,
     "notes": "Celebi: distributed via event only, not catchable in regular gameplay."
   },
@@ -4337,7 +4606,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4346,7 +4616,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4355,7 +4626,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4364,7 +4636,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4373,7 +4646,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4382,7 +4656,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4391,7 +4666,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4400,7 +4676,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4409,21 +4686,24 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "261": {
     "games": [
       "the-teal-mask",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "262": {
     "games": [
       "the-teal-mask",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4433,7 +4713,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "264": {
@@ -4442,42 +4723,48 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "265": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "266": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "267": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "268": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "269": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "270": {
@@ -4485,7 +4772,8 @@
       "the-teal-mask",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4494,7 +4782,8 @@
       "the-teal-mask",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4503,7 +4792,8 @@
       "the-teal-mask",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4512,7 +4802,8 @@
       "the-teal-mask",
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4521,7 +4812,8 @@
       "the-teal-mask",
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4530,20 +4822,23 @@
       "the-teal-mask",
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "276": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "277": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "278": {
@@ -4554,7 +4849,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "279": {
@@ -4565,7 +4861,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "280": {
@@ -4579,7 +4876,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4594,7 +4892,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4609,7 +4908,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4619,7 +4919,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4629,7 +4930,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4638,7 +4940,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "286": {
@@ -4646,7 +4949,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "287": {
@@ -4655,7 +4959,8 @@
       "violet",
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4665,7 +4970,8 @@
       "violet",
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4675,7 +4981,8 @@
       "violet",
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4684,7 +4991,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "291": {
@@ -4692,7 +5000,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "292": {
@@ -4700,28 +5009,32 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "293": {
     "games": [
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "294": {
     "games": [
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "295": {
     "games": [
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "296": {
@@ -4729,7 +5042,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "297": {
@@ -4737,7 +5051,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "298": {
@@ -4747,7 +5062,8 @@
       "the-isle-of-armor",
       "leafgreen",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "299": {
@@ -4755,20 +5071,23 @@
       "the-teal-mask",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "300": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "301": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "302": {
@@ -4779,7 +5098,8 @@
       "the-crown-tundra",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4789,7 +5109,8 @@
       "the-crown-tundra",
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Mawile: Ruby/Emerald (in Sapphire only via Mt. Pyre? Verify)."
   },
@@ -4797,7 +5118,8 @@
     "games": [
       "legends-za",
       "the-crown-tundra",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4805,7 +5127,8 @@
     "games": [
       "legends-za",
       "the-crown-tundra",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4813,7 +5136,8 @@
     "games": [
       "legends-za",
       "the-crown-tundra",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4823,7 +5147,8 @@
       "violet",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4833,7 +5158,8 @@
       "violet",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4843,7 +5169,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Electrike: Ruby (and Sapphire via Route 110/118)."
   },
@@ -4853,7 +5180,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4861,7 +5189,8 @@
     "games": [
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4869,7 +5198,8 @@
     "games": [
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4877,7 +5207,8 @@
     "games": [
       "the-teal-mask",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4885,7 +5216,8 @@
     "games": [
       "the-teal-mask",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -4896,7 +5228,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4905,7 +5238,8 @@
       "violet",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4914,7 +5248,8 @@
       "violet",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -4923,7 +5258,8 @@
       "legends-za",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4932,7 +5268,8 @@
       "legends-za",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4942,7 +5279,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "321": {
@@ -4951,7 +5289,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "322": {
@@ -4961,7 +5300,8 @@
       "the-indigo-disk",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4972,7 +5312,8 @@
       "the-indigo-disk",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -4985,7 +5326,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -4996,7 +5338,8 @@
       "violet",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5007,14 +5350,16 @@
       "violet",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "327": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "328": {
@@ -5023,7 +5368,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5033,7 +5379,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5043,7 +5390,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5052,7 +5400,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "332": {
@@ -5060,7 +5409,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "333": {
@@ -5071,7 +5421,8 @@
       "legends-za",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5083,7 +5434,8 @@
       "legends-za",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5094,7 +5446,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Zangoose: Ruby exclusive in some sources \u2014 flipping if needed."
   },
@@ -5105,7 +5458,8 @@
       "the-indigo-disk",
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Seviper: Sapphire (reversed in Emerald)."
   },
@@ -5113,14 +5467,16 @@
     "games": [
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "338": {
     "games": [
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "339": {
@@ -5134,7 +5490,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5149,7 +5506,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5160,7 +5518,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5171,7 +5530,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5181,7 +5541,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "344": {
@@ -5190,35 +5551,40 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "345": {
     "games": [
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "346": {
     "games": [
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "347": {
     "games": [
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "348": {
     "games": [
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "349": {
@@ -5229,7 +5595,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5241,20 +5608,23 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "351": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "352": {
     "games": [
       "mega-dimension",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5264,7 +5634,8 @@
       "violet",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5274,7 +5645,8 @@
       "violet",
       "legends-za",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5285,7 +5657,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5296,7 +5669,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5305,7 +5679,8 @@
       "scarlet",
       "violet",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "358": {
@@ -5314,7 +5689,8 @@
       "mega-dimension",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5323,7 +5699,8 @@
       "legends-za",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5334,7 +5711,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "361": {
@@ -5348,7 +5726,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5363,7 +5742,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5371,46 +5751,53 @@
     "games": [
       "legends-arceus",
       "the-crown-tundra",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "364": {
     "games": [
       "legends-arceus",
       "the-crown-tundra",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "365": {
     "games": [
       "legends-arceus",
       "the-crown-tundra",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "366": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "367": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "368": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "369": {
     "games": [
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "370": {
@@ -5419,7 +5806,8 @@
       "violet",
       "the-indigo-disk",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5429,7 +5817,8 @@
       "legends-za",
       "the-crown-tundra",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5439,7 +5828,8 @@
       "legends-za",
       "the-crown-tundra",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5449,7 +5839,8 @@
       "legends-za",
       "the-crown-tundra",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5459,7 +5850,8 @@
       "legends-za",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5469,7 +5861,8 @@
       "legends-za",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5479,7 +5872,8 @@
       "legends-za",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5487,21 +5881,24 @@
     "games": [
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "378": {
     "games": [
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "379": {
     "games": [
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "380": {
@@ -5509,7 +5906,8 @@
       "mega-dimension",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5518,7 +5916,8 @@
       "mega-dimension",
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5527,7 +5926,8 @@
       "mega-dimension",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Kyogre."
   },
@@ -5536,7 +5936,8 @@
       "mega-dimension",
       "brilliant-diamond",
       "shining-pearl",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Groudon."
   },
@@ -5544,14 +5945,16 @@
     "games": [
       "mega-dimension",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Rayquaza in Gen 3 caught in Emerald (also Mythical-tier in others)."
   },
   "385": {
     "games": [
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Jirachi: event."
@@ -5559,19 +5962,22 @@
   "386": {
     "games": [
       "firered",
-      "leafgreen"
+      "leafgreen",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Deoxys: event.",
     "forms": {
       "deoxys-attack": {
         "games": [
-          "firered"
+          "firered",
+          "pokemon-go"
         ]
       },
       "deoxys-defense": {
         "games": [
-          "leafgreen"
+          "leafgreen",
+          "pokemon-go"
         ]
       }
     }
@@ -5581,7 +5987,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5590,7 +5997,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5599,7 +6007,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5608,7 +6017,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5617,7 +6027,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5626,7 +6037,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5635,7 +6047,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5644,7 +6057,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5653,7 +6067,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5665,7 +6080,8 @@
       "mega-dimension",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5677,7 +6093,8 @@
       "mega-dimension",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5689,7 +6106,8 @@
       "mega-dimension",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -5697,14 +6115,16 @@
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "400": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "401": {
@@ -5714,7 +6134,8 @@
       "violet",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5725,7 +6146,8 @@
       "violet",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5737,7 +6159,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5749,7 +6172,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5761,7 +6185,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5772,7 +6197,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5783,7 +6209,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5791,7 +6218,8 @@
     "games": [
       "the-indigo-disk",
       "legends-arceus",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5799,7 +6227,8 @@
     "games": [
       "the-indigo-disk",
       "legends-arceus",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5807,7 +6236,8 @@
     "games": [
       "the-indigo-disk",
       "legends-arceus",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5815,7 +6245,8 @@
     "games": [
       "the-indigo-disk",
       "legends-arceus",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -5823,21 +6254,24 @@
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "413": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "414": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "415": {
@@ -5849,7 +6283,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "416": {
@@ -5861,7 +6296,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "417": {
@@ -5871,7 +6307,8 @@
       "violet",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5881,7 +6318,8 @@
       "violet",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "419": {
@@ -5890,7 +6328,8 @@
       "violet",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "420": {
@@ -5899,7 +6338,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "421": {
@@ -5908,7 +6348,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "422": {
@@ -5919,7 +6360,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "423": {
@@ -5930,7 +6372,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "424": {
@@ -5938,7 +6381,8 @@
       "the-teal-mask",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -5950,7 +6394,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "426": {
@@ -5961,7 +6406,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "427": {
@@ -5970,7 +6416,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5980,7 +6427,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -5988,7 +6436,8 @@
     "games": [
       "violet",
       "legends-arceus",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "430": {
@@ -5996,19 +6445,22 @@
       "scarlet",
       "violet",
       "legends-arceus",
-      "brilliant-diamond"
+      "brilliant-diamond",
+      "pokemon-go"
     ]
   },
   "431": {
     "games": [
       "legends-arceus",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "432": {
     "games": [
       "legends-arceus",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "433": {
@@ -6017,7 +6469,8 @@
       "mega-dimension",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -6027,7 +6480,8 @@
       "legends-arceus",
       "brilliant-diamond",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "435": {
@@ -6036,7 +6490,8 @@
       "legends-arceus",
       "brilliant-diamond",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "436": {
@@ -6049,7 +6504,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6063,7 +6519,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6076,7 +6533,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6088,7 +6546,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -6100,7 +6559,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -6108,7 +6568,8 @@
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "442": {
@@ -6118,7 +6579,8 @@
       "legends-arceus",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "443": {
@@ -6131,7 +6593,8 @@
       "the-crown-tundra",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Gible: Pearl/Platinum (Wayward Cave)."
   },
@@ -6145,7 +6608,8 @@
       "the-crown-tundra",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6159,7 +6623,8 @@
       "the-crown-tundra",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6171,7 +6636,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6186,7 +6652,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6201,7 +6668,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6214,7 +6682,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6227,7 +6696,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6238,7 +6708,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "452": {
@@ -6248,7 +6719,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "453": {
@@ -6259,7 +6731,8 @@
       "the-isle-of-armor",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "454": {
@@ -6270,14 +6743,16 @@
       "the-isle-of-armor",
       "brilliant-diamond",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "455": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "456": {
@@ -6287,7 +6762,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -6298,7 +6774,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -6309,7 +6786,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "459": {
@@ -6323,7 +6801,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6338,7 +6817,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6352,7 +6832,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6364,7 +6845,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -6373,7 +6855,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "464": {
@@ -6384,7 +6867,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -6393,7 +6877,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "466": {
@@ -6402,7 +6887,8 @@
       "legends-arceus",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -6412,7 +6898,8 @@
       "legends-arceus",
       "the-crown-tundra",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -6422,7 +6909,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "469": {
@@ -6430,7 +6918,8 @@
       "the-teal-mask",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6444,7 +6933,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6458,7 +6948,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6467,7 +6958,8 @@
       "the-teal-mask",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6479,7 +6971,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6490,7 +6983,8 @@
       "legends-arceus",
       "the-isle-of-armor",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -6505,7 +6999,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6514,7 +7009,8 @@
       "the-teal-mask",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6525,7 +7021,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6540,7 +7037,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6554,7 +7052,8 @@
       "brilliant-diamond",
       "shining-pearl",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -6562,35 +7061,40 @@
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "481": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "482": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "483": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "484": {
     "games": [
       "legends-arceus",
       "shining-pearl",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "485": {
@@ -6598,7 +7102,8 @@
       "mega-dimension",
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -6606,7 +7111,8 @@
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Regigigas: event for Snowpoint in Platinum/HGSS."
@@ -6615,14 +7121,16 @@
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "488": {
     "games": [
       "legends-arceus",
       "brilliant-diamond",
-      "shining-pearl"
+      "shining-pearl",
+      "pokemon-go"
     ]
   },
   "489": {
@@ -6646,14 +7154,16 @@
   "491": {
     "games": [
       "mega-dimension",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Darkrai: event."
   },
   "492": {
     "games": [
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Shaymin: event."
@@ -6665,98 +7175,118 @@
     "event": true,
     "notes": "Arceus: event."
   },
+  "494": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
   "495": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "496": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "497": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "498": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "499": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "500": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "501": {
     "games": [
       "the-indigo-disk",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "502": {
     "games": [
       "the-indigo-disk",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "503": {
     "games": [
       "the-indigo-disk",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "504": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "505": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "506": {
     "games": [
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "507": {
     "games": [
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "508": {
     "games": [
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "509": {
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -6764,43 +7294,50 @@
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "511": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "512": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "513": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "514": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "515": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "516": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6808,7 +7345,8 @@
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -6816,37 +7354,43 @@
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "519": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "520": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "521": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "522": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "523": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -6854,35 +7398,40 @@
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "525": {
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "526": {
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "527": {
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "528": {
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "529": {
@@ -6890,7 +7439,8 @@
       "the-indigo-disk",
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6899,14 +7449,16 @@
       "the-indigo-disk",
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "531": {
     "games": [
       "legends-za",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -6915,7 +7467,8 @@
       "the-teal-mask",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6924,7 +7477,8 @@
       "the-teal-mask",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -6933,78 +7487,90 @@
       "the-teal-mask",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "535": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "536": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "537": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "538": {
     "games": [
       "mega-dimension",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Throh: White and White 2."
   },
   "539": {
     "games": [
       "mega-dimension",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Sawk: Black and Black 2."
   },
   "540": {
     "games": [
-      "the-teal-mask"
+      "the-teal-mask",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "541": {
     "games": [
-      "the-teal-mask"
+      "the-teal-mask",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "542": {
     "games": [
-      "the-teal-mask"
+      "the-teal-mask",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "543": {
     "games": [
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "544": {
     "games": [
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "545": {
     "games": [
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7013,7 +7579,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7022,7 +7589,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7032,7 +7600,8 @@
       "scarlet",
       "violet",
       "legends-arceus",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -7042,7 +7611,8 @@
       "scarlet",
       "violet",
       "legends-arceus",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -7053,13 +7623,15 @@
       "violet",
       "legends-arceus",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex).",
     "forms": {
       "basculin-blue-striped": {
         "games": [
-          "shield"
+          "shield",
+          "pokemon-go"
         ]
       }
     }
@@ -7070,7 +7642,8 @@
       "violet",
       "the-indigo-disk",
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7080,7 +7653,8 @@
       "violet",
       "the-indigo-disk",
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7090,30 +7664,35 @@
       "violet",
       "the-indigo-disk",
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "554": {
     "games": [
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "forms": {
       "darumaka-galar": {
         "games": [
-          "sword"
+          "sword",
+          "pokemon-go"
         ]
       }
     }
   },
   "555": {
     "games": [
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "forms": {
       "darmanitan-galar-standard": {
         "games": [
-          "sword"
+          "sword",
+          "pokemon-go"
         ]
       }
     }
@@ -7121,21 +7700,24 @@
   "556": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "557": {
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "558": {
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "559": {
@@ -7143,7 +7725,8 @@
       "the-indigo-disk",
       "legends-za",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7152,21 +7735,24 @@
       "the-indigo-disk",
       "legends-za",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "561": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "562": {
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -7174,35 +7760,41 @@
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "564": {
     "games": [
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ]
   },
   "565": {
     "games": [
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ]
   },
   "566": {
     "games": [
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ]
   },
   "567": {
     "games": [
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ]
   },
   "568": {
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7210,7 +7802,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7219,7 +7812,8 @@
       "scarlet",
       "violet",
       "legends-arceus",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "571": {
@@ -7227,14 +7821,16 @@
       "scarlet",
       "violet",
       "legends-arceus",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "572": {
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7242,7 +7838,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7252,7 +7849,8 @@
       "violet",
       "the-indigo-disk",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7262,7 +7860,8 @@
       "violet",
       "the-indigo-disk",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7272,7 +7871,8 @@
       "violet",
       "the-indigo-disk",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7280,7 +7880,8 @@
     "games": [
       "the-indigo-disk",
       "the-crown-tundra",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7288,7 +7889,8 @@
     "games": [
       "the-indigo-disk",
       "the-crown-tundra",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7296,19 +7898,22 @@
     "games": [
       "the-indigo-disk",
       "the-crown-tundra",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "580": {
     "games": [
-      "the-teal-mask"
+      "the-teal-mask",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "581": {
     "games": [
-      "the-teal-mask"
+      "the-teal-mask",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -7317,7 +7922,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7326,7 +7932,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7335,7 +7942,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7343,7 +7951,8 @@
     "games": [
       "scarlet",
       "violet",
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7351,14 +7960,16 @@
     "games": [
       "scarlet",
       "violet",
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "587": {
     "games": [
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7367,7 +7978,8 @@
       "the-crown-tundra",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "589": {
@@ -7375,7 +7987,8 @@
       "the-crown-tundra",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "590": {
@@ -7383,7 +7996,8 @@
       "scarlet",
       "violet",
       "mega-dimension",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -7392,7 +8006,8 @@
       "scarlet",
       "violet",
       "mega-dimension",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -7400,21 +8015,24 @@
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "593": {
     "games": [
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "594": {
     "games": [
       "scarlet",
       "violet",
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7423,7 +8041,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7432,7 +8051,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7440,32 +8060,37 @@
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "598": {
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "599": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "600": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "601": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "602": {
@@ -7474,7 +8099,8 @@
       "scarlet",
       "violet",
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7484,7 +8110,8 @@
       "scarlet",
       "violet",
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7494,20 +8121,23 @@
       "scarlet",
       "violet",
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "605": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "606": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "607": {
@@ -7516,7 +8146,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7526,7 +8157,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7536,7 +8168,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7546,7 +8179,8 @@
       "violet",
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7556,7 +8190,8 @@
       "violet",
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7566,7 +8201,8 @@
       "violet",
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7577,7 +8213,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7588,7 +8225,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7597,7 +8235,8 @@
       "scarlet",
       "violet",
       "mega-dimension",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -7606,7 +8245,8 @@
       "the-crown-tundra",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "617": {
@@ -7614,35 +8254,40 @@
       "the-crown-tundra",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "618": {
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "619": {
     "games": [
       "the-teal-mask",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "620": {
     "games": [
       "the-teal-mask",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "621": {
     "games": [
       "the-crown-tundra",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "622": {
@@ -7651,7 +8296,8 @@
       "mega-dimension",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -7661,7 +8307,8 @@
       "mega-dimension",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -7672,7 +8319,8 @@
       "violet",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -7683,13 +8331,15 @@
       "violet",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "626": {
     "games": [
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "627": {
@@ -7699,7 +8349,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7710,7 +8361,8 @@
       "the-indigo-disk",
       "legends-arceus",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7719,7 +8371,8 @@
       "the-teal-mask",
       "the-indigo-disk",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7728,7 +8381,8 @@
       "the-teal-mask",
       "the-indigo-disk",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -7736,116 +8390,139 @@
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "632": {
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "633": {
     "games": [
       "scarlet",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "634": {
     "games": [
       "scarlet",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "635": {
     "games": [
       "scarlet",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "636": {
     "games": [
       "scarlet",
       "violet",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "637": {
     "games": [
       "scarlet",
       "violet",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "638": {
     "games": [
       "mega-dimension",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "639": {
     "games": [
       "mega-dimension",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "640": {
     "games": [
       "mega-dimension",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "641": {
     "games": [
       "legends-arceus",
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "642": {
     "games": [
       "legends-arceus",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "643": {
     "games": [
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "644": {
     "games": [
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "645": {
     "games": [
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
+    ]
+  },
+  "646": {
+    "games": [
+      "pokemon-go"
     ]
   },
   "647": {
     "games": [
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Keldeo: event."
   },
   "648": {
     "games": [
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Meloetta: event."
   },
   "649": {
     "games": [
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Genesect: event."
@@ -7853,63 +8530,72 @@
   "650": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "651": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "652": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "653": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "654": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "655": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "656": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "657": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "658": {
     "games": [
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7917,7 +8603,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7925,7 +8612,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7935,7 +8623,8 @@
       "violet",
       "the-indigo-disk",
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7945,7 +8634,8 @@
       "violet",
       "the-indigo-disk",
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7955,7 +8645,8 @@
       "violet",
       "the-indigo-disk",
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7963,7 +8654,8 @@
     "games": [
       "scarlet",
       "violet",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7971,7 +8663,8 @@
     "games": [
       "scarlet",
       "violet",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7979,7 +8672,8 @@
     "games": [
       "scarlet",
       "violet",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7988,7 +8682,8 @@
       "scarlet",
       "violet",
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -7997,7 +8692,8 @@
       "scarlet",
       "violet",
       "the-indigo-disk",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8005,7 +8701,8 @@
     "games": [
       "scarlet",
       "violet",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8013,7 +8710,8 @@
     "games": [
       "scarlet",
       "violet",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8021,7 +8719,8 @@
     "games": [
       "scarlet",
       "violet",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8029,7 +8728,8 @@
     "games": [
       "scarlet",
       "violet",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8037,7 +8737,8 @@
     "games": [
       "scarlet",
       "violet",
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8045,7 +8746,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8053,13 +8755,15 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "676": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8068,7 +8772,8 @@
       "the-indigo-disk",
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8077,7 +8782,8 @@
       "the-indigo-disk",
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8085,7 +8791,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8093,7 +8800,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8101,35 +8809,40 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "682": {
     "games": [
       "legends-za",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "683": {
     "games": [
       "legends-za",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "684": {
     "games": [
       "legends-za",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "685": {
     "games": [
       "legends-za",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8139,7 +8852,8 @@
       "legends-za",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8149,7 +8863,8 @@
       "legends-za",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8157,7 +8872,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8165,7 +8881,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8174,7 +8891,8 @@
       "scarlet",
       "legends-za",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8183,7 +8901,8 @@
       "scarlet",
       "legends-za",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8192,7 +8911,8 @@
       "violet",
       "legends-za",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8201,7 +8921,8 @@
       "violet",
       "legends-za",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8209,7 +8930,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8217,35 +8939,40 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "696": {
     "games": [
       "legends-za",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "697": {
     "games": [
       "legends-za",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "698": {
     "games": [
       "legends-za",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "699": {
     "games": [
       "legends-za",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8257,7 +8984,8 @@
       "legends-arceus",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8267,7 +8995,8 @@
       "violet",
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8276,7 +9005,8 @@
       "scarlet",
       "violet",
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8284,7 +9014,8 @@
     "games": [
       "the-teal-mask",
       "legends-za",
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8296,7 +9027,8 @@
       "legends-za",
       "legends-arceus",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8308,7 +9040,8 @@
       "legends-za",
       "legends-arceus",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8320,7 +9053,8 @@
       "legends-za",
       "legends-arceus",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8329,7 +9063,8 @@
       "scarlet",
       "violet",
       "legends-za",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8339,7 +9074,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8349,7 +9085,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8357,7 +9094,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8365,7 +9103,8 @@
     "games": [
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8377,7 +9116,8 @@
       "legends-arceus",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8389,7 +9129,8 @@
       "legends-arceus",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8401,7 +9142,8 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8413,47 +9155,54 @@
       "legends-za",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
   "716": {
     "games": [
       "legends-za",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Xerneas (X)."
   },
   "717": {
     "games": [
       "legends-za",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Yveltal (Y)."
   },
   "718": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "notes": "Zygarde: X/Y post-game."
   },
   "719": {
     "games": [
-      "legends-za"
+      "legends-za",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Diancie: event."
   },
   "720": {
     "games": [
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Hoopa: event."
   },
   "721": {
     "games": [
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Volcanion: event."
@@ -8461,95 +9210,110 @@
   "722": {
     "games": [
       "the-indigo-disk",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "723": {
     "games": [
       "the-indigo-disk",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "724": {
     "games": [
       "the-indigo-disk",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "725": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "726": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "727": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "728": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "729": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "730": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "731": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "732": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "733": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "734": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "735": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "736": {
     "games": [
       "the-teal-mask",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8557,7 +9321,8 @@
     "games": [
       "the-teal-mask",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8565,7 +9330,8 @@
     "games": [
       "the-teal-mask",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8574,7 +9340,8 @@
       "scarlet",
       "violet",
       "the-indigo-disk",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -8583,7 +9350,8 @@
       "scarlet",
       "violet",
       "the-indigo-disk",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -8592,7 +9360,8 @@
       "the-teal-mask",
       "scarlet",
       "violet",
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -8600,7 +9369,8 @@
     "games": [
       "the-teal-mask",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8608,7 +9378,8 @@
     "games": [
       "the-teal-mask",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8617,7 +9388,8 @@
       "the-teal-mask",
       "scarlet",
       "violet",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8626,7 +9398,8 @@
       "the-teal-mask",
       "scarlet",
       "violet",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8643,7 +9416,8 @@
       "violet",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "748": {
@@ -8652,7 +9426,8 @@
       "violet",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "749": {
@@ -8661,7 +9436,8 @@
       "scarlet",
       "violet",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8671,7 +9447,8 @@
       "scarlet",
       "violet",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8680,7 +9457,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -8689,7 +9467,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -8698,7 +9477,8 @@
       "the-teal-mask",
       "scarlet",
       "violet",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8707,20 +9487,23 @@
       "the-teal-mask",
       "scarlet",
       "violet",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "755": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "756": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "757": {
@@ -8730,7 +9513,8 @@
       "violet",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8741,20 +9525,23 @@
       "violet",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "759": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "760": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "761": {
@@ -8762,7 +9549,8 @@
       "scarlet",
       "violet",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "762": {
@@ -8770,7 +9558,8 @@
       "scarlet",
       "violet",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "763": {
@@ -8778,13 +9567,15 @@
       "scarlet",
       "violet",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "764": {
     "games": [
       "the-indigo-disk",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -8792,14 +9583,16 @@
     "games": [
       "scarlet",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "766": {
     "games": [
       "violet",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "767": {
@@ -8807,7 +9600,8 @@
       "mega-dimension",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -8816,7 +9610,8 @@
       "mega-dimension",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -8825,7 +9620,8 @@
       "scarlet",
       "violet",
       "mega-dimension",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -8834,7 +9630,8 @@
       "scarlet",
       "violet",
       "mega-dimension",
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -8865,18 +9662,21 @@
   "775": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "776": {
     "games": [
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "777": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "778": {
@@ -8895,14 +9695,16 @@
     "games": [
       "scarlet",
       "violet",
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
   "780": {
     "games": [
       "legends-za",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -8910,14 +9712,16 @@
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "782": {
     "games": [
       "the-teal-mask",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8925,7 +9729,8 @@
     "games": [
       "the-teal-mask",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -8933,32 +9738,96 @@
     "games": [
       "the-teal-mask",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
+  "785": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "786": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "787": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "788": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
   "789": {
-    "games": [],
+    "games": [
+      "pokemon-go"
+    ],
     "event": true,
     "notes": "Cosmog and line."
   },
   "790": {
-    "games": [],
+    "games": [
+      "pokemon-go"
+    ],
     "event": true,
     "notes": "Cosmoem."
   },
   "791": {
     "games": [
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "792": {
     "games": [
-      "shield"
+      "shield",
+      "pokemon-go"
+    ]
+  },
+  "793": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "794": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "795": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "796": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "797": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "798": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "799": {
+    "games": [
+      "pokemon-go"
     ]
   },
   "800": {
-    "games": [],
+    "games": [
+      "pokemon-go"
+    ],
     "event": true,
     "notes": "Necrozma fusions need event items."
   },
@@ -8971,10 +9840,31 @@
   },
   "802": {
     "games": [
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Marshadow: event."
+  },
+  "803": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "804": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "805": {
+    "games": [
+      "pokemon-go"
+    ]
+  },
+  "806": {
+    "games": [
+      "pokemon-go"
+    ]
   },
   "807": {
     "games": [
@@ -8985,13 +9875,15 @@
   },
   "808": {
     "games": [
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "809": {
     "games": [
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -8999,7 +9891,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9007,7 +9900,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9015,7 +9909,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9023,7 +9918,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9031,7 +9927,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9039,7 +9936,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9047,7 +9945,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9055,7 +9954,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9063,7 +9963,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9075,7 +9976,8 @@
       "the-crown-tundra",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9087,7 +9989,8 @@
       "the-crown-tundra",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9098,7 +10001,8 @@
       "mega-dimension",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9109,7 +10013,8 @@
       "mega-dimension",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9120,7 +10025,8 @@
       "mega-dimension",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9149,7 +10055,8 @@
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9157,7 +10064,8 @@
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9165,28 +10073,32 @@
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "830": {
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "831": {
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "832": {
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "833": {
@@ -9215,14 +10127,16 @@
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "836": {
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "837": {
@@ -9231,7 +10145,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "838": {
@@ -9240,7 +10155,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "839": {
@@ -9249,7 +10165,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "840": {
@@ -9259,7 +10176,8 @@
       "violet",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9269,7 +10187,8 @@
       "scarlet",
       "violet",
       "the-isle-of-armor",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9279,7 +10198,8 @@
       "scarlet",
       "violet",
       "the-isle-of-armor",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9338,7 +10258,8 @@
       "violet",
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9348,7 +10269,8 @@
       "violet",
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9356,14 +10278,16 @@
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "851": {
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "852": {
@@ -9371,7 +10295,8 @@
       "mega-dimension",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9380,7 +10305,8 @@
       "mega-dimension",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9391,7 +10317,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9402,7 +10329,8 @@
       "the-indigo-disk",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9413,7 +10341,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9424,7 +10353,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9435,7 +10365,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9446,7 +10377,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9457,7 +10389,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9468,7 +10401,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9476,26 +10410,30 @@
     "games": [
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "863": {
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "864": {
     "games": [
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "865": {
     "games": [
       "mega-dimension",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9504,7 +10442,8 @@
       "mega-dimension",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9512,7 +10451,8 @@
     "games": [
       "mega-dimension",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9538,7 +10478,8 @@
       "violet",
       "legends-za",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Legends Z-A."
   },
@@ -9558,7 +10499,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "873": {
@@ -9567,14 +10509,16 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "874": {
     "games": [
       "scarlet",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ]
   },
   "875": {
@@ -9591,13 +10535,15 @@
       "violet",
       "mega-dimension",
       "the-crown-tundra",
-      "sword"
+      "sword",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC).",
     "forms": {
       "indeedee-female": {
         "games": [
-          "shield"
+          "shield",
+          "pokemon-go"
         ]
       }
     }
@@ -9609,7 +10555,8 @@
       "the-crown-tundra",
       "the-isle-of-armor",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9659,7 +10606,8 @@
     "games": [
       "the-indigo-disk",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },
@@ -9668,7 +10616,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "886": {
@@ -9676,7 +10625,8 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "887": {
@@ -9684,52 +10634,61 @@
       "violet",
       "the-crown-tundra",
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "888": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "889": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "890": {
     "games": [
       "sword",
-      "shield"
+      "shield",
+      "pokemon-go"
     ]
   },
   "891": {
     "games": [
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "892": {
     "games": [
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ]
   },
   "893": {
     "games": [
-      "the-isle-of-armor"
+      "the-isle-of-armor",
+      "pokemon-go"
     ],
     "event": true,
     "notes": "Zarude: event."
   },
   "894": {
     "games": [
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ]
   },
   "895": {
     "games": [
-      "the-crown-tundra"
+      "the-crown-tundra",
+      "pokemon-go"
     ]
   },
   "896": {
@@ -9749,21 +10708,24 @@
   },
   "899": {
     "games": [
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ]
   },
   "900": {
     "games": [
       "the-indigo-disk",
       "mega-dimension",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Kleavor."
   },
   "901": {
     "games": [
       "the-teal-mask",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9776,135 +10738,157 @@
   },
   "903": {
     "games": [
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ]
   },
   "904": {
     "games": [
       "the-indigo-disk",
       "mega-dimension",
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ],
     "notes": "Overqwil."
   },
   "905": {
     "games": [
-      "legends-arceus"
+      "legends-arceus",
+      "pokemon-go"
     ]
   },
   "906": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "907": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "908": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "909": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "910": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "911": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "912": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "913": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "914": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "915": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "916": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "917": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "918": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "919": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "920": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "921": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "922": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "923": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "924": {
     "games": [
       "the-teal-mask",
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9912,7 +10896,8 @@
     "games": [
       "the-teal-mask",
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -9920,7 +10905,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9928,26 +10914,30 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "928": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "929": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "930": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "931": {
@@ -9962,7 +10952,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9970,7 +10961,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9978,7 +10970,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -9986,46 +10979,53 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "936": {
     "games": [
       "scarlet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "937": {
     "games": [
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "938": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "939": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "940": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "941": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "942": {
@@ -10048,7 +11048,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10056,7 +11057,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10076,7 +11078,8 @@
     "games": [
       "the-teal-mask",
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -10084,14 +11087,16 @@
     "games": [
       "the-teal-mask",
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "950": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "951": {
@@ -10142,7 +11147,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10150,7 +11156,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10158,27 +11165,31 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "960": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "961": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "962": {
     "games": [
       "the-teal-mask",
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -10197,13 +11208,15 @@
   "965": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "966": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "967": {
@@ -10227,7 +11240,8 @@
       "the-teal-mask",
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10236,7 +11250,8 @@
       "the-teal-mask",
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10244,7 +11259,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10252,7 +11268,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10260,20 +11277,23 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "974": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "975": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "976": {
@@ -10286,7 +11306,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10294,7 +11315,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
@@ -10303,14 +11325,16 @@
       "the-teal-mask",
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Available in Mega Dimension (Legends Z-A DLC)."
   },
   "980": {
     "games": [
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ]
   },
   "981": {
@@ -10325,7 +11349,8 @@
     "games": [
       "the-teal-mask",
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -10333,7 +11358,8 @@
     "games": [
       "the-teal-mask",
       "scarlet",
-      "violet"
+      "violet",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -10401,7 +11427,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Frigibax-line \u2014 base game."
   },
@@ -10409,7 +11436,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Arctibax."
   },
@@ -10417,7 +11445,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Baxcalibur."
   },
@@ -10425,7 +11454,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Gimmighoul."
   },
@@ -10433,7 +11463,8 @@
     "games": [
       "scarlet",
       "violet",
-      "mega-dimension"
+      "mega-dimension",
+      "pokemon-go"
     ],
     "notes": "Gholdengo."
   },
@@ -10495,19 +11526,22 @@
   },
   "1011": {
     "games": [
-      "the-teal-mask"
+      "the-teal-mask",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "1012": {
     "games": [
-      "the-teal-mask"
+      "the-teal-mask",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
   "1013": {
     "games": [
-      "the-teal-mask"
+      "the-teal-mask",
+      "pokemon-go"
     ],
     "notes": "Available in The Teal Mask (Kitakami dex)."
   },
@@ -10543,7 +11577,8 @@
   },
   "1019": {
     "games": [
-      "the-indigo-disk"
+      "the-indigo-disk",
+      "pokemon-go"
     ],
     "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
   },

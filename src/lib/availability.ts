@@ -119,6 +119,7 @@ const SWITCH_ERA_GAMES: ReadonlySet<string> = new Set([
   'mega-dimension',
   'firered',
   'leafgreen',
+  'pokemon-go',
 ])
 
 export function isSwitchEraGame(gameId: string): boolean {

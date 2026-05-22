@@ -291,7 +291,22 @@
       "register": "Register",
       "unregister": "Unregister",
       "orJoin": "or",
-      "shinyHint": "To register the shiny variant, place this Pokémon in a box slot and click the ✨ in the slot corner."
+      "shinyHint": "To register the shiny variant, place this Pokémon in a box slot and click the ✨ in the slot corner.",
+      "availability": "Available in"
+    },
+    "availability": {
+      "empty": "No records of where this Pokémon can be obtained.",
+      "noRegular": "Cannot be obtained through regular gameplay.",
+      "genLabel": "Generation {n}",
+      "dlcLabel": "DLC",
+      "eventTitle": "Event distribution",
+      "eventDescription": "This Pokémon is generally distributed via official events, not caught in regular gameplay.",
+      "eventBadge": "Event",
+      "restrictedDexHint": "Some games listed (Sword/Shield, Legends Arceus, Scarlet/Violet) have limited regional dexes. Not every Pokémon from these generations appears in those titles.",
+      "uncuratedTitle": "Not yet curated",
+      "uncuratedDescription": "No verified game list exists for this Pokémon yet. Only games with confirmed Pokédex coverage show up in this section.",
+      "formsHeading": "Form-specific availability",
+      "switchOnlyFilteredHint": "Switch-era filter is on: older titles are hidden."
     }
   },
   "Stats": {
@@ -566,7 +581,9 @@
       "showNames": "Show names in boxes",
       "showNamesHint": "Displays the name below each occupied sprite.",
       "shinyTracker": "Shiny tracker",
-      "shinyTrackerHint": "Enables shiny marking on slots and details."
+      "shinyTrackerHint": "Enables shiny marking on slots and details.",
+      "switchOnly": "Show only Switch-era games",
+      "switchOnlyHint": "In the availability panel, only show Let's Go, Sw/Sh + DLCs, BDSP, Legends Arceus, Scarlet/Violet + DLCs, Legends Z-A + DLC, and FireRed/LeafGreen."
     },
     "backup": {
       "title": "Backup and restore",

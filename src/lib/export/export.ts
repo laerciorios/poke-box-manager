@@ -24,6 +24,7 @@ export function buildExportPayload(): ExportEnvelope {
     sidebarCollapsed,
     shinyTrackerEnabled,
     pokedexView,
+    availabilitySwitchOnly,
   } = useSettingsStore.getState()
 
   return {
@@ -45,6 +46,7 @@ export function buildExportPayload(): ExportEnvelope {
         sidebarCollapsed,
         shinyTrackerEnabled,
         pokedexView,
+        availabilitySwitchOnly,
       },
       presets,
     },

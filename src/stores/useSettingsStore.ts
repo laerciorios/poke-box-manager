@@ -15,6 +15,7 @@ interface SettingsActions {
   resetSettings: () => void
   setShinyTrackerEnabled: (value: boolean) => void
   setPokedexView: (view: PokedexView) => void
+  setAvailabilitySwitchOnly: (value: boolean) => void
   recordChange: () => void
   recordBackup: () => void
 }
@@ -74,6 +75,10 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
       set({ pokedexView: view })
     },
 
+    setAvailabilitySwitchOnly: (value) => {
+      set({ availabilitySwitchOnly: value })
+    },
+
     recordChange: () => {
       set((state) => ({ pendingChanges: state.pendingChanges + 1 }))
     },
@@ -83,7 +88,7 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
     },
   }),
   {
-    version: 5,
+    version: 6,
     migrate: (persisted: unknown, fromVersion: number) => {
       const state = persisted as Record<string, unknown>
       if (fromVersion < 2) {
@@ -98,6 +103,9 @@ export const useSettingsStore = createPersistedStore<SettingsStore>(
       }
       if (fromVersion < 5) {
         state.pendingChanges ??= 0
+      }
+      if (fromVersion < 6) {
+        state.availabilitySwitchOnly ??= false
       }
       return state as unknown as SettingsStore
     },

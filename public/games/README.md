@@ -45,11 +45,26 @@ legends-za.png     mega-dimension.png
 
 ## Status of game-specific availability data
 
-The `src/data/availability-overrides.json` file holds per-Pokémon
-overrides (version-exclusives, removals, event-only flags). Run the
-status script in the chat to see which games are fully populated vs.
-still using only the default rule.
+`src/data/availability-overrides.json` (schema v3) holds the absolute
+per-Pokémon game list. Each species' `games` array is the complete,
+verified set of finalized games where it can be obtained: no defaults,
+no deltas. Species without an entry render as "not yet curated" in the
+UI. Per-form exclusivity (e.g. Tauros Blaze Breed in Scarlet only) lives
+in `forms.{formId}.games` inside the species entry.
 
-Last summary (after Gen 1, Gen 2, Gen 6 legendaries, Gen 8 DLCs,
-Gen 9 base + DLCs + Z-A): the Switch-era games have most coverage;
-gens 3–7 carry only the canonical version-exclusives so far.
+Finalized games (verified against official Pokédex lists):
+
+- Gen 1: Red, Blue, Yellow
+- Gen 2: Gold, Silver, Crystal
+- Gen 3: FireRed, LeafGreen
+- Gen 7: Let's Go Pikachu, Let's Go Eevee
+- Gen 8: The Isle of Armor (DLC), The Crown Tundra (DLC), Legends Arceus
+- Gen 9: Scarlet, Violet, The Teal Mask, The Indigo Disk, Legends Z-A,
+  Mega Dimension
+
+19 games finalized. Remaining titles still wait for their official
+Pokédex lists.
+
+Pending refinement: form-level exclusivity (e.g. Tauros Blaze Breed is
+Scarlet-only and Aqua Breed is Violet-only). The current schema is
+species-level only.

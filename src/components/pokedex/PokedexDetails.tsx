@@ -6,6 +6,7 @@ import type { PokemonEntry } from '@/types/pokemon'
 import { Dialog } from '@/components/ui/dialog'
 import { Sprite } from '@/components/pokemon/Sprite'
 import { TypeChip } from '@/components/pokemon/TypeChip'
+import { AvailabilityPanel } from './AvailabilityPanel'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { usePokedexStore } from '@/stores/usePokedexStore'
@@ -138,6 +139,10 @@ export function PokedexDetails({ pokemon, onClose }: Props) {
               })}
             </ul>
           )}
+        </Section>
+
+        <Section title={t('availability')}>
+          <AvailabilityPanel pokemonId={pokemon.id} forms={pokemon.forms} />
         </Section>
 
         <Section title={t('evolution')}>

@@ -31,6 +31,13 @@ export interface SettingsState {
   shinyTrackerEnabled: boolean
   pokedexView: PokedexView
   pendingChanges: number
+  /**
+   * When true, the availability panel hides Pokémon games that aren't part
+   * of the Switch era set (Let's Go, Sw/Sh + DLCs, BDSP, Legends Arceus,
+   * Scarlet/Violet + DLCs, Legends Z-A + DLC, and FireRed/LeafGreen which
+   * the user opted in for transfer-chain relevance).
+   */
+  availabilitySwitchOnly: boolean
 }
 
 export const DEFAULT_VARIATIONS: VariationToggles = {
@@ -67,4 +74,5 @@ export const DEFAULT_SETTINGS: SettingsState = {
   shinyTrackerEnabled: true,
   pokedexView: 'table',
   pendingChanges: 0,
+  availabilitySwitchOnly: false,
 }

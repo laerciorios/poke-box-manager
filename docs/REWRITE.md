@@ -437,7 +437,69 @@ npm run lint
 npm run build
 ```
 
-## 10. Manutenção deste documento
+## 10. Disponibilidade por jogo (Availability)
+
+A partir do polimento da Fase 4, o modal de detalhes da Pokédex mostra em
+quais jogos cada Pokémon pode ser obtido. Como a PokéAPI só tem dados
+estruturados de encounters até Gen 5, as Gens 6 a 9 dependem de uma
+tabela manual.
+
+### Como funciona
+
+- **`src/data/games-list.json`**: lista canônica de 31 entradas (27 jogos
+  principais/remakes/spinoffs + 4 DLCs separadas). Cada uma tem `id`,
+  `name`, `shortName`, `generation`, `color`, `kind`
+  (`main` / `remake` / `spinoff` / `dlc`) e, quando aplicável,
+  `remakeOf` (geração original) ou `parentOf` (jogos base de uma DLC).
+
+- **`src/data/availability-overrides.json`**: mapa
+  `{ "<pokemonId>": AvailabilityOverride }`. Os campos suportados:
+
+  | Campo | Significado |
+  | --- | --- |
+  | `exclusiveTo` | Substitui o default. Use para version exclusives, DLC-only, etc. |
+  | `addedIn` | Acrescenta jogos extras (ex: Pokémon que aparece em remake). |
+  | `removedFrom` | Remove jogos do default (ex: exclusivo de Red dentro de Gen 1). |
+  | `event` | Marca como event-only. UI mostra um aviso. |
+  | `notes` | Texto livre, nunca renderizado. Use para citar fonte/raciocínio. |
+
+- **`src/lib/availability.ts`** combina overrides + regra default
+  (todos os jogos `main` da geração de origem). Spinoffs, remakes e DLCs
+  precisam ser explicitamente listados via `addedIn` ou `exclusiveTo`.
+
+### Como popular ou corrigir
+
+1. Achou um caso errado? Edite `availability-overrides.json` com a
+   correção apropriada (`exclusiveTo`, `addedIn`, `removedFrom`).
+2. Quando souber a fonte (Bulbapedia, Serebii, etc), anote em `notes` pra
+   facilitar revisão futura.
+3. O `source` em `ResolvedAvailability` é `'override'` quando há entry
+   manual e `'default'` quando caiu na regra automática. A UI mostra
+   "Disponibilidade inferida da geração de origem. Pode haver imprecisões."
+   nos `default` para ser honesta com o usuário.
+
+### Logos
+
+- O componente `<GameBadge>` busca `/games/<id>.png`. Se não existir,
+  renderiza um placeholder SVG (cor do jogo + 1-2 iniciais).
+- A lista de filenames esperados está em `public/games/README.md`.
+- Para trocar para SVGs, basta editar o `src` no `GameBadge.tsx`.
+
+### Estado atual (não-completude conhecida)
+
+A tabela cobre com confiança alta:
+- **Exclusivos de versão** das Gens 1, 2, 3, 5, 6, 8, 9 (parciais).
+- **DLCs** Isle of Armor, Crown Tundra, Teal Mask, Indigo Disk.
+- **Mythicals** marcados como `event`.
+
+Lacunas conhecidas:
+- Várias Gens 4 e 7 ainda usam o fallback automático.
+- Casos exóticos (NPC trade only, breed only, evolve only com cadeia
+  cross-version) não estão modelados.
+- Algumas notas no JSON marcam entradas como "verify" — são chutes
+  educados que precisam ser validados.
+
+## 11. Manutenção deste documento
 
 Quando uma fase for entregue, atualize a seção 4 marcando ✅. Quando o
 design system mudar, atualize a seção 3. Decisões maiores ficam em

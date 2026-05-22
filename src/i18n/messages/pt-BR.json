@@ -291,7 +291,22 @@
       "register": "Registrar",
       "unregister": "Desregistrar",
       "orJoin": "ou",
-      "shinyHint": "Para registrar a versão shiny, coloque o Pokémon em um slot da box e clique no ✨ que aparece no canto do slot."
+      "shinyHint": "Para registrar a versão shiny, coloque o Pokémon em um slot da box e clique no ✨ que aparece no canto do slot.",
+      "availability": "Disponível em"
+    },
+    "availability": {
+      "empty": "Não há registro de jogos onde este Pokémon possa ser obtido.",
+      "noRegular": "Não pode ser obtido em modo de jogo normal.",
+      "genLabel": "Geração {n}",
+      "dlcLabel": "DLC",
+      "eventTitle": "Distribuição por evento",
+      "eventDescription": "Este Pokémon é geralmente distribuído via eventos oficiais, não capturado em jogo.",
+      "eventBadge": "Evento",
+      "restrictedDexHint": "Alguns dos jogos listados (Espada/Escudo, Legends Arceus, Escarlate/Violeta) têm Pokédex regional limitada. Nem todos os Pokémon dessas gerações aparecem nesses jogos.",
+      "uncuratedTitle": "Dados ainda não curados",
+      "uncuratedDescription": "Não há lista verificada de jogos para este Pokémon. Apenas jogos com Pokédex confirmada aparecem nesta seção.",
+      "formsHeading": "Disponibilidade por forma",
+      "switchOnlyFilteredHint": "Filtro de jogos do Switch ativo: títulos antigos foram ocultados."
     }
   },
   "Stats": {
@@ -566,7 +581,9 @@
       "showNames": "Mostrar nomes nas boxes",
       "showNamesHint": "Exibe o nome embaixo de cada sprite ocupado.",
       "shinyTracker": "Rastreador de shinies",
-      "shinyTrackerHint": "Habilita a marcação de shinies nos slots e nos detalhes."
+      "shinyTrackerHint": "Habilita a marcação de shinies nos slots e nos detalhes.",
+      "switchOnly": "Mostrar apenas jogos do Switch",
+      "switchOnlyHint": "No painel de disponibilidade, exibe somente Let's Go, Sw/Sh + DLCs, BDSP, Legends Arceus, Scarlet/Violet + DLCs, Legends Z-A + DLC e FireRed/LeafGreen."
     },
     "backup": {
       "title": "Backup e restauração",

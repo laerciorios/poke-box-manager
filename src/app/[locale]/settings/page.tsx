@@ -40,6 +40,8 @@ export default function SettingsPage() {
   const setShowNames = useSettingsStore((s) => s.setShowPokemonNamesInBox)
   const shinyTracker = useSettingsStore((s) => s.shinyTrackerEnabled)
   const setShinyTracker = useSettingsStore((s) => s.setShinyTrackerEnabled)
+  const switchOnly = useSettingsStore((s) => s.availabilitySwitchOnly)
+  const setSwitchOnly = useSettingsStore((s) => s.setAvailabilitySwitchOnly)
 
   const router = useRouter()
   const pathname = usePathname()
@@ -163,6 +165,22 @@ export default function SettingsPage() {
                 checked={shinyTracker}
                 onChange={setShinyTracker}
                 aria-label={t('preferences.shinyTracker')}
+              />
+            </li>
+            <li className="flex items-center gap-3 py-2.5">
+              <div className="flex-1 min-w-0">
+                <label htmlFor="switch-only" className="text-sm font-medium block">
+                  {t('preferences.switchOnly')}
+                </label>
+                <p className="text-xs text-[var(--muted-foreground)]">
+                  {t('preferences.switchOnlyHint')}
+                </p>
+              </div>
+              <Switch
+                id="switch-only"
+                checked={switchOnly}
+                onChange={setSwitchOnly}
+                aria-label={t('preferences.switchOnly')}
               />
             </li>
           </ul>

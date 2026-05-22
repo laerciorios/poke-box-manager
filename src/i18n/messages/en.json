@@ -298,6 +298,7 @@
       "empty": "No records of where this Pokémon can be obtained.",
       "noRegular": "Cannot be obtained through regular gameplay.",
       "genLabel": "Generation {n}",
+      "spinoffLabel": "Spinoff",
       "dlcLabel": "DLC",
       "eventTitle": "Event distribution",
       "eventDescription": "This Pokémon is generally distributed via official events, not caught in regular gameplay.",

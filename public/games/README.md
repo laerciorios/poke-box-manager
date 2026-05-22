@@ -57,11 +57,12 @@ Finalized games (verified against official Pokédex lists):
 - Gen 1: Red, Blue, Yellow
 - Gen 2: Gold, Silver, Crystal
 - Gen 3: FireRed, LeafGreen
-- Gen 7: Let's Go Pikachu, Let's Go Eevee, Pokémon GO (spinoff)
+- Gen 7: Let's Go Pikachu, Let's Go Eevee
 - Gen 8: Sword, Shield, The Isle of Armor (DLC), The Crown Tundra (DLC),
   Brilliant Diamond, Shining Pearl, Legends Arceus
 - Gen 9: Scarlet, Violet, The Teal Mask, The Indigo Disk, Legends Z-A,
   Mega Dimension
+- Spinoff: Pokémon GO (no generation, renders at the end)
 
 24 games finalized. Remaining titles still wait for their official
 Pokédex lists.

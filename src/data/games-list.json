@@ -516,10 +516,9 @@
     "restrictedDex": true
   },
   {
-    "id": "pokemon-go",
+    "id": "go",
     "name": "Pokémon GO",
     "shortName": "Pokémon GO",
-    "generation": 7,
     "color": "#FFCB05",
     "kind": "spinoff",
     "acceptsFromGens": [

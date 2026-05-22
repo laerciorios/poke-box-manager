@@ -71,22 +71,41 @@ export function listAllGames(): GameEntry[] {
 /**
  * Groups game ids by generation, separating DLCs out so the UI can render
  * them as their own row under the parent generation block.
+ *
+ * Games without a generation (e.g. Pokémon GO) land in a final group keyed
+ * by `generation: null` so the UI can render them at the end under a
+ * separate label.
  */
 export function groupGamesByGeneration(
   gameIds: string[],
-): Array<{ generation: number; main: GameEntry[]; dlc: GameEntry[] }> {
-  const buckets = new Map<number, { main: GameEntry[]; dlc: GameEntry[] }>()
+): Array<{ generation: number | null; main: GameEntry[]; dlc: GameEntry[] }> {
+  const buckets = new Map<number | 'spinoff', { main: GameEntry[]; dlc: GameEntry[] }>()
   for (const id of gameIds) {
     const game = GAMES_BY_ID.get(id)
     if (!game) continue
-    const bucket = buckets.get(game.generation) ?? { main: [], dlc: [] }
+    const key: number | 'spinoff' = game.generation ?? 'spinoff'
+    const bucket = buckets.get(key) ?? { main: [], dlc: [] }
     if (game.kind === 'dlc') bucket.dlc.push(game)
     else bucket.main.push(game)
-    buckets.set(game.generation, bucket)
+    buckets.set(key, bucket)
   }
-  return Array.from(buckets.entries())
-    .sort(([a], [b]) => a - b)
-    .map(([generation, b]) => ({ generation, main: b.main, dlc: b.dlc }))
+  // Numeric generations first (sorted ascending), then the spinoff bucket.
+  const numericEntries = Array.from(buckets.entries())
+    .filter(([k]) => typeof k === 'number')
+    .sort(([a], [b]) => (a as number) - (b as number)) as Array<
+    [number, { main: GameEntry[]; dlc: GameEntry[] }]
+  >
+  const spinoffEntry = buckets.get('spinoff')
+  const result: Array<{ generation: number | null; main: GameEntry[]; dlc: GameEntry[] }> =
+    numericEntries.map(([generation, b]) => ({
+      generation,
+      main: b.main,
+      dlc: b.dlc,
+    }))
+  if (spinoffEntry) {
+    result.push({ generation: null, main: spinoffEntry.main, dlc: spinoffEntry.dlc })
+  }
+  return result
 }
 
 /** Any game in `gameIds` flagged as restrictedDex (Galar / Hisui / Paldea). */
@@ -119,7 +138,7 @@ const SWITCH_ERA_GAMES: ReadonlySet<string> = new Set([
   'mega-dimension',
   'firered',
   'leafgreen',
-  'pokemon-go',
+  'go',
 ])
 
 export function isSwitchEraGame(gameId: string): boolean {

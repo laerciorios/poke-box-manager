@@ -4,7 +4,12 @@ export interface GameEntry {
   id: string
   name: string
   shortName: string
-  generation: number
+  /**
+   * The Pokémon generation this game belongs to. Optional — spinoffs that
+   * live outside the generational timeline (e.g. Pokémon GO) leave this
+   * out. The UI groups them in a separate "Spinoff" row at the end.
+   */
+  generation?: number
   color: string
   kind: GameKind
   /** When kind === 'remake', the original generation being remade. */

@@ -144,9 +144,11 @@ function SpeciesAvailability({
       ) : (
         <ul className="space-y-3">
           {groups.map((group) => (
-            <li key={group.generation}>
+            <li key={group.generation ?? 'spinoff'}>
               <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-[var(--muted-foreground)] mb-2">
-                {t('genLabel', { n: group.generation })}
+                {group.generation === null
+                  ? t('spinoffLabel')
+                  : t('genLabel', { n: group.generation })}
               </p>
               {group.main.length > 0 && (
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">

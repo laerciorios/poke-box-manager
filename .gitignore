@@ -43,8 +43,11 @@ next-env.d.ts
 # pokeapi cache
 .cache/
 
-# generated data
+# generated data (fetched from PokéAPI at build time by src/scripts/fetch-pokemon-data.ts)
 src/data/*.json
+# but DO commit the hand-curated lookup tables — they are manual data, not generated
+!src/data/games-list.json
+!src/data/availability-overrides.json
 
 # Workbox generated files (if ever using workbox-webpack-plugin)
 public/workbox-*.js

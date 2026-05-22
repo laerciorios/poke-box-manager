@@ -1,0 +1,4464 @@
+{
+  "__schema": {
+    "version": 2,
+    "description": "Per-Pokémon availability overrides. Resolver default: each Pokémon is obtainable in every game whose `acceptsFromGens` matches the Pokémon's origin generation. Each game currently accepts only its own generation, so cross-gen availability (e.g. Pikachu in FRLG or HGSS) needs explicit `addedIn` overrides. This keeps the UI showing only verified data.",
+    "fields": {
+      "exclusiveTo": "Pokémon is ONLY in these game ids. Replaces the default.",
+      "addedIn": "Extra game ids beyond the default. Use this to declare cross-gen availability (e.g. Pikachu in FRLG).",
+      "removedFrom": "Game ids to remove from the default (e.g. version-exclusive cross-pairs).",
+      "event": "true if the Pokémon's normal acquisition is via event distribution. UI shows an 'Event' chip.",
+      "notes": "Free-form, never rendered."
+    }
+  },
+  "__gen1_notes": "Gen 1 (RBY) and cross-version in Gen 2 (GSC) and Switch spinoffs (Legends Z-A, Mega Dimension). Fully verified against pokemondb RBY differences chart.",
+  "1": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Bulbasaur: only RBY (and FRLG via remake).",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "2": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Ivysaur: only RBY.",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "3": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Venusaur: only RBY.",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "4": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Charmander.",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "5": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Charmeleon.",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "6": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Charizard.",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "7": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Squirtle.",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "8": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Wartortle.",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "9": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Blastoise.",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "13": {
+    "removedFrom": [
+      "yellow"
+    ],
+    "notes": "Weedle: not in Yellow.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "14": {
+    "removedFrom": [
+      "yellow"
+    ],
+    "notes": "Kakuna: not in Yellow.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "15": {
+    "removedFrom": [
+      "yellow"
+    ],
+    "notes": "Beedrill: not in Yellow.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "23": {
+    "removedFrom": [
+      "blue",
+      "yellow"
+    ],
+    "notes": "Ekans: Red only in Gen 1; available in all GSC.",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "24": {
+    "removedFrom": [
+      "blue",
+      "yellow"
+    ],
+    "notes": "Arbok: Red only in Gen 1; available in all GSC.",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "26": {
+    "removedFrom": [
+      "yellow"
+    ],
+    "notes": "Raichu: not in Yellow (Pikachu starter doesn't evolve).",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "27": {
+    "removedFrom": [
+      "red"
+    ],
+    "notes": "Sandshrew: Blue, Yellow; all GSC.",
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ]
+  },
+  "28": {
+    "removedFrom": [
+      "red"
+    ],
+    "notes": "Sandslash: Blue, Yellow; all GSC.",
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ]
+  },
+  "37": {
+    "removedFrom": [
+      "red",
+      "gold",
+      "crystal"
+    ],
+    "notes": "Vulpix: Blue, Yellow (Gen 1); Silver only in Gen 2 (not Gold, not Crystal).",
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ]
+  },
+  "38": {
+    "removedFrom": [
+      "red",
+      "gold",
+      "crystal"
+    ],
+    "notes": "Ninetales: Blue, Yellow; Silver only in Gen 2.",
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ]
+  },
+  "43": {
+    "removedFrom": [
+      "blue"
+    ],
+    "notes": "Oddish: Red, Yellow; all GSC.",
+    "addedIn": [
+      "the-indigo-disk"
+    ]
+  },
+  "44": {
+    "removedFrom": [
+      "blue"
+    ],
+    "notes": "Gloom: Red, Yellow; all GSC.",
+    "addedIn": [
+      "the-indigo-disk"
+    ]
+  },
+  "45": {
+    "removedFrom": [
+      "blue"
+    ],
+    "notes": "Vileplume: Red, Yellow; all GSC.",
+    "addedIn": [
+      "the-indigo-disk"
+    ]
+  },
+  "52": {
+    "removedFrom": [
+      "red",
+      "yellow",
+      "gold",
+      "crystal"
+    ],
+    "notes": "Meowth: Blue only (Gen 1); Silver only (Gen 2).",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "53": {
+    "removedFrom": [
+      "red",
+      "yellow",
+      "gold",
+      "crystal"
+    ],
+    "notes": "Persian: Blue only (Gen 1); Silver only (Gen 2).",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "56": {
+    "removedFrom": [
+      "blue",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Mankey: Red, Yellow (Gen 1); Gold only (Gen 2).",
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ]
+  },
+  "57": {
+    "removedFrom": [
+      "blue",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Primeape: Red, Yellow; Gold only.",
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ]
+  },
+  "58": {
+    "removedFrom": [
+      "blue",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Growlithe: Red, Yellow; Gold only.",
+    "addedIn": [
+      "the-teal-mask"
+    ]
+  },
+  "59": {
+    "removedFrom": [
+      "blue",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Arcanine: Red, Yellow; Gold only.",
+    "addedIn": [
+      "the-teal-mask"
+    ]
+  },
+  "69": {
+    "removedFrom": [
+      "red"
+    ],
+    "notes": "Bellsprout: Blue, Yellow; all GSC.",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "70": {
+    "removedFrom": [
+      "red"
+    ],
+    "notes": "Weepinbell: Blue, Yellow; all GSC.",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "71": {
+    "removedFrom": [
+      "red"
+    ],
+    "notes": "Victreebel: Blue, Yellow; all GSC.",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "109": {
+    "removedFrom": [
+      "yellow"
+    ],
+    "notes": "Koffing: not in Yellow; all GSC.",
+    "addedIn": [
+      "the-teal-mask"
+    ]
+  },
+  "110": {
+    "removedFrom": [
+      "yellow"
+    ],
+    "notes": "Weezing: not in Yellow; all GSC.",
+    "addedIn": [
+      "the-teal-mask"
+    ]
+  },
+  "123": {
+    "removedFrom": [
+      "blue"
+    ],
+    "notes": "Scyther: Red, Yellow; all GSC (Bug Catching Contest).",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "124": {
+    "removedFrom": [
+      "yellow"
+    ],
+    "notes": "Jynx: not in Yellow; all GSC."
+  },
+  "125": {
+    "removedFrom": [
+      "blue",
+      "yellow"
+    ],
+    "notes": "Electabuzz: Red only (Gen 1); all GSC.",
+    "addedIn": [
+      "the-indigo-disk"
+    ]
+  },
+  "126": {
+    "removedFrom": [
+      "red",
+      "yellow"
+    ],
+    "notes": "Magmar: Blue only (Gen 1); all GSC.",
+    "addedIn": [
+      "the-indigo-disk"
+    ]
+  },
+  "127": {
+    "removedFrom": [
+      "red"
+    ],
+    "notes": "Pinsir: Blue, Yellow; all GSC.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "138": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Omanyte: Gen 1 fossil, not in GSC."
+  },
+  "139": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Omastar."
+  },
+  "140": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Kabuto."
+  },
+  "141": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Kabutops."
+  },
+  "142": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Aerodactyl: Gen 1 fossil, not in GSC.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "144": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Articuno: Gen 1 bird, not in GSC."
+  },
+  "145": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Zapdos: Gen 1 bird, not in GSC."
+  },
+  "146": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Moltres: Gen 1 bird, not in GSC."
+  },
+  "150": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "notes": "Mewtwo: Cerulean Cave sealed in GSC.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "151": {
+    "removedFrom": [
+      "red",
+      "blue",
+      "yellow",
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "event": true,
+    "notes": "Mew: event only."
+  },
+  "__gen2_notes": "Gen 2 (GSC) version exclusives verified against pokemondb Gold/Silver chart and serebii Crystal unobtainable list. Cross-version in Switch spinoffs.",
+  "165": {
+    "removedFrom": [
+      "gold"
+    ],
+    "notes": "Ledyba: Silver-exclusive (also in Crystal)."
+  },
+  "166": {
+    "removedFrom": [
+      "gold"
+    ],
+    "notes": "Ledian: Silver-exclusive (also in Crystal)."
+  },
+  "167": {
+    "removedFrom": [
+      "silver"
+    ],
+    "notes": "Spinarak: Gold-exclusive (also in Crystal).",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "168": {
+    "removedFrom": [
+      "silver"
+    ],
+    "notes": "Ariados: Gold-exclusive (also in Crystal).",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "179": {
+    "removedFrom": [
+      "crystal"
+    ],
+    "notes": "Mareep: not obtainable in Crystal.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "180": {
+    "removedFrom": [
+      "crystal"
+    ],
+    "notes": "Flaaffy: not obtainable in Crystal.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "181": {
+    "removedFrom": [
+      "crystal"
+    ],
+    "notes": "Ampharos: not obtainable in Crystal.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "203": {
+    "removedFrom": [
+      "crystal"
+    ],
+    "notes": "Girafarig: not obtainable in Crystal.",
+    "addedIn": [
+      "the-indigo-disk"
+    ]
+  },
+  "207": {
+    "removedFrom": [
+      "silver"
+    ],
+    "notes": "Gligar: Gold-exclusive (also in Crystal).",
+    "addedIn": [
+      "the-teal-mask"
+    ]
+  },
+  "216": {
+    "removedFrom": [
+      "silver"
+    ],
+    "notes": "Teddiursa: Gold-exclusive (also in Crystal)."
+  },
+  "217": {
+    "removedFrom": [
+      "silver"
+    ],
+    "notes": "Ursaring: Gold-exclusive (also in Crystal)."
+  },
+  "223": {
+    "removedFrom": [
+      "crystal"
+    ],
+    "notes": "Remoraid: not obtainable in Crystal."
+  },
+  "224": {
+    "removedFrom": [
+      "crystal"
+    ],
+    "notes": "Octillery: not obtainable in Crystal."
+  },
+  "225": {
+    "removedFrom": [
+      "gold"
+    ],
+    "notes": "Delibird: Silver-exclusive (also in Crystal).",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "226": {
+    "removedFrom": [
+      "silver"
+    ],
+    "notes": "Mantine: Gold-exclusive (also in Crystal)."
+  },
+  "227": {
+    "removedFrom": [
+      "gold"
+    ],
+    "notes": "Skarmory: Silver-exclusive (also in Crystal).",
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ]
+  },
+  "231": {
+    "removedFrom": [
+      "gold"
+    ],
+    "notes": "Phanpy: Silver-exclusive (also in Crystal)."
+  },
+  "232": {
+    "removedFrom": [
+      "gold"
+    ],
+    "notes": "Donphan: Silver-exclusive (also in Crystal)."
+  },
+  "249": {
+    "removedFrom": [
+      "gold"
+    ],
+    "notes": "Lugia: catchable in Silver and Crystal."
+  },
+  "250": {
+    "removedFrom": [
+      "silver"
+    ],
+    "notes": "Ho-Oh: catchable in Gold and Crystal."
+  },
+  "251": {
+    "removedFrom": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "event": true,
+    "notes": "Celebi: distributed via event only, not catchable in regular gameplay."
+  },
+  "303": {
+    "notes": "Mawile: Ruby/Emerald (in Sapphire only via Mt. Pyre? Verify).",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "309": {
+    "notes": "Electrike: Ruby (and Sapphire via Route 110/118).",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "335": {
+    "notes": "Zangoose: Ruby exclusive in some sources — flipping if needed.",
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ]
+  },
+  "336": {
+    "notes": "Seviper: Sapphire (reversed in Emerald).",
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ]
+  },
+  "382": {
+    "notes": "Kyogre.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "383": {
+    "notes": "Groudon.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "384": {
+    "notes": "Rayquaza in Gen 3 caught in Emerald (also Mythical-tier in others).",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "385": {
+    "event": true,
+    "notes": "Jirachi: event."
+  },
+  "386": {
+    "event": true,
+    "notes": "Deoxys: event."
+  },
+  "443": {
+    "notes": "Gible: Pearl/Platinum (Wayward Cave).",
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ]
+  },
+  "486": {
+    "event": true,
+    "notes": "Regigigas: event for Snowpoint in Platinum/HGSS."
+  },
+  "489": {
+    "event": true,
+    "notes": "Phione: breeding from Manaphy."
+  },
+  "490": {
+    "event": true,
+    "notes": "Manaphy: Pokémon Ranger event."
+  },
+  "491": {
+    "event": true,
+    "notes": "Darkrai: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "492": {
+    "event": true,
+    "notes": "Shaymin: event."
+  },
+  "493": {
+    "event": true,
+    "notes": "Arceus: event."
+  },
+  "538": {
+    "notes": "Throh: White and White 2.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "539": {
+    "notes": "Sawk: Black and Black 2.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "647": {
+    "event": true,
+    "notes": "Keldeo: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "648": {
+    "event": true,
+    "notes": "Meloetta: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "649": {
+    "event": true,
+    "notes": "Genesect: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "716": {
+    "notes": "Xerneas (X).",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "717": {
+    "notes": "Yveltal (Y).",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "718": {
+    "notes": "Zygarde: X/Y post-game.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "719": {
+    "event": true,
+    "notes": "Diancie: event.",
+    "addedIn": [
+      "legends-za"
+    ]
+  },
+  "720": {
+    "event": true,
+    "notes": "Hoopa: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "721": {
+    "event": true,
+    "notes": "Volcanion: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "789": {
+    "event": true,
+    "notes": "Cosmog and line."
+  },
+  "790": {
+    "event": true,
+    "notes": "Cosmoem."
+  },
+  "800": {
+    "event": true,
+    "notes": "Necrozma fusions need event items."
+  },
+  "801": {
+    "event": true,
+    "notes": "Magearna: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "802": {
+    "event": true,
+    "notes": "Marshadow: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "807": {
+    "event": true,
+    "notes": "Zeraora: event.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "893": {
+    "event": true,
+    "notes": "Zarude: event."
+  },
+  "900": {
+    "notes": "Kleavor.",
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ]
+  },
+  "904": {
+    "notes": "Overqwil.",
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ]
+  },
+  "996": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Frigibax-line — base game."
+  },
+  "997": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Arctibax."
+  },
+  "998": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Baxcalibur."
+  },
+  "999": {
+    "notes": "Gimmighoul.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "1000": {
+    "notes": "Gholdengo.",
+    "addedIn": [
+      "mega-dimension"
+    ]
+  },
+  "1025": {
+    "event": true,
+    "notes": "Pecharunt — event/DLC.",
+    "addedIn": [
+      "the-indigo-disk"
+    ]
+  },
+  "152": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "153": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "154": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "498": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "499": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "500": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "158": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "159": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "160": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "661": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "662": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "663": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "659": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "660": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "664": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "665": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "666": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "16": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "17": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "18": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "504": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "505": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "406": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "315": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "407": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "129": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "130": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "688": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "689": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "120": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "121": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "669": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "670": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "671": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "672": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "673": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "677": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "678": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "667": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "668": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "674": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "675": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "568": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "569": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "702": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "172": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "25": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "173": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "35": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "36": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "63": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "64": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "65": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "92": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "93": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "94": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "543": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "544": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "545": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "679": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "680": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "681": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "511": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "512": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "513": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "514": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "515": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "516": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "307": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "308": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "310": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "280": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "281": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "282": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "475": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "228": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "229": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "333": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "334": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "531": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "682": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "683": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "684": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "685": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "133": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "134": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "135": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "136": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "196": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "197": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "470": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "471": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "700": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "427": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "428": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "353": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "354": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "582": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "583": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "584": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "322": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "323": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "449": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "450": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "529": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "530": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "551": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "552": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "553": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "66": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "67": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "68": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "444": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "445": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "703": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "302": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "359": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "447": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "448": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "79": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "80": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "199": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "318": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "319": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "602": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "603": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "604": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "147": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "148": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "149": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "618": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "676": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "686": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "687": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "690": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "691": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "692": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "693": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "704": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "705": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "706": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "361": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "362": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "478": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "459": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "460": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "712": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "713": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "212": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "214": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "587": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "701": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "708": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "709": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "559": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "560": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "714": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "715": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "707": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "607": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "608": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "609": {
+    "addedIn": [
+      "legends-za",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "696": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "697": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "698": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "699": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "95": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "208": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "304": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "305": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "306": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "694": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "695": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "710": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "711": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "246": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "247": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "248": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "656": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "657": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "658": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "870": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "650": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "651": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "652": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "653": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "654": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "655": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "371": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "372": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "373": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "115": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "780": {
+    "addedIn": [
+      "legends-za"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "374": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "375": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "376": {
+    "addedIn": [
+      "legends-za",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Legends Z-A."
+  },
+  "979": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "863": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "83": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "865": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "104": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "105": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "137": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "233": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "474": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "951": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "952": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "957": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "958": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "959": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "967": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "969": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "970": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "479": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "971": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "972": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "769": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "770": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "352": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "973": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "615": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "977": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "978": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "211": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "252": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "253": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "254": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "255": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "256": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "257": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "258": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "259": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "260": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "349": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "350": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "433": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "358": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "876": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "509": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "510": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "517": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "518": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "562": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "563": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "867": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "767": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "768": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "827": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "828": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "852": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "853": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "778": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "877": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "622": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "623": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "821": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "822": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "823": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "174": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "39": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "40": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "926": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "927": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "396": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "397": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "398": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "325": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "326": {
+    "addedIn": [
+      "mega-dimension",
+      "the-teal-mask"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "931": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "739": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "740": {
+    "addedIn": [
+      "mega-dimension",
+      "the-indigo-disk"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "932": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "933": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "934": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "316": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "317": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "41": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "42": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "169": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "935": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "936": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "937": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "942": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "943": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "848": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "849": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "944": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "945": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "439": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "122": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "866": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "590": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "591": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "485": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "638": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "639": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "640": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "808": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "809": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "380": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "381": {
+    "addedIn": [
+      "mega-dimension"
+    ],
+    "notes": "Available in Mega Dimension (Legends Z-A DLC)."
+  },
+  "84": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "85": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "102": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "103": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "111": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "112": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "464": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "48": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "49": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "239": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "466": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "240": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "467": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "440": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "113": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "242": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "128": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "522": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "523": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "981": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "953": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "954": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "627": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "628": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "629": {
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "630": {
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "585": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "586": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "235": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "868": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "869": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "328": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "329": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "330": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "731": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "732": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "733": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "72": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "73": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "116": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "117": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "230": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "779": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "546": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "547": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "764": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "287": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "288": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "289": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "182": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "50": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "51": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "88": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "89": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "741": {
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "170": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "171": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "370": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "456": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "457": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "594": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "324": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "751": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "752": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "236": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "106": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "107": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "237": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "74": {
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "75": {
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "76": {
+    "addedIn": [
+      "the-indigo-disk",
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "574": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "575": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "576": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "774": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "408": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "409": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "410": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "411": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "572": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "573": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "81": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "82": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "462": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "311": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "312": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "854": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "855": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "595": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "596": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "610": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "611": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "612": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "86": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "87": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "131": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "577": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "578": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "579": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "209": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "210": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "613": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "614": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "884": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1018": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1019": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "155": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "156": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "157": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "387": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "388": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "389": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "390": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "391": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "392": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "393": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "394": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "395": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "495": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "496": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "497": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "501": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "502": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "503": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "722": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "723": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "724": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "725": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "726": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "727": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "728": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "729": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "730": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "810": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "811": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "812": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "813": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "814": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "815": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "816": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "817": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "818": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1020": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1021": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1023": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1022": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1024": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1009": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "1010": {
+    "addedIn": [
+      "the-indigo-disk"
+    ],
+    "notes": "Available in The Indigo Disk (Blueberry Academy dex)."
+  },
+  "193": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "469": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "194": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "195": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "261": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "262": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "313": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "314": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "341": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "342": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "540": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "541": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "542": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "742": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "743": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "161": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "162": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "753": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "754": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "840": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "841": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "842": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "1011": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "60": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "61": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "62": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "186": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "163": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "164": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "190": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "424": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "220": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "221": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "473": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "234": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "273": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "274": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "275": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "401": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "402": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "417": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "548": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "549": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "744": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "745": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "819": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "820": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "948": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "949": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "1012": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "1013": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "438": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "185": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "532": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "533": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "534": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "846": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "847": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "856": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "857": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "858": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "968": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "924": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "925": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "446": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "143": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "270": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "271": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "272": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "299": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "476": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "403": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "404": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "405": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "736": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "737": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "738": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "472": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "749": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "750": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "782": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "783": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "784": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "962": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "619": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "620": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "355": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "356": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "477": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "218": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "219": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "283": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "284": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "436": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "437": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "206": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "982": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "339": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "340": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "757": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "758": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "215": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "461": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "580": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "581": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "833": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "834": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "845": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "624": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "625": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "983": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "859": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "860": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "861": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "550": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "902": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "901": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "1014": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "1015": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "1016": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  },
+  "1017": {
+    "addedIn": [
+      "the-teal-mask"
+    ],
+    "notes": "Available in The Teal Mask (Kitakami dex)."
+  }
+}

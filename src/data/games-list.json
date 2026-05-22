@@ -1,0 +1,518 @@
+[
+  {
+    "id": "red",
+    "name": "Pokémon Red",
+    "shortName": "Red",
+    "generation": 1,
+    "color": "#E63946",
+    "kind": "main",
+    "acceptsFromGens": [
+      1
+    ]
+  },
+  {
+    "id": "blue",
+    "name": "Pokémon Blue",
+    "shortName": "Blue",
+    "generation": 1,
+    "color": "#1D4E89",
+    "kind": "main",
+    "acceptsFromGens": [
+      1
+    ]
+  },
+  {
+    "id": "yellow",
+    "name": "Pokémon Yellow",
+    "shortName": "Yellow",
+    "generation": 1,
+    "color": "#F5C518",
+    "kind": "main",
+    "acceptsFromGens": [
+      1
+    ]
+  },
+  {
+    "id": "gold",
+    "name": "Pokémon Gold",
+    "shortName": "Gold",
+    "generation": 2,
+    "color": "#DAA520",
+    "kind": "main",
+    "acceptsFromGens": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": "silver",
+    "name": "Pokémon Silver",
+    "shortName": "Silver",
+    "generation": 2,
+    "color": "#9CA3AF",
+    "kind": "main",
+    "acceptsFromGens": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": "crystal",
+    "name": "Pokémon Crystal",
+    "shortName": "Crystal",
+    "generation": 2,
+    "color": "#5BC0EB",
+    "kind": "main",
+    "acceptsFromGens": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": "ruby",
+    "name": "Pokémon Ruby",
+    "shortName": "Ruby",
+    "generation": 3,
+    "color": "#A0181C",
+    "kind": "main",
+    "acceptsFromGens": [
+      3
+    ]
+  },
+  {
+    "id": "sapphire",
+    "name": "Pokémon Sapphire",
+    "shortName": "Sapphire",
+    "generation": 3,
+    "color": "#0F4C81",
+    "kind": "main",
+    "acceptsFromGens": [
+      3
+    ]
+  },
+  {
+    "id": "emerald",
+    "name": "Pokémon Emerald",
+    "shortName": "Emerald",
+    "generation": 3,
+    "color": "#157A45",
+    "kind": "main",
+    "acceptsFromGens": [
+      3
+    ]
+  },
+  {
+    "id": "firered",
+    "name": "Pokémon FireRed",
+    "shortName": "FireRed",
+    "generation": 3,
+    "color": "#FF5436",
+    "kind": "remake",
+    "remakeOf": 1,
+    "acceptsFromGens": [
+      3
+    ]
+  },
+  {
+    "id": "leafgreen",
+    "name": "Pokémon LeafGreen",
+    "shortName": "LeafGreen",
+    "generation": 3,
+    "color": "#5DBB63",
+    "kind": "remake",
+    "remakeOf": 1,
+    "acceptsFromGens": [
+      3
+    ]
+  },
+  {
+    "id": "diamond",
+    "name": "Pokémon Diamond",
+    "shortName": "Diamond",
+    "generation": 4,
+    "color": "#B9C2C9",
+    "kind": "main",
+    "acceptsFromGens": [
+      4
+    ]
+  },
+  {
+    "id": "pearl",
+    "name": "Pokémon Pearl",
+    "shortName": "Pearl",
+    "generation": 4,
+    "color": "#F5BBC4",
+    "kind": "main",
+    "acceptsFromGens": [
+      4
+    ]
+  },
+  {
+    "id": "platinum",
+    "name": "Pokémon Platinum",
+    "shortName": "Platinum",
+    "generation": 4,
+    "color": "#7A8C99",
+    "kind": "main",
+    "acceptsFromGens": [
+      4
+    ]
+  },
+  {
+    "id": "heartgold",
+    "name": "Pokémon HeartGold",
+    "shortName": "HeartGold",
+    "generation": 4,
+    "color": "#D4A017",
+    "kind": "remake",
+    "remakeOf": 2,
+    "acceptsFromGens": [
+      4
+    ]
+  },
+  {
+    "id": "soulsilver",
+    "name": "Pokémon SoulSilver",
+    "shortName": "SoulSilver",
+    "generation": 4,
+    "color": "#A7B0BC",
+    "kind": "remake",
+    "remakeOf": 2,
+    "acceptsFromGens": [
+      4
+    ]
+  },
+  {
+    "id": "black",
+    "name": "Pokémon Black",
+    "shortName": "Black",
+    "generation": 5,
+    "color": "#1F2937",
+    "kind": "main",
+    "acceptsFromGens": [
+      5
+    ]
+  },
+  {
+    "id": "white",
+    "name": "Pokémon White",
+    "shortName": "White",
+    "generation": 5,
+    "color": "#E5E7EB",
+    "kind": "main",
+    "acceptsFromGens": [
+      5
+    ]
+  },
+  {
+    "id": "black-2",
+    "name": "Pokémon Black 2",
+    "shortName": "Black 2",
+    "generation": 5,
+    "color": "#374151",
+    "kind": "main",
+    "acceptsFromGens": [
+      5
+    ]
+  },
+  {
+    "id": "white-2",
+    "name": "Pokémon White 2",
+    "shortName": "White 2",
+    "generation": 5,
+    "color": "#D1D5DB",
+    "kind": "main",
+    "acceptsFromGens": [
+      5
+    ]
+  },
+  {
+    "id": "x",
+    "name": "Pokémon X",
+    "shortName": "X",
+    "generation": 6,
+    "color": "#0073BB",
+    "kind": "main",
+    "acceptsFromGens": [
+      6
+    ]
+  },
+  {
+    "id": "y",
+    "name": "Pokémon Y",
+    "shortName": "Y",
+    "generation": 6,
+    "color": "#E63946",
+    "kind": "main",
+    "acceptsFromGens": [
+      6
+    ]
+  },
+  {
+    "id": "omega-ruby",
+    "name": "Pokémon Omega Ruby",
+    "shortName": "Omega Ruby",
+    "generation": 6,
+    "color": "#A0181C",
+    "kind": "remake",
+    "remakeOf": 3,
+    "acceptsFromGens": [
+      6
+    ]
+  },
+  {
+    "id": "alpha-sapphire",
+    "name": "Pokémon Alpha Sapphire",
+    "shortName": "Alpha Sapphire",
+    "generation": 6,
+    "color": "#0F4C81",
+    "kind": "remake",
+    "remakeOf": 3,
+    "acceptsFromGens": [
+      6
+    ]
+  },
+  {
+    "id": "sun",
+    "name": "Pokémon Sun",
+    "shortName": "Sun",
+    "generation": 7,
+    "color": "#F39C12",
+    "kind": "main",
+    "acceptsFromGens": [
+      7
+    ]
+  },
+  {
+    "id": "moon",
+    "name": "Pokémon Moon",
+    "shortName": "Moon",
+    "generation": 7,
+    "color": "#4A6FA5",
+    "kind": "main",
+    "acceptsFromGens": [
+      7
+    ]
+  },
+  {
+    "id": "ultra-sun",
+    "name": "Pokémon Ultra Sun",
+    "shortName": "Ultra Sun",
+    "generation": 7,
+    "color": "#E67E22",
+    "kind": "main",
+    "acceptsFromGens": [
+      7
+    ]
+  },
+  {
+    "id": "ultra-moon",
+    "name": "Pokémon Ultra Moon",
+    "shortName": "Ultra Moon",
+    "generation": 7,
+    "color": "#34495E",
+    "kind": "main",
+    "acceptsFromGens": [
+      7
+    ]
+  },
+  {
+    "id": "lets-go-pikachu",
+    "name": "Pokémon Let's Go, Pikachu!",
+    "shortName": "Let's Go Pikachu",
+    "generation": 7,
+    "color": "#F5C518",
+    "kind": "spinoff",
+    "remakeOf": 1,
+    "acceptsFromGens": [
+      7
+    ]
+  },
+  {
+    "id": "lets-go-eevee",
+    "name": "Pokémon Let's Go, Eevee!",
+    "shortName": "Let's Go Eevee",
+    "generation": 7,
+    "color": "#B07A4A",
+    "kind": "spinoff",
+    "remakeOf": 1,
+    "acceptsFromGens": [
+      7
+    ]
+  },
+  {
+    "id": "sword",
+    "name": "Pokémon Sword",
+    "shortName": "Sword",
+    "generation": 8,
+    "color": "#3B82F6",
+    "kind": "main",
+    "acceptsFromGens": [
+      8
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "shield",
+    "name": "Pokémon Shield",
+    "shortName": "Shield",
+    "generation": 8,
+    "color": "#EF4444",
+    "kind": "main",
+    "acceptsFromGens": [
+      8
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "the-isle-of-armor",
+    "name": "The Isle of Armor",
+    "shortName": "Isle of Armor",
+    "generation": 8,
+    "color": "#F59E0B",
+    "kind": "dlc",
+    "parentOf": [
+      "sword",
+      "shield"
+    ],
+    "acceptsFromGens": [
+      8
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "the-crown-tundra",
+    "name": "The Crown Tundra",
+    "shortName": "Crown Tundra",
+    "generation": 8,
+    "color": "#60A5FA",
+    "kind": "dlc",
+    "parentOf": [
+      "sword",
+      "shield"
+    ],
+    "acceptsFromGens": [
+      8
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "brilliant-diamond",
+    "name": "Pokémon Brilliant Diamond",
+    "shortName": "Brilliant Diamond",
+    "generation": 8,
+    "color": "#A5B4FC",
+    "kind": "remake",
+    "remakeOf": 4,
+    "acceptsFromGens": [
+      8
+    ]
+  },
+  {
+    "id": "shining-pearl",
+    "name": "Pokémon Shining Pearl",
+    "shortName": "Shining Pearl",
+    "generation": 8,
+    "color": "#FBCFE8",
+    "kind": "remake",
+    "remakeOf": 4,
+    "acceptsFromGens": [
+      8
+    ]
+  },
+  {
+    "id": "legends-arceus",
+    "name": "Pokémon Legends: Arceus",
+    "shortName": "Legends Arceus",
+    "generation": 8,
+    "color": "#7C3AED",
+    "kind": "spinoff",
+    "acceptsFromGens": [
+      8
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "scarlet",
+    "name": "Pokémon Scarlet",
+    "shortName": "Scarlet",
+    "generation": 9,
+    "color": "#DC2626",
+    "kind": "main",
+    "acceptsFromGens": [
+      9
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "violet",
+    "name": "Pokémon Violet",
+    "shortName": "Violet",
+    "generation": 9,
+    "color": "#7C3AED",
+    "kind": "main",
+    "acceptsFromGens": [
+      9
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "the-teal-mask",
+    "name": "The Teal Mask",
+    "shortName": "Teal Mask",
+    "generation": 9,
+    "color": "#14B8A6",
+    "kind": "dlc",
+    "parentOf": [
+      "scarlet",
+      "violet"
+    ],
+    "acceptsFromGens": [
+      9
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "the-indigo-disk",
+    "name": "The Indigo Disk",
+    "shortName": "Indigo Disk",
+    "generation": 9,
+    "color": "#4338CA",
+    "kind": "dlc",
+    "parentOf": [
+      "scarlet",
+      "violet"
+    ],
+    "acceptsFromGens": [
+      9
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "legends-za",
+    "name": "Pokémon Legends: Z-A",
+    "shortName": "Legends Z-A",
+    "generation": 9,
+    "color": "#0891B2",
+    "kind": "spinoff",
+    "acceptsFromGens": [
+      9
+    ],
+    "restrictedDex": true
+  },
+  {
+    "id": "mega-dimension",
+    "name": "Mega Dimension",
+    "shortName": "Mega Dimension",
+    "generation": 9,
+    "color": "#9333EA",
+    "kind": "dlc",
+    "parentOf": [
+      "legends-za"
+    ],
+    "acceptsFromGens": [
+      9
+    ],
+    "restrictedDex": true
+  }
+]

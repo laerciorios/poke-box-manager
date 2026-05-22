@@ -1,18 +1,26 @@
 'use client'
 
 import * as React from 'react'
-import { Moon, Sun, Languages } from 'lucide-react'
+import { Moon, Sun, Languages, History, Download } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { useHistoryStore } from '@/stores/useHistoryStore'
 import { useRouter, usePathname } from '@/i18n/navigation'
 import { useParams } from 'next/navigation'
+import { useHistoryController } from '@/components/history/HistoryController'
+import { useServiceWorker } from '@/components/layout/ServiceWorkerProvider'
 
 export function Header() {
   const tApp = useTranslations('Layout')
+  const tHist = useTranslations('History')
+  const tSw = useTranslations('Layout.update')
   const theme = useSettingsStore((s) => s.theme)
   const setTheme = useSettingsStore((s) => s.setTheme)
   const setLocale = useSettingsStore((s) => s.setLocale)
+  const historyCount = useHistoryStore((s) => s.entries.length)
+  const { toggle: toggleHistory } = useHistoryController()
+  const { updateAvailable, applyUpdate } = useServiceWorker()
   const router = useRouter()
   const pathname = usePathname()
   const { locale } = useParams<{ locale: 'pt-BR' | 'en' }>()
@@ -50,6 +58,38 @@ export function Header() {
         <div className="hidden md:block" />
 
         <div className="flex items-center gap-2">
+          {updateAvailable && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={applyUpdate}
+              aria-label={tSw('available')}
+              title={tSw('available')}
+              className="relative"
+            >
+              <Download className="size-4 text-[var(--accent)]" />
+              <span
+                className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-[var(--accent)]"
+                aria-hidden
+              />
+            </Button>
+          )}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleHistory}
+            aria-label={tHist('open')}
+            title={tHist('openShortcut')}
+            className="relative"
+          >
+            <History className="size-4" />
+            {historyCount > 0 && (
+              <span
+                className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-[var(--accent)]"
+                aria-hidden
+              />
+            )}
+          </Button>
           <Button
             variant="ghost"
             size="icon"

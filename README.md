@@ -89,7 +89,7 @@ docs/
 
 ## Status por fase
 
-A reescrita está dividida em fases — esta entrega corresponde à **Fase 2**.
+A reescrita está dividida em fases — esta entrega corresponde à **Fase 4**.
 
 - ✅ **Fase 1**: design system novo, nova Home (landing + dashboard), Boxes
   básico, Pokédex básico, Settings básico, stubs de Stats/Presets/Missing
@@ -101,12 +101,38 @@ A reescrita está dividida em fases — esta entrega corresponde à **Fase 2**.
   modal de detalhes com formas e linha evolutiva; Settings com 12 variation
   toggles, picker de gerações, sprite style com preview, toggles de exibição,
   export / import (merge ou replace), backup reminder global
-- ⏳ **Fase 3**: Stats com Recharts, Presets engine, Missing analysis,
-  History panel, Tags
-- ⏳ **Fase 4**: page transitions polidas, PWA / service worker, bundle
-  analysis
+- ✅ **Fase 3**: Stats com Recharts (hero ring + barras por geração + heatmap
+  de boxes clicável com deep-link `/boxes#<id>` + grid por tipo + milestones
+  + aba shiny condicional); History panel global (Cmd+H, Cmd+Z, undo por
+  entrada); Tags (CRUD em Settings, picker via slot context menu, filtros
+  na página Boxes); Missing analysis (filtros + virtualização + export
+  JSON/CSV + sugestões de shinies); Presets (lista com built-ins + user,
+  editor com regras DnD + preview, import/export JSON)
+- ✅ **Fase 4**: PWA com manifest + service worker manual (sprites SWR,
+  estáticos cache-first, HTML network-first) e botão quieto de update no
+  Header; code splitting agressivo via `next/dynamic` (Recharts, PokedexDetails,
+  PresetEditor, BackupPanel, ShortcutsOverlay, CommandPalette); toaster
+  minimalista canto inferior direito; `⌘K` busca global; `?` painel de
+  atalhos; `useNavDirection()` para page transitions direcionais; focus trap
+  em todos os Dialogs; `@axe-core/react` em dev; A11y subiu para **100** em
+  todas as rotas (Lighthouse mobile)
 
-Detalhes em [`docs/REWRITE.md`](docs/REWRITE.md).
+Detalhes e métricas em [`docs/REWRITE.md`](docs/REWRITE.md).
+
+## Offline & PWA
+
+A partir da Fase 4 o app é uma PWA real:
+
+- **Manifest**: `public/manifest.webmanifest` com ícones 192/512 e
+  `display: standalone`. Em mobile/desktop suportados, dá pra "Instalar
+  PokéBox" e abrir como app.
+- **Service worker** (`public/sw.js`): cache stale-while-revalidate para
+  sprites do GitHub, cache-first para `_next/static/*`, network-first para
+  HTML. Após o primeiro load, o app funciona **100% offline** (incluindo
+  troca de páginas, leitura/escrita em IndexedDB).
+- **Atualizações**: quando uma nova versão é instalada, um ícone de download
+  discreto aparece no Header. Clicar nele chama `SKIP_WAITING` no SW e
+  recarrega — sem toast, sem berro.
 
 ## Acessibilidade
 

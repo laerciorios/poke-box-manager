@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl'
-import { Trash2, Edit2, Check, X, Sparkles, Eraser, MoveRight, ImagePlus } from 'lucide-react'
+import { Trash2, Edit2, Check, X, Sparkles, Eraser, MoveRight, ImagePlus, Tags as TagsIcon } from 'lucide-react'
 import type { Box } from '@/types/box'
 import { useBoxStore } from '@/stores/useBoxStore'
 import { usePokedexStore } from '@/stores/usePokedexStore'
@@ -15,6 +15,8 @@ import { BoxColorPicker } from './BoxColorPicker'
 import { BoxActionsMenu } from './BoxActionsMenu'
 import { ContextMenu, type ContextMenuItem } from './ContextMenu'
 import { PokemonPicker } from '@/components/pokemon/PokemonPicker'
+import { TagSlotPicker } from '@/components/tags/TagSlotPicker'
+import { Dialog } from '@/components/ui/dialog'
 import { BOX_LABEL_COLORS } from '@/lib/box-label-colors'
 import { cn } from '@/lib/utils'
 
@@ -23,6 +25,7 @@ interface Props {
   index: number
   total: number
   selectedSlots: Set<number>
+  dimmedSlots?: Set<number>
   onToggleSelection: (slotIndex: number, additive: boolean) => void
   onRequestMove: (slotIndex: number) => void
   focused?: boolean
@@ -33,6 +36,7 @@ export function BoxView({
   index,
   total,
   selectedSlots,
+  dimmedSlots,
   onToggleSelection,
   onRequestMove,
   focused,
@@ -55,6 +59,8 @@ export function BoxView({
   const [pickerOpen, setPickerOpen] = React.useState(false)
   const [activeSlot, setActiveSlot] = React.useState<number | null>(null)
   const [menu, setMenu] = React.useState<{ x: number; y: number; slotIndex: number } | null>(null)
+  const [tagPicker, setTagPicker] = React.useState<{ x: number; y: number; slotIndex: number } | null>(null)
+  const [deleteOpen, setDeleteOpen] = React.useState(false)
 
   const filled = box.slots.filter(Boolean).length
   const ringClass = box.label ? BOX_LABEL_COLORS[box.label] : ''
@@ -76,11 +82,10 @@ export function BoxView({
   function handleToggleRegistered(slotIndex: number) {
     const slot = box.slots[slotIndex]
     if (!slot) return
-    const next = !slot.registered
-    setSlot(box.id, slotIndex, { ...slot, registered: next })
-    if (next !== isRegistered(slot.pokemonId, slot.formId)) {
-      toggleRegistered(slot.pokemonId, slot.formId)
-    }
+    // The Pokédex store is the source of truth. toggleRegistered also
+    // mirrors the new state back into slot.registered via syncRegistration,
+    // so we never need to touch the slot here.
+    toggleRegistered(slot.pokemonId, slot.formId)
   }
 
   function openContextMenu(
@@ -124,6 +129,14 @@ export function BoxView({
         label: tMenu('moveTo'),
         icon: <MoveRight />,
         onSelect: () => onRequestMove(slotIndex),
+      })
+      items.push({
+        label: tMenu('tags'),
+        icon: <TagsIcon />,
+        onSelect: () => {
+          // Anchor the picker at the menu position.
+          if (menu) setTagPicker({ x: menu.x, y: menu.y, slotIndex })
+        },
       })
     }
     items.push({
@@ -247,11 +260,7 @@ export function BoxView({
               <Button
                 size="icon"
                 variant="ghost"
-                onClick={() => {
-                  if (window.confirm(t('deleteConfirm', { name: box.name }))) {
-                    deleteBox(box.id)
-                  }
-                }}
+                onClick={() => setDeleteOpen(true)}
                 aria-label={t('deleteBox')}
                 className="text-[var(--muted-foreground)] hover:text-[var(--destructive)]"
               >
@@ -270,6 +279,7 @@ export function BoxView({
             index={i}
             boxId={box.id}
             selected={selectedSlots.has(i)}
+            dimmed={dimmedSlots?.has(i) ?? false}
             onActivate={({ shift, meta }) => {
               if (shift || meta) {
                 onToggleSelection(i, true)
@@ -278,6 +288,9 @@ export function BoxView({
               }
             }}
             onToggleRegistered={slot ? () => handleToggleRegistered(i) : undefined}
+            onToggleShiny={
+              slot && shinyTrackerEnabled ? () => toggleShiny(box.id, i) : undefined
+            }
             onContextMenu={(e, anchor) => openContextMenu(e, anchor, i)}
           />
         ))}
@@ -290,6 +303,17 @@ export function BoxView({
         items={menu ? buildMenuItems(menu.slotIndex) : []}
         onClose={() => setMenu(null)}
       />
+
+      {tagPicker && (
+        <TagSlotPicker
+          open
+          x={tagPicker.x}
+          y={tagPicker.y}
+          boxId={box.id}
+          slotIndex={tagPicker.slotIndex}
+          onClose={() => setTagPicker(null)}
+        />
+      )}
 
       <PokemonPicker
         open={pickerOpen}
@@ -309,6 +333,37 @@ export function BoxView({
           })
         }}
       />
+
+      <Dialog
+        open={deleteOpen}
+        onClose={() => setDeleteOpen(false)}
+        title={t('deleteBoxTitle', { name: box.name })}
+        description={t('deleteBoxDescription', {
+          filled: box.slots.filter(Boolean).length,
+        })}
+        size="sm"
+        footer={
+          <div className="flex justify-end gap-2 w-full">
+            <Button variant="ghost" onClick={() => setDeleteOpen(false)}>
+              {t('deleteBoxCancel')}
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                deleteBox(box.id)
+                setDeleteOpen(false)
+              }}
+            >
+              <Trash2 className="size-3.5" />
+              {t('deleteBoxConfirm')}
+            </Button>
+          </div>
+        }
+      >
+        <p className="text-sm text-[var(--muted-foreground)]">
+          {t('deleteBoxWarning')}
+        </p>
+      </Dialog>
     </motion.section>
   )
 }

@@ -1,8 +1,9 @@
 'use client'
 
 import * as React from 'react'
+import dynamic from 'next/dynamic'
 import { motion } from 'motion/react'
-import { Search, SlidersHorizontal, LayoutGrid, List, X } from 'lucide-react'
+import { Search, SlidersHorizontal, LayoutGrid, List, X, SearchX } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import pokemonData from '@/data/pokemon.json'
@@ -14,7 +15,14 @@ import { Button } from '@/components/ui/button'
 import { FadeIn } from '@/components/motion'
 import { PokedexFilters } from '@/components/pokedex/PokedexFilters'
 import { PokedexTableRow, PokedexGridCard } from '@/components/pokedex/PokedexRow'
-import { PokedexDetails } from '@/components/pokedex/PokedexDetails'
+import { EmptyState } from '@/components/ui/empty-state'
+
+// Heavy modal — only loads when the user clicks a row. Strips evolution-tree
+// rendering, sprite shiny + form lists out of the initial bundle.
+const PokedexDetails = dynamic(
+  () => import('@/components/pokedex/PokedexDetails').then((m) => m.PokedexDetails),
+  { ssr: false },
+)
 import {
   buildPokedexRows,
   applyFilters,
@@ -124,6 +132,9 @@ export default function PokedexPage() {
     categories.size > 0 ||
     status !== 'all'
 
+  // Render the page chrome immediately so LCP captures the real layout. The
+  // virtualized list is fine with `registered=[]` on first paint — IndexedDB
+  // typically lands within ~150ms and the checkboxes flip in place.
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <FadeIn>
@@ -225,7 +236,18 @@ export default function PokedexPage() {
         className="rounded-(--radius-lg) border border-[var(--border)] bg-[var(--card)] h-[70vh] overflow-y-auto"
       >
         {filtered.length === 0 ? (
-          <div className="text-center py-16 text-[var(--muted-foreground)]">{t('empty')}</div>
+          <EmptyState
+            icon={<SearchX className="size-4" />}
+            title={t('empty')}
+            description={hasAnyFilter ? t('emptyHint') : undefined}
+            action={
+              hasAnyFilter ? (
+                <Button variant="outline" size="sm" onClick={handleClearFilters}>
+                  {t('filters.clear')}
+                </Button>
+              ) : null
+            }
+          />
         ) : view === 'table' ? (
           <div style={{ height: rowVirtualizer.getTotalSize(), position: 'relative' }}>
             {rowVirtualizer.getVirtualItems().map((virtual) => {

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import { headers } from 'next/headers'
 import { cn } from '@/lib/utils'
@@ -25,9 +25,19 @@ const display = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'PokéBox — Planeje suas boxes do Pokémon Home',
+  title: 'PokéBox · Planeje suas boxes do Pokémon Home',
   description:
     'Companion offline-first para colecionadores. Organize boxes 6×5, registre Pokémon, e acompanhe sua Pokédex sem sair do navegador.',
+  manifest: '/manifest.webmanifest',
+  appleWebApp: {
+    capable: true,
+    title: 'PokéBox',
+    statusBarStyle: 'black-translucent',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#1a1a2e',
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

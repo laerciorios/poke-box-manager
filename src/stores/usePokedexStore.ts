@@ -1,6 +1,7 @@
 import { createPersistedStore } from '@/lib/store'
 import { useSettingsStore } from '@/stores/useSettingsStore'
 import { useHistoryStore } from '@/stores/useHistoryStore'
+import { useBoxStore } from '@/stores/useBoxStore'
 import { buildDescription } from '@/lib/history-descriptions'
 
 interface PokedexState {
@@ -31,6 +32,9 @@ export const usePokedexStore = createPersistedStore<PokedexState>(
         current.add(key)
       }
       set({ registered: [...current] })
+      // Mirror the new state into any slots that hold this Pokémon so the
+      // box view's ✓ marker stays in sync.
+      useBoxStore.getState().syncRegistration(new Set([key]), !wasRegistered)
       useSettingsStore.getState().recordChange()
       const actionType = wasRegistered ? 'unregister' : 'register'
       const undoPayload = wasRegistered
@@ -56,6 +60,7 @@ export const usePokedexStore = createPersistedStore<PokedexState>(
       const netNew = keys.filter((k) => !current.has(k))
       for (const key of keys) current.add(key)
       set({ registered: [...current] })
+      useBoxStore.getState().syncRegistration(new Set(keys), true)
       useSettingsStore.getState().recordChange()
       if (netNew.length > 0) {
         const undoPayload = { type: 'bulk-register', keys: netNew } as const
@@ -74,6 +79,7 @@ export const usePokedexStore = createPersistedStore<PokedexState>(
       const toRemove = new Set(keys)
       const actuallyRemoved = get().registered.filter((k) => toRemove.has(k))
       set({ registered: get().registered.filter((k) => !toRemove.has(k)) })
+      useBoxStore.getState().syncRegistration(toRemove, false)
       useSettingsStore.getState().recordChange()
       if (actuallyRemoved.length > 0) {
         const undoPayload = { type: 'bulk-unregister', keys: actuallyRemoved } as const

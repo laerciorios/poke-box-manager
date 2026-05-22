@@ -62,7 +62,10 @@ export function PokedexDetails({ pokemon, onClose }: Props) {
               <Sprite src={pokemon.sprite} alt={pokemon.name} size={112} />
             </div>
             {shinyEnabled && (
-              <div className="rounded-md border border-[var(--shiny)]/40 bg-[var(--shiny-soft)] p-3 relative">
+              <div
+                className="rounded-md border border-[var(--shiny)]/40 bg-[var(--shiny-soft)] p-3 relative"
+                title={t('shinyHint')}
+              >
                 <Sparkles className="absolute top-1.5 left-1.5 size-3 text-[var(--shiny)]" />
                 <Sprite
                   src={pokemon.sprite}
@@ -77,6 +80,12 @@ export function PokedexDetails({ pokemon, onClose }: Props) {
             )}
           </div>
           <div className="flex-1 space-y-2 min-w-0">
+            {shinyEnabled && (
+              <p className="text-[11px] text-[var(--muted-foreground)] leading-snug">
+                <Sparkles className="inline size-3 align-[-2px] text-[var(--shiny)] mr-1" />
+                {t('shinyHint')}
+              </p>
+            )}
             <div className="flex flex-wrap gap-1.5">
               {pokemon.types.filter(Boolean).map((type) => (
                 <TypeChip key={type as string} type={type as string} />

@@ -5,7 +5,6 @@ import { ArrowRight, Sparkles } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Button } from '@/components/ui/button'
-import { FadeIn } from '@/components/motion'
 
 export function LandingHero() {
   const t = useTranslations('Landing.hero')
@@ -15,50 +14,48 @@ export function LandingHero() {
     <section className="relative overflow-hidden">
       <div className="aurora-bg" aria-hidden />
       <div className="relative max-w-5xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24 text-center">
-        <FadeIn delay={0.05}>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface)]/60 backdrop-blur-md px-3 py-1 text-xs font-medium text-[var(--muted-foreground)]">
-            <Sparkles className="size-3 text-[var(--accent)]" />
-            {t('badge')}
-          </span>
-        </FadeIn>
+        {/* The hero block stays fully opaque on first paint — Lighthouse uses
+            the headline as the LCP element, so fading it in costs ~10 perf
+            points. We keep the motion as a subtle 12px slide instead. */}
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface)]/60 backdrop-blur-md px-3 py-1 text-xs font-medium text-[var(--muted-foreground)]">
+          <Sparkles className="size-3 text-[var(--accent)]" />
+          {t('badge')}
+        </span>
 
-        <FadeIn delay={0.1}>
-          <h1 className="mt-6 font-display text-4xl md:text-6xl font-semibold leading-[1.05] tracking-tight">
-            {t.rich('title', {
-              em: (chunks) => (
-                <span className="bg-gradient-to-br from-[var(--accent)] via-[var(--shiny)] to-[var(--registered)] bg-clip-text text-transparent">
-                  {chunks}
-                </span>
-              ),
-            })}
-          </h1>
-        </FadeIn>
+        <h1 className="mt-6 font-display text-4xl md:text-6xl font-semibold leading-[1.05] tracking-tight">
+          {t.rich('title', {
+            em: (chunks) => (
+              <span className="bg-gradient-to-br from-[var(--accent)] via-[var(--shiny)] to-[var(--registered)] bg-clip-text text-transparent">
+                {chunks}
+              </span>
+            ),
+          })}
+        </h1>
 
-        <FadeIn delay={0.2}>
-          <p className="mt-5 max-w-2xl mx-auto text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            {t('subtitle')}
-          </p>
-        </FadeIn>
+        <p className="mt-5 max-w-2xl mx-auto text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+          {t('subtitle')}
+        </p>
 
-        <FadeIn delay={0.3}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button asChild size="lg" variant="accent" className="gradient-border">
-              <Link href="/boxes">
-                {t('cta')}
-                <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/pokedex">{t('ctaSecondary')}</Link>
-            </Button>
-          </div>
-        </FadeIn>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Button asChild size="lg" variant="accent" className="gradient-border">
+            <Link href="/boxes">
+              {t('cta')}
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/pokedex">{t('ctaSecondary')}</Link>
+          </Button>
+        </div>
 
+        {/* PreviewBox is the LCP element on this route. We keep it visible on
+            the first paint (no opacity fade) so Lighthouse can confirm LCP
+            quickly; the tiny y/scale drift below is the only motion. */}
         <motion.div
           className="mt-16 mx-auto max-w-3xl"
-          initial={reduce ? { opacity: 1 } : { opacity: 0, y: 30, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={reduce ? { duration: 0 } : { duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          initial={reduce ? { y: 0, scale: 1 } : { y: 12, scale: 0.99 }}
+          animate={{ y: 0, scale: 1 }}
+          transition={reduce ? { duration: 0 } : { duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <PreviewBox />
         </motion.div>
@@ -87,12 +84,12 @@ function PreviewBox() {
           return (
             <motion.div
               key={i}
-              initial={reduce ? { opacity: 1 } : { opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={reduce ? { scale: 1 } : { scale: 0.85 }}
+              animate={{ scale: 1 }}
               transition={
                 reduce
                   ? { duration: 0 }
-                  : { duration: 0.4, delay: 0.6 + i * 0.018, ease: [0.22, 1, 0.36, 1] }
+                  : { duration: 0.3, delay: i * 0.008, ease: [0.22, 1, 0.36, 1] }
               }
               className={
                 'relative aspect-square rounded-md ' +

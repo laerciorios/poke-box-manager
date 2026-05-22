@@ -28,6 +28,7 @@ export function PokedexTableRow({ row, registered, onToggle, onOpenDetails }: Pr
         type="button"
         onClick={onToggle}
         aria-pressed={registered}
+        aria-label={registered ? t('details.unregister') : t('details.register')}
         className={cn(
           'size-5 rounded-full grid place-items-center shrink-0 transition-colors',
           registered
@@ -35,7 +36,7 @@ export function PokedexTableRow({ row, registered, onToggle, onOpenDetails }: Pr
             : 'border border-[var(--border-strong)] hover:bg-[var(--surface-2)] text-transparent',
         )}
       >
-        <Check className="size-3" strokeWidth={3} />
+        <Check className="size-3" strokeWidth={3} aria-hidden />
       </button>
       <button
         type="button"
@@ -70,17 +71,24 @@ export function PokedexTableRow({ row, registered, onToggle, onOpenDetails }: Pr
 export function PokedexGridCard({ row, registered, onToggle, onOpenDetails }: Props) {
   const t = useTranslations('Pokedex')
   return (
-    <button
-      type="button"
-      onClick={onOpenDetails}
+    // Two independent buttons inside a passive wrapper: the toggle (top-right
+    // pill) and an absolutely-positioned card-wide button that opens details.
+    // Avoids the nested-<button> HTML that Lighthouse and a11y validators flag.
+    <div
       className={cn(
-        'group w-full rounded-(--radius-lg) border bg-[var(--card)] p-3 text-left transition-all duration-150 lift',
+        'group relative w-full rounded-(--radius-lg) border bg-[var(--card)] p-3 text-left transition-all duration-150 lift',
         registered
           ? 'border-[var(--registered)]/40 bg-[var(--registered-soft)]'
           : 'border-[var(--border)]',
       )}
     >
-      <div className="flex items-center justify-between mb-2">
+      <button
+        type="button"
+        onClick={onOpenDetails}
+        aria-label={t('details.open')}
+        className="absolute inset-0 rounded-(--radius-lg) focus-visible:ring-2 focus-visible:ring-(--ring) focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+      />
+      <div className="relative pointer-events-none flex items-center justify-between mb-2">
         <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--muted-foreground)] tabular-nums">
           #{String(row.pokemon.id).padStart(4, '0')}
           {row.isFormRow && row.form && <span className="ml-1">·{row.form.formType}</span>}
@@ -92,26 +100,29 @@ export function PokedexGridCard({ row, registered, onToggle, onOpenDetails }: Pr
             onToggle()
           }}
           aria-pressed={registered}
+          aria-label={registered ? t('details.unregister') : t('details.register')}
           className={cn(
-            'size-5 rounded-full grid place-items-center shrink-0 transition-colors',
+            'pointer-events-auto relative z-10 size-5 rounded-full grid place-items-center shrink-0 transition-colors',
             registered
               ? 'bg-[var(--registered)] text-[var(--registered-foreground)]'
               : 'border border-[var(--border-strong)] hover:bg-[var(--surface-2)] text-transparent',
           )}
         >
-          <Check className="size-3" strokeWidth={3} />
+          <Check className="size-3" strokeWidth={3} aria-hidden />
         </button>
       </div>
-      <Sprite src={row.sprite} alt={row.name} size={80} className="mx-auto" />
-      <p className="mt-2 text-sm font-medium text-center truncate">{row.name}</p>
-      <div className="mt-1.5 flex gap-1 justify-center">
-        {row.types.map((type) => (
-          <TypeChip key={type} type={type} />
-        ))}
+      <div className="pointer-events-none">
+        <Sprite src={row.sprite} alt={row.name} size={80} className="mx-auto" />
+        <p className="mt-2 text-sm font-medium text-center truncate">{row.name}</p>
+        <div className="mt-1.5 flex gap-1 justify-center">
+          {row.types.map((type) => (
+            <TypeChip key={type} type={type} />
+          ))}
+        </div>
+        <p className="mt-1.5 text-[10px] text-[var(--muted-foreground)] font-mono text-center">
+          {t('details.generation', { n: row.generation })}
+        </p>
       </div>
-      <p className="mt-1.5 text-[10px] text-[var(--muted-foreground)] font-mono text-center">
-        {t('details.generation', { n: row.generation })}
-      </p>
-    </button>
+    </div>
   )
 }

@@ -16,11 +16,22 @@ import { FadeIn } from '@/components/motion'
 import { VariationsPanel } from '@/components/settings/VariationsPanel'
 import { GenerationsPanel } from '@/components/settings/GenerationsPanel'
 import { SpriteStylePanel } from '@/components/settings/SpriteStylePanel'
-import { BackupPanel } from '@/components/settings/BackupPanel'
+import { TagsPanel } from '@/components/tags/TagsPanel'
+import dynamic from 'next/dynamic'
+
+// Backup/restore panel pulls in the import/export pipeline and a diff
+// dialog — defer it until the user scrolls down to the section.
+const BackupPanel = dynamic(
+  () => import('@/components/settings/BackupPanel').then((m) => m.BackupPanel),
+  { ssr: false, loading: () => <div className="h-32" aria-hidden /> },
+)
+import { useTagsStore } from '@/stores/useTagsStore'
 import { cn } from '@/lib/utils'
 
 export default function SettingsPage() {
   const t = useTranslations('Settings')
+  const tTags = useTranslations('Tags')
+  const tagsCount = useTagsStore((s) => s.tags.length)
   const theme = useSettingsStore((s) => s.theme)
   const setTheme = useSettingsStore((s) => s.setTheme)
   const setLocale = useSettingsStore((s) => s.setLocale)
@@ -155,6 +166,15 @@ export default function SettingsPage() {
               />
             </li>
           </ul>
+        </Section>
+      </FadeIn>
+
+      <FadeIn delay={0.05}>
+        <Section
+          title={tTags('sectionTitle')}
+          description={tTags('sectionDescription', { count: tagsCount })}
+        >
+          <TagsPanel />
         </Section>
       </FadeIn>
 

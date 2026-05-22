@@ -11,6 +11,11 @@ const MAX_BOXES = 200
 interface BoxState {
   boxes: Box[]
   addBox: () => void
+  /**
+   * Insert a new empty box immediately after `index`. Returns the id of the
+   * created box so callers can focus it. Returns null if MAX_BOXES is hit.
+   */
+  insertBoxAfter: (index: number) => string | null
   createBox: (name: string) => void
   deleteBox: (boxId: string) => void
   renameBox: (boxId: string, newName: string) => void
@@ -27,6 +32,12 @@ interface BoxState {
   reorderBox: (boxId: string, newIndex: number) => void
   setBoxes: (boxes: Box[]) => void
   toggleShiny: (boxId: string, slotIndex: number) => void
+  /**
+   * Sync slot.registered for every slot whose key (pokemonId / pokemonId:formId)
+   * appears in `keys`. Used when the Pokédex store toggles a registration so
+   * the box display stays in sync without round-tripping through history.
+   */
+  syncRegistration: (keys: Set<string>, registered: boolean) => void
   setSlotNote: (boxId: string, slotIndex: number, note: string) => void
   addTagToSlot: (boxId: string, slotIndex: number, tagId: string) => void
   removeTagFromSlot: (boxId: string, slotIndex: number, tagId: string) => void
@@ -48,6 +59,23 @@ export const useBoxStore = createPersistedStore<BoxState>(
       }
       set({ boxes: [...current, newBox] })
       useSettingsStore.getState().recordChange()
+    },
+
+    insertBoxAfter: (index) => {
+      const current = get().boxes
+      if (current.length >= MAX_BOXES) return null
+      const newBox: Box = {
+        id: crypto.randomUUID(),
+        name: `Box ${current.length + 1}`,
+        slots: Array.from({ length: BOX_SIZE }, () => null),
+      }
+      // Clamp index so out-of-range values still produce a valid splice.
+      const clamped = Math.min(Math.max(index, -1), current.length - 1)
+      const insertAt = clamped + 1
+      const next = [...current.slice(0, insertAt), newBox, ...current.slice(insertAt)]
+      set({ boxes: next })
+      useSettingsStore.getState().recordChange()
+      return newBox.id
     },
 
     createBox: (name) => {
@@ -189,6 +217,30 @@ export const useBoxStore = createPersistedStore<BoxState>(
         description: buildDescription('preset-apply', undoPayload, locale),
         undoPayload,
       })
+    },
+
+    syncRegistration: (keys, registered) => {
+      let changed = false
+      const updated = get().boxes.map((b) => {
+        let boxChanged = false
+        const slots = b.slots.map((slot) => {
+          if (!slot) return slot
+          const slotKey = slot.formId
+            ? `${slot.pokemonId}:${slot.formId}`
+            : String(slot.pokemonId)
+          if (!keys.has(slotKey)) return slot
+          if (slot.registered === registered) return slot
+          boxChanged = true
+          changed = true
+          return { ...slot, registered }
+        })
+        return boxChanged ? { ...b, slots } : b
+      })
+      if (changed) {
+        set({ boxes: updated })
+        // Intentionally no recordChange()/history entry: this is a side effect
+        // of a Pokédex action that already recorded its own entry.
+      }
     },
 
     toggleShiny: (boxId, slotIndex) => {

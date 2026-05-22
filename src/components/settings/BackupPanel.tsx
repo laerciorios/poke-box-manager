@@ -9,10 +9,13 @@ import { useSettingsStore } from '@/stores/useSettingsStore'
 import { buildExportPayload, downloadJson } from '@/lib/export/export'
 import { parseImportFile, applyImportReplace, applyImportMerge, ImportValidationError } from '@/lib/import/import'
 import type { ExportEnvelope } from '@/lib/export/types'
+import { useToast } from '@/components/ui/toast'
 
 export function BackupPanel() {
   const t = useTranslations('Settings.backup')
   const tCommon = useTranslations('Common')
+  const tToast = useTranslations('Toasts')
+  const { push } = useToast()
   const lastBackup = useSettingsStore((s) => s.lastBackup)
 
   const [importing, setImporting] = React.useState(false)
@@ -22,6 +25,7 @@ export function BackupPanel() {
 
   const handleExport = () => {
     downloadJson(buildExportPayload())
+    push({ title: tToast('backupDownloaded'), variant: 'success' })
   }
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,6 +98,7 @@ export function BackupPanel() {
                     applyImportMerge(parsed)
                     setImporting(false)
                     setParsed(null)
+                    push({ title: tToast('importMerged'), variant: 'success' })
                   }}
                 >
                   {t('merge')}
@@ -105,6 +110,7 @@ export function BackupPanel() {
                       applyImportReplace(parsed)
                       setImporting(false)
                       setParsed(null)
+                      push({ title: tToast('importReplaced'), variant: 'success' })
                     }
                   }}
                 >

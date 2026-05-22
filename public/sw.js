@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v2'
+const CACHE_VERSION = 'v3'
 const STATIC_CACHE = `static-${CACHE_VERSION}`
 const SPRITE_CACHE = `sprites-${CACHE_VERSION}`
 const DATA_CACHE = `data-${CACHE_VERSION}`
@@ -6,8 +6,16 @@ const DATA_CACHE = `data-${CACHE_VERSION}`
 const SPRITE_ORIGIN = 'https://raw.githubusercontent.com'
 const STATIC_EXTENSIONS = ['.js', '.css', '.woff2', '.woff', '.ico', '.svg']
 
-self.addEventListener('install', (event) => {
-  self.skipWaiting()
+self.addEventListener('install', () => {
+  // Do NOT auto-skipWaiting here: we want the client to control the moment
+  // of activation so it can warn the user and reload deliberately.
+})
+
+// The provider posts {type:'SKIP_WAITING'} when the user clicks "update".
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting()
+  }
 })
 
 self.addEventListener('activate', (event) => {

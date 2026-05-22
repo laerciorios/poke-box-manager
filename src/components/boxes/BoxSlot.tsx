@@ -10,8 +10,10 @@ import pokemonData from '@/data/pokemon.json'
 import type { PokemonEntry, PokemonForm } from '@/types/pokemon'
 import type { BoxSlot as BoxSlotType } from '@/types/box'
 import { useSettingsStore } from '@/stores/useSettingsStore'
+import { usePokedexStore } from '@/stores/usePokedexStore'
 import { getPokemonName, getFormName } from '@/lib/pokemon-names'
 import { Sprite } from '@/components/pokemon/Sprite'
+import { TagDotGroup } from '@/components/tags/TagDotGroup'
 import { cn } from '@/lib/utils'
 import { toSlotId } from '@/lib/dnd-utils'
 
@@ -24,8 +26,11 @@ interface Props {
   index: number
   boxId: string
   selected?: boolean
+  dimmed?: boolean
   onActivate: (modifiers: { shift: boolean; meta: boolean }) => void
   onToggleRegistered?: () => void
+  /** Provided only when slot is filled AND shinyTrackerEnabled is true. */
+  onToggleShiny?: () => void
   onContextMenu: (e: React.MouseEvent | React.TouchEvent, anchor: { x: number; y: number }) => void
 }
 
@@ -42,24 +47,41 @@ export function BoxSlotCell({
   index,
   boxId,
   selected,
+  dimmed,
   onActivate,
   onToggleRegistered,
+  onToggleShiny,
   onContextMenu,
 }: Props) {
   const t = useTranslations('Boxes')
   const locale = useSettingsStore((s) => s.locale)
   const showNames = useSettingsStore((s) => s.showPokemonNamesInBox)
-  const shinyTrackerEnabled = useSettingsStore((s) => s.shinyTrackerEnabled)
   const reduce = useReducedMotion()
+
+  // Subscribe to the Pokédex set so the slot's "registered" status always
+  // matches the source of truth. We intentionally derive this rather than
+  // reading slot.registered, which can drift if a slot was created before
+  // the user marked the Pokémon as registered elsewhere.
+  const pokedexRegistered = usePokedexStore((s) => s.registered)
+  const isSlotRegistered = React.useMemo(() => {
+    if (!slot) return false
+    const key = slot.formId
+      ? `${slot.pokemonId}:${slot.formId}`
+      : String(slot.pokemonId)
+    return pokedexRegistered.includes(key)
+  }, [slot, pokedexRegistered])
 
   const id = toSlotId(boxId, index)
   const sortable = useSortable({ id })
   const { setNodeRef, attributes, listeners, transform, transition, isDragging, isOver } = sortable
 
+  // Unregistered slots render at lower opacity so registered ones stand out
+  // at a glance. Drag overrides everything (0.4) so the ghost stays subtle.
+  const restingOpacity = slot && !isSlotRegistered ? 0.55 : 1
   const dragStyle: React.CSSProperties = {
     transform: CSS.Translate.toString(transform),
     transition,
-    opacity: isDragging ? 0.4 : 1,
+    opacity: isDragging ? 0.4 : restingOpacity,
   }
 
   // long-press timer for touch context menu
@@ -103,9 +125,10 @@ export function BoxSlotCell({
         className={cn(
           'group relative aspect-square rounded-md border border-dashed border-[var(--border)]',
           'bg-[var(--surface-2)]/30 hover:bg-[var(--surface-2)] hover:border-[var(--border-strong)]',
-          'transition-colors touch-none',
+          'transition-[colors,opacity] touch-none',
           isOver && 'border-[var(--accent)] bg-[var(--accent-soft)]',
           selected && 'ring-2 ring-[var(--accent)]',
+          dimmed && 'opacity-30',
         )}
         onContextMenu={handleContextClick}
         data-slot-empty
@@ -135,14 +158,15 @@ export function BoxSlotCell({
       {...attributes}
       {...listeners}
       layout={!reduce}
-      initial={reduce ? { opacity: 1 } : { opacity: 0, scale: 0.85 }}
-      animate={{ opacity: isDragging ? 0.4 : 1, scale: 1 }}
+      initial={reduce ? { opacity: restingOpacity } : { opacity: 0, scale: 0.85 }}
+      animate={{ opacity: isDragging ? 0.4 : restingOpacity, scale: 1 }}
       transition={reduce ? { duration: 0 } : { duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'group relative aspect-square rounded-md border bg-[var(--card)] touch-none',
-        slot.registered ? 'border-[var(--border)]' : 'border-[var(--border-strong)]',
+        'group relative aspect-square rounded-md border bg-[var(--card)] touch-none transition-opacity',
+        isSlotRegistered ? 'border-[var(--border)]' : 'border-[var(--border-strong)]',
         isOver && 'border-[var(--accent)] ring-2 ring-[var(--accent)]',
         selected && 'ring-2 ring-[var(--accent)] ring-offset-2 ring-offset-[var(--card)]',
+        dimmed && 'opacity-30',
       )}
       onContextMenu={handleContextClick}
       onTouchStart={handleTouchStart}
@@ -166,10 +190,41 @@ export function BoxSlotCell({
         />
       </button>
 
-      {shinyTrackerEnabled && slot.shiny && (
-        <span className="absolute top-1 left-1 size-3.5 rounded-full bg-[var(--shiny)] grid place-items-center pointer-events-none">
-          <Sparkles className="size-2 text-[var(--shiny-foreground)]" />
-        </span>
+      {/*
+        Shiny toggle — mirrors the registered check button on the opposite
+        corner. Only rendered when shinyTrackerEnabled is on (the parent
+        passes `onToggleShiny` only in that case). Active state fills the
+        button with the shiny token color; idle state stays neutral so the
+        affordance is visible without dominating the slot.
+      */}
+      {onToggleShiny ? (
+        <button
+          type="button"
+          onPointerDown={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation()
+            onToggleShiny()
+          }}
+          className={cn(
+            'absolute top-1 left-1 size-4 rounded-full grid place-items-center transition-colors z-10',
+            slot.shiny
+              ? 'bg-[var(--shiny)] text-[var(--shiny-foreground)]'
+              : 'bg-[var(--surface-2)] border border-[var(--border-strong)] text-[var(--muted-foreground)] hover:bg-[var(--surface-3)] hover:text-[var(--shiny)]',
+          )}
+          aria-label={slot.shiny ? t('unmarkShiny') : t('markShiny')}
+          aria-pressed={!!slot.shiny}
+        >
+          <Sparkles className="size-2.5" strokeWidth={slot.shiny ? 2.5 : 2} />
+        </button>
+      ) : (
+        // Read-only badge: shiny tracker is off (no onToggleShiny passed)
+        // but the slot was marked shiny in a previous session. Show the
+        // indicator so the user doesn't think the data was lost.
+        slot.shiny && (
+          <span className="absolute top-1 left-1 size-3.5 rounded-full bg-[var(--shiny)] grid place-items-center pointer-events-none">
+            <Sparkles className="size-2 text-[var(--shiny-foreground)]" />
+          </span>
+        )
       )}
 
       {onToggleRegistered && (
@@ -182,14 +237,14 @@ export function BoxSlotCell({
           }}
           className={cn(
             'absolute top-1 right-1 size-4 rounded-full grid place-items-center transition-colors z-10',
-            slot.registered
+            isSlotRegistered
               ? 'bg-[var(--registered)] text-[var(--registered-foreground)]'
               : 'bg-[var(--surface-2)] border border-[var(--border-strong)] text-[var(--muted-foreground)] hover:bg-[var(--surface-3)]',
           )}
-          aria-label={slot.registered ? t('unmarkRegistered') : t('markRegistered')}
-          aria-pressed={slot.registered}
+          aria-label={isSlotRegistered ? t('unmarkRegistered') : t('markRegistered')}
+          aria-pressed={isSlotRegistered}
         >
-          {slot.registered && <Check className="size-2.5" strokeWidth={3} />}
+          {isSlotRegistered && <Check className="size-2.5" strokeWidth={3} />}
         </button>
       )}
 
@@ -201,6 +256,17 @@ export function BoxSlotCell({
           )}
         >
           {displayName}
+        </span>
+      )}
+
+      {slot.tagIds && slot.tagIds.length > 0 && (
+        <span
+          className={cn(
+            'absolute left-1 pointer-events-none',
+            showNames ? 'bottom-3.5' : 'bottom-1',
+          )}
+        >
+          <TagDotGroup tagIds={slot.tagIds} />
         </span>
       )}
     </motion.div>

@@ -61,7 +61,10 @@ export const DEFAULT_SETTINGS: SettingsState = {
   autoSave: true,
   showPokemonNamesInBox: false,
   sidebarCollapsed: false,
-  shinyTrackerEnabled: false,
+  // On by default — shiny tracking is one of the main selling points of the
+  // tool, and the marker UI in the box slot only appears when this is true.
+  // Existing persisted state keeps whatever value the user had (no migrate).
+  shinyTrackerEnabled: true,
   pokedexView: 'table',
   pendingChanges: 0,
 }

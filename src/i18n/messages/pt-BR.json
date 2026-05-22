@@ -14,6 +14,9 @@
     "appName": "PokéBox",
     "switchLanguage": "Trocar idioma",
     "toggleTheme": "Alternar tema",
+    "update": {
+      "available": "Atualização disponível, clique para recarregar"
+    },
     "localFirst": "Tudo local",
     "localFirstHint": "Seus dados ficam neste dispositivo. Nada é enviado para servidores.",
     "nav": {
@@ -30,7 +33,7 @@
     "hero": {
       "badge": "Companion offline-first para Pokémon Home",
       "title": "Planeje suas <em>boxes</em> antes de tocá-las.",
-      "subtitle": "Uma superfície calma e precisa para organizar boxes 6×5, rastrear sua Pokédex e decidir o que transferir — sem planilhas, sem login, sem ruído.",
+      "subtitle": "Uma superfície calma e precisa para organizar boxes 6×5, rastrear sua Pokédex e decidir o que transferir, sem planilhas, sem login, sem ruído.",
       "cta": "Criar minha primeira box",
       "ctaSecondary": "Explorar a Pokédex"
     },
@@ -102,10 +105,18 @@
     "overall": "Progresso geral",
     "overallHint": "Inclui formas regionais e variantes selecionadas em Ajustes.",
     "tiles": {
-      "boxes": { "label": "Boxes" },
-      "pokemon": { "label": "Pokémon nas boxes" },
-      "registered": { "label": "Registrados" },
-      "shiny": { "label": "Shinies" }
+      "boxes": {
+        "label": "Boxes"
+      },
+      "pokemon": {
+        "label": "Pokémon nas boxes"
+      },
+      "registered": {
+        "label": "Registrados"
+      },
+      "shiny": {
+        "label": "Shinies"
+      }
     },
     "generations": "Progresso por geração",
     "generationsHint": "Cada barra reflete sua taxa de registro.",
@@ -121,7 +132,7 @@
       },
       "presets": {
         "title": "Predefinições",
-        "description": "Em breve — Fase 2"
+        "description": "Em breve, Fase 2"
       }
     }
   },
@@ -132,6 +143,13 @@
     "addBox": "Nova box",
     "autoFill": "Preencher",
     "autoFillTitle": "Preenche slots vazios em ordem da Pokédex, respeitando gerações e variações ativas",
+    "autoFillDone": "{count} Pokémon adicionados. {boxes, plural, =0 {} =1 {1 nova box criada.} other {# novas boxes criadas.}}",
+    "autoFillNoop": "Tudo já está em alguma box. Nada a preencher.",
+    "deleteBoxTitle": "Excluir \"{name}\"?",
+    "deleteBoxDescription": "Esta box contém {filled} Pokémon.",
+    "deleteBoxWarning": "Ao excluir, a box e a posição dos Pokémon nela serão perdidos. Os registros da sua Pokédex são preservados.",
+    "deleteBoxCancel": "Cancelar",
+    "deleteBoxConfirm": "Excluir box",
     "emptyTitle": "Nenhuma box ainda",
     "emptyDescription": "Crie sua primeira box para começar a organizar Pokémon. Você pode renomear e excluir a qualquer momento.",
     "createFirst": "Criar primeira box",
@@ -143,6 +161,8 @@
     "emptySlot": "Slot vazio {index}",
     "markRegistered": "Marcar como registrado",
     "unmarkRegistered": "Desmarcar registro",
+    "markShiny": "Marcar como shiny",
+    "unmarkShiny": "Desmarcar shiny",
     "boxActions": "Ações da box",
     "clearAll": "Limpar todos os slots",
     "clearAllConfirm": "Limpar todos os slots de \"{name}\"?",
@@ -160,6 +180,7 @@
       "toggleRegistered": "Marcar como registrado",
       "untoggleRegistered": "Desmarcar registrado",
       "moveTo": "Mover para…",
+      "tags": "Tags…",
       "select": "Adicionar à seleção",
       "deselect": "Remover da seleção"
     },
@@ -183,6 +204,15 @@
       "previous": "Box anterior",
       "next": "Próxima box"
     },
+    "overview": {
+      "button": "Visão geral",
+      "open": "Abrir visão geral de todas as boxes",
+      "eyebrow": "Todas as boxes",
+      "title": "Visão geral",
+      "searchPlaceholder": "Buscar box…",
+      "count": "{n} de {total}",
+      "empty": "Nenhuma box corresponde à busca."
+    },
     "dnd": {
       "pickup": "Pegou {name} do slot {index} da {box}",
       "pickupEmpty": "Pegou o slot vazio {index} da {box}",
@@ -204,8 +234,9 @@
     "searchPlaceholder": "Buscar por nome, número ou abreviação…",
     "all": "Todas",
     "registered": "Registrado",
-    "more": "+{count} resultados — refine a busca para ver mais.",
+    "more": "+{count} resultados, refine a busca para ver mais.",
     "empty": "Nenhum Pokémon corresponde à busca.",
+    "emptyHint": "Limpe os filtros ou ajuste sua busca.",
     "view": {
       "table": "Tabela",
       "grid": "Grade"
@@ -259,43 +290,212 @@
       "noEvolution": "Sem evolução",
       "register": "Registrar",
       "unregister": "Desregistrar",
-      "orJoin": "ou"
+      "orJoin": "ou",
+      "shinyHint": "Para registrar a versão shiny, coloque o Pokémon em um slot da box e clique no ✨ que aparece no canto do slot."
     }
   },
   "Stats": {
     "eyebrow": "Análise",
     "title": "Estatísticas",
-    "description": "Acompanhe seu progresso por geração, tipo, box e shinies. Esta página será detalhada na Fase 3 com gráficos e milestones.",
-    "bullets": [
-      "Donut de progresso geral com animação suave",
-      "Barras por geração com porcentagem e total",
-      "Heatmap de boxes (completas / parciais / vazias)",
-      "Grid de progresso por tipo Pokémon",
-      "Linha de milestones (100, 250, 500, 1000 registrados)",
-      "Aba opcional de shinies"
-    ]
+    "subtitle": "Progresso por geração, tipo, box e milestones. Tudo calculado a partir das suas variações e gerações ativas.",
+    "hero": {
+      "eyebrow": "Progresso geral",
+      "title": "Onde você está hoje",
+      "subtitle": "A porcentagem reflete o seu total atual com variações e gerações ativas.",
+      "boxes": {
+        "complete": "Completas",
+        "partial": "Parciais",
+        "empty": "Vazias"
+      }
+    },
+    "generations": {
+      "title": "Por geração",
+      "description": "Registrados de cada geração ativa.",
+      "empty": "Nenhuma geração ativa nos ajustes.",
+      "tooltipCount": "{registered} de {total}"
+    },
+    "heatmap": {
+      "title": "Heatmap das boxes",
+      "description": "Clique em uma box para abri-la em Boxes.",
+      "complete": "Completa",
+      "partial": "Parcial",
+      "empty": "Vazia",
+      "cardLabel": "{name}, {state}, {registered} de {total}"
+    },
+    "types": {
+      "title": "Por tipo Pokémon",
+      "description": "Inclui formas com tipos próprios. Pokémon de dois tipos contam em ambos."
+    },
+    "milestones": {
+      "title": "Marcos",
+      "description": "Sem comemoração, só pra você saber onde está.",
+      "reached": "Marco {threshold} atingido",
+      "next": "Próximo marco: {threshold}",
+      "future": "Marco {threshold} ainda distante",
+      "current": "Atual: {count} registrados"
+    },
+    "tabs": {
+      "label": "Tipo de estatística",
+      "overall": "Geral",
+      "shiny": "Shinies"
+    }
   },
   "Presets": {
     "eyebrow": "Organização avançada",
     "title": "Predefinições",
-    "description": "Salve regras de organização (por geração, tipo, dex order) e aplique-as a novas boxes em segundos. Disponível na Fase 3.",
-    "bullets": [
-      "Criar e editar predefinições com múltiplas regras",
-      "Aplicar uma predefinição em todas as boxes",
-      "Preview do layout antes de aplicar",
-      "Importar e exportar predefinições"
-    ]
+    "subtitle": "Salve regras de organização e aplique em segundos. Predefinições embutidas vêm prontas; você pode duplicar para customizar.",
+    "newPreset": "Nova predefinição",
+    "import": "Importar",
+    "export": "Exportar",
+    "importSuccess": "{count} predefinição(ões) importada(s).",
+    "importFailed": "Falha ao importar: {error}",
+    "card": {
+      "builtIn": "Embutida",
+      "ruleCount": "{count} regra(s)",
+      "duplicate": "Duplicar"
+    },
+    "applyConfirm": {
+      "title": "Aplicar predefinição",
+      "description": "Esta ação vai substituir o layout atual das suas boxes.",
+      "warning": "Seus registros de Pokédex são preservados, só o arranjo das boxes muda. A operação aparece no histórico e pode ser desfeita."
+    },
+    "deleteConfirm": {
+      "title": "Excluir predefinição",
+      "description": "Excluir \"{name}\"?",
+      "body": "A predefinição é apagada apenas deste navegador. Boxes que você já aplicou continuam intactas."
+    },
+    "editor": {
+      "newTitle": "Nova predefinição",
+      "editTitle": "Editar predefinição",
+      "subtitle": "Encadeie regras na ordem de prioridade. Pokémon que casam com a primeira regra são empacotados primeiro.",
+      "name": "Nome",
+      "namePlaceholder": "ex: Living Dex Kanto",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Opcional",
+      "rules": "Regras",
+      "addRule": "Adicionar regra",
+      "noRules": "Sem regras ainda. Adicione uma para começar.",
+      "preview": "Preview",
+      "showPreview": "Mostrar preview",
+      "hidePreview": "Ocultar preview",
+      "rule": {
+        "label": "Regra {n}",
+        "drag": "Arrastar para reordenar",
+        "generations": "Gerações",
+        "types": "Tipos",
+        "categories": "Categorias",
+        "sort": "Ordenar por",
+        "nameTemplate": "Template do nome",
+        "nameTemplateHint": "Use {start}, {end}, {n}, {gen}",
+        "nameTemplatePlaceholder": "{start}–{end}"
+      },
+      "sort": {
+        "dex-number": "Número da dex",
+        "name": "Nome",
+        "type-primary": "Tipo primário",
+        "generation": "Geração",
+        "evolution-chain": "Cadeia evolutiva",
+        "regional-dex": "Dex regional"
+      }
+    },
+    "preview": {
+      "empty": "Sem resultado, verifique as regras.",
+      "label": "Mostrando {shown} de {total} boxes"
+    }
   },
   "Missing": {
     "eyebrow": "Análise",
     "title": "Faltantes",
-    "description": "Veja exatamente o que está faltando para completar uma geração, um tipo ou uma categoria. Disponível na Fase 3.",
-    "bullets": [
-      "Filtros por geração, tipo, categoria",
-      "Pokémon próximos de completar uma evolução",
-      "Sugestão de próximos shinies a caçar",
-      "Exportar lista de faltantes"
-    ]
+    "subtitle": "Filtre o que ainda não está na Pokédex. Clique em um Pokémon para abrir os detalhes.",
+    "summary": {
+      "eyebrow": "Resumo",
+      "total": "{count} Pokémon faltando"
+    },
+    "filters": {
+      "generation": "Geração",
+      "type": "Tipo",
+      "category": "Categoria",
+      "any": "Todos",
+      "evolutionReady": "Próximos da evolução",
+      "evolutionReadyHint": "{count} Pokémon onde o pré-evoluído já está registrado.",
+      "results": "{count} resultados",
+      "clear": "Limpar"
+    },
+    "row": {
+      "emptyTitle": "Nada faltando",
+      "emptyDescription": "Com esses filtros não há Pokémon a registrar. Ajuste os critérios ou comemore.",
+      "genReason": "Gen {n}",
+      "evolutionReady": "Próximo"
+    },
+    "export": {
+      "button": "Exportar",
+      "json": "Baixar como JSON",
+      "csv": "Baixar como CSV"
+    },
+    "shinies": {
+      "title": "Sugestões de shinies",
+      "description": "{count} Pokémon que você já registrou e ainda não capturou em versão shiny.",
+      "more": "+{count} sugestões, refine os filtros para ver mais."
+    }
+  },
+  "Tags": {
+    "sectionTitle": "Tags",
+    "sectionDescription": "{count} tag(s), use no menu de cada slot para marcar Pokémon.",
+    "empty": "Você ainda não tem tags. Crie uma para marcar slots por contexto (\"para troca\", \"shiny hunt\", etc.).",
+    "newName": "Nova tag",
+    "newPlaceholder": "ex: para troca",
+    "newColor": "Cor",
+    "confirmDelete": "Excluir?",
+    "filterLabel": "Filtrar por tags",
+    "clearFilter": "Limpar",
+    "slotPickerTitle": "Aplicar tags",
+    "slotPickerLabel": "Aplicar tags ao slot",
+    "noTags": "Nenhuma tag criada ainda.",
+    "manageInSettings": "Criar em Ajustes →",
+    "close": "Fechar"
+  },
+  "Shortcuts": {
+    "title": "Atalhos de teclado",
+    "subtitle": "Tudo que você pode fazer sem mouse.",
+    "groups": {
+      "global": "Global",
+      "boxes": "Boxes"
+    },
+    "items": {
+      "toggleOverlay": "Abrir/fechar este painel",
+      "search": "Buscar Pokémon",
+      "history": "Painel de histórico",
+      "undo": "Desfazer última ação",
+      "closeModal": "Fechar modais",
+      "navigateBoxes": "Navegar entre boxes",
+      "dndPickup": "Pegar/soltar slot (DnD)",
+      "dndCancel": "Cancelar arrasto"
+    }
+  },
+  "CommandPalette": {
+    "title": "Busca",
+    "placeholder": "Nome ou #número do Pokémon…",
+    "noResults": "Nada encontrado.",
+    "registered": "Registrado"
+  },
+  "Toasts": {
+    "backupDownloaded": "Backup baixado",
+    "importMerged": "Dados mesclados do backup",
+    "importReplaced": "Dados substituídos pelo backup",
+    "presetApplied": "Predefinição \"{name}\" aplicada",
+    "presetAppliedHint": "{count} box(es) regeradas, desfaça em ⌘Z",
+    "slotsCleared": "{count} slot(s) limpos"
+  },
+  "History": {
+    "title": "Histórico de atividades",
+    "subtitle": "{count} entrada(s), desfaça a qualquer momento.",
+    "empty": "Nada por aqui ainda. Cada ação que altera boxes ou Pokédex aparece neste painel.",
+    "open": "Abrir histórico",
+    "openShortcut": "Histórico (⌘H)",
+    "undo": "Desfazer",
+    "clear": "Limpar histórico",
+    "confirmClear": "Limpar tudo",
+    "shortcuts": "⌘Z desfaz a última ação."
   },
   "BackupBanner": {
     "title": "Você tem {count} mudanças sem backup.",
@@ -370,7 +570,7 @@
     },
     "backup": {
       "title": "Backup e restauração",
-      "description": "Salve seus dados em um arquivo JSON ou restaure de um backup. Não há servidor — você é responsável pela cópia.",
+      "description": "Salve seus dados em um arquivo JSON ou restaure de um backup. Não há servidor, você é responsável pela cópia.",
       "lastBackup": "Último backup: {date}",
       "neverBackup": "Você nunca fez um backup.",
       "export": "Exportar dados",
@@ -397,7 +597,7 @@
     },
     "about": {
       "title": "Sobre",
-      "description": "PokéBox — companion offline-first para Pokémon Home."
+      "description": "PokéBox, companion offline-first para Pokémon Home."
     }
   }
 }

@@ -32,12 +32,21 @@ export function getStyledSprite(
   shiny: boolean,
 ): string | undefined {
   if (!src) return src
-  if (style === 'home-3d') return src
+  // We always go through the URL rewrite so the shiny flag is honored even
+  // when style is home-3d (the default). Without this, a slot marked as
+  // shiny rendered the regular sprite because we shortcut-returned `src`.
   const m = HOME_REGEX.exec(src)
-  if (!m) return src
+  if (!m) {
+    // Source doesn't match the expected home pattern (e.g. a manual URL
+    // for a form). Best we can do is return it as-is.
+    return src
+  }
   const id = m[1]
-  // Form ids (>=10000) only have home/official-art rendered; fall back to home-3d.
-  if (Number(id) >= 10000 && (style === 'pixel-gen5' || style === 'pixel-gen8')) return src
+  // Form ids (>=10000) only have home/official-art rendered; fall back to
+  // home-3d for pixel styles.
+  if (Number(id) >= 10000 && (style === 'pixel-gen5' || style === 'pixel-gen8')) {
+    return BASE + STYLE_PATHS['home-3d'][shiny ? 'shiny' : 'normal'].replace('$ID', id)
+  }
   return BASE + STYLE_PATHS[style][shiny ? 'shiny' : 'normal'].replace('$ID', id)
 }
 

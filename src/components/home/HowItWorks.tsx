@@ -24,8 +24,11 @@ export function HowItWorks() {
 
         <ol className="relative grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
           {STEPS.map((step, idx) => (
-            <Reveal key={step} delay={idx * 0.1}>
-              <li className="relative">
+            // Reveal renders a div — wrapping it around <li> creates a
+            // <div> child inside <ol>, which Lighthouse flags. So we put
+            // the animation inside the <li>, not around it.
+            <li key={step} className="relative">
+              <Reveal delay={idx * 0.1}>
                 <div className="flex items-start gap-4 md:flex-col md:items-start md:gap-3">
                   <div className="flex items-center gap-3 md:w-full">
                     <span className="grid place-items-center size-9 rounded-md bg-[var(--accent-soft)] text-[var(--accent)] font-display font-semibold text-base">
@@ -42,8 +45,8 @@ export function HowItWorks() {
                     </p>
                   </div>
                 </div>
-              </li>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
         </ol>
       </div>

@@ -7,6 +7,7 @@ interface HistoryState {
   entries: ActivityEntry[]
   pushEntry: (entry: ActivityEntry) => void
   undoLast: () => void
+  undoEntry: (entryId: string) => void
   clearHistory: () => void
 }
 
@@ -27,6 +28,14 @@ export const useHistoryStore = createPersistedStore<HistoryState>(
       const [latest, ...rest] = entries
       set({ entries: rest })
       applyUndo(latest.undoPayload)
+    },
+
+    undoEntry: (entryId) => {
+      const { entries } = get()
+      const target = entries.find((e) => e.id === entryId)
+      if (!target) return
+      set({ entries: entries.filter((e) => e.id !== entryId) })
+      applyUndo(target.undoPayload)
     },
 
     clearHistory: () => set({ entries: [] }),

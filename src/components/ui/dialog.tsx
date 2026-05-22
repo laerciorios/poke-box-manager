@@ -36,17 +36,69 @@ export function Dialog({
   className,
 }: DialogProps) {
   const reduce = useReducedMotion()
+  const dialogRef = React.useRef<HTMLDivElement>(null)
+  const previousFocus = React.useRef<HTMLElement | null>(null)
 
+  // Save the trigger element so we can restore focus when the dialog closes.
+  React.useEffect(() => {
+    if (!open) return
+    previousFocus.current = (document.activeElement as HTMLElement) ?? null
+    return () => {
+      // Restore focus on close, but only if the element is still in the DOM.
+      const el = previousFocus.current
+      if (el && document.contains(el)) {
+        el.focus()
+      }
+    }
+  }, [open])
+
+  // Move focus into the dialog on open + trap Tab navigation inside it.
   React.useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault()
         onClose()
+        return
+      }
+      if (e.key !== 'Tab') return
+      const root = dialogRef.current
+      if (!root) return
+      const focusables = root.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      )
+      if (focusables.length === 0) return
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      const active = document.activeElement as HTMLElement | null
+      if (e.shiftKey) {
+        if (active === first || !root.contains(active)) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (active === last) {
+          e.preventDefault()
+          first.focus()
+        }
       }
     }
+
+    // Initial focus: prefer the first focusable element inside the dialog.
+    const id = window.setTimeout(() => {
+      const root = dialogRef.current
+      if (!root) return
+      const first = root.querySelector<HTMLElement>(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      )
+      first?.focus()
+    }, 60)
+
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    return () => {
+      window.clearTimeout(id)
+      window.removeEventListener('keydown', onKey)
+    }
   }, [open, onClose])
 
   return (
@@ -62,6 +114,7 @@ export function Dialog({
             onClick={onClose}
           />
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={typeof title === 'string' ? title : undefined}

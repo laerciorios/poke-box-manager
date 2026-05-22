@@ -1,4 +1,5 @@
 import type { Box, BoxSlot } from '@/types/box'
+import { BOX_SIZE } from '@/types/box'
 import type { VariationToggles } from '@/types/settings'
 import type { PokemonEntry } from '@/types/pokemon'
 import pokemonData from '@/data/pokemon.json'
@@ -11,7 +12,7 @@ interface AutoFillContext {
   variations: VariationToggles
 }
 
-interface Slottable {
+export interface Slottable {
   pokemonId: number
   formId?: string
 }
@@ -50,18 +51,31 @@ export function collectPresentKeys(boxes: Box[]): Set<string> {
   return set
 }
 
+export interface AutoFillResult {
+  /** Updated boxes (existing slots untouched, empty slots filled in order). */
+  boxes: Box[]
+  /** How many empty slots got filled across the existing boxes. */
+  filledCount: number
+  /** Candidates that didn't fit in any existing box (need new boxes). */
+  remaining: Slottable[]
+  /** True when nothing was filled (no empty slots or no eligible candidates). */
+  isNoop: boolean
+}
+
 /**
- * Fill empty slots across all boxes in order with candidates, skipping
- * any candidate whose key is already present. Returns the updated boxes.
+ * Fill empty slots across all boxes in order with candidates, skipping any
+ * candidate whose key is already present. Returns metadata so callers can
+ * decide to auto-create extra boxes or show feedback.
  */
 export function applyAutoFill(
   boxes: Box[],
   ctx: AutoFillContext,
   isRegistered: (id: number, formId?: string) => boolean,
-): Box[] {
+): AutoFillResult {
   const candidates = buildAutoFillCandidates(ctx)
   const present = collectPresentKeys(boxes)
   let cursor = 0
+  let filledCount = 0
 
   const result = boxes.map((box) => {
     const slots: (BoxSlot | null)[] = box.slots.map((slot) => {
@@ -71,6 +85,7 @@ export function applyAutoFill(
         const key = next.formId ? `${next.pokemonId}:${next.formId}` : String(next.pokemonId)
         if (present.has(key)) continue
         present.add(key)
+        filledCount++
         return {
           pokemonId: next.pokemonId,
           formId: next.formId,
@@ -82,5 +97,52 @@ export function applyAutoFill(
     return { ...box, slots }
   })
 
-  return result
+  // Collect any candidates that haven't been used and aren't already present.
+  const remaining: Slottable[] = []
+  while (cursor < candidates.length) {
+    const next = candidates[cursor++]
+    const key = next.formId ? `${next.pokemonId}:${next.formId}` : String(next.pokemonId)
+    if (present.has(key)) continue
+    remaining.push(next)
+  }
+
+  return {
+    boxes: result,
+    filledCount,
+    remaining,
+    isNoop: filledCount === 0 && remaining.length === 0,
+  }
+}
+
+/**
+ * Builds extra boxes filled with the leftover candidates. Used by the
+ * page when AutoFill produces candidates that don't fit existing boxes.
+ *
+ * Names follow the convention `Box {N+1}` based on the previous box count
+ * so they line up with addBox()-generated names.
+ */
+export function buildOverflowBoxes(
+  remaining: Slottable[],
+  previousBoxCount: number,
+  isRegistered: (id: number, formId?: string) => boolean,
+): Box[] {
+  const out: Box[] = []
+  for (let i = 0; i < remaining.length; i += BOX_SIZE) {
+    const chunk = remaining.slice(i, i + BOX_SIZE)
+    const slots: (BoxSlot | null)[] = Array.from({ length: BOX_SIZE }, (_, j) => {
+      const next = chunk[j]
+      if (!next) return null
+      return {
+        pokemonId: next.pokemonId,
+        formId: next.formId,
+        registered: isRegistered(next.pokemonId, next.formId),
+      }
+    })
+    out.push({
+      id: crypto.randomUUID(),
+      name: `Box ${previousBoxCount + out.length + 1}`,
+      slots,
+    })
+  }
+  return out
 }
